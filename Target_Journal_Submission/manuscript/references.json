@@ -1,0 +1,223 @@
+[
+ {
+  "key": "Dempster2020",
+  "doi": "10.1007/s10618-020-00701-z",
+  "title": "ROCKET: exceptionally fast and accurate time series classification using random convolutional kernels"
+ },
+ {
+  "key": "Dempster2021",
+  "doi": "10.1145/3447548.3467231",
+  "title": "MiniRocket: A Very Fast (Almost) Deterministic Transform for Time Series Classification"
+ },
+ {
+  "key": "Tan2022",
+  "doi": "10.1007/s10618-022-00844-1",
+  "title": "MultiRocket: multiple pooling operators and transformations for fast and effective time series classification"
+ },
+ {
+  "key": "Dempster2023",
+  "doi": "10.1007/s10618-023-00939-3",
+  "title": "Hydra: competing convolutional kernels for fast and accurate time series classification"
+ },
+ {
+  "key": "Dempster2024",
+  "doi": "10.1007/s10618-024-01036-9",
+  "title": "QUANT: a minimalist interval method for time series classification"
+ },
+ {
+  "key": "Middlehurst2024",
+  "doi": "10.1007/s10618-024-01022-1",
+  "title": "Bake off redux: a review and experimental evaluation of recent time series classification algorithms"
+ },
+ {
+  "key": "Dau2019",
+  "doi": "10.1109/JAS.2019.1911747",
+  "title": "The UCR time series archive"
+ },
+ {
+  "key": "Bagnall2017",
+  "doi": "10.1007/s10618-016-0483-9",
+  "title": "The great time series classification bake off"
+ },
+ {
+  "key": "IsmailFawaz2019",
+  "doi": "10.1007/s10618-019-00619-1",
+  "title": "Deep learning for time series classification: a review"
+ },
+ {
+  "key": "IsmailFawaz2020",
+  "doi": "10.1007/s10618-020-00710-y",
+  "title": "InceptionTime: Finding AlexNet for time series classification"
+ },
+ {
+  "key": "Che2018",
+  "doi": "10.1038/s41598-018-24271-9",
+  "title": "Recurrent Neural Networks for Multivariate Time Series with Missing Values"
+ },
+ {
+  "key": "Cao2018",
+  "arxiv": "1805.10572",
+  "title": "BRITS: Bidirectional Recurrent Imputation for Time Series"
+ },
+ {
+  "key": "Du2023",
+  "doi": "10.1016/j.eswa.2023.119619",
+  "title": "SAITS: Self-attention-based imputation for time series"
+ },
+ {
+  "key": "Rubin1976",
+  "doi": "10.1093/biomet/63.3.581",
+  "title": "Inference and missing data"
+ },
+ {
+  "key": "Little2019",
+  "doi": "10.1002/9781119482260",
+  "title": "Statistical Analysis with Missing Data"
+ },
+ {
+  "key": "Liu2018",
+  "doi": "10.1007/978-3-030-01252-6_6",
+  "title": "Image Inpainting for Irregular Holes Using Partial Convolutions"
+ },
+ {
+  "key": "Shukla2021",
+  "arxiv": "2101.10318",
+  "title": "Multi-Time Attention Networks for Irregularly Sampled Time Series"
+ },
+ {
+  "key": "Zhang2022",
+  "arxiv": "2110.05357",
+  "title": "Graph-Guided Network for Irregularly Sampled Multivariate Time Series"
+ },
+ {
+  "key": "Spinnato2025",
+  "arxiv": "2505.06047",
+  "title": "PYRREGULAR: A Unified Framework for Irregular Time Series, with Classification Benchmarks"
+ },
+ {
+  "key": "Yao2024",
+  "arxiv": "2408.05849",
+  "title": "An End-to-End Model for Time Series Classification In the Presence of Missing Values"
+ },
+ {
+  "key": "Mikalsen2018",
+  "doi": "10.1016/j.patcog.2017.11.030",
+  "title": "Time series cluster kernel for learning similarities between multivariate time series with missing data"
+ },
+ {
+  "key": "Lipton2016",
+  "arxiv": "1606.04130",
+  "title": "Modeling Missing Data in Clinical Time Series with RNNs"
+ },
+ {
+  "key": "LeMorvan2021",
+  "arxiv": "2106.00311",
+  "title": "What's a good imputation to predict with missing values?"
+ },
+ {
+  "key": "Josse2019",
+  "arxiv": "1902.06931",
+  "title": "On the consistency of supervised learning with missing values"
+ },
+ {
+  "key": "VanNess2023",
+  "doi": "10.1145/3580305.3599911",
+  "title": "The Missing Indicator Method: From Low to High Dimensions"
+ },
+ {
+  "key": "PerezLebel2022",
+  "doi": "10.1093/gigascience/giac013",
+  "title": "Benchmarking missing-values approaches for predictive models on health databases"
+ },
+ {
+  "key": "Silva2012",
+  "title": "Predicting in-hospital mortality of ICU patients: The PhysioNet/Computing in Cardiology Challenge 2012",
+  "pmid": "24678516",
+  "note": "Comput Cardiol 39:245-248 (verified via PubMed)"
+ },
+ {
+  "key": "Goldberger2000",
+  "doi": "10.1161/01.CIR.101.23.e215",
+  "title": "PhysioBank, PhysioToolkit, and PhysioNet"
+ },
+ {
+  "key": "Demsar2006",
+  "url": "https://jmlr.org/papers/v7/demsar06a.html",
+  "arxiv": "",
+  "title": "Statistical Comparisons of Classifiers over Multiple Data Sets"
+ },
+ {
+  "key": "Benavoli2016",
+  "url": "https://jmlr.org/papers/v17/benavoli16a.html",
+  "arxiv": "",
+  "title": "Should We Really Use Post-Hoc Tests Based on Mean-Ranks?"
+ },
+ {
+  "key": "Wilcoxon1945",
+  "doi": "10.2307/3001968",
+  "title": "Individual Comparisons by Ranking Methods"
+ },
+ {
+  "key": "Holm1979",
+  "title": "A Simple Sequentially Rejective Multiple Test Procedure",
+  "url": "https://www.jstor.org/stable/4615733",
+  "note": "Scand J Stat 6(2):65-70; no Crossref DOI"
+ },
+ {
+  "key": "Wang2017",
+  "doi": "10.1109/IJCNN.2017.7966039",
+  "title": "Time series classification from scratch with deep neural networks: A strong baseline"
+ },
+ {
+  "key": "Ke2017",
+  "url": "https://papers.nips.cc/paper/6907",
+  "arxiv": "",
+  "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree"
+ },
+ {
+  "key": "Pedregosa2011",
+  "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
+  "arxiv": "",
+  "title": "Scikit-learn: Machine Learning in Python"
+ },
+ {
+  "key": "Middlehurst2021",
+  "doi": "10.1007/s10994-021-06057-9",
+  "title": "HIVE-COTE 2.0: a new meta ensemble for time series classification"
+ },
+ {
+  "key": "Ruiz2021",
+  "doi": "10.1007/s10618-020-00727-3",
+  "title": "The great multivariate time series classification bake off: a review and experimental evaluation of recent algorithmic advances"
+ },
+ {
+  "key": "Kidger2020",
+  "arxiv": "2005.08926",
+  "title": "Neural Controlled Differential Equations for Irregular Time Series"
+ },
+ {
+  "key": "Horn2020",
+  "arxiv": "1909.12064",
+  "title": "Set Functions for Time Series"
+ },
+ {
+  "key": "Middlehurst2024aeon",
+  "arxiv": "2406.14231",
+  "title": "aeon: a Python toolkit for learning from time series"
+ },
+ {
+  "key": "Ringel2024",
+  "arxiv": "2402.00857",
+  "title": "Early Time Classification with Accumulated Accuracy Gap Control"
+ },
+ {
+  "key": "Lam2015",
+  "doi": "10.1145/2833157.2833162",
+  "title": "Numba: a LLVM-based Python JIT compiler"
+ },
+ {
+  "key": "Twala2008",
+  "doi": "10.1016/j.patrec.2008.01.010",
+  "title": "Good methods for coping with missing data in decision trees"
+ }
+]
