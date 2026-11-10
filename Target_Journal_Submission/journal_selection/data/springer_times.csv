@@ -1,0 +1,49 @@
+journal,issn,n_sampled,n_with_dates,median_days,q1,q3,pct_le60,pct_le72
+Artificial Intelligence Review,0269-2821,0,0,,,,,
+Journal of Big Data,2196-1115,300,299,238,170.0,351.0,1.3,1.7
+Complex & Intelligent Systems,2199-4536,300,299,152,102.0,236.0,4.0,7.0
+Neural Computing and Applications,0941-0643,300,293,239,167.0,333.5,0.7,0.7
+Applied Intelligence,0924-669X,300,294,230.0,170.0,315.25,0.3,1.0
+Cognitive Computation,1866-9956,172,172,271.5,171.25,416.25,2.3,5.2
+Journal of King Saud Univ CIS,1319-1578,300,300,66.0,53.0,91.0,38.7,57.3
+Journal of Intelligent Manufacturing,0956-5515,300,296,157.0,118.0,211.5,3.0,6.4
+BMC Medical Informatics Decis Mak,1472-6947,300,299,184,106.0,316.0,4.7,8.0
+BMC Bioinformatics,1471-2105,300,297,136,98.5,214.5,6.7,11.8
+Int J Machine Learning Cybernetics,1868-8071,300,296,276.0,221.25,307.0,0.0,0.0
+Machine Learning,0885-6125,300,293,204,163.0,317.5,1.0,2.0
+Data Mining Knowl Discovery,1384-5810,171,167,253,153.0,388.0,6.6,7.8
+Journal of Cloud Computing,2192-113X,249,249,158,73.5,255.0,19.3,24.1
+Health Information Science Systems,2047-2501,128,128,173.0,98.0,298.75,9.4,12.5
+EPJ Data Science,2193-1127,151,149,179,140.5,251.0,0.0,2.0
+Int J Comput Intell Systems,1875-6883,300,295,151,100.0,224.0,5.8,12.9
+Journal of Healthcare Informatics Research,2509-4971,49,48,197.0,128.75,340.5,6.2,8.3
+Int J Data Science Analytics,2364-415X,300,296,170.5,109.25,275.25,6.4,11.1
+Knowledge and Information Systems,0219-1377,300,300,290.0,189.0,414.5,1.0,2.0
+Evolving Systems,1868-6478,179,177,323,220.0,454.0,0.0,0.0
+Engineering with Computers,0177-0667,269,267,146,99.0,207.0,5.6,10.5
+Archives Comput Methods Eng,1134-3060,300,296,105.5,75.0,146.0,10.8,22.6
+Journal of Supercomputing,0920-8542,0,0,,,,,
+Signal Image Video Processing,1863-1703,300,298,197.5,104.25,328.0,6.4,11.7
+Multimedia Systems,0942-4962,300,296,134.0,105.0,181.75,2.0,4.1
+Int J Information Technology,2511-2104,300,274,70.5,66.0,96.0,0.7,58.4
+Scientific Reports,2045-2322,300,299,131,90.0,191.0,8.4,14.4
+Nature Machine Intelligence,2522-5839,265,189,248,192.5,301.0,0.0,0.0
+Communications Engineering,2731-3395,300,290,213.5,162.75,278.25,1.4,2.8
+npj Artificial Intelligence,3005-1460,152,152,178.5,126.75,255.25,2.0,4.6
+Journal of Electrical Engineering Technology,1975-0102,300,298,205.0,145.0,294.25,3.4,4.0
+Biomedical Engineering Letters,2093-9868,135,132,104.5,81.25,145.0,12.1,21.2
+Physical Engineering Sciences in Medicine,2662-4729,247,234,211.0,138.5,293.0,0.9,2.6
+Medical Biological Engineering Computing,0140-0118,300,296,174.5,126.25,248.75,1.0,2.7
+Journal of Medical Systems,0148-5598,0,0,,,,,
+Annals of Biomedical Engineering,0090-6964,300,293,167,123.0,219.0,2.0,3.8
+Int J Computer Assisted Radiology Surgery,1861-6410,0,0,,,,,
+J Ambient Intell Humanized Computing,1868-5137,144,123,253,148.0,406.0,1.6,3.3
+Journal of Mechanical Science and Technology,1738-494X,300,298,150.5,89.0,217.25,12.4,18.1
+Journal of Vibration Engineering Technologies,2523-3920,300,294,122.5,82.0,184.25,9.5,17.7
+Int J Advanced Manufacturing Tech,0268-3768,300,296,111.0,78.0,151.0,12.5,22.3
+Neural Processing Letters,1370-4621,1,1,,,,,
+Soft Computing,1432-7643,300,216,469.0,254.75,781.75,0.9,1.4
+Memetic Computing,1865-9284,66,65,243,158.0,312.0,1.5,3.1
+Swarm Intelligence,1935-3812,15,13,285,251.5,319.5,0.0,0.0
+Granular Computing,2364-4966,0,0,,,,,
+Journal of Big Data Analytics in Transportation,2523-3556,0,0,,,,,
