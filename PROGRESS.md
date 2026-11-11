@@ -46,3 +46,6 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
    ItalyPowerDemand, SyntheticControl). Results there showed kNN imputation as a strong baseline. Quick mode now uses
    dev datasets only. kNN gap filling had not been screened, so it is screened ON THE DEV SET ONLY
    (results/dev/dev_screening_v2.csv) before freezing.
+10. Dev kNN screening: kNN filling helps under block 60% but hurts under MCAR 60%; weighting adds nothing on kNN fills.
+    Overall linear + gamma=1 is still best (0.8213 vs 0.8136/0.8143). Primary method unchanged; kNN variants added to E3.
+11. PROTOCOL FROZEN at the commit titled "PROTOCOL FREEZE". Confirmatory runs (E1–E7) start after it with this code and config.

@@ -23,7 +23,8 @@ MAIN_BASELINES = ["AeonMiniRocket+linear", "AeonMiniRocket+zero", "AeonMiniRocke
                   "AeonMiniRocket+knn", "MultiRocket+linear", "HydraMultiRocket+linear", "MaskRocket-noC",
                   "LightGBM-NaN", "1NN-ED+linear"]
 ABLATIONS = ["MissRocket-g0", "MissRocket-g0.5", "MissRocket-g2", "MissRocket+mask", "MissRocket-select",
-             "MissRocket-zerofill", "MissRocket-g0-zerofill", "MissRocket-locf", "MissRocket-g0-locf"]
+             "MissRocket-zerofill", "MissRocket-g0-zerofill", "MissRocket-locf", "MissRocket-g0-locf",
+             "MissRocket-knn", "MissRocket-g0-knn"]
 LABEL = {"MissRocket": "MissRocket (proposed)", "AeonMiniRocket+linear": "MiniRocket + linear interp.",
          "AeonMiniRocket+zero": "MiniRocket + zero fill", "AeonMiniRocket+mean": "MiniRocket + mean fill",
          "AeonMiniRocket+locf": "MiniRocket + LOCF", "AeonMiniRocket+knn": "MiniRocket + kNN impute",
@@ -34,7 +35,8 @@ LABEL = {"MissRocket": "MissRocket (proposed)", "AeonMiniRocket+linear": "MiniRo
          "MissRocket-g0.5": "γ=0.5", "MissRocket-g2": "γ=2", "MissRocket+mask": "+ mask-pattern features",
          "MissRocket-select": "γ, mask selected by LOO", "MissRocket-zerofill": "zero gap filling, γ=1",
          "MissRocket-g0-zerofill": "zero gap filling, γ=0", "MissRocket-locf": "LOCF gap filling, γ=1",
-         "MissRocket-g0-locf": "LOCF gap filling, γ=0", "GRU-D": "GRU-D", "MissRocket-select-p12": "MissRocket-select"}
+         "MissRocket-g0-locf": "LOCF gap filling, γ=0",
+         "MissRocket-knn": "kNN gap filling, γ=1", "MissRocket-g0-knn": "kNN gap filling, γ=0", "GRU-D": "GRU-D", "MissRocket-select-p12": "MissRocket-select"}
 
 
 def md(df, path, floatfmt=".4f"):
@@ -63,7 +65,7 @@ def ablation_tables(R, T, stats):
         c.insert(0, "rate", rate); c.insert(0, "mechanism", mech); rows.append(c)
         # paired effect of weighting under each gap filler
         for w, u, fill in [(PROPOSED, "MissRocket-g0", "linear"), ("MissRocket-zerofill", "MissRocket-g0-zerofill", "zero"),
-                           ("MissRocket-locf", "MissRocket-g0-locf", "LOCF")]:
+                           ("MissRocket-locf", "MissRocket-g0-locf", "LOCF"), ("MissRocket-knn", "MissRocket-g0-knn", "kNN")]:
             if w in tab and u in tab:
                 cc = compare(tab, w, [u]).iloc[0].to_dict()
                 means.append(dict(mechanism=mech, rate=rate, gap_filler=fill, weighted_mean=tab[w].mean(),
