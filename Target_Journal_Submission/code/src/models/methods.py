@@ -87,11 +87,28 @@ def minirocket(seed):
     return MaskRocket(conv="zero_fill", pooling="all", random_state=seed)
 
 
-def maskrocket_factory(conv="group_mean", pooling="support", mask=True, s_min=0.0, gamma=1.0):
+def maskrocket_factory(conv="group_mean", pooling="support", mask=True, s_min=0.0, gamma=1.0, tau=1.0):
     def f(seed):
-        return MaskRocket(conv=conv, pooling=pooling, s_min=s_min, gamma=gamma,
+        return MaskRocket(conv=conv, pooling=pooling, s_min=s_min, gamma=gamma, tau=tau,
                           mask_features=MASK_FEATURES if mask else 0, random_state=seed)
     return f
+
+
+class _Fusion:
+    """Feature-level fusion: MiniRocket on linearly interpolated input  ||  group-mean MaskRocket on raw input."""
+
+    def __init__(self, seed, mask=False, num_features=10_000):
+        from src.preprocessing.imputation import impute_linear
+        self.imp = impute_linear
+        self.a = MaskRocket(num_features=num_features, conv="zero_fill", pooling="all", random_state=seed)
+        self.b = MaskRocket(num_features=num_features, conv="group_mean", pooling="support",
+                            mask_features=MASK_FEATURES if mask else 0, random_state=seed + 1)
+
+    def fit_transform(self, X):
+        return np.hstack([self.a.fit_transform(self.imp(X)), self.b.fit_transform(X)])
+
+    def transform(self, X):
+        return np.hstack([self.a.transform(self.imp(X)), self.b.transform(X)])
 
 
 def _aeon_factory(kind):
@@ -127,6 +144,18 @@ class _Concat3D:
 
     def transform(self, X):
         return np.hstack([t.transform(X) for t in self.ts])
+
+
+# ---------------------------------------------------------------- MissRocket (final proposed method)
+def run_missrocket(Xtr, ytr, Xte, seed, **kw):
+    from src.models.missrocket import MissRocket
+    t0 = time.perf_counter()
+    mr = MissRocket(random_state=seed, **kw).fit(Xtr, ytr)
+    t1 = time.perf_counter()
+    s = mr.decision_function(Xte)
+    t2 = time.perf_counter()
+    return dict(pred=mr.classes_[s.argmax(1)], score=s, fit_s=t1 - t0, predict_s=t2 - t1, n_features=mr.n_features_,
+                selected_gamma=mr.gamma_, selected_mask=mr.use_mask_)
 
 
 # ---------------------------------------------------------------- other baselines
@@ -182,6 +211,19 @@ METHODS = {
     "WRocket-noC": _rk(maskrocket_factory("imputed", "support", False, gamma=1.0)),
     "WRocket-g2": _rk(maskrocket_factory("imputed", "support", True, gamma=2.0)),
     "WRocket-g4": _rk(maskrocket_factory("imputed", "support", True, gamma=4.0)),
+    # dilation-aware hybrid: interpolate taps in gaps <= tau*d, mask taps in longer gaps
+    "GapRocket": _rk(maskrocket_factory("gap_adaptive", "support", True, tau=1.0)),
+    "GapRocket-noC": _rk(maskrocket_factory("gap_adaptive", "support", False, tau=1.0)),
+    "MissRocket": run_missrocket,
+    "MissRocket-g0": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False)),
+    "MissRocket-g1": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False)),
+    "MissRocket-noMaskOpt": lambda a, y, b, s: run_missrocket(a, y, b, s, mask_options=(False,)),
+    "MissRocket-g0-mask": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, True)),
+    # feature-level fusion of interpolated and observed-tap responses
+    "FusionRocket": _rk(lambda seed: _Fusion(seed, mask=False)),
+    "FusionRocket+mask": _rk(lambda seed: _Fusion(seed, mask=True)),
+    "MiniRocket20k+linear": _rk(lambda seed: MaskRocket(num_features=20_000, conv="zero_fill", pooling="all", random_state=seed),
+                                _per_series("linear")),
     # imputation + MiniRocket family
     "MiniRocket+zero": _rk(minirocket, _per_series("zero")),
     "MiniRocket+mean": _rk(minirocket, _per_series("mean")),

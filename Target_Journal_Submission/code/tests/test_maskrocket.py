@@ -28,8 +28,8 @@ def test_complete_data_equivalence_responses():
         C0 = np.zeros(len(x), np.float32); S0 = np.zeros_like(C0)
         C1 = np.zeros_like(C0); S1 = np.zeros_like(C0)
         g = np.ones(10, np.float32)
-        _taps(x, m, d, 0, V, O); _responses(V, O, 7, 0, 0, g, C0, S0)
-        _taps(x, m, d, 1, V, O); _responses(V, O, 7, 1, 0, g, C1, S1)
+        _taps(x, m, d, 0, 1.0, V, O); _responses(V, O, 7, 0, 0, g, C0, S0)
+        _taps(x, m, d, 1, 1.0, V, O); _responses(V, O, 7, 1, 0, g, C1, S1)
         assert np.array_equal(C0, C1)
         assert S0.min() == 1.0
 
@@ -109,3 +109,16 @@ def test_mask_series_keeps_min():
     rng = np.random.RandomState(0)
     miss = mask_series(np.ones(10, np.float32), 0.999, "mcar", rng)
     assert (~miss).sum() >= 2
+
+
+def test_gap_adaptive_limits():
+    """tau=0 -> group-mean masking; tau=inf -> group-mean on linearly interpolated (all taps observed)."""
+    X = _toy()
+    Xm = apply_missingness(X, 0.4, "block", seed=5)
+    g0 = MaskRocket(conv="gap_adaptive", tau=0.0, random_state=2, num_features=840).fit(Xm).transform(Xm)
+    gm = MaskRocket(conv="group_mean", random_state=2, num_features=840).fit(Xm).transform(Xm)
+    assert np.abs(g0 - gm).max() < 1e-6
+    ginf = MaskRocket(conv="gap_adaptive", tau=1e9, random_state=2, num_features=840).fit(Xm).transform(Xm)
+    Xi = impute_linear(Xm)
+    zi = MaskRocket(conv="group_mean", random_state=2, num_features=840).fit(Xi).transform(Xi)
+    assert np.abs(ginf - zi).max() < 1e-6

@@ -24,3 +24,11 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
    plain interpolation, and monotonically worse as gamma increases (dev, first 6 settings).
 3. The LightGBM baseline was initially degenerate on small training sets (min_child_samples=20 gave majority-class
    predictions). Fixed (min_child_samples=5) before any confirmatory run; dev rows rerun.
+4. Dev screening, 8 datasets × 6 settings: dilation-aware hybrid "GapRocket" is worse than interpolation (0.760 vs 0.789 on the
+   first 5 datasets). Hypothesis H-gap rejected.
+5. Dev: feature fusion (interpolated ‖ group-mean) gives no gain over a feature-matched 20k control (23 W / 22 L). Rejected.
+6. Dev finding: regime dependence. Observed-tap-weighted pooling (gamma=1) beats interpolation under block missingness
+   (+1.6/+2.4 pts at 30/60%) but loses under MCAR (−1.8/−3.7 pts). This motivates the FINAL METHOD, MissRocket:
+   interpolation + observed-tap-weighted PPV with gamma∈{0,.5,1,2} × mask-features∈{off,on} selected on TRAIN by the
+   ridge LOO (GCV) score. gamma=0 is exactly interpolation+MiniRocket. Next step: dev screening of MissRocket,
+   then freeze the protocol.

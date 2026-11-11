@@ -21,7 +21,7 @@ from src.evaluation.metrics import compute_metrics
 from src.models.methods import run_method
 
 FIELDS = ["dataset", "mechanism", "train_rate", "test_rate", "seed", "method", "accuracy", "balanced_accuracy",
-          "macro_f1", "auroc", "auprc", "fit_s", "predict_s", "n_features", "train_obs_frac", "test_obs_frac",
+          "macro_f1", "auroc", "auprc", "fit_s", "predict_s", "n_features", "train_obs_frac", "test_obs_frac", "selected_gamma", "selected_mask",
           "status", "timestamp"]
 
 
@@ -70,7 +70,8 @@ def run_settings(settings, methods, out_csv, log=print):
             try:
                 r = run_method(m, Xtr, ytr, Xte, seed)
                 row.update(compute_metrics(yte, r["pred"], r["score"], r.get("classes")))
-                row.update(fit_s=r["fit_s"], predict_s=r["predict_s"], n_features=r["n_features"], status="ok")
+                row.update(fit_s=r["fit_s"], predict_s=r["predict_s"], n_features=r["n_features"], status="ok",
+                           selected_gamma=r.get("selected_gamma", ""), selected_mask=r.get("selected_mask", ""))
             except Exception as e:  # failures are recorded, never silently dropped
                 row.update(status="error: " + repr(e)[:200])
                 log(traceback.format_exc())

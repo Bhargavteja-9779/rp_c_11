@@ -37,7 +37,7 @@ from numba import njit, prange
 _INDICES = np.array(list(combinations(range(9), 3)), dtype=np.int64)  # (84, 3)
 _QIND = np.array([[j for j in range(9) if j not in row] for row in _INDICES], dtype=np.int64)  # (84, 6)
 NUM_KERNELS = 84
-CONV_MODES = {"group_mean": 0, "zero_fill": 1, "partial": 2, "imputed": 3}
+CONV_MODES = {"group_mean": 0, "zero_fill": 1, "partial": 2, "imputed": 3, "gap_adaptive": 4}
 
 
 def _fit_dilations(input_length: int, num_features: int, max_dilations_per_kernel: int = 32):
@@ -63,9 +63,14 @@ def _quantiles(n: int) -> np.ndarray:
 
 
 @njit(cache=True)
-def _taps(x, m, d, mode, V, O):
+def _taps(x, m, d, mode, tau, V, O):
     """Shifted tap arrays for one dilation: V[j,t] = value at tap j (0 if unobserved unless
-    mode==3), O[j,t] = 1 if tap j observed (out-of-bounds taps = observed zeros)."""
+    mode==3), O[j,t] = 1 if tap j observed (out-of-bounds taps = observed zeros).
+
+    mode 4 (gap_adaptive): x is gap-filled by linear interpolation and m encodes, for missing
+    positions, minus the length of the gap they belong to. A missing tap inside a gap of length
+    <= tau * d is treated as observed with its interpolated value; taps in longer gaps are missing.
+    """
     L = x.shape[0]
     for j in range(9):
         off = (j - 4) * d
@@ -75,6 +80,9 @@ def _taps(x, m, d, mode, V, O):
                 V[j, t] = 0.0
                 O[j, t] = 1.0
             elif m[idx] > 0:
+                V[j, t] = x[idx]
+                O[j, t] = 1.0
+            elif mode == 4 and -m[idx] <= tau * d:
                 V[j, t] = x[idx]
                 O[j, t] = 1.0
             else:
@@ -103,7 +111,7 @@ def _responses(V, O, k, mode, min_obs, gamma, C, S):
         for t in range(L):
             C[t] = two * (V[p0, t] + V[p1, t] + V[p2, t]) - (V[q0, t] + V[q1, t] + V[q2, t] + V[q3, t] + V[q4, t] + V[q5, t])
             S[t] = 1.0
-    elif mode == 0:
+    elif mode == 0 or mode == 4:
         for t in range(L):
             sp = V[p0, t] + V[p1, t] + V[p2, t]
             sq = V[q0, t] + V[q1, t] + V[q2, t] + V[q3, t] + V[q4, t] + V[q5, t]
@@ -128,7 +136,7 @@ def _responses(V, O, k, mode, min_obs, gamma, C, S):
 
 
 @njit(cache=True)
-def _fit_biases(X, M, dilations, nfpd, quantiles, mode, min_obs, gamma, seed):
+def _fit_biases(X, M, dilations, nfpd, quantiles, mode, min_obs, gamma, tau, seed):
     np.random.seed(seed)
     n, L = X.shape
     total = 0
@@ -147,7 +155,7 @@ def _fit_biases(X, M, dilations, nfpd, quantiles, mode, min_obs, gamma, seed):
             got = False
             for _try in range(20):
                 i = np.random.randint(n)
-                _taps(X[i], M[i], d, mode, V, O)
+                _taps(X[i], M[i], d, mode, tau, V, O)
                 _responses(V, O, k, mode, min_obs, gamma, C, S)
                 cnt = 0
                 for t in range(L):
@@ -169,7 +177,7 @@ def _fit_biases(X, M, dilations, nfpd, quantiles, mode, min_obs, gamma, seed):
 
 
 @njit(parallel=True, cache=True, fastmath=True)
-def _transform(X, M, dilations, nfpd, biases, mode, min_obs, gamma, pooling_support):
+def _transform(X, M, dilations, nfpd, biases, mode, min_obs, gamma, tau, pooling_support):
     n, L = X.shape
     nfeat = biases.shape[0]
     out = np.zeros((n, nfeat), dtype=np.float32)
@@ -184,7 +192,7 @@ def _transform(X, M, dilations, nfpd, biases, mode, min_obs, gamma, pooling_supp
             nf = nfpd[di]
             pad = ((9 - 1) * d) // 2
             p0 = di % 2
-            _taps(X[i], M[i], d, mode, V, O)
+            _taps(X[i], M[i], d, mode, tau, V, O)
             for k in range(NUM_KERNELS):
                 _responses(V, O, k, mode, min_obs, gamma, C, S)
                 p1 = (p0 + k) % 2
@@ -209,13 +217,30 @@ def _transform(X, M, dilations, nfpd, biases, mode, min_obs, gamma, pooling_supp
     return out
 
 
+def _gap_lengths(miss: np.ndarray) -> np.ndarray:
+    """For a boolean (n, L) missing indicator, return the length of the missing run each
+    missing position belongs to (0 for observed positions)."""
+    out = np.zeros(miss.shape, dtype=np.float32)
+    for i in range(miss.shape[0]):
+        row = miss[i]
+        if not row.any():
+            continue
+        d = np.diff(np.r_[0, row.astype(np.int8), 0])
+        starts, ends = np.flatnonzero(d == 1), np.flatnonzero(d == -1)
+        for s_, e_ in zip(starts, ends):
+            out[i, s_:e_] = e_ - s_
+    return out
+
+
 class MaskRocket:
     """Missingness-aware MiniRocket transform for univariate series with NaNs."""
 
     def __init__(self, num_features: int = 10_000, max_dilations_per_kernel: int = 32,
                  conv: str = "group_mean", pooling: str = "support", s_min: float = 0.0,
-                 mask_features: int = 0, random_state: int | None = None, gamma: float = 1.0):
+                 mask_features: int = 0, random_state: int | None = None, gamma: float = 1.0,
+                 tau: float = 1.0):
         self.gamma = gamma
+        self.tau = tau
         self.num_features = num_features
         self.max_dilations_per_kernel = max_dilations_per_kernel
         self.conv = conv
@@ -229,9 +254,11 @@ class MaskRocket:
         if X.ndim == 3:
             X = X[:, 0, :]
         M = (~np.isnan(X)).astype(np.float32)
-        if self.conv == "imputed":
+        if self.conv in ("imputed", "gap_adaptive"):
             from src.preprocessing.imputation import impute_linear
             V = impute_linear(X)
+            if self.conv == "gap_adaptive":
+                M = M - _gap_lengths(~M.astype(bool))  # missing positions: -(gap length)
         else:
             V = np.nan_to_num(X, nan=0.0)
         return np.ascontiguousarray(V, dtype=np.float32), np.ascontiguousarray(M)
@@ -253,19 +280,19 @@ class MaskRocket:
         self.dilations_, self.nfpd_ = _fit_dilations(L, self.num_features, self.max_dilations_per_kernel)
         q = _quantiles(NUM_KERNELS * int(np.sum(self.nfpd_)))
         self.biases_ = _fit_biases(x, m, self.dilations_, self.nfpd_, q, CONV_MODES[self.conv],
-                                   self._min_obs(), self._wtable(), int(rng.randint(2**31 - 1)))
+                                   self._min_obs(), self._wtable(), np.float32(self.tau), int(rng.randint(2**31 - 1)))
         if self.mask_features > 0:
             self.mask_rocket_ = MaskRocket(num_features=self.mask_features, conv="zero_fill", pooling="all",
                                            random_state=int(rng.randint(2**31 - 1)))
-            self.mask_rocket_.fit(m)
+            self.mask_rocket_.fit((m > 0).astype(np.float32))
         return self
 
     def transform(self, X):
         x, m = self._to_xm(X)
         F = _transform(x, m, self.dilations_, self.nfpd_, self.biases_, CONV_MODES[self.conv],
-                       self._min_obs(), self._wtable(), self.pooling == "support")
+                       self._min_obs(), self._wtable(), np.float32(self.tau), self.pooling == "support")
         if self.mask_features > 0:
-            F = np.concatenate([F, self.mask_rocket_.transform(m)], axis=1)
+            F = np.concatenate([F, self.mask_rocket_.transform((m > 0).astype(np.float32))], axis=1)
         return F
 
     def fit_transform(self, X, y=None):
