@@ -144,13 +144,15 @@
   "key": "Demsar2006",
   "url": "https://jmlr.org/papers/v7/demsar06a.html",
   "arxiv": "",
-  "title": "Statistical Comparisons of Classifiers over Multiple Data Sets"
+  "title": "Statistical Comparisons of Classifiers over Multiple Data Sets",
+  "note": "JMLR 7(1):1-30, 2006 (verified on jmlr.org)"
  },
  {
   "key": "Benavoli2016",
   "url": "https://jmlr.org/papers/v17/benavoli16a.html",
   "arxiv": "",
-  "title": "Should We Really Use Post-Hoc Tests Based on Mean-Ranks?"
+  "title": "Should We Really Use Post-Hoc Tests Based on Mean-Ranks?",
+  "note": "JMLR 17(5):1-10, 2016 (verified on jmlr.org)"
  },
  {
   "key": "Wilcoxon1945",
@@ -178,7 +180,8 @@
   "key": "Pedregosa2011",
   "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
   "arxiv": "",
-  "title": "Scikit-learn: Machine Learning in Python"
+  "title": "Scikit-learn: Machine Learning in Python",
+  "note": "JMLR 12(85):2825-2830, 2011 (verified on jmlr.org)"
  },
  {
   "key": "Middlehurst2021",
@@ -203,7 +206,9 @@
  {
   "key": "Middlehurst2024aeon",
   "arxiv": "2406.14231",
-  "title": "aeon: a Python toolkit for learning from time series"
+  "title": "aeon: a Python toolkit for learning from time series",
+  "url": "https://jmlr.org/papers/v25/23-1444.html",
+  "note": "JMLR 25(289):1-10, 2024 (verified on jmlr.org)"
  },
  {
   "key": "Ringel2024",
@@ -219,5 +224,15 @@
   "key": "Twala2008",
   "doi": "10.1016/j.patrec.2008.01.010",
   "title": "Good methods for coping with missing data in decision trees"
+ },
+ {
+  "key": "Rhodes2025",
+  "arxiv": "2509.22919",
+  "title": "Label-Guided Imputation via Forest-Based Proximities for Improved Time Series Classification"
+ },
+ {
+  "key": "Kim2023",
+  "arxiv": "2308.06738",
+  "title": "Probabilistic Imputation for Time-series Classification with Missing Data"
  }
 ]

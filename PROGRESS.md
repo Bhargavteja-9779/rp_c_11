@@ -49,3 +49,15 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
 10. Dev kNN screening: kNN filling helps under block 60% but hurts under MCAR 60%; weighting adds nothing on kNN fills.
     Overall linear + gamma=1 is still best (0.8213 vs 0.8136/0.8143). Primary method unchanged; kNN variants added to E3.
 11. PROTOCOL FROZEN at the commit titled "PROTOCOL FREEZE". Confirmatory runs (E1–E7) start after it with this code and config.
+
+## Confirmatory runs (started 2026-11-11 03:17 UTC)
+- E1 runs in the background: `cd Target_Journal_Submission/code && nohup python3 run_all.py --mode full --only E1 > logs/full_E1.log 2>&1 &`
+- `scripts/chain_full.sh` waits for E1, then runs `run_all.py --mode full`, which covers E3, E5a, E5b, E4, E7, E2, the analysis,
+  the method figures and the E8 error analysis.
+- Estimated time: E1 ≈ 14 h; the rest ≈ 10 h.
+- **If the container restarted**, background jobs are gone. Restart with:
+  `cd Target_Journal_Submission/code && nohup python3 run_all.py --mode full > logs/full_all.log 2>&1 &`
+  All experiments are resumable and skip finished rows.
+- Check progress with: `tail -1 logs/full_E1.log logs/full_all.log; wc -l results/full/*/raw_results.csv`
+- After the runs: build the manuscript (manuscript/source/*.md with {{placeholders}} filled from results/full/statistics),
+  then 10 review rounds, DOCX/PDF, cover letter, final package.
