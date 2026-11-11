@@ -3,12 +3,13 @@ from common import CFG, confirmatory_datasets, quick_datasets, out, log
 from src.training.runner import run_settings
 
 
-def run(mode="full"):
+def run(mode="full", seeds=None):
     c, e = CFG["common"], CFG["E1_main"]
     if mode == "quick":
         ds, seeds, rates, mechs = quick_datasets(), [0], [0.5], c["mechanisms"]
     else:
-        ds, seeds, rates, mechs = confirmatory_datasets(), c["seeds"], c["rates"], c["mechanisms"]
+        seeds = seeds if seeds is not None else [s for s in c["seeds"] if s not in CFG["E1_seed2"]["seeds"]]
+        ds, rates, mechs = confirmatory_datasets(), c["rates"], c["mechanisms"]
     # order: seed-major so that a partially finished run already covers all datasets for seed 0
     settings = [(d, m, r, r, s) for s in seeds for m in mechs for r in rates for d in ds]
     run_settings(settings, e["methods"], out(f"{mode}/E1_main/raw_results.csv"), log=log)
@@ -17,3 +18,8 @@ def run(mode="full"):
 if __name__ == "__main__":
     import sys
     run(sys.argv[1] if len(sys.argv) > 1 else "full")
+
+
+def run_seed2(mode="full"):
+    if mode != "quick":
+        run(mode, seeds=CFG["E1_seed2"]["seeds"])

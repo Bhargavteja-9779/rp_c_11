@@ -65,3 +65,6 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
     03:35 UTC, about 4 h of wall time lost; results were safe because the runner resumes. From 07:42 UTC the experiments run as
     harness-tracked background tasks in ≤2 h chunks (`timeout 7000 python3 run_all.py --mode full`), and the session
     stays active while they run.
+13. EXECUTION-ORDER AMENDMENT (08:05 UTC, results-blind: only timing and status inspected). E1 seeds 0–1 run first, then
+    E3, E5a, E5b, E4, E7 and E2, then E1 seed 2 last (same results file). Analyses use every completed seed. If seed 2 does
+    not complete, the paper reports 2 seeds and states the deviation.

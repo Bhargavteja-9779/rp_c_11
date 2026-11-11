@@ -24,6 +24,9 @@ E1_main:          # RQ1 + RQ2 (baselines) + RQ3 (ablation): matched train/test m
     - LightGBM-NaN               # conventional ML with native NaN handling
     - 1NN-ED+linear              # classical baseline
 
+E1_seed2:         # execution-order amendment (2026-11-11 08:05 UTC, results-blind): E1 seed 2 is run last, after all
+  seeds: [2]      # other experiments, into the same results file; analyses use every completed seed.
+
 E3_ablation:      # ablations/variants on seed 0 only (cost); compared with seed-0 MissRocket and MissRocket-g0 rows of E1
   seeds: [0]
   methods:

@@ -19,7 +19,7 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "experiments"))
 
 EXPERIMENTS = [("E1", "e1_main"), ("E3", "e3_ablation"), ("E5_natural", "e5_natural"), ("E5_p12", "e5_p12"),
-               ("E4", "e4_shift"), ("E7", "e7_sensitivity"), ("E2", "e2_deep")]
+               ("E4", "e4_shift"), ("E7", "e7_sensitivity"), ("E2", "e2_deep"), ("E1_seed2", "e1_main:run_seed2")]
 
 
 def check_data():
@@ -50,7 +50,8 @@ def main():
                 continue
             t = time.time()
             print(f"=== {name} ({a.mode}) ===", flush=True)
-            __import__(mod).run(a.mode)
+            modname, _, fn = mod.partition(":")
+            getattr(__import__(modname), fn or "run")(a.mode)
             print(f"=== {name} done in {time.time() - t:.0f}s ===", flush=True)
     subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "analyze.py"), "--mode", a.mode], cwd=ROOT)
     subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "figure_method.py"), a.mode], cwd=ROOT)
