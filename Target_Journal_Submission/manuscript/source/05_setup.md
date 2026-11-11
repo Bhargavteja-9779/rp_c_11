@@ -75,3 +75,5 @@ The primary metric is test accuracy. Balanced accuracy and macro-F1 are also rep
 **PhysioNet 2012.** Patients are the unit of analysis. We give a paired bootstrap (2,000 resamples) of the AUROC difference between seed-averaged score ensembles.
 
 **Timing.** Wall-clock time was measured on a 4-core CPU with no GPU.
+
+**Use of AI tools.** In line with the journal's policy, we document that an AI agent (Anthropic Claude) assisted with the literature search, the implementation of the code, experiment orchestration, analysis scripting and drafting. Every number in this paper is produced by the released code from the raw outputs, and every reference was verified against bibliographic databases (see Statements and Declarations).

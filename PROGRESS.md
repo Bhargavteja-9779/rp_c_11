@@ -61,3 +61,7 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
 - Check progress with: `tail -1 logs/full_E1.log logs/full_all.log; wc -l results/full/*/raw_results.csv`
 - After the runs: build the manuscript (manuscript/source/*.md with {{placeholders}} filled from results/full/statistics),
   then 10 review rounds, DOCX/PDF, cover letter, final package.
+12. INFRASTRUCTURE: the container is reclaimed a few minutes after the session goes idle. This killed the nohup E1 run at
+    03:35 UTC, about 4 h of wall time lost; results were safe because the runner resumes. From 07:42 UTC the experiments run as
+    harness-tracked background tasks in ≤2 h chunks (`timeout 7000 python3 run_all.py --mode full`), and the session
+    stays active while they run.

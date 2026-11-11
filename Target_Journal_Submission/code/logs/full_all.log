@@ -1,0 +1,21 @@
+cleared 12 numba cache files
+=== E1 (full) ===
+RefrigerationDevices mcar 0.2/0.2 s0 HydraMultiRocket+linear: acc=0.5093 [ok]
+RefrigerationDevices mcar 0.2/0.2 s0 MaskRocket-noC: acc=0.5040 [ok]
+cleared 8 numba cache files
+=== E1 (full) ===
+RefrigerationDevices mcar 0.2/0.2 s0 LightGBM-NaN: acc=0.5067 [ok]
+RefrigerationDevices mcar 0.2/0.2 s0 1NN-ED+linear: acc=0.3920 [ok]
+Rock mcar 0.2/0.2 s0 MissRocket: acc=0.8000 [ok]
+Rock mcar 0.2/0.2 s0 MissRocket-g0: acc=0.8200 [ok]
+Rock mcar 0.2/0.2 s0 AeonMiniRocket+linear: acc=0.8200 [ok]
+Rock mcar 0.2/0.2 s0 AeonMiniRocket+zero: acc=0.6800 [ok]
+Rock mcar 0.2/0.2 s0 AeonMiniRocket+mean: acc=0.7200 [ok]
+Rock mcar 0.2/0.2 s0 AeonMiniRocket+locf: acc=0.8000 [ok]
+Rock mcar 0.2/0.2 s0 AeonMiniRocket+knn: acc=0.6800 [ok]
+Rock mcar 0.2/0.2 s0 MultiRocket+linear: acc=0.8400 [ok]
+Rock mcar 0.2/0.2 s0 HydraMultiRocket+linear: acc=0.8600 [ok]
+Rock mcar 0.2/0.2 s0 MaskRocket-noC: acc=0.8400 [ok]
+Rock mcar 0.2/0.2 s0 LightGBM-NaN: acc=0.4800 [ok]
+Rock mcar 0.2/0.2 s0 1NN-ED+linear: acc=0.6400 [ok]
+ScreenType mcar 0.2/0.2 s0 MissRocket: acc=0.4800 [ok]
