@@ -214,11 +214,20 @@ METHODS = {
     # dilation-aware hybrid: interpolate taps in gaps <= tau*d, mask taps in longer gaps
     "GapRocket": _rk(maskrocket_factory("gap_adaptive", "support", True, tau=1.0)),
     "GapRocket-noC": _rk(maskrocket_factory("gap_adaptive", "support", False, tau=1.0)),
-    "MissRocket": run_missrocket,
-    "MissRocket-g0": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False)),
-    "MissRocket-g1": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False)),
-    "MissRocket-noMaskOpt": lambda a, y, b, s: run_missrocket(a, y, b, s, mask_options=(False,)),
-    "MissRocket-g0-mask": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, True)),
+    # ---- proposed method (frozen 2026-11-11 from dev screening v2): gamma = 1, linear gap filling, no mask
+    "MissRocket": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False)),
+    # ---- ablations / variants
+    "MissRocket-g0": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False)),      # no weighting
+    "MissRocket-g0.5": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.5, False)),
+    "MissRocket-g2": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(2.0, False)),
+    "MissRocket+mask": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, True)),     # + mask-pattern features
+    "MissRocket-select": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=None),         # gamma x mask selected by LOO
+    "MissRocket-zerofill": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False), imputer="zero"),
+    "MissRocket-g0-zerofill": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False), imputer="zero"),
+    "MissRocket-locf": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False), imputer="locf"),
+    "MissRocket-g0-locf": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False), imputer="locf"),
+    "MissRocket-knn": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(1.0, False), imputer="knn"),
+    "MissRocket-g0-knn": lambda a, y, b, s: run_missrocket(a, y, b, s, fixed=(0.0, False), imputer="knn"),
     # feature-level fusion of interpolated and observed-tap responses
     "FusionRocket": _rk(lambda seed: _Fusion(seed, mask=False)),
     "FusionRocket+mask": _rk(lambda seed: _Fusion(seed, mask=True)),
@@ -234,6 +243,12 @@ METHODS = {
     "MultiRocket+linear": _rk(_aeon_factory("multirocket"), _per_series("linear")),
     "HydraMultiRocket+linear": _rk(_aeon_factory("hydra_multirocket"), _per_series("linear")),
     "AeonMiniRocket+linear": _rk(_aeon_factory("aeon_minirocket"), _per_series("linear")),
+    "AeonMiniRocket+zero": _rk(_aeon_factory("aeon_minirocket"), _per_series("zero")),
+    "AeonMiniRocket+mean": _rk(_aeon_factory("aeon_minirocket"), _per_series("mean")),
+    "AeonMiniRocket+locf": _rk(_aeon_factory("aeon_minirocket"), _per_series("locf")),
+    "AeonMiniRocket+knn": _rk(_aeon_factory("aeon_minirocket"), _knn_pre),
+    "AeonMiniRocket+resample": _rk(_aeon_factory("aeon_minirocket"), _per_series("resample")),
+    "GRU-D": lambda a, y, b, s: __import__("src.models.grud", fromlist=["run_grud"]).run_grud(a, y, b, s),
     # classical / conventional ML
     "1NN-ED+linear": run_1nn_ed,
     "LightGBM-NaN": run_lgbm_nan,

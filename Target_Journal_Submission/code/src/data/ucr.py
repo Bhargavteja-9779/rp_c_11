@@ -19,7 +19,22 @@ def _to_array(X):
     return out
 
 
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "data", "cache", "ucr")
+
+
 def load_ucr(name: str, root: str = DATA_ROOT):
+    """Return Xtr, ytr, Xte, yte with labels mapped to 0..K-1 (sorted label order). Cached as .npz."""
+    cp = os.path.join(CACHE_DIR, name + ".npz")
+    if os.path.exists(cp):
+        z = np.load(cp)
+        return z["Xtr"], z["ytr"], z["Xte"], z["yte"]
+    out = _load_ucr_ts(name, root)
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    np.savez(cp, Xtr=out[0], ytr=out[1], Xte=out[2], yte=out[3])
+    return out
+
+
+def _load_ucr_ts(name: str, root: str = DATA_ROOT):
     p = os.path.join(root, name, name)
     Xtr, ytr = load_from_ts_file(p + "_TRAIN.ts")
     Xte, yte = load_from_ts_file(p + "_TEST.ts")

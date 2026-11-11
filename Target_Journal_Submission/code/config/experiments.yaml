@@ -1,0 +1,62 @@
+# Pre-registered experimental protocol (frozen before confirmatory runs; see PROGRESS.md).
+# All numbers in the manuscript are generated from runs of this configuration.
+
+common:
+  seeds: [0, 1, 2]                 # fixed in advance; never selected after seeing results
+  mechanisms: [mcar, block, mnar]
+  rates: [0.2, 0.5, 0.8]
+  eligibility:                      # confirmatory UCR datasets, compute-driven rule fixed in advance
+    max_points: 2000000             # (n_train + n_test) * length
+    max_train: 2000
+
+E1_main:          # RQ1 + RQ2 (baselines) + RQ3 (ablation): matched train/test missingness
+  methods:
+    - MissRocket                 # proposed: linear gap filling + observed-tap-weighted PPV, gamma = 1
+    - MissRocket-g0              # ablation A: no weighting (= linear interpolation + MiniRocket, own implementation)
+    - AeonMiniRocket+linear      # reference MiniRocket implementation (aeon) after imputation
+    - AeonMiniRocket+zero
+    - AeonMiniRocket+mean
+    - AeonMiniRocket+locf
+    - AeonMiniRocket+knn
+    - MultiRocket+linear
+    - HydraMultiRocket+linear
+    - MaskRocket-noC             # native no-imputation estimator (group-mean responses + support pooling)
+    - LightGBM-NaN               # conventional ML with native NaN handling
+    - 1NN-ED+linear              # classical baseline
+
+E3_ablation:      # ablations/variants on seed 0 only (cost); compared with seed-0 MissRocket and MissRocket-g0 rows of E1
+  seeds: [0]
+  methods:
+    - MissRocket-g0.5            # weaker weighting
+    - MissRocket-g2              # stronger weighting
+    - MissRocket+mask            # + missingness-pattern features
+    - MissRocket-select          # gamma x mask selected on train by ridge LOO
+    - MissRocket-zerofill        # weighting with zero gap filling
+    - MissRocket-g0-zerofill     #   ... unweighted counterpart
+    - MissRocket-locf            # weighting with LOCF gap filling
+    - MissRocket-g0-locf         #   ... unweighted counterpart
+
+E2_deep:          # GRU-D on a pre-registered UCR subset (cost-limited): length <= 300 and n_train <= 500
+  methods: [GRU-D, MissRocket, AeonMiniRocket+linear]
+  rates: [0.5]
+  seeds: [0]
+  max_length: 300
+  max_train: 500
+
+E4_shift:         # RQ4: train/test missingness-rate shift
+  pairs: [[0.0, 0.5], [0.0, 0.8], [0.2, 0.8]]
+  mechanisms: [mcar, block]
+  methods: [MissRocket, AeonMiniRocket+linear, MaskRocket-noC, LightGBM-NaN]
+
+E5_natural:       # RQ5: naturally incomplete / variable-length UCR datasets (no simulated missingness)
+  methods: [MissRocket, MissRocket-g0, AeonMiniRocket+linear, AeonMiniRocket+resample, MaskRocket-noC, LightGBM-NaN, 1NN-ED+linear]
+
+E5_p12:           # RQ5: PhysioNet/CinC 2012 in-hospital mortality, sets a+b train / set c test
+  per_channel_features: 252
+  mask_features_per_channel: 84
+  methods: [MissRocket, MissRocket-g0, MissRocket-select, MaskRocket-noC, LightGBM-NaN, GRU-D]
+
+E7_sensitivity:   # feature budget and gamma grid, 30 confirmatory datasets drawn with seed 7, block/mcar at 0.5, seed 0
+  n_datasets: 30
+  num_features: [2500, 5000, 10000, 20000]
+  gammas: [0.0, 0.25, 0.5, 1.0, 2.0, 4.0]

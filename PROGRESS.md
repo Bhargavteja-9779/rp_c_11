@@ -32,3 +32,17 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
    interpolation + observed-tap-weighted PPV with gamma∈{0,.5,1,2} × mask-features∈{off,on} selected on TRAIN by the
    ridge LOO (GCV) score. gamma=0 is exactly interpolation+MiniRocket. Next step: dev screening of MissRocket,
    then freeze the protocol.
+7. INTEGRITY ISSUE FOUND AND FIXED. The dev rows for WRocket-noC (and possibly other variants) generated 2026-11-10 22:03–22:14
+   do not match the current code. The current code gives identical features for WRocket-noC and MissRocket-g1 (max
+   diff 3.6e-7), yet the stored accuracies differ systematically (e.g. ArrowHead MCAR +0.09). Cause: rows produced by
+   different intermediate code versions during optimisation, possibly worsened by numba's cache not tracking
+   cross-file njit changes. Remedy: (a) all experiment entry points clear numba caches before running; (b) the full dev
+   screening is redone under one frozen code version in results/dev/dev_screening_v2.csv. Earlier dev conclusions
+   (items 1–6) are provisional until then. The old file is retained as results/dev/dev_viability_STALE.csv.
+8. Dev screening v2 (frozen code, 8 dev datasets × 48 settings): fixed gamma=1 weighting is best (mean acc 0.8213, rank 4.39)
+   vs interpolation + MiniRocket (0.8108 own / 0.8093 aeon); LOO selection 0.8187; native estimators 0.75–0.79.
+   DECISION: primary method = MissRocket with gamma=1, no mask (selection, other gammas, mask and gap filler become ablations).
+9. PROTOCOL SLIP (disclosed): the first quick-mode pipeline check ran on 3 CONFIRMATORY datasets (Coffee,
+   ItalyPowerDemand, SyntheticControl). Results there showed kNN imputation as a strong baseline. Quick mode now uses
+   dev datasets only. kNN gap filling had not been screened, so it is screened ON THE DEV SET ONLY
+   (results/dev/dev_screening_v2.csv) before freezing.

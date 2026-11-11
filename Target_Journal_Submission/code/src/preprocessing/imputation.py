@@ -71,3 +71,28 @@ class KNNSeriesImputer:
 
 
 IMPUTERS = {"zero": impute_zero, "mean": impute_mean, "linear": impute_linear, "locf": impute_locf}
+
+
+def resample_prefix(X):
+    """For variable-length series stored as NaN-right-padded rows: stretch the observed prefix to the full
+    length by linear interpolation (standard equal-length conversion). Rows with interior NaNs are
+    linearly imputed instead."""
+    X = np.array(X, dtype=np.float32, copy=True)
+    L = X.shape[1]
+    for i in range(X.shape[0]):
+        obs = ~np.isnan(X[i])
+        if obs.all():
+            continue
+        last = np.flatnonzero(obs)
+        if last.size == 0:
+            X[i] = 0.0
+            continue
+        k = last[-1] + 1
+        if obs[:k].all():  # pure trailing padding
+            X[i] = np.interp(np.linspace(0, k - 1, L), np.arange(k), X[i, :k])
+        else:
+            X[i] = impute_linear(X[i:i + 1])[0]
+    return X
+
+
+IMPUTERS["resample"] = resample_prefix

@@ -26,7 +26,7 @@ from sklearn.preprocessing import StandardScaler
 
 from src.models.maskrocket import (NUM_KERNELS, CONV_MODES, MaskRocket, _fit_biases, _fit_dilations,
                                    _quantiles, _responses, _taps)
-from src.preprocessing.imputation import impute_linear
+from src.preprocessing.imputation import IMPUTERS, impute_linear
 
 DEFAULT_GAMMAS = (0.0, 0.5, 1.0, 2.0)
 
@@ -99,27 +99,36 @@ def _ridge():
 
 
 class MissRocket:
-    """Classifier (transform + ridge head) with training-set selection of (gamma, mask features)."""
+    """Classifier (transform + ridge head). Default: gamma = 1, no mask features (the proposed method).
+    With fixed=None, (gamma, mask) is selected on the training set by ridge LOO (ablation 'MissRocket-select')."""
 
     def __init__(self, num_features=10_000, gammas=DEFAULT_GAMMAS, mask_options=(False, True),
-                 mask_features=1000, random_state=None, fixed=None):
+                 mask_features=1000, random_state=None, fixed=(1.0, False), imputer="linear"):
+        self.imputer = imputer
         self.num_features = num_features
         self.gammas = tuple(gammas)
         self.mask_options = tuple(mask_options)
         self.mask_features = mask_features
         self.random_state = random_state
-        self.fixed = fixed  # optional (gamma, use_mask) to disable selection (ablation)
+        self.fixed = fixed  # (gamma, use_mask); default (1.0, False) = the proposed method. None -> select on train.
 
     def _prep(self, X):
         X = np.asarray(X, dtype=np.float32)
         M = (~np.isnan(X)).astype(np.float32)
-        return np.ascontiguousarray(impute_linear(X)), np.ascontiguousarray(M)
+        if self.imputer == "knn":  # cross-series kNN imputer fit on the training set only
+            V = impute_linear(self.knn_.transform(X))
+        else:
+            V = IMPUTERS[self.imputer](X)
+        return np.ascontiguousarray(V, dtype=np.float32), np.ascontiguousarray(M)
 
     def _features(self, x, m, gammas):
         return _transform_hist(x, m, self.dilations_, self.nfpd_, self.biases_, _wtab(gammas))
 
     def fit(self, X, y):
         rng = np.random.RandomState(self.random_state)
+        if self.imputer == "knn":
+            from src.preprocessing.imputation import KNNSeriesImputer
+            self.knn_ = KNNSeriesImputer(5).fit(np.asarray(X, dtype=np.float32))
         x, m = self._prep(X)
         L = x.shape[1]
         self.dilations_, self.nfpd_ = _fit_dilations(L, self.num_features, 32)
@@ -153,6 +162,92 @@ class MissRocket:
         F = self._features(x, m, (self.gamma_,))[:, 0]
         if self.use_mask_:
             F = np.hstack([F, self.mask_rocket_.transform(m)])
+        s = self.clf_.decision_function(F)
+        return np.stack([-s, s], axis=1) if s.ndim == 1 else s
+
+    @property
+    def classes_(self):
+        return self.clf_.classes_
+
+
+class MissRocketMV:
+    """Channel-wise multivariate MissRocket (independent per-channel transforms, joint ridge head).
+
+    X: (n, D, L) with NaN. `num_features` is the per-channel budget. Selection of (gamma, mask) is
+    joint across channels using the same ridge LOO criterion. With `fixed`, no selection is done.
+    `conv='group_mean'` gives the native (no-imputation) MaskRocket baseline instead.
+    """
+
+    def __init__(self, num_features=504, gammas=DEFAULT_GAMMAS, mask_options=(False, True), mask_features=168,
+                 random_state=None, fixed=(1.0, False), conv="imputed"):
+        self.num_features = num_features
+        self.gammas = tuple(gammas)
+        self.mask_options = tuple(mask_options)
+        self.mask_features = mask_features
+        self.random_state = random_state
+        self.fixed = fixed
+        self.conv = conv
+
+    def _chan(self, X, d):
+        Xd = np.asarray(X[:, d, :], dtype=np.float32)
+        M = (~np.isnan(Xd)).astype(np.float32)
+        return np.ascontiguousarray(impute_linear(Xd)), np.ascontiguousarray(M), Xd
+
+    def _value_features(self, X, gammas):
+        out = []
+        for d in range(X.shape[1]):
+            x, m, raw = self._chan(X, d)
+            if self.conv == "imputed":
+                out.append(_transform_hist(x, m, self.dil_[d], self.nfpd_[d], self.bias_[d], _wtab(gammas)))
+            else:
+                F = self.native_[d].transform(raw)
+                out.append(np.repeat(F[:, None, :], len(gammas), axis=1))
+        return np.concatenate(out, axis=2)  # (n, G, D*f)
+
+    def _mask_features(self, X):
+        return np.hstack([self.mrk_[d].transform((~np.isnan(X[:, d, :])).astype(np.float32)) for d in range(X.shape[1])])
+
+    def fit(self, X, y):
+        rng = np.random.RandomState(self.random_state)
+        D, L = X.shape[1], X.shape[2]
+        self.dil_, self.nfpd_, self.bias_, self.native_, self.mrk_ = [], [], [], [], []
+        for d in range(D):
+            x, m, raw = self._chan(X, d)
+            dl, nf = _fit_dilations(L, self.num_features, 32)
+            q = _quantiles(NUM_KERNELS * int(np.sum(nf)))
+            self.dil_.append(dl); self.nfpd_.append(nf)
+            if self.conv == "imputed":
+                self.bias_.append(_fit_biases(x, m, dl, nf, q, CONV_MODES["imputed"], 0, _wtab([1.0])[0],
+                                              np.float32(1.0), int(rng.randint(2**31 - 1))))
+            else:
+                self.native_.append(MaskRocket(num_features=self.num_features, conv=self.conv, pooling="support",
+                                               random_state=int(rng.randint(2**31 - 1))).fit(raw))
+        gammas = (self.fixed[0],) if self.fixed else (self.gammas if self.conv == "imputed" else (0.0,))
+        masks = (self.fixed[1],) if self.fixed else self.mask_options
+        if any(masks):
+            for d in range(D):
+                mm = (~np.isnan(X[:, d, :])).astype(np.float32)
+                self.mrk_.append(MaskRocket(num_features=self.mask_features, conv="zero_fill", pooling="all",
+                                            random_state=int(rng.randint(2**31 - 1))).fit(mm))
+            Fm = self._mask_features(X)
+        F = self._value_features(X, gammas)
+        self.selection_, best = [], (-np.inf, None, None, None)
+        for gi, g in enumerate(gammas):
+            for use_mask in masks:
+                Fi = np.hstack([F[:, gi], Fm]) if use_mask else F[:, gi]
+                clf = _ridge().fit(Fi, y)
+                sc = float(clf[-1].best_score_)
+                self.selection_.append(dict(gamma=g, mask=use_mask, loo_score=sc))
+                if sc > best[0]:
+                    best = (sc, g, use_mask, clf)
+        _, self.gamma_, self.use_mask_, self.clf_ = best
+        self.n_features_ = F.shape[2] + (Fm.shape[1] if self.use_mask_ else 0)
+        return self
+
+    def decision_function(self, X):
+        F = self._value_features(X, (self.gamma_,))[:, 0]
+        if self.use_mask_:
+            F = np.hstack([F, self._mask_features(X)])
         s = self.clf_.decision_function(F)
         return np.stack([-s, s], axis=1) if s.ndim == 1 else s
 
