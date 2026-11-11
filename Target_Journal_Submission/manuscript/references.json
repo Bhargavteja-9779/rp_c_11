@@ -145,14 +145,52 @@
   "url": "https://jmlr.org/papers/v7/demsar06a.html",
   "arxiv": "",
   "title": "Statistical Comparisons of Classifiers over Multiple Data Sets",
-  "note": "JMLR 7(1):1-30, 2006 (verified on jmlr.org)"
+  "note": "JMLR 7(1):1-30, 2006 (verified on jmlr.org)",
+  "manual": {
+   "authors": [
+    [
+     "Demšar",
+     "J"
+    ]
+   ],
+   "year": 2006,
+   "title": "Statistical comparisons of classifiers over multiple data sets",
+   "venue": "Journal of Machine Learning Research",
+   "volume": "7",
+   "issue": "1",
+   "pages": "1–30",
+   "url": "https://jmlr.org/papers/v7/demsar06a.html"
+  }
  },
  {
   "key": "Benavoli2016",
   "url": "https://jmlr.org/papers/v17/benavoli16a.html",
   "arxiv": "",
   "title": "Should We Really Use Post-Hoc Tests Based on Mean-Ranks?",
-  "note": "JMLR 17(5):1-10, 2016 (verified on jmlr.org)"
+  "note": "JMLR 17(5):1-10, 2016 (verified on jmlr.org)",
+  "manual": {
+   "authors": [
+    [
+     "Benavoli",
+     "A"
+    ],
+    [
+     "Corani",
+     "G"
+    ],
+    [
+     "Mangili",
+     "F"
+    ]
+   ],
+   "year": 2016,
+   "title": "Should we really use post-hoc tests based on mean-ranks?",
+   "venue": "Journal of Machine Learning Research",
+   "volume": "17",
+   "issue": "5",
+   "pages": "1–10",
+   "url": "https://jmlr.org/papers/v17/benavoli16a.html"
+  }
  },
  {
   "key": "Wilcoxon1945",
@@ -163,7 +201,22 @@
   "key": "Holm1979",
   "title": "A Simple Sequentially Rejective Multiple Test Procedure",
   "url": "https://www.jstor.org/stable/4615733",
-  "note": "Scand J Stat 6(2):65-70; no Crossref DOI"
+  "note": "Scand J Stat 6(2):65-70; no Crossref DOI",
+  "manual": {
+   "authors": [
+    [
+     "Holm",
+     "S"
+    ]
+   ],
+   "year": 1979,
+   "title": "A simple sequentially rejective multiple test procedure",
+   "venue": "Scandinavian Journal of Statistics",
+   "volume": "6",
+   "issue": "2",
+   "pages": "65–70",
+   "url": "https://www.jstor.org/stable/4615733"
+  }
  },
  {
   "key": "Wang2017",
@@ -174,14 +227,79 @@
   "key": "Ke2017",
   "url": "https://papers.nips.cc/paper/6907",
   "arxiv": "",
-  "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree"
+  "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+  "manual": {
+   "authors": [
+    [
+     "Ke",
+     "G"
+    ],
+    [
+     "Meng",
+     "Q"
+    ],
+    [
+     "Finley",
+     "T"
+    ],
+    [
+     "Wang",
+     "T"
+    ],
+    [
+     "Chen",
+     "W"
+    ],
+    [
+     "Ma",
+     "W"
+    ],
+    [
+     "Ye",
+     "Q"
+    ],
+    [
+     "Liu",
+     "T-Y"
+    ]
+   ],
+   "year": 2017,
+   "title": "LightGBM: a highly efficient gradient boosting decision tree",
+   "venue": "Advances in Neural Information Processing Systems 30 (NIPS 2017)",
+   "proceedings": true,
+   "url": "https://papers.nips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html"
+  }
  },
  {
   "key": "Pedregosa2011",
   "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
   "arxiv": "",
   "title": "Scikit-learn: Machine Learning in Python",
-  "note": "JMLR 12(85):2825-2830, 2011 (verified on jmlr.org)"
+  "note": "JMLR 12(85):2825-2830, 2011 (verified on jmlr.org)",
+  "manual": {
+   "authors": [
+    [
+     "Pedregosa",
+     "F"
+    ],
+    [
+     "Varoquaux",
+     "G"
+    ],
+    [
+     "Gramfort",
+     "A"
+    ]
+   ],
+   "etal": true,
+   "year": 2011,
+   "title": "Scikit-learn: machine learning in Python",
+   "venue": "Journal of Machine Learning Research",
+   "volume": "12",
+   "issue": "85",
+   "pages": "2825–2830",
+   "url": "https://jmlr.org/papers/v12/pedregosa11a.html"
+  }
  },
  {
   "key": "Middlehurst2021",
@@ -208,7 +326,62 @@
   "arxiv": "2406.14231",
   "title": "aeon: a Python toolkit for learning from time series",
   "url": "https://jmlr.org/papers/v25/23-1444.html",
-  "note": "JMLR 25(289):1-10, 2024 (verified on jmlr.org)"
+  "note": "JMLR 25(289):1-10, 2024 (verified on jmlr.org)",
+  "manual": {
+   "authors": [
+    [
+     "Middlehurst",
+     "M"
+    ],
+    [
+     "Ismail-Fawaz",
+     "A"
+    ],
+    [
+     "Guillaume",
+     "A"
+    ],
+    [
+     "Holder",
+     "C"
+    ],
+    [
+     "Guijo-Rubio",
+     "D"
+    ],
+    [
+     "Bulatova",
+     "G"
+    ],
+    [
+     "Tsaprounis",
+     "L"
+    ],
+    [
+     "Mentel",
+     "L"
+    ],
+    [
+     "Walter",
+     "M"
+    ],
+    [
+     "Schäfer",
+     "P"
+    ],
+    [
+     "Bagnall",
+     "A"
+    ]
+   ],
+   "year": 2024,
+   "title": "aeon: a Python toolkit for learning from time series",
+   "venue": "Journal of Machine Learning Research",
+   "volume": "25",
+   "issue": "289",
+   "pages": "1–10",
+   "url": "https://jmlr.org/papers/v25/23-1444.html"
+  }
  },
  {
   "key": "Ringel2024",

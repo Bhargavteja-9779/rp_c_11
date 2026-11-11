@@ -1,0 +1,1166 @@
+{
+ "Dempster2020": {
+  "entry": "Dempster A, Petitjean F, Webb GI (2020) ROCKET: exceptionally fast and accurate time series classification using random convolutional kernels. Data Mining and Knowledge Discovery 34:1454–1495. https://doi.org/10.1007/s10618-020-00701-z",
+  "first": "Dempster",
+  "year": 2020,
+  "authors": [
+   [
+    "Dempster",
+    "A"
+   ],
+   [
+    "Petitjean",
+    "F"
+   ],
+   [
+    "Webb",
+    "GI"
+   ]
+  ],
+  "cite": "Dempster et al. 2020"
+ },
+ "Dempster2021": {
+  "entry": "Dempster A, Schmidt DF, Webb GI (2021) MiniRocket: A Very Fast (Almost) Deterministic Transform for Time Series Classification. In: Proceedings of the 27th ACM SIGKDD Conference on Knowledge Discovery & Data Mining, pp 248–257. https://doi.org/10.1145/3447548.3467231",
+  "first": "Dempster",
+  "year": 2021,
+  "authors": [
+   [
+    "Dempster",
+    "A"
+   ],
+   [
+    "Schmidt",
+    "DF"
+   ],
+   [
+    "Webb",
+    "GI"
+   ]
+  ],
+  "cite": "Dempster et al. 2021"
+ },
+ "Tan2022": {
+  "entry": "Tan CW, Dempster A, Bergmeir C, Webb GI (2022) MultiRocket: multiple pooling operators and transformations for fast and effective time series classification. Data Mining and Knowledge Discovery 36:1623–1646. https://doi.org/10.1007/s10618-022-00844-1",
+  "first": "Tan",
+  "year": 2022,
+  "authors": [
+   [
+    "Tan",
+    "CW"
+   ],
+   [
+    "Dempster",
+    "A"
+   ],
+   [
+    "Bergmeir",
+    "C"
+   ],
+   [
+    "Webb",
+    "GI"
+   ]
+  ],
+  "cite": "Tan et al. 2022"
+ },
+ "Dempster2023": {
+  "entry": "Dempster A, Schmidt DF, Webb GI (2023) Hydra: competing convolutional kernels for fast and accurate time series classification. Data Mining and Knowledge Discovery 37:1779–1805. https://doi.org/10.1007/s10618-023-00939-3",
+  "first": "Dempster",
+  "year": 2023,
+  "authors": [
+   [
+    "Dempster",
+    "A"
+   ],
+   [
+    "Schmidt",
+    "DF"
+   ],
+   [
+    "Webb",
+    "GI"
+   ]
+  ],
+  "cite": "Dempster et al. 2023"
+ },
+ "Dempster2024": {
+  "entry": "Dempster A, Schmidt DF, Webb GI (2024) quant: a minimalist interval method for time series classification. Data Mining and Knowledge Discovery 38:2377–2402. https://doi.org/10.1007/s10618-024-01036-9",
+  "first": "Dempster",
+  "year": 2024,
+  "authors": [
+   [
+    "Dempster",
+    "A"
+   ],
+   [
+    "Schmidt",
+    "DF"
+   ],
+   [
+    "Webb",
+    "GI"
+   ]
+  ],
+  "cite": "Dempster et al. 2024"
+ },
+ "Middlehurst2024": {
+  "entry": "Middlehurst M, Schäfer P, Bagnall A (2024b) Bake off redux: a review and experimental evaluation of recent time series classification algorithms. Data Mining and Knowledge Discovery 38:1958–2031. https://doi.org/10.1007/s10618-024-01022-1",
+  "first": "Middlehurst",
+  "year": 2024,
+  "authors": [
+   [
+    "Middlehurst",
+    "M"
+   ],
+   [
+    "Schäfer",
+    "P"
+   ],
+   [
+    "Bagnall",
+    "A"
+   ]
+  ],
+  "cite": "Middlehurst et al. 2024b"
+ },
+ "Dau2019": {
+  "entry": "Dau HA, Bagnall A, Kamgar K, Yeh CCM, Zhu Y, Gharghabi S, Ratanamahatana CA, Keogh E (2019) The UCR time series archive. IEEE/CAA Journal of Automatica Sinica 6:1293–1305. https://doi.org/10.1109/JAS.2019.1911747",
+  "first": "Dau",
+  "year": 2019,
+  "authors": [
+   [
+    "Dau",
+    "HA"
+   ],
+   [
+    "Bagnall",
+    "A"
+   ],
+   [
+    "Kamgar",
+    "K"
+   ],
+   [
+    "Yeh",
+    "CCM"
+   ],
+   [
+    "Zhu",
+    "Y"
+   ],
+   [
+    "Gharghabi",
+    "S"
+   ],
+   [
+    "Ratanamahatana",
+    "CA"
+   ],
+   [
+    "Keogh",
+    "E"
+   ]
+  ],
+  "cite": "Dau et al. 2019"
+ },
+ "Bagnall2017": {
+  "entry": "Bagnall A, Lines J, Bostrom A, Large J, Keogh E (2017) The great time series classification bake off: a review and experimental evaluation of recent algorithmic advances. Data Mining and Knowledge Discovery 31:606–660. https://doi.org/10.1007/s10618-016-0483-9",
+  "first": "Bagnall",
+  "year": 2017,
+  "authors": [
+   [
+    "Bagnall",
+    "A"
+   ],
+   [
+    "Lines",
+    "J"
+   ],
+   [
+    "Bostrom",
+    "A"
+   ],
+   [
+    "Large",
+    "J"
+   ],
+   [
+    "Keogh",
+    "E"
+   ]
+  ],
+  "cite": "Bagnall et al. 2017"
+ },
+ "IsmailFawaz2019": {
+  "entry": "Ismail Fawaz H, Forestier G, Weber J, Idoumghar L, Muller PA (2019) Deep learning for time series classification: a review. Data Mining and Knowledge Discovery 33:917–963. https://doi.org/10.1007/s10618-019-00619-1",
+  "first": "Ismail Fawaz",
+  "year": 2019,
+  "authors": [
+   [
+    "Ismail Fawaz",
+    "H"
+   ],
+   [
+    "Forestier",
+    "G"
+   ],
+   [
+    "Weber",
+    "J"
+   ],
+   [
+    "Idoumghar",
+    "L"
+   ],
+   [
+    "Muller",
+    "PA"
+   ]
+  ],
+  "cite": "Ismail Fawaz et al. 2019"
+ },
+ "IsmailFawaz2020": {
+  "entry": "Ismail Fawaz H, Lucas B, Forestier G, Pelletier C, Schmidt DF, Weber J, Webb GI, Idoumghar L, Muller PA, Petitjean F (2020) InceptionTime: Finding AlexNet for time series classification. Data Mining and Knowledge Discovery 34:1936–1962. https://doi.org/10.1007/s10618-020-00710-y",
+  "first": "Ismail Fawaz",
+  "year": 2020,
+  "authors": [
+   [
+    "Ismail Fawaz",
+    "H"
+   ],
+   [
+    "Lucas",
+    "B"
+   ],
+   [
+    "Forestier",
+    "G"
+   ],
+   [
+    "Pelletier",
+    "C"
+   ],
+   [
+    "Schmidt",
+    "DF"
+   ],
+   [
+    "Weber",
+    "J"
+   ],
+   [
+    "Webb",
+    "GI"
+   ],
+   [
+    "Idoumghar",
+    "L"
+   ],
+   [
+    "Muller",
+    "PA"
+   ],
+   [
+    "Petitjean",
+    "F"
+   ]
+  ],
+  "cite": "Ismail Fawaz et al. 2020"
+ },
+ "Che2018": {
+  "entry": "Che Z, Purushotham S, Cho K, Sontag D, Liu Y (2018) Recurrent Neural Networks for Multivariate Time Series with Missing Values. Scientific Reports 8:6085. https://doi.org/10.1038/s41598-018-24271-9",
+  "first": "Che",
+  "year": 2018,
+  "authors": [
+   [
+    "Che",
+    "Z"
+   ],
+   [
+    "Purushotham",
+    "S"
+   ],
+   [
+    "Cho",
+    "K"
+   ],
+   [
+    "Sontag",
+    "D"
+   ],
+   [
+    "Liu",
+    "Y"
+   ]
+  ],
+  "cite": "Che et al. 2018"
+ },
+ "Cao2018": {
+  "entry": "Cao W, Wang D, Li J, Zhou H, Li L, Li Y (2018) BRITS: Bidirectional Recurrent Imputation for Time Series. arXiv:1805.10572. https://doi.org/10.48550/arXiv.1805.10572",
+  "first": "Cao",
+  "year": 2018,
+  "authors": [
+   [
+    "Cao",
+    "W"
+   ],
+   [
+    "Wang",
+    "D"
+   ],
+   [
+    "Li",
+    "J"
+   ],
+   [
+    "Zhou",
+    "H"
+   ],
+   [
+    "Li",
+    "L"
+   ],
+   [
+    "Li",
+    "Y"
+   ]
+  ],
+  "cite": "Cao et al. 2018"
+ },
+ "Du2023": {
+  "entry": "Du W, Côté D, Liu Y (2023) SAITS: Self-attention-based imputation for time series. Expert Systems with Applications 219:119619. https://doi.org/10.1016/j.eswa.2023.119619",
+  "first": "Du",
+  "year": 2023,
+  "authors": [
+   [
+    "Du",
+    "W"
+   ],
+   [
+    "Côté",
+    "D"
+   ],
+   [
+    "Liu",
+    "Y"
+   ]
+  ],
+  "cite": "Du et al. 2023"
+ },
+ "Rubin1976": {
+  "entry": "Rubin DB (1976) Inference and missing data. Biometrika 63:581–592. https://doi.org/10.1093/biomet/63.3.581",
+  "first": "Rubin",
+  "year": 1976,
+  "authors": [
+   [
+    "Rubin",
+    "DB"
+   ]
+  ],
+  "cite": "Rubin 1976"
+ },
+ "Little2019": {
+  "entry": "Little R, Rubin D (2019) Statistical Analysis with Missing Data, Third Edition. Wiley. https://doi.org/10.1002/9781119482260",
+  "first": "Little",
+  "year": 2019,
+  "authors": [
+   [
+    "Little",
+    "R"
+   ],
+   [
+    "Rubin",
+    "D"
+   ]
+  ],
+  "cite": "Little and Rubin 2019"
+ },
+ "Liu2018": {
+  "entry": "Liu G, Reda FA, Shih KJ, Wang TC, Tao A, Catanzaro B (2018) Image Inpainting for Irregular Holes Using Partial Convolutions. In: Computer Vision – ECCV 2018, pp 89–105. https://doi.org/10.1007/978-3-030-01252-6_6",
+  "first": "Liu",
+  "year": 2018,
+  "authors": [
+   [
+    "Liu",
+    "G"
+   ],
+   [
+    "Reda",
+    "FA"
+   ],
+   [
+    "Shih",
+    "KJ"
+   ],
+   [
+    "Wang",
+    "TC"
+   ],
+   [
+    "Tao",
+    "A"
+   ],
+   [
+    "Catanzaro",
+    "B"
+   ]
+  ],
+  "cite": "Liu et al. 2018"
+ },
+ "Shukla2021": {
+  "entry": "Shukla SN, Marlin BM (2021) Multi-Time Attention Networks for Irregularly Sampled Time Series. arXiv:2101.10318. https://doi.org/10.48550/arXiv.2101.10318",
+  "first": "Shukla",
+  "year": 2021,
+  "authors": [
+   [
+    "Shukla",
+    "SN"
+   ],
+   [
+    "Marlin",
+    "BM"
+   ]
+  ],
+  "cite": "Shukla and Marlin 2021"
+ },
+ "Zhang2022": {
+  "entry": "Zhang X, Zeman M, Tsiligkaridis T, Zitnik M (2021) Graph-Guided Network for Irregularly Sampled Multivariate Time Series. arXiv:2110.05357. https://doi.org/10.48550/arXiv.2110.05357",
+  "first": "Zhang",
+  "year": 2021,
+  "authors": [
+   [
+    "Zhang",
+    "X"
+   ],
+   [
+    "Zeman",
+    "M"
+   ],
+   [
+    "Tsiligkaridis",
+    "T"
+   ],
+   [
+    "Zitnik",
+    "M"
+   ]
+  ],
+  "cite": "Zhang et al. 2021"
+ },
+ "Spinnato2025": {
+  "entry": "Spinnato F, Landi C (2025) PYRREGULAR: A Unified Framework for Irregular Time Series, with Classification Benchmarks. arXiv:2505.06047. https://doi.org/10.48550/arXiv.2505.06047",
+  "first": "Spinnato",
+  "year": 2025,
+  "authors": [
+   [
+    "Spinnato",
+    "F"
+   ],
+   [
+    "Landi",
+    "C"
+   ]
+  ],
+  "cite": "Spinnato and Landi 2025"
+ },
+ "Yao2024": {
+  "entry": "Yao P, Liu M, Cheng X, Shi F, Li H, Liu X, Chen S (2024) An End-to-End Model for Time Series Classification In the Presence of Missing Values. arXiv:2408.05849. https://doi.org/10.48550/arXiv.2408.05849",
+  "first": "Yao",
+  "year": 2024,
+  "authors": [
+   [
+    "Yao",
+    "P"
+   ],
+   [
+    "Liu",
+    "M"
+   ],
+   [
+    "Cheng",
+    "X"
+   ],
+   [
+    "Shi",
+    "F"
+   ],
+   [
+    "Li",
+    "H"
+   ],
+   [
+    "Liu",
+    "X"
+   ],
+   [
+    "Chen",
+    "S"
+   ]
+  ],
+  "cite": "Yao et al. 2024"
+ },
+ "Mikalsen2018": {
+  "entry": "Mikalsen KØ, Bianchi FM, Soguero-Ruiz C, Jenssen R (2018) Time series cluster kernel for learning similarities between multivariate time series with missing data. Pattern Recognition 76:569–581. https://doi.org/10.1016/j.patcog.2017.11.030",
+  "first": "Mikalsen",
+  "year": 2018,
+  "authors": [
+   [
+    "Mikalsen",
+    "KØ"
+   ],
+   [
+    "Bianchi",
+    "FM"
+   ],
+   [
+    "Soguero-Ruiz",
+    "C"
+   ],
+   [
+    "Jenssen",
+    "R"
+   ]
+  ],
+  "cite": "Mikalsen et al. 2018"
+ },
+ "Lipton2016": {
+  "entry": "Lipton ZC, Kale DC, Wetzel R (2016) Modeling Missing Data in Clinical Time Series with RNNs. arXiv:1606.04130. https://doi.org/10.48550/arXiv.1606.04130",
+  "first": "Lipton",
+  "year": 2016,
+  "authors": [
+   [
+    "Lipton",
+    "ZC"
+   ],
+   [
+    "Kale",
+    "DC"
+   ],
+   [
+    "Wetzel",
+    "R"
+   ]
+  ],
+  "cite": "Lipton et al. 2016"
+ },
+ "LeMorvan2021": {
+  "entry": "Le Morvan M, Josse J, Scornet E, Varoquaux G (2021) What's a good imputation to predict with missing values? arXiv:2106.00311. https://doi.org/10.48550/arXiv.2106.00311",
+  "first": "Le Morvan",
+  "year": 2021,
+  "authors": [
+   [
+    "Le Morvan",
+    "M"
+   ],
+   [
+    "Josse",
+    "J"
+   ],
+   [
+    "Scornet",
+    "E"
+   ],
+   [
+    "Varoquaux",
+    "G"
+   ]
+  ],
+  "cite": "Le Morvan et al. 2021"
+ },
+ "Josse2019": {
+  "entry": "Josse J, Chen JM, Prost N, Scornet E, Varoquaux G (2019) On the consistency of supervised learning with missing values. arXiv:1902.06931. https://doi.org/10.48550/arXiv.1902.06931",
+  "first": "Josse",
+  "year": 2019,
+  "authors": [
+   [
+    "Josse",
+    "J"
+   ],
+   [
+    "Chen",
+    "JM"
+   ],
+   [
+    "Prost",
+    "N"
+   ],
+   [
+    "Scornet",
+    "E"
+   ],
+   [
+    "Varoquaux",
+    "G"
+   ]
+  ],
+  "cite": "Josse et al. 2019"
+ },
+ "VanNess2023": {
+  "entry": "Van Ness M, Bosschieter TM, Halpin-Gregorio R, Udell M (2023) The Missing Indicator Method: From Low to High Dimensions. In: Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, pp 5004–5015. https://doi.org/10.1145/3580305.3599911",
+  "first": "Van Ness",
+  "year": 2023,
+  "authors": [
+   [
+    "Van Ness",
+    "M"
+   ],
+   [
+    "Bosschieter",
+    "TM"
+   ],
+   [
+    "Halpin-Gregorio",
+    "R"
+   ],
+   [
+    "Udell",
+    "M"
+   ]
+  ],
+  "cite": "Van Ness et al. 2023"
+ },
+ "PerezLebel2022": {
+  "entry": "Perez-Lebel A, Varoquaux G, Le Morvan M, Josse J, Poline JB (2022) Benchmarking missing-values approaches for predictive models on health databases. GigaScience 11:giac013. https://doi.org/10.1093/gigascience/giac013",
+  "first": "Perez-Lebel",
+  "year": 2022,
+  "authors": [
+   [
+    "Perez-Lebel",
+    "A"
+   ],
+   [
+    "Varoquaux",
+    "G"
+   ],
+   [
+    "Le Morvan",
+    "M"
+   ],
+   [
+    "Josse",
+    "J"
+   ],
+   [
+    "Poline",
+    "JB"
+   ]
+  ],
+  "cite": "Perez-Lebel et al. 2022"
+ },
+ "Silva2012": {
+  "entry": "Silva I, Moody G, Scott DJ, Celi LA, Mark RG (2012) Predicting In-Hospital Mortality of ICU Patients: The PhysioNet/Computing in Cardiology Challenge 2012. Computing in Cardiology 39:245–248. PMID: 24678516",
+  "first": "Silva",
+  "year": 2012,
+  "authors": [
+   [
+    "Silva",
+    "I"
+   ],
+   [
+    "Moody",
+    "G"
+   ],
+   [
+    "Scott",
+    "DJ"
+   ],
+   [
+    "Celi",
+    "LA"
+   ],
+   [
+    "Mark",
+    "RG"
+   ]
+  ],
+  "cite": "Silva et al. 2012"
+ },
+ "Goldberger2000": {
+  "entry": "Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PC, Mark RG, Mietus JE, Moody GB, Peng CK, Stanley HE (2000) PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals. Circulation 101(23). https://doi.org/10.1161/01.CIR.101.23.e215",
+  "first": "Goldberger",
+  "year": 2000,
+  "authors": [
+   [
+    "Goldberger",
+    "AL"
+   ],
+   [
+    "Amaral",
+    "LAN"
+   ],
+   [
+    "Glass",
+    "L"
+   ],
+   [
+    "Hausdorff",
+    "JM"
+   ],
+   [
+    "Ivanov",
+    "PC"
+   ],
+   [
+    "Mark",
+    "RG"
+   ],
+   [
+    "Mietus",
+    "JE"
+   ],
+   [
+    "Moody",
+    "GB"
+   ],
+   [
+    "Peng",
+    "CK"
+   ],
+   [
+    "Stanley",
+    "HE"
+   ]
+  ],
+  "cite": "Goldberger et al. 2000"
+ },
+ "Demsar2006": {
+  "entry": "Demšar J (2006) Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research 7:1–30. https://jmlr.org/papers/v7/demsar06a.html",
+  "first": "Demšar",
+  "year": 2006,
+  "authors": [
+   [
+    "Demšar",
+    "J"
+   ]
+  ],
+  "cite": "Demšar 2006"
+ },
+ "Benavoli2016": {
+  "entry": "Benavoli A, Corani G, Mangili F (2016) Should we really use post-hoc tests based on mean-ranks? Journal of Machine Learning Research 17:1–10. https://jmlr.org/papers/v17/benavoli16a.html",
+  "first": "Benavoli",
+  "year": 2016,
+  "authors": [
+   [
+    "Benavoli",
+    "A"
+   ],
+   [
+    "Corani",
+    "G"
+   ],
+   [
+    "Mangili",
+    "F"
+   ]
+  ],
+  "cite": "Benavoli et al. 2016"
+ },
+ "Wilcoxon1945": {
+  "entry": "Wilcoxon F (1945) Individual Comparisons by Ranking Methods. Biometrics Bulletin 1:80. https://doi.org/10.2307/3001968",
+  "first": "Wilcoxon",
+  "year": 1945,
+  "authors": [
+   [
+    "Wilcoxon",
+    "F"
+   ]
+  ],
+  "cite": "Wilcoxon 1945"
+ },
+ "Holm1979": {
+  "entry": "Holm S (1979) A simple sequentially rejective multiple test procedure. Scandinavian Journal of Statistics 6:65–70. https://www.jstor.org/stable/4615733",
+  "first": "Holm",
+  "year": 1979,
+  "authors": [
+   [
+    "Holm",
+    "S"
+   ]
+  ],
+  "cite": "Holm 1979"
+ },
+ "Wang2017": {
+  "entry": "Wang Z, Yan W, Oates T (2017) Time series classification from scratch with deep neural networks: A strong baseline. In: 2017 International Joint Conference on Neural Networks (IJCNN), pp 1578–1585. https://doi.org/10.1109/IJCNN.2017.7966039",
+  "first": "Wang",
+  "year": 2017,
+  "authors": [
+   [
+    "Wang",
+    "Z"
+   ],
+   [
+    "Yan",
+    "W"
+   ],
+   [
+    "Oates",
+    "T"
+   ]
+  ],
+  "cite": "Wang et al. 2017"
+ },
+ "Ke2017": {
+  "entry": "Ke G, Meng Q, Finley T, Wang T, Chen W, Ma W, Ye Q, Liu T-Y (2017) LightGBM: a highly efficient gradient boosting decision tree. In: Advances in Neural Information Processing Systems 30 (NIPS 2017). https://papers.nips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+  "first": "Ke",
+  "year": 2017,
+  "authors": [
+   [
+    "Ke",
+    "G"
+   ],
+   [
+    "Meng",
+    "Q"
+   ],
+   [
+    "Finley",
+    "T"
+   ],
+   [
+    "Wang",
+    "T"
+   ],
+   [
+    "Chen",
+    "W"
+   ],
+   [
+    "Ma",
+    "W"
+   ],
+   [
+    "Ye",
+    "Q"
+   ],
+   [
+    "Liu",
+    "T-Y"
+   ]
+  ],
+  "cite": "Ke et al. 2017"
+ },
+ "Pedregosa2011": {
+  "entry": "Pedregosa F, Varoquaux G, Gramfort A et al (2011) Scikit-learn: machine learning in Python. Journal of Machine Learning Research 12:2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html",
+  "first": "Pedregosa",
+  "year": 2011,
+  "authors": [
+   [
+    "Pedregosa",
+    "F"
+   ],
+   [
+    "Varoquaux",
+    "G"
+   ],
+   [
+    "Gramfort",
+    "A"
+   ]
+  ],
+  "cite": "Pedregosa et al. 2011"
+ },
+ "Middlehurst2021": {
+  "entry": "Middlehurst M, Large J, Flynn M, Lines J, Bostrom A, Bagnall A (2021) HIVE-COTE 2.0: a new meta ensemble for time series classification. Machine Learning 110:3211–3243. https://doi.org/10.1007/s10994-021-06057-9",
+  "first": "Middlehurst",
+  "year": 2021,
+  "authors": [
+   [
+    "Middlehurst",
+    "M"
+   ],
+   [
+    "Large",
+    "J"
+   ],
+   [
+    "Flynn",
+    "M"
+   ],
+   [
+    "Lines",
+    "J"
+   ],
+   [
+    "Bostrom",
+    "A"
+   ],
+   [
+    "Bagnall",
+    "A"
+   ]
+  ],
+  "cite": "Middlehurst et al. 2021"
+ },
+ "Ruiz2021": {
+  "entry": "Ruiz AP, Flynn M, Large J, Middlehurst M, Bagnall A (2021) The great multivariate time series classification bake off: a review and experimental evaluation of recent algorithmic advances. Data Mining and Knowledge Discovery 35:401–449. https://doi.org/10.1007/s10618-020-00727-3",
+  "first": "Ruiz",
+  "year": 2021,
+  "authors": [
+   [
+    "Ruiz",
+    "AP"
+   ],
+   [
+    "Flynn",
+    "M"
+   ],
+   [
+    "Large",
+    "J"
+   ],
+   [
+    "Middlehurst",
+    "M"
+   ],
+   [
+    "Bagnall",
+    "A"
+   ]
+  ],
+  "cite": "Ruiz et al. 2021"
+ },
+ "Kidger2020": {
+  "entry": "Kidger P, Morrill J, Foster J, Lyons T (2020) Neural Controlled Differential Equations for Irregular Time Series. arXiv:2005.08926. https://doi.org/10.48550/arXiv.2005.08926",
+  "first": "Kidger",
+  "year": 2020,
+  "authors": [
+   [
+    "Kidger",
+    "P"
+   ],
+   [
+    "Morrill",
+    "J"
+   ],
+   [
+    "Foster",
+    "J"
+   ],
+   [
+    "Lyons",
+    "T"
+   ]
+  ],
+  "cite": "Kidger et al. 2020"
+ },
+ "Horn2020": {
+  "entry": "Horn M, Moor M, Bock C, Rieck B, Borgwardt K (2019) Set Functions for Time Series. arXiv:1909.12064. https://doi.org/10.48550/arXiv.1909.12064",
+  "first": "Horn",
+  "year": 2019,
+  "authors": [
+   [
+    "Horn",
+    "M"
+   ],
+   [
+    "Moor",
+    "M"
+   ],
+   [
+    "Bock",
+    "C"
+   ],
+   [
+    "Rieck",
+    "B"
+   ],
+   [
+    "Borgwardt",
+    "K"
+   ]
+  ],
+  "cite": "Horn et al. 2019"
+ },
+ "Middlehurst2024aeon": {
+  "entry": "Middlehurst M, Ismail-Fawaz A, Guillaume A et al (2024a) aeon: a Python toolkit for learning from time series. Journal of Machine Learning Research 25:1–10. https://jmlr.org/papers/v25/23-1444.html",
+  "first": "Middlehurst",
+  "year": 2024,
+  "authors": [
+   [
+    "Middlehurst",
+    "M"
+   ],
+   [
+    "Ismail-Fawaz",
+    "A"
+   ],
+   [
+    "Guillaume",
+    "A"
+   ],
+   [
+    "Holder",
+    "C"
+   ],
+   [
+    "Guijo-Rubio",
+    "D"
+   ],
+   [
+    "Bulatova",
+    "G"
+   ],
+   [
+    "Tsaprounis",
+    "L"
+   ],
+   [
+    "Mentel",
+    "L"
+   ],
+   [
+    "Walter",
+    "M"
+   ],
+   [
+    "Schäfer",
+    "P"
+   ],
+   [
+    "Bagnall",
+    "A"
+   ]
+  ],
+  "cite": "Middlehurst et al. 2024a"
+ },
+ "Ringel2024": {
+  "entry": "Ringel L, Cohen R, Freedman D, Elad M, Romano Y (2024) Early Time Classification with Accumulated Accuracy Gap Control. arXiv:2402.00857. https://doi.org/10.48550/arXiv.2402.00857",
+  "first": "Ringel",
+  "year": 2024,
+  "authors": [
+   [
+    "Ringel",
+    "L"
+   ],
+   [
+    "Cohen",
+    "R"
+   ],
+   [
+    "Freedman",
+    "D"
+   ],
+   [
+    "Elad",
+    "M"
+   ],
+   [
+    "Romano",
+    "Y"
+   ]
+  ],
+  "cite": "Ringel et al. 2024"
+ },
+ "Lam2015": {
+  "entry": "Lam SK, Pitrou A, Seibert S (2015) Numba: a LLVM-based Python JIT compiler. In: Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC, pp 1–6. https://doi.org/10.1145/2833157.2833162",
+  "first": "Lam",
+  "year": 2015,
+  "authors": [
+   [
+    "Lam",
+    "SK"
+   ],
+   [
+    "Pitrou",
+    "A"
+   ],
+   [
+    "Seibert",
+    "S"
+   ]
+  ],
+  "cite": "Lam et al. 2015"
+ },
+ "Twala2008": {
+  "entry": "Twala B, Jones M, Hand D (2008) Good methods for coping with missing data in decision trees. Pattern Recognition Letters 29:950–956. https://doi.org/10.1016/j.patrec.2008.01.010",
+  "first": "Twala",
+  "year": 2008,
+  "authors": [
+   [
+    "Twala",
+    "B"
+   ],
+   [
+    "Jones",
+    "M"
+   ],
+   [
+    "Hand",
+    "D"
+   ]
+  ],
+  "cite": "Twala et al. 2008"
+ },
+ "Rhodes2025": {
+  "entry": "Rhodes JS, Rustad AG, Maia SP, Thacker E, Choi H, Gutierrez J, Rundek T, Shaw B (2025) Label-Guided Imputation via Forest-Based Proximities for Improved Time Series Classification. arXiv:2509.22919. https://doi.org/10.48550/arXiv.2509.22919",
+  "first": "Rhodes",
+  "year": 2025,
+  "authors": [
+   [
+    "Rhodes",
+    "JS"
+   ],
+   [
+    "Rustad",
+    "AG"
+   ],
+   [
+    "Maia",
+    "SP"
+   ],
+   [
+    "Thacker",
+    "E"
+   ],
+   [
+    "Choi",
+    "H"
+   ],
+   [
+    "Gutierrez",
+    "J"
+   ],
+   [
+    "Rundek",
+    "T"
+   ],
+   [
+    "Shaw",
+    "B"
+   ]
+  ],
+  "cite": "Rhodes et al. 2025"
+ },
+ "Kim2023": {
+  "entry": "Kim S, Kim H, Yun E, Lee H, Lee J, Lee J (2023) Probabilistic Imputation for Time-series Classification with Missing Data. arXiv:2308.06738. https://doi.org/10.48550/arXiv.2308.06738",
+  "first": "Kim",
+  "year": 2023,
+  "authors": [
+   [
+    "Kim",
+    "S"
+   ],
+   [
+    "Kim",
+    "H"
+   ],
+   [
+    "Yun",
+    "E"
+   ],
+   [
+    "Lee",
+    "H"
+   ],
+   [
+    "Lee",
+    "J"
+   ],
+   [
+    "Lee",
+    "J"
+   ]
+  ],
+  "cite": "Kim et al. 2023"
+ }
+}
