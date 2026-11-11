@@ -53,6 +53,9 @@ def main():
             __import__(mod).run(a.mode)
             print(f"=== {name} done in {time.time() - t:.0f}s ===", flush=True)
     subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "analyze.py"), "--mode", a.mode], cwd=ROOT)
+    subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "figure_method.py"), a.mode], cwd=ROOT)
+    if os.path.exists(os.path.join(ROOT, "results", a.mode, "E1_main", "raw_results.csv")):
+        subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "error_analysis.py"), a.mode], cwd=ROOT)
 
 
 if __name__ == "__main__":
