@@ -35,5 +35,17 @@
  "GRUD_MED_S": "13.8",
  "MR_MED_S_E2": "0.45",
  "GRUD_TIME_RATIO": "30",
- "SEED_VAR_TEXT": "[PENDING: the seed-variability runs (seeds 1-2 on 30 datasets) have not completed; this paragraph is generated automatically once they have.]"
+ "SEED_VAR_TEXT": "[PENDING: the seed-variability runs (seeds 1-2 on 30 datasets) have not completed; this paragraph is generated automatically once they have.]",
+ "TITLE": "Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation",
+ "COVER_LETTER_PARAGRAPHS": [
+  "We submit the manuscript “Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation” for consideration as an original research article in the Journal of King Saud University – Computer and Information Sciences.",
+  "Random-convolution classifiers such as MiniRocket are among the most widely used time series classifiers because of their speed and accuracy, but they are defined only for complete series. The manuscript analyses how missing values should enter these transforms. It shows that MiniRocket's kernel response is a contrast of tap-group means. A native estimator built on this is unbiased but too noisy, whereas interpolation fabricates responses inside long gaps. We propose MissRocket, which weights each response's contribution to the pooled features by the fraction of truly observed values in its window. It adds no learned parameters and reduces exactly to MiniRocket on complete data.",
+  "The method was evaluated under a protocol fixed before the confirmatory runs, on 91 UCR datasets, three missingness mechanisms and three rates, against ten baselines, with ablation, robustness, natural-data, PhysioNet 2012, sensitivity and error analyses. MissRocket improved on MiniRocket with interpolation by 1.57 percentage points on average (Holm-adjusted Wilcoxon p < 0.001) and by up to 4.46 points for long gaps. It was markedly more robust when test data were more incomplete than training data. We report its limitations with equal prominence. It brings no gain under scattered random gaps. Cross-series kNN imputation is more accurate on average for contiguous gaps. Deep and tree-based models are clearly better on sparse clinical records. All code and per-run results are released, and every number in the paper is generated from them.",
+  "We believe the work fits the journal's scope in machine learning, signal processing and pattern recognition. It offers practitioners an evidence-based guide to handling missing values with a widely used family of classifiers.",
+  "We confirm that the manuscript is original, has not been published previously, and is not under consideration for publication elsewhere. All authors have approved the manuscript and agree with its submission. The study uses only public, de-identified data, so ethics approval was not required. The authors declare no competing interests [to be confirmed by the authors]. As required by the journal's policy, the use of an AI agent in the research workflow is documented in the Methods section and in the Statements and Declarations. In line with the journal's double-anonymous review, the manuscript has been anonymised, and author information is provided on the separate title page.",
+  "Thank you for considering our submission."
+ ],
+ "WORD_COUNT": "approx. 9,227 (main text incl. abstract, excluding tables, equations and references)",
+ "N_FIGS": "7",
+ "N_TABLES": "11"
 }

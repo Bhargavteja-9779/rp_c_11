@@ -299,6 +299,56 @@ def seed_var(v):
         + "(Online Resource 1, Table S5).")
 
 
+def cover_letter(v):
+    c = t("table_pooled_statistics")
+    mr = c[c.baseline == "MiniRocket + linear interp."].iloc[0]
+    st = t("table_main_statistics")
+    b8 = st[(st.mechanism == "block") & (np.isclose(st.rate, 0.8)) & (st.baseline == "MiniRocket + linear interp.")].iloc[0]
+    v["TITLE"] = ("Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket "
+                  "and a pre-specified evaluation")
+    v["COVER_LETTER_PARAGRAPHS"] = [
+        f"We submit the manuscript \u201c{v['TITLE']}\u201d for consideration as an original research article in the Journal of King Saud "
+        "University \u2013 Computer and Information Sciences.",
+        "Random-convolution classifiers such as MiniRocket are among the most widely used time series classifiers because of their "
+        "speed and accuracy, but they are defined only for complete series. The manuscript analyses how missing values should enter these "
+        "transforms. It shows that MiniRocket's kernel response is a contrast of tap-group means. A native estimator built on this is unbiased but "
+        "too noisy, whereas interpolation fabricates responses inside long gaps. We propose MissRocket, which weights each response's "
+        "contribution to the pooled features by the fraction of truly observed values in its window. It adds no learned parameters and "
+        "reduces exactly to MiniRocket on complete data.",
+        f"The method was evaluated under a protocol fixed before the confirmatory runs, on {v['N_CONF']} UCR datasets, three missingness "
+        "mechanisms and three rates, against ten baselines, with ablation, robustness, natural-data, PhysioNet 2012, sensitivity and "
+        f"error analyses. MissRocket improved on MiniRocket with interpolation by {mr.mean_diff * 100:.2f} percentage points on average "
+        f"(Holm-adjusted Wilcoxon p {'< 0.001' if mr.p_holm < 0.001 else f'= {mr.p_holm:.3f}'}) and by up to {b8.mean_diff * 100:.2f} points "
+        "for long gaps. It was markedly more robust when test data were more incomplete than training data. We report its limitations "
+        "with equal prominence. It brings no gain under scattered random gaps. Cross-series kNN imputation is more accurate on average for "
+        "contiguous gaps. "
+        "Deep and tree-based models are clearly better on sparse clinical records. All code and per-run results are released, and every "
+        "number in the paper is generated from them.",
+        "We believe the work fits the journal's scope in machine learning, signal processing and pattern recognition. It offers "
+        "practitioners an evidence-based guide to handling missing values with a widely used family of classifiers.",
+        "We confirm that the manuscript is original, has not been published previously, and is not under consideration for publication "
+        "elsewhere. All authors have approved the manuscript and agree with its submission. The study uses only public, de-identified "
+        "data, so ethics approval was not required. The authors declare no competing interests [to be confirmed by the authors]. As "
+        "required by the journal's policy, the use of an AI agent in the research workflow is documented in the Methods section and in the "
+        "Statements and Declarations. In line with the journal's double-anonymous review, the manuscript has been anonymised, and author "
+        "information is provided on the separate title page.",
+        "Thank you for considering our submission."]
+
+
+def counts(v):
+    p = os.path.join(HERE, "Final_Manuscript_combined.md")
+    if not os.path.exists(p):
+        return
+    import re
+    txt = open(p, encoding="utf-8").read()
+    body = txt.split("## References")[0]
+    body = re.sub(r"\$\$.*?\$\$", " ", body, flags=re.S)
+    body = re.sub(r"^\|.*$", "", body, flags=re.M)
+    v["WORD_COUNT"] = f"approx. {len(body.split()):,} (main text incl. abstract, excluding tables, equations and references)"
+    v["N_FIGS"] = str(len(set(re.findall(r"\*\*Fig\. (\d+)\*\*", txt))))
+    v["N_TABLES"] = str(len(set(re.findall(r"\*\*Table (\d+)\*\*", txt))))
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -306,7 +356,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v); seed_var(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v); seed_var(v); cover_letter(v); counts(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
