@@ -1,0 +1,2 @@
+{"method": "MissRocket", "seed": 0, "auroc": 0.8027280349388696, "auprc": 0.48889562436517014, "time_s": 65.53325844999927, "n_train": 8000, "n_test": 4000, "info": {"gamma": 1.0, "mask": false, "selection": [{"gamma": 1.0, "mask": false, "loo_score": -0.4338126492853736}]}}
+{"method": "MissRocket-g0", "seed": 0, "auroc": 0.8060732564978538, "auprc": 0.4906195212177538, "time_s": 65.23285680100162, "n_train": 8000, "n_test": 4000, "info": {"gamma": 0.0, "mask": false, "selection": [{"gamma": 0.0, "mask": false, "loo_score": -0.42887984727572276}]}}
