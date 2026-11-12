@@ -1,64 +1,64 @@
 {
  "E1": {
   "1NN-ED+linear": {
-   "accuracy": 0.5893901955203987,
-   "balanced_accuracy": 0.5704800954136989,
-   "macro_f1": 0.5614066898442329
+   "accuracy": 0.5838036173115697,
+   "balanced_accuracy": 0.5631104674474943,
+   "macro_f1": 0.5538399138726812
   },
   "AeonMiniRocket+knn": {
-   "accuracy": 0.7305028574043623,
-   "balanced_accuracy": 0.7057690141447078,
-   "macro_f1": 0.6993715186345556
+   "accuracy": 0.728543833734745,
+   "balanced_accuracy": 0.7016098337048928,
+   "macro_f1": 0.6945077101639789
   },
   "AeonMiniRocket+linear": {
-   "accuracy": 0.7382670854888128,
-   "balanced_accuracy": 0.713251076973747,
-   "macro_f1": 0.7079543878884133
+   "accuracy": 0.7357322610704886,
+   "balanced_accuracy": 0.7078807180162076,
+   "macro_f1": 0.701995867251495
   },
   "AeonMiniRocket+locf": {
-   "accuracy": 0.7197193939575977,
-   "balanced_accuracy": 0.6937013144926992,
-   "macro_f1": 0.6879822128506804
+   "accuracy": 0.7191496387524727,
+   "balanced_accuracy": 0.6905599316498694,
+   "macro_f1": 0.6840592346732906
   },
   "AeonMiniRocket+mean": {
-   "accuracy": 0.6602047304740813,
-   "balanced_accuracy": 0.6315756093668071,
-   "macro_f1": 0.6241426723893069
+   "accuracy": 0.6556359736493548,
+   "balanced_accuracy": 0.6253238084211665,
+   "macro_f1": 0.6166646248057429
   },
   "AeonMiniRocket+zero": {
-   "accuracy": 0.6742410156536209,
-   "balanced_accuracy": 0.6466350663683313,
-   "macro_f1": 0.6399662003677342
+   "accuracy": 0.6695754078031378,
+   "balanced_accuracy": 0.6398070343322795,
+   "macro_f1": 0.6318183548708908
   },
   "HydraMultiRocket+linear": {
-   "accuracy": 0.7461352613150452,
-   "balanced_accuracy": 0.7222764216310811,
-   "macro_f1": 0.7179477151457504
+   "accuracy": 0.742132600498166,
+   "balanced_accuracy": 0.7151668569371814,
+   "macro_f1": 0.7106149936884295
   },
   "LightGBM-NaN": {
-   "accuracy": 0.6034177467076856,
-   "balanced_accuracy": 0.5729881737695138,
-   "macro_f1": 0.5628717921791307
+   "accuracy": 0.6016206805459869,
+   "balanced_accuracy": 0.5703351082356202,
+   "macro_f1": 0.5591000985143654
   },
   "MaskRocket-noC": {
-   "accuracy": 0.7023248885080124,
-   "balanced_accuracy": 0.6744136283892673,
-   "macro_f1": 0.6675534771683183
+   "accuracy": 0.7032554802904133,
+   "balanced_accuracy": 0.6729422223559669,
+   "macro_f1": 0.6657518319195793
   },
   "MissRocket": {
-   "accuracy": 0.7539063815134806,
-   "balanced_accuracy": 0.729343280268676,
-   "macro_f1": 0.7242032584374757
+   "accuracy": 0.7525530214870282,
+   "balanced_accuracy": 0.7254149410843233,
+   "macro_f1": 0.7198455128491549
   },
   "MissRocket-g0": {
-   "accuracy": 0.7428529827953575,
-   "balanced_accuracy": 0.7178573117801575,
-   "macro_f1": 0.7127077238329823
+   "accuracy": 0.7403999858497444,
+   "balanced_accuracy": 0.7127157649993955,
+   "macro_f1": 0.7070109583924858
   },
   "MultiRocket+linear": {
-   "accuracy": 0.7446628190775576,
-   "balanced_accuracy": 0.7208275033635532,
-   "macro_f1": 0.7162908756563611
+   "accuracy": 0.7415491835801316,
+   "balanced_accuracy": 0.7144846403090673,
+   "macro_f1": 0.7097666537192863
   }
  },
  "E3": {
