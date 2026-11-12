@@ -14,7 +14,11 @@
 
 ## Outcome of E4b
 
-The outcome is filled in after the run (see the table below, generated from `results/full/tables/table_mechanism_shift*.csv`).
+**The challenge is refuted.** MissRocket was the most robust interpolation-based method under both mechanism shifts:
+- MCAR→block: 0.647 vs 0.525 for MiniRocket + interpolation (+12.2 pp, 24/3/3, p_Holm < 0.001);
+- block→MCAR: 0.729 vs 0.654 (+7.5 pp, 22/0/8, p_Holm = 0.007).
+
+Under MCAR→block, kNN imputation was slightly better (0.677; not significant). Source: `results/full/tables/table_mechanism_shift*.csv`. Reported in Sect. 6.3 as a post-hoc experiment.
 
 ---
 

@@ -1861,7 +1861,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.14,
+   "0": 0.14903591660661383,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1870,7 +1870,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": -0.033333333333333326,
+   "0": -0.015620902922349448,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1879,7 +1879,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.06000000000000005,
+   "0": 0.06887685440965828,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1888,7 +1888,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.0,
+   "0": 0.004310006277746636,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1897,7 +1897,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.026666666666666727,
+   "0": -0.006711495004492844,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1906,7 +1906,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MiniRocket + linear interp.",
-   "0": -0.019999999999999907,
+   "0": 0.006451010083317814,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1915,7 +1915,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.10666666666666669,
+   "0": 0.03595381366157774,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1924,7 +1924,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.033333333333333326,
+   "0": 0.016687131203236616,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1933,7 +1933,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "MultiRocket + linear interp.",
-   "0": -0.033333333333333326,
+   "0": -0.020425336240335917,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1942,7 +1942,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.040000000000000036,
+   "0": 0.008856464939146455,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1951,7 +1951,7 @@
    "mechanism": "block",
    "rate": 0.2,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": -0.019999999999999907,
+   "0": 0.0038155834078434,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1960,7 +1960,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.06666666666666665,
+   "0": 0.12651648019701783,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1969,7 +1969,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": -0.1133333333333334,
+   "0": -0.006931168038985432,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1978,7 +1978,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "LightGBM (native NaN)",
-   "0": -0.06000000000000005,
+   "0": 0.06824891126413467,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1987,7 +1987,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MiniRocket + LOCF",
-   "0": -0.01333333333333342,
+   "0": 0.018725787859983457,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -1996,7 +1996,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MiniRocket + kNN impute",
-   "0": -0.18000000000000005,
+   "0": -0.0429713285190968,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2005,7 +2005,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MiniRocket + linear interp.",
-   "0": -0.046666666666666745,
+   "0": 0.006310579838035245,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2014,7 +2014,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.09333333333333327,
+   "0": 0.07564625078402328,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2023,7 +2023,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.08666666666666656,
+   "0": 0.05916315691141538,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2032,7 +2032,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "MultiRocket + linear interp.",
-   "0": -0.1133333333333334,
+   "0": -0.0023070572937518206,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2041,7 +2041,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.1266666666666666,
+   "0": 0.025231308829547754,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2050,7 +2050,7 @@
    "mechanism": "block",
    "rate": 0.5,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": -0.020000000000000018,
+   "0": 0.011252323433510375,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2059,7 +2059,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.03333333333333327,
+   "0": 0.07514549178276882,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2068,7 +2068,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": -0.01333333333333342,
+   "0": 0.013064737941610829,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2077,7 +2077,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.013333333333333253,
+   "0": 0.06227053320811202,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2086,7 +2086,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.10666666666666669,
+   "0": 0.03655242418884172,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2095,7 +2095,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MiniRocket + kNN impute",
-   "0": -0.053333333333333344,
+   "0": 0.0018657304539105208,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2104,7 +2104,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MiniRocket + linear interp.",
-   "0": 0.06,
+   "0": 0.017874362355539537,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2113,7 +2113,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.05333333333333329,
+   "0": 0.06934255297439522,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2122,7 +2122,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.026666666666666672,
+   "0": 0.0276837293206911,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2131,7 +2131,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "MultiRocket + linear interp.",
-   "0": -0.01333333333333342,
+   "0": 0.009519985086876423,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2140,7 +2140,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.019999999999999962,
+   "0": 0.018793069150852732,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2149,7 +2149,7 @@
    "mechanism": "block",
    "rate": 0.8,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": 0.05333333333333329,
+   "0": 0.01796844806763283,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2158,106 +2158,106 @@
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.17333333333333334,
-   "1": NaN,
-   "sd_over_seeds": NaN,
-   "sign_agreement": false
+   "0": 0.13076989764881988,
+   "1": 0.13646385869565217,
+   "sd_over_seeds": 0.004026238468027162,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": 0.0,
-   "1": -0.006666666666666821,
-   "sd_over_seeds": 0.004714045207910426,
-   "sign_agreement": false
+   "0": -0.014675191807679622,
+   "1": -0.010064160628019358,
+   "sd_over_seeds": 0.003260491415400378,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.05333333333333323,
-   "1": NaN,
-   "sd_over_seeds": NaN,
-   "sign_agreement": false
+   "0": 0.07765301743311893,
+   "1": 0.06672213164251203,
+   "sd_over_seeds": 0.007729303466913816,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.0,
-   "1": -0.006666666666666821,
-   "sd_over_seeds": 0.004714045207910426,
-   "sign_agreement": false
+   "0": 0.000993934801514255,
+   "1": 0.010398206393848789,
+   "sd_over_seeds": 0.00664982421505976,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.013333333333333197,
-   "1": 0.026666666666666394,
-   "sd_over_seeds": 0.009428090415820538,
+   "0": -0.026006350588517895,
+   "1": -0.015698152429693746,
+   "sd_over_seeds": 0.007288996819919239,
    "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MiniRocket + linear interp.",
-   "0": 0.0,
-   "1": -0.006666666666666821,
-   "sd_over_seeds": 0.004714045207910426,
+   "0": -0.002629546917954436,
+   "1": 0.005500410500128968,
+   "sd_over_seeds": 0.00574874802108465,
    "sign_agreement": false
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.09333333333333338,
-   "1": 0.026666666666666394,
-   "sd_over_seeds": 0.0471404520791034,
+   "0": 0.0446757994257169,
+   "1": 0.02789138705950121,
+   "sd_over_seeds": 0.011868371802382462,
    "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.026666666666666616,
-   "1": 0.0,
-   "sd_over_seeds": 0.018856180831641232,
-   "sign_agreement": false
+   "0": 0.03135666761750341,
+   "1": 0.017749529864058127,
+   "sd_over_seeds": 0.009621699378000642,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "MultiRocket + linear interp.",
-   "0": 0.0,
-   "1": -0.006666666666666821,
-   "sd_over_seeds": 0.004714045207910426,
-   "sign_agreement": false
+   "0": -0.015242506878275072,
+   "1": -0.019185609864458553,
+   "sd_over_seeds": 0.0027881948604472646,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.0,
-   "1": NaN,
-   "sd_over_seeds": NaN,
-   "sign_agreement": false
+   "0": 0.0027608271667956727,
+   "1": 0.011291817632850209,
+   "sd_over_seeds": 0.006032321208784949,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.2,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": 0.0,
-   "1": -0.006666666666666821,
-   "sd_over_seeds": 0.004714045207910426,
-   "sign_agreement": false
+   "0": 0.0028436407371820738,
+   "1": 0.0006686543880837226,
+   "sd_over_seeds": 0.0015379475964356158,
+   "sign_agreement": true
   },
   {
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.16666666666666663,
+   "0": 0.1229976725351643,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2266,7 +2266,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": 0.006666666666666821,
+   "0": 0.005775335072641737,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2275,7 +2275,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.17333333333333334,
+   "0": 0.1303439765882866,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2284,7 +2284,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.006666666666666821,
+   "0": 0.007866729944573455,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2293,7 +2293,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.09333333333333338,
+   "0": 0.017822454454364256,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2302,7 +2302,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MiniRocket + linear interp.",
-   "0": 0.0,
+   "0": 0.0029813549812723883,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2311,7 +2311,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.1266666666666667,
+   "0": 0.062141777263992316,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2320,7 +2320,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.08666666666666678,
+   "0": 0.05403216997624579,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2329,7 +2329,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "MultiRocket + linear interp.",
-   "0": 0.006666666666666821,
+   "0": 0.0025371507482140157,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2338,7 +2338,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.12,
+   "0": 0.03067189293244721,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2347,7 +2347,7 @@
    "mechanism": "mcar",
    "rate": 0.5,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": 0.0,
+   "0": 0.0028631843244276887,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2356,7 +2356,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.14666666666666672,
+   "0": 0.13377249785366682,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2365,7 +2365,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": -0.019999999999999907,
+   "0": 0.006344315219615519,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2374,7 +2374,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.4666666666666668,
+   "0": 0.22682186045942654,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2383,7 +2383,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.01333333333333342,
+   "0": 0.01689672119798759,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2392,7 +2392,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.16000000000000003,
+   "0": 0.06845531512175161,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2401,7 +2401,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MiniRocket + linear interp.",
-   "0": -0.006666666666666599,
+   "0": -0.00984679517975818,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2410,7 +2410,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.32666666666666677,
+   "0": 0.13644776027904557,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2419,7 +2419,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.22666666666666668,
+   "0": 0.11956870629487282,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2428,7 +2428,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "MultiRocket + linear interp.",
-   "0": -0.019999999999999907,
+   "0": 0.008627880034430324,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2437,7 +2437,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.22000000000000008,
+   "0": 0.0662565653608509,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2446,7 +2446,7 @@
    "mechanism": "mcar",
    "rate": 0.8,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": -0.013333333333333308,
+   "0": -0.00866294422425067,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2455,7 +2455,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.21999999999999997,
+   "0": 0.15488111565955817,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2464,7 +2464,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": -0.040000000000000036,
+   "0": -0.0009301212845081452,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2473,7 +2473,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.006666666666666599,
+   "0": 0.06119233244699779,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2482,7 +2482,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.0,
+   "0": 0.0092848545609025,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2491,7 +2491,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.026666666666666727,
+   "0": 0.004544566440690086,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2500,7 +2500,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MiniRocket + linear interp.",
-   "0": -0.02666666666666684,
+   "0": 0.0047890571480680615,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2509,7 +2509,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.10666666666666658,
+   "0": 0.04460442898083646,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2518,7 +2518,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.08666666666666667,
+   "0": 0.03890878195033851,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2527,7 +2527,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "MultiRocket + linear interp.",
-   "0": -0.040000000000000036,
+   "0": -0.001013545948212217,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2536,7 +2536,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.039999999999999925,
+   "0": 0.009951622566747623,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2545,7 +2545,7 @@
    "mechanism": "mnar",
    "rate": 0.2,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": -0.020000000000000018,
+   "0": -0.0023013543585021314,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2554,7 +2554,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.24,
+   "0": 0.15418810636693625,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2563,7 +2563,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": 0.013333333333333308,
+   "0": 0.006002995830775515,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2572,7 +2572,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.1333333333333333,
+   "0": 0.09444140079380964,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2581,7 +2581,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.046666666666666634,
+   "0": 0.015469919779405872,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2590,7 +2590,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.11333333333333329,
+   "0": 0.06460269564994973,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2599,7 +2599,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MiniRocket + linear interp.",
-   "0": 0.06666666666666665,
+   "0": 0.033334624469533204,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2608,7 +2608,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.21333333333333337,
+   "0": 0.1023792456806434,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2617,7 +2617,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.19333333333333336,
+   "0": 0.07543666037223869,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2626,7 +2626,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "MultiRocket + linear interp.",
-   "0": 0.020000000000000018,
+   "0": 0.009884177520662637,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2635,7 +2635,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.07333333333333336,
+   "0": 0.003166128971272516,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2644,7 +2644,7 @@
    "mechanism": "mnar",
    "rate": 0.5,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": 0.053333333333333344,
+   "0": 0.029194971435974788,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2653,7 +2653,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "1-NN ED + linear interp.",
-   "0": 0.11333333333333329,
+   "0": 0.14220518069790306,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2662,7 +2662,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "Hydra-MultiRocket + linear interp.",
-   "0": 0.07999999999999996,
+   "0": 0.01831845829885856,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2671,7 +2671,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "LightGBM (native NaN)",
-   "0": 0.12,
+   "0": 0.10329905692008969,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2680,7 +2680,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MiniRocket + LOCF",
-   "0": 0.11333333333333329,
+   "0": 0.04066364664793907,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2689,7 +2689,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MiniRocket + kNN impute",
-   "0": 0.08666666666666667,
+   "0": 0.040451211788596196,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2698,7 +2698,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MiniRocket + linear interp.",
-   "0": 0.1333333333333333,
+   "0": 0.03241574363217411,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2707,7 +2707,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MiniRocket + mean fill",
-   "0": 0.06666666666666665,
+   "0": 0.0682948418219144,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2716,7 +2716,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MiniRocket + zero fill",
-   "0": 0.05999999999999994,
+   "0": 0.052151993337470316,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2725,7 +2725,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "MultiRocket + linear interp.",
-   "0": 0.07999999999999996,
+   "0": 0.022443333188761665,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2734,7 +2734,7 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "Native masked MiniRocket (group-mean)",
-   "0": 0.013333333333333308,
+   "0": -0.003984347058745036,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
@@ -2743,13 +2743,13 @@
    "mechanism": "mnar",
    "rate": 0.8,
    "baseline": "w/o weighting (\u03b3=0)",
-   "0": 0.11333333333333329,
+   "0": 0.027794760083317743,
    "1": NaN,
    "sd_over_seeds": NaN,
    "sign_agreement": false
   }
  ],
- "E1_seed_variability_n_datasets": 1,
+ "E1_seed_variability_n_datasets": 6,
  "E3_n_datasets": 30,
  "E3_ablation_comparisons": [
   {
@@ -4512,114 +4512,272 @@
  ],
  "E4b": [
   {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "AeonMiniRocket+knn",
+   "mean": 0.6606401298971326,
+   "std": 0.25350537267937967,
+   "count": 30
+  },
+  {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "AeonMiniRocket+linear",
+   "mean": 0.6541052023365943,
+   "std": 0.2373769008592344,
+   "count": 30
+  },
+  {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "LightGBM-NaN",
+   "mean": 0.6200689310443429,
+   "std": 0.21364589546009116,
+   "count": 30
+  },
+  {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "MaskRocket-noC",
+   "mean": 0.5656645984442945,
+   "std": 0.25355725194744616,
+   "count": 30
+  },
+  {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "MissRocket",
+   "mean": 0.7291463218739572,
+   "std": 0.17482996028742892,
+   "count": 30
+  },
+  {
+   "mechanism": "block>mcar",
+   "test_rate": 0.5,
+   "method": "MissRocket-g0",
+   "mean": 0.6556001824209152,
+   "std": 0.2406927764775028,
+   "count": 30
+  },
+  {
    "mechanism": "mcar>block",
    "test_rate": 0.5,
    "method": "AeonMiniRocket+knn",
-   "mean": 0.8466666666666667,
-   "std": NaN,
-   "count": 1
+   "mean": 0.6768186530306229,
+   "std": 0.20886960606239593,
+   "count": 30
   },
   {
    "mechanism": "mcar>block",
    "test_rate": 0.5,
    "method": "AeonMiniRocket+linear",
-   "mean": 0.6333333333333333,
-   "std": NaN,
-   "count": 1
+   "mean": 0.5253291859819631,
+   "std": 0.22666266830582613,
+   "count": 30
+  },
+  {
+   "mechanism": "mcar>block",
+   "test_rate": 0.5,
+   "method": "LightGBM-NaN",
+   "mean": 0.5993526818421632,
+   "std": 0.2070380134910211,
+   "count": 30
   },
   {
    "mechanism": "mcar>block",
    "test_rate": 0.5,
    "method": "MaskRocket-noC",
-   "mean": 0.5933333333333334,
-   "std": NaN,
-   "count": 1
+   "mean": 0.5462414058661331,
+   "std": 0.19319059691082907,
+   "count": 30
   },
   {
    "mechanism": "mcar>block",
    "test_rate": 0.5,
    "method": "MissRocket",
-   "mean": 0.7666666666666667,
-   "std": NaN,
-   "count": 1
+   "mean": 0.6474647331846008,
+   "std": 0.20698063678728507,
+   "count": 30
   },
   {
    "mechanism": "mcar>block",
    "test_rate": 0.5,
    "method": "MissRocket-g0",
-   "mean": 0.64,
-   "std": NaN,
-   "count": 1
+   "mean": 0.5305605209776211,
+   "std": 0.2235596027023735,
+   "count": 30
   }
  ],
  "E4b_statistics": [
+  {
+   "mechanism": "block>mcar",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "AeonMiniRocket+knn",
+   "n_datasets": 30,
+   "mean_diff": 0.06850619197682466,
+   "median_diff": 0.017432567432567436,
+   "ci95_low": -0.006727678132964887,
+   "ci95_high": 0.14802677331661337,
+   "wins": 18,
+   "ties": 1,
+   "losses": 11,
+   "rank_biserial": 0.36091954022988504,
+   "p_value": 0.09167955558323944,
+   "p_holm": 0.09167955558323944
+  },
+  {
+   "mechanism": "block>mcar",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "AeonMiniRocket+linear",
+   "n_datasets": 30,
+   "mean_diff": 0.07504111953736299,
+   "median_diff": 0.0413202375513933,
+   "ci95_low": 0.029354712916917113,
+   "ci95_high": 0.12896671720005345,
+   "wins": 22,
+   "ties": 0,
+   "losses": 8,
+   "rank_biserial": 0.6344086021505376,
+   "p_value": 0.001718590036034584,
+   "p_holm": 0.006874360144138336
+  },
+  {
+   "mechanism": "block>mcar",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "LightGBM-NaN",
+   "n_datasets": 30,
+   "mean_diff": 0.10907739082961439,
+   "median_diff": 0.08071428571428575,
+   "ci95_low": 0.03838855047922685,
+   "ci95_high": 0.18639507482344805,
+   "wins": 18,
+   "ties": 1,
+   "losses": 11,
+   "rank_biserial": 0.5494252873563218,
+   "p_value": 0.01140931729910914,
+   "p_holm": 0.02281863459821828
+  },
+  {
+   "mechanism": "block>mcar",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "MaskRocket-noC",
+   "n_datasets": 30,
+   "mean_diff": 0.16348172342966275,
+   "median_diff": 0.0991345616973758,
+   "ci95_low": 0.08787898211910049,
+   "ci95_high": 0.2506166103470103,
+   "wins": 22,
+   "ties": 2,
+   "losses": 6,
+   "rank_biserial": 0.8472906403940886,
+   "p_value": 0.00011020499098748123,
+   "p_holm": 0.0005510249549374062
+  },
+  {
+   "mechanism": "block>mcar",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "MissRocket-g0",
+   "n_datasets": 30,
+   "mean_diff": 0.07354613945304204,
+   "median_diff": 0.04131644328093953,
+   "ci95_low": 0.026387601329356993,
+   "ci95_high": 0.12959768841268984,
+   "wins": 22,
+   "ties": 0,
+   "losses": 8,
+   "rank_biserial": 0.5913978494623656,
+   "p_value": 0.0037444327026605606,
+   "p_holm": 0.011233298107981682
+  },
   {
    "mechanism": "mcar>block",
    "rate": 0.5,
    "proposed": "MissRocket",
    "baseline": "AeonMiniRocket+knn",
-   "n_datasets": 1,
-   "mean_diff": -0.07999999999999996,
-   "median_diff": -0.07999999999999996,
-   "ci95_low": -0.07999999999999996,
-   "ci95_high": -0.07999999999999996,
-   "wins": 0,
+   "n_datasets": 30,
+   "mean_diff": -0.029353919846022123,
+   "median_diff": -0.025322318664027177,
+   "ci95_low": -0.10792127521416127,
+   "ci95_high": 0.048988621857584694,
+   "wins": 11,
    "ties": 0,
-   "losses": 1,
-   "rank_biserial": -1.0,
-   "p_value": 1.0,
-   "p_holm": 1.0
+   "losses": 19,
+   "rank_biserial": -0.23010752688172043,
+   "p_value": 0.28008678182959557,
+   "p_holm": 0.5601735636591911
   },
   {
    "mechanism": "mcar>block",
    "rate": 0.5,
    "proposed": "MissRocket",
    "baseline": "AeonMiniRocket+linear",
-   "n_datasets": 1,
-   "mean_diff": 0.13333333333333341,
-   "median_diff": 0.13333333333333341,
-   "ci95_low": 0.13333333333333341,
-   "ci95_high": 0.13333333333333341,
-   "wins": 1,
+   "n_datasets": 30,
+   "mean_diff": 0.12213554720263774,
+   "median_diff": 0.09342546063651591,
+   "ci95_low": 0.07487595368328168,
+   "ci95_high": 0.18119622279899417,
+   "wins": 24,
+   "ties": 3,
+   "losses": 3,
+   "rank_biserial": 0.9312169312169312,
+   "p_value": 1.968960411940791e-05,
+   "p_holm": 7.875841647763165e-05
+  },
+  {
+   "mechanism": "mcar>block",
+   "rate": 0.5,
+   "proposed": "MissRocket",
+   "baseline": "LightGBM-NaN",
+   "n_datasets": 30,
+   "mean_diff": 0.04811205134243766,
+   "median_diff": 0.07051288186966581,
+   "ci95_low": -0.03684896190810265,
+   "ci95_high": 0.1354315706483614,
+   "wins": 19,
    "ties": 0,
-   "losses": 0,
-   "rank_biserial": 1.0,
-   "p_value": 1.0,
-   "p_holm": 1.0
+   "losses": 11,
+   "rank_biserial": 0.2172043010752688,
+   "p_value": 0.308520769700408,
+   "p_holm": 0.5601735636591911
   },
   {
    "mechanism": "mcar>block",
    "rate": 0.5,
    "proposed": "MissRocket",
    "baseline": "MaskRocket-noC",
-   "n_datasets": 1,
-   "mean_diff": 0.17333333333333334,
-   "median_diff": 0.17333333333333334,
-   "ci95_low": 0.17333333333333334,
-   "ci95_high": 0.17333333333333334,
-   "wins": 1,
+   "n_datasets": 30,
+   "mean_diff": 0.10122332731846773,
+   "median_diff": 0.09452357035229961,
+   "ci95_low": 0.05823302418446268,
+   "ci95_high": 0.14559303127079545,
+   "wins": 24,
    "ties": 0,
-   "losses": 0,
-   "rank_biserial": 1.0,
-   "p_value": 1.0,
-   "p_holm": 1.0
+   "losses": 6,
+   "rank_biserial": 0.7462365591397849,
+   "p_value": 0.0001528710126876831,
+   "p_holm": 0.0004586130380630493
   },
   {
    "mechanism": "mcar>block",
    "rate": 0.5,
    "proposed": "MissRocket",
    "baseline": "MissRocket-g0",
-   "n_datasets": 1,
-   "mean_diff": 0.1266666666666667,
-   "median_diff": 0.1266666666666667,
-   "ci95_low": 0.1266666666666667,
-   "ci95_high": 0.1266666666666667,
-   "wins": 1,
-   "ties": 0,
-   "losses": 0,
-   "rank_biserial": 1.0,
-   "p_value": 1.0,
-   "p_holm": 1.0
+   "n_datasets": 30,
+   "mean_diff": 0.11690421220697973,
+   "median_diff": 0.08697667280540211,
+   "ci95_low": 0.07116819363439901,
+   "ci95_high": 0.17553102602265266,
+   "wins": 26,
+   "ties": 1,
+   "losses": 3,
+   "rank_biserial": 0.9218390804597701,
+   "p_value": 1.2977273282858302e-05,
+   "p_holm": 6.488636641429152e-05
   }
  ]
 }

@@ -1,100 +1,100 @@
 mechanism,rate,baseline,0,1,sd_over_seeds,sign_agreement
-block,0.2,1-NN ED + linear interp.,0.14,,,False
-block,0.2,Hydra-MultiRocket + linear interp.,-0.033333333333333326,,,False
-block,0.2,LightGBM (native NaN),0.06000000000000005,,,False
-block,0.2,MiniRocket + LOCF,0.0,,,False
-block,0.2,MiniRocket + kNN impute,0.026666666666666727,,,False
-block,0.2,MiniRocket + linear interp.,-0.019999999999999907,,,False
-block,0.2,MiniRocket + mean fill,0.10666666666666669,,,False
-block,0.2,MiniRocket + zero fill,0.033333333333333326,,,False
-block,0.2,MultiRocket + linear interp.,-0.033333333333333326,,,False
-block,0.2,Native masked MiniRocket (group-mean),0.040000000000000036,,,False
-block,0.2,w/o weighting (γ=0),-0.019999999999999907,,,False
-block,0.5,1-NN ED + linear interp.,0.06666666666666665,,,False
-block,0.5,Hydra-MultiRocket + linear interp.,-0.1133333333333334,,,False
-block,0.5,LightGBM (native NaN),-0.06000000000000005,,,False
-block,0.5,MiniRocket + LOCF,-0.01333333333333342,,,False
-block,0.5,MiniRocket + kNN impute,-0.18000000000000005,,,False
-block,0.5,MiniRocket + linear interp.,-0.046666666666666745,,,False
-block,0.5,MiniRocket + mean fill,0.09333333333333327,,,False
-block,0.5,MiniRocket + zero fill,0.08666666666666656,,,False
-block,0.5,MultiRocket + linear interp.,-0.1133333333333334,,,False
-block,0.5,Native masked MiniRocket (group-mean),0.1266666666666666,,,False
-block,0.5,w/o weighting (γ=0),-0.020000000000000018,,,False
-block,0.8,1-NN ED + linear interp.,0.03333333333333327,,,False
-block,0.8,Hydra-MultiRocket + linear interp.,-0.01333333333333342,,,False
-block,0.8,LightGBM (native NaN),0.013333333333333253,,,False
-block,0.8,MiniRocket + LOCF,0.10666666666666669,,,False
-block,0.8,MiniRocket + kNN impute,-0.053333333333333344,,,False
-block,0.8,MiniRocket + linear interp.,0.06,,,False
-block,0.8,MiniRocket + mean fill,0.05333333333333329,,,False
-block,0.8,MiniRocket + zero fill,0.026666666666666672,,,False
-block,0.8,MultiRocket + linear interp.,-0.01333333333333342,,,False
-block,0.8,Native masked MiniRocket (group-mean),0.019999999999999962,,,False
-block,0.8,w/o weighting (γ=0),0.05333333333333329,,,False
-mcar,0.2,1-NN ED + linear interp.,0.17333333333333334,,,False
-mcar,0.2,Hydra-MultiRocket + linear interp.,0.0,-0.006666666666666821,0.004714045207910426,False
-mcar,0.2,LightGBM (native NaN),0.05333333333333323,,,False
-mcar,0.2,MiniRocket + LOCF,0.0,-0.006666666666666821,0.004714045207910426,False
-mcar,0.2,MiniRocket + kNN impute,0.013333333333333197,0.026666666666666394,0.009428090415820538,True
-mcar,0.2,MiniRocket + linear interp.,0.0,-0.006666666666666821,0.004714045207910426,False
-mcar,0.2,MiniRocket + mean fill,0.09333333333333338,0.026666666666666394,0.0471404520791034,True
-mcar,0.2,MiniRocket + zero fill,0.026666666666666616,0.0,0.018856180831641232,False
-mcar,0.2,MultiRocket + linear interp.,0.0,-0.006666666666666821,0.004714045207910426,False
-mcar,0.2,Native masked MiniRocket (group-mean),0.0,,,False
-mcar,0.2,w/o weighting (γ=0),0.0,-0.006666666666666821,0.004714045207910426,False
-mcar,0.5,1-NN ED + linear interp.,0.16666666666666663,,,False
-mcar,0.5,Hydra-MultiRocket + linear interp.,0.006666666666666821,,,False
-mcar,0.5,LightGBM (native NaN),0.17333333333333334,,,False
-mcar,0.5,MiniRocket + LOCF,0.006666666666666821,,,False
-mcar,0.5,MiniRocket + kNN impute,0.09333333333333338,,,False
-mcar,0.5,MiniRocket + linear interp.,0.0,,,False
-mcar,0.5,MiniRocket + mean fill,0.1266666666666667,,,False
-mcar,0.5,MiniRocket + zero fill,0.08666666666666678,,,False
-mcar,0.5,MultiRocket + linear interp.,0.006666666666666821,,,False
-mcar,0.5,Native masked MiniRocket (group-mean),0.12,,,False
-mcar,0.5,w/o weighting (γ=0),0.0,,,False
-mcar,0.8,1-NN ED + linear interp.,0.14666666666666672,,,False
-mcar,0.8,Hydra-MultiRocket + linear interp.,-0.019999999999999907,,,False
-mcar,0.8,LightGBM (native NaN),0.4666666666666668,,,False
-mcar,0.8,MiniRocket + LOCF,0.01333333333333342,,,False
-mcar,0.8,MiniRocket + kNN impute,0.16000000000000003,,,False
-mcar,0.8,MiniRocket + linear interp.,-0.006666666666666599,,,False
-mcar,0.8,MiniRocket + mean fill,0.32666666666666677,,,False
-mcar,0.8,MiniRocket + zero fill,0.22666666666666668,,,False
-mcar,0.8,MultiRocket + linear interp.,-0.019999999999999907,,,False
-mcar,0.8,Native masked MiniRocket (group-mean),0.22000000000000008,,,False
-mcar,0.8,w/o weighting (γ=0),-0.013333333333333308,,,False
-mnar,0.2,1-NN ED + linear interp.,0.21999999999999997,,,False
-mnar,0.2,Hydra-MultiRocket + linear interp.,-0.040000000000000036,,,False
-mnar,0.2,LightGBM (native NaN),0.006666666666666599,,,False
-mnar,0.2,MiniRocket + LOCF,0.0,,,False
-mnar,0.2,MiniRocket + kNN impute,0.026666666666666727,,,False
-mnar,0.2,MiniRocket + linear interp.,-0.02666666666666684,,,False
-mnar,0.2,MiniRocket + mean fill,0.10666666666666658,,,False
-mnar,0.2,MiniRocket + zero fill,0.08666666666666667,,,False
-mnar,0.2,MultiRocket + linear interp.,-0.040000000000000036,,,False
-mnar,0.2,Native masked MiniRocket (group-mean),0.039999999999999925,,,False
-mnar,0.2,w/o weighting (γ=0),-0.020000000000000018,,,False
-mnar,0.5,1-NN ED + linear interp.,0.24,,,False
-mnar,0.5,Hydra-MultiRocket + linear interp.,0.013333333333333308,,,False
-mnar,0.5,LightGBM (native NaN),0.1333333333333333,,,False
-mnar,0.5,MiniRocket + LOCF,0.046666666666666634,,,False
-mnar,0.5,MiniRocket + kNN impute,0.11333333333333329,,,False
-mnar,0.5,MiniRocket + linear interp.,0.06666666666666665,,,False
-mnar,0.5,MiniRocket + mean fill,0.21333333333333337,,,False
-mnar,0.5,MiniRocket + zero fill,0.19333333333333336,,,False
-mnar,0.5,MultiRocket + linear interp.,0.020000000000000018,,,False
-mnar,0.5,Native masked MiniRocket (group-mean),0.07333333333333336,,,False
-mnar,0.5,w/o weighting (γ=0),0.053333333333333344,,,False
-mnar,0.8,1-NN ED + linear interp.,0.11333333333333329,,,False
-mnar,0.8,Hydra-MultiRocket + linear interp.,0.07999999999999996,,,False
-mnar,0.8,LightGBM (native NaN),0.12,,,False
-mnar,0.8,MiniRocket + LOCF,0.11333333333333329,,,False
-mnar,0.8,MiniRocket + kNN impute,0.08666666666666667,,,False
-mnar,0.8,MiniRocket + linear interp.,0.1333333333333333,,,False
-mnar,0.8,MiniRocket + mean fill,0.06666666666666665,,,False
-mnar,0.8,MiniRocket + zero fill,0.05999999999999994,,,False
-mnar,0.8,MultiRocket + linear interp.,0.07999999999999996,,,False
-mnar,0.8,Native masked MiniRocket (group-mean),0.013333333333333308,,,False
-mnar,0.8,w/o weighting (γ=0),0.11333333333333329,,,False
+block,0.2,1-NN ED + linear interp.,0.14903591660661383,,,False
+block,0.2,Hydra-MultiRocket + linear interp.,-0.015620902922349448,,,False
+block,0.2,LightGBM (native NaN),0.06887685440965828,,,False
+block,0.2,MiniRocket + LOCF,0.004310006277746636,,,False
+block,0.2,MiniRocket + kNN impute,-0.006711495004492844,,,False
+block,0.2,MiniRocket + linear interp.,0.006451010083317814,,,False
+block,0.2,MiniRocket + mean fill,0.03595381366157774,,,False
+block,0.2,MiniRocket + zero fill,0.016687131203236616,,,False
+block,0.2,MultiRocket + linear interp.,-0.020425336240335917,,,False
+block,0.2,Native masked MiniRocket (group-mean),0.008856464939146455,,,False
+block,0.2,w/o weighting (γ=0),0.0038155834078434,,,False
+block,0.5,1-NN ED + linear interp.,0.12651648019701783,,,False
+block,0.5,Hydra-MultiRocket + linear interp.,-0.006931168038985432,,,False
+block,0.5,LightGBM (native NaN),0.06824891126413467,,,False
+block,0.5,MiniRocket + LOCF,0.018725787859983457,,,False
+block,0.5,MiniRocket + kNN impute,-0.0429713285190968,,,False
+block,0.5,MiniRocket + linear interp.,0.006310579838035245,,,False
+block,0.5,MiniRocket + mean fill,0.07564625078402328,,,False
+block,0.5,MiniRocket + zero fill,0.05916315691141538,,,False
+block,0.5,MultiRocket + linear interp.,-0.0023070572937518206,,,False
+block,0.5,Native masked MiniRocket (group-mean),0.025231308829547754,,,False
+block,0.5,w/o weighting (γ=0),0.011252323433510375,,,False
+block,0.8,1-NN ED + linear interp.,0.07514549178276882,,,False
+block,0.8,Hydra-MultiRocket + linear interp.,0.013064737941610829,,,False
+block,0.8,LightGBM (native NaN),0.06227053320811202,,,False
+block,0.8,MiniRocket + LOCF,0.03655242418884172,,,False
+block,0.8,MiniRocket + kNN impute,0.0018657304539105208,,,False
+block,0.8,MiniRocket + linear interp.,0.017874362355539537,,,False
+block,0.8,MiniRocket + mean fill,0.06934255297439522,,,False
+block,0.8,MiniRocket + zero fill,0.0276837293206911,,,False
+block,0.8,MultiRocket + linear interp.,0.009519985086876423,,,False
+block,0.8,Native masked MiniRocket (group-mean),0.018793069150852732,,,False
+block,0.8,w/o weighting (γ=0),0.01796844806763283,,,False
+mcar,0.2,1-NN ED + linear interp.,0.13076989764881988,0.13646385869565217,0.004026238468027162,True
+mcar,0.2,Hydra-MultiRocket + linear interp.,-0.014675191807679622,-0.010064160628019358,0.003260491415400378,True
+mcar,0.2,LightGBM (native NaN),0.07765301743311893,0.06672213164251203,0.007729303466913816,True
+mcar,0.2,MiniRocket + LOCF,0.000993934801514255,0.010398206393848789,0.00664982421505976,True
+mcar,0.2,MiniRocket + kNN impute,-0.026006350588517895,-0.015698152429693746,0.007288996819919239,True
+mcar,0.2,MiniRocket + linear interp.,-0.002629546917954436,0.005500410500128968,0.00574874802108465,False
+mcar,0.2,MiniRocket + mean fill,0.0446757994257169,0.02789138705950121,0.011868371802382462,True
+mcar,0.2,MiniRocket + zero fill,0.03135666761750341,0.017749529864058127,0.009621699378000642,True
+mcar,0.2,MultiRocket + linear interp.,-0.015242506878275072,-0.019185609864458553,0.0027881948604472646,True
+mcar,0.2,Native masked MiniRocket (group-mean),0.0027608271667956727,0.011291817632850209,0.006032321208784949,True
+mcar,0.2,w/o weighting (γ=0),0.0028436407371820738,0.0006686543880837226,0.0015379475964356158,True
+mcar,0.5,1-NN ED + linear interp.,0.1229976725351643,,,False
+mcar,0.5,Hydra-MultiRocket + linear interp.,0.005775335072641737,,,False
+mcar,0.5,LightGBM (native NaN),0.1303439765882866,,,False
+mcar,0.5,MiniRocket + LOCF,0.007866729944573455,,,False
+mcar,0.5,MiniRocket + kNN impute,0.017822454454364256,,,False
+mcar,0.5,MiniRocket + linear interp.,0.0029813549812723883,,,False
+mcar,0.5,MiniRocket + mean fill,0.062141777263992316,,,False
+mcar,0.5,MiniRocket + zero fill,0.05403216997624579,,,False
+mcar,0.5,MultiRocket + linear interp.,0.0025371507482140157,,,False
+mcar,0.5,Native masked MiniRocket (group-mean),0.03067189293244721,,,False
+mcar,0.5,w/o weighting (γ=0),0.0028631843244276887,,,False
+mcar,0.8,1-NN ED + linear interp.,0.13377249785366682,,,False
+mcar,0.8,Hydra-MultiRocket + linear interp.,0.006344315219615519,,,False
+mcar,0.8,LightGBM (native NaN),0.22682186045942654,,,False
+mcar,0.8,MiniRocket + LOCF,0.01689672119798759,,,False
+mcar,0.8,MiniRocket + kNN impute,0.06845531512175161,,,False
+mcar,0.8,MiniRocket + linear interp.,-0.00984679517975818,,,False
+mcar,0.8,MiniRocket + mean fill,0.13644776027904557,,,False
+mcar,0.8,MiniRocket + zero fill,0.11956870629487282,,,False
+mcar,0.8,MultiRocket + linear interp.,0.008627880034430324,,,False
+mcar,0.8,Native masked MiniRocket (group-mean),0.0662565653608509,,,False
+mcar,0.8,w/o weighting (γ=0),-0.00866294422425067,,,False
+mnar,0.2,1-NN ED + linear interp.,0.15488111565955817,,,False
+mnar,0.2,Hydra-MultiRocket + linear interp.,-0.0009301212845081452,,,False
+mnar,0.2,LightGBM (native NaN),0.06119233244699779,,,False
+mnar,0.2,MiniRocket + LOCF,0.0092848545609025,,,False
+mnar,0.2,MiniRocket + kNN impute,0.004544566440690086,,,False
+mnar,0.2,MiniRocket + linear interp.,0.0047890571480680615,,,False
+mnar,0.2,MiniRocket + mean fill,0.04460442898083646,,,False
+mnar,0.2,MiniRocket + zero fill,0.03890878195033851,,,False
+mnar,0.2,MultiRocket + linear interp.,-0.001013545948212217,,,False
+mnar,0.2,Native masked MiniRocket (group-mean),0.009951622566747623,,,False
+mnar,0.2,w/o weighting (γ=0),-0.0023013543585021314,,,False
+mnar,0.5,1-NN ED + linear interp.,0.15418810636693625,,,False
+mnar,0.5,Hydra-MultiRocket + linear interp.,0.006002995830775515,,,False
+mnar,0.5,LightGBM (native NaN),0.09444140079380964,,,False
+mnar,0.5,MiniRocket + LOCF,0.015469919779405872,,,False
+mnar,0.5,MiniRocket + kNN impute,0.06460269564994973,,,False
+mnar,0.5,MiniRocket + linear interp.,0.033334624469533204,,,False
+mnar,0.5,MiniRocket + mean fill,0.1023792456806434,,,False
+mnar,0.5,MiniRocket + zero fill,0.07543666037223869,,,False
+mnar,0.5,MultiRocket + linear interp.,0.009884177520662637,,,False
+mnar,0.5,Native masked MiniRocket (group-mean),0.003166128971272516,,,False
+mnar,0.5,w/o weighting (γ=0),0.029194971435974788,,,False
+mnar,0.8,1-NN ED + linear interp.,0.14220518069790306,,,False
+mnar,0.8,Hydra-MultiRocket + linear interp.,0.01831845829885856,,,False
+mnar,0.8,LightGBM (native NaN),0.10329905692008969,,,False
+mnar,0.8,MiniRocket + LOCF,0.04066364664793907,,,False
+mnar,0.8,MiniRocket + kNN impute,0.040451211788596196,,,False
+mnar,0.8,MiniRocket + linear interp.,0.03241574363217411,,,False
+mnar,0.8,MiniRocket + mean fill,0.0682948418219144,,,False
+mnar,0.8,MiniRocket + zero fill,0.052151993337470316,,,False
+mnar,0.8,MultiRocket + linear interp.,0.022443333188761665,,,False
+mnar,0.8,Native masked MiniRocket (group-mean),-0.003984347058745036,,,False
+mnar,0.8,w/o weighting (γ=0),0.027794760083317743,,,False

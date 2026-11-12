@@ -254,6 +254,26 @@ def e2_values(v):
     v["GRUD_TIME_RATIO"] = f"{med['GRU-D'] / med['MissRocket']:.0f}"
 
 
+def table_mechshift(v):
+    g = t("table_mechanism_shift"); c = t("table_mechanism_shift_statistics")
+    if g is None or c is None:
+        return
+    lab = {"MissRocket": "MissRocket", "MissRocket-g0": "w/o weighting (γ=0)", "AeonMiniRocket+linear": "MiniRocket + linear interp.",
+           "AeonMiniRocket+knn": "MiniRocket + kNN impute", "MaskRocket-noC": "Native masked MiniRocket", "LightGBM-NaN": "LightGBM (native NaN)"}
+    rows = []
+    for m in lab:
+        r = {"Method": lab[m]}
+        for mech, name in [("mcar>block", "Train MCAR → test block"), ("block>mcar", "Train block → test MCAR")]:
+            acc = float(g[(g.mechanism == mech) & (g.method == m)]["mean"].iloc[0])
+            if m == "MissRocket":
+                r[name] = f"{acc:.3f}"
+            else:
+                x = c[(c.mechanism == mech) & (c.baseline == m)].iloc[0]
+                r[name] = f"{acc:.3f} ({x.mean_diff * 100:+.1f}; {x.wins}/{x.ties}/{x.losses}; p {pfmt(x.p_holm)})"
+        rows.append(r)
+    v["_tables"]["mechshift"] = md_table(pd.DataFrame(rows), first=2)
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -261,7 +281,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 

@@ -97,6 +97,18 @@ This holds even though the training data contain no missing values, and the reas
 
 **MCAR.** The shift has little effect on either interpolation-based method. Differences are small: {{Q:table_shift;mechanism=mcar;train_rate=0.0;test_rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp for 0%→50% (not significant) and {{Q:table_shift;mechanism=mcar;train_rate=0.2;test_rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp for 20%→80% (p (Holm) {{Q:table_shift;mechanism=mcar;train_rate=0.2;test_rate=0.8;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}}).
 
+**Mechanism shift.** The missingness *mechanism* may also change between training and deployment, for example from sporadic dropouts to long outages. We added this experiment in response to an internal review (it was not part of the pre-specified protocol). It uses the same 30 datasets, 50% missing values and seed 0 (@tab:mechshift).
+
+{#tab:mechshift} Accuracy under train–test mechanism shift (30 datasets, 50% missing values, seed 0). Baseline cells: accuracy (MissRocket minus baseline in pp; W/T/L; Holm-corrected p within the shift condition). Added post hoc
+
+{{TABLE:mechshift}}
+
+The concern that weighting might hurt when the training data have different gaps than the test data is not borne out. MissRocket was the most robust interpolation-based method in both directions:
+- *MCAR → block:* {{Q:table_mechanism_shift_statistics;mechanism=mcar>block;baseline=AeonMiniRocket+linear;col=mean_diff;fmt=pp}} pp over MiniRocket with interpolation, p (Holm) {{Q:table_mechanism_shift_statistics;mechanism=mcar>block;baseline=AeonMiniRocket+linear;col=p_holm;fmt=p}};
+- *block → MCAR:* {{Q:table_mechanism_shift_statistics;mechanism=block>mcar;baseline=AeonMiniRocket+linear;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_mechanism_shift_statistics;mechanism=block>mcar;baseline=AeonMiniRocket+linear;col=p_holm;fmt=p}}.
+
+In the second direction the gain arises because training on block-missing data without weighting teaches the classifier fabricated responses, which do not occur at test time. Under MCAR → block shift, kNN imputation was again slightly more accurate than MissRocket (not significant).
+
 **Native estimators under shift.** The native group-mean estimator and LightGBM degrade severely under MCAR shift. Both rely on statistics whose distribution changes with the missing rate.
 
 ### 6.4 External validation: PhysioNet 2012 mortality prediction (RQ5)
