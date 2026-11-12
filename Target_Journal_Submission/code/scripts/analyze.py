@@ -85,10 +85,41 @@ def ablation_tables(R, T, stats):
     md(s.reset_index(), os.path.join(T, "table_ablation_means"))
 
 
+def seed_variability(R, T, stats):
+    """Amendment 2: seeds 1-2 exist only for the 30-dataset subset. Per seed, paired MissRocket - baseline
+    differences over those datasets; agreement of the sign of the mean difference across seeds."""
+    if "E1" not in R:
+        return
+    d = R["E1"][R["E1"].status == "ok"]
+    multi = d.groupby("dataset").seed.nunique()
+    ds = multi[multi > 1].index
+    if len(ds) == 0:
+        return
+    sub = d[d.dataset.isin(ds)]
+    rows = []
+    for (mech, rate, seed), g in sub.groupby(["mechanism", "test_rate", "seed"]):
+        tab = g.pivot_table(index="dataset", columns="method", values="accuracy")
+        for b in MAIN_BASELINES + ["MissRocket-g0"]:
+            if b in tab and PROPOSED in tab:
+                dd = (tab[PROPOSED] - tab[b]).dropna()
+                rows.append(dict(mechanism=mech, rate=rate, seed=seed, baseline=LABEL.get(b, b), n=len(dd),
+                                 mean_diff=dd.mean(), wins=int((dd > 1e-9).sum()), losses=int((dd < -1e-9).sum())))
+    t = pd.DataFrame(rows)
+    piv = t.pivot_table(index=["mechanism", "rate", "baseline"], columns="seed", values="mean_diff").reset_index()
+    piv.columns = [str(c) for c in piv.columns]
+    sc = [c for c in piv.columns if c.isdigit()]
+    piv["sd_over_seeds"] = piv[sc].std(axis=1)
+    piv["sign_agreement"] = piv[sc].apply(lambda r: bool((r > 0).all() or (r < 0).all()), axis=1)
+    md(piv, os.path.join(T, "table_seed_variability"))
+    stats["E1_seed_variability"] = piv.to_dict("records")
+    stats["E1_seed_variability_n_datasets"] = int(len(ds))
+
+
 def main_tables(R, T, S, F, stats):
     if "E1" not in R:
         return
     d = R["E1"]
+    d = d[d.seed == 0]  # amendment 2: primary analysis on seed 0 (all eligible datasets)
     stats["E1_errors"] = int((d.status != "ok").sum())
     a = seed_avg(d)
     a_bacc = seed_avg(d, "balanced_accuracy")
@@ -359,6 +390,7 @@ def main():
         pd.concat(R.values()).to_csv(os.path.join(base, "raw_results.csv"), index=False)
     stats = {"mode": mode}
     main_tables(R, T, S, F, stats)
+    seed_variability(R, T, stats)
     ablation_tables(R, T, stats)
     ablation_figure(R, F)
     shift_tables(R, T, stats)
