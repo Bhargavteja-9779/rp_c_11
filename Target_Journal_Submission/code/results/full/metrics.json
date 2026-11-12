@@ -1,0 +1,101 @@
+{
+ "E1": {
+  "1NN-ED+linear": {
+   "accuracy": 0.588827801560896,
+   "balanced_accuracy": 0.5699282011412653,
+   "macro_f1": 0.560798721853698
+  },
+  "AeonMiniRocket+knn": {
+   "accuracy": 0.7300307230292938,
+   "balanced_accuracy": 0.7052318861519284,
+   "macro_f1": 0.6987591539249819
+  },
+  "AeonMiniRocket+linear": {
+   "accuracy": 0.7380071327328966,
+   "balanced_accuracy": 0.7129904259497513,
+   "macro_f1": 0.7076621580721559
+  },
+  "AeonMiniRocket+locf": {
+   "accuracy": 0.7193594419662419,
+   "balanced_accuracy": 0.6933393416565377,
+   "macro_f1": 0.6875786966579919
+  },
+  "AeonMiniRocket+mean": {
+   "accuracy": 0.6595369287917522,
+   "balanced_accuracy": 0.6308826599128684,
+   "macro_f1": 0.6233974018099309
+  },
+  "AeonMiniRocket+zero": {
+   "accuracy": 0.6736017445792337,
+   "balanced_accuracy": 0.6459724118483382,
+   "macro_f1": 0.639247456749977
+  },
+  "HydraMultiRocket+linear": {
+   "accuracy": 0.7456352424866228,
+   "balanced_accuracy": 0.7217982710911266,
+   "macro_f1": 0.717441881773411
+  },
+  "LightGBM-NaN": {
+   "accuracy": 0.6025152173643864,
+   "balanced_accuracy": 0.5721005505798359,
+   "macro_f1": 0.561916969097448
+  },
+  "MaskRocket-noC": {
+   "accuracy": 0.7016877854638015,
+   "balanced_accuracy": 0.6738062578860291,
+   "macro_f1": 0.6669182062441462
+  },
+  "MissRocket": {
+   "accuracy": 0.7537207063071947,
+   "balanced_accuracy": 0.7291624330533067,
+   "macro_f1": 0.7239841916142062
+  },
+  "MissRocket-g0": {
+   "accuracy": 0.742591228876031,
+   "balanced_accuracy": 0.7176009517500951,
+   "macro_f1": 0.7124130191377667
+  },
+  "MultiRocket+linear": {
+   "accuracy": 0.7442688715467267,
+   "balanced_accuracy": 0.720424002474852,
+   "macro_f1": 0.715844807931506
+  }
+ },
+ "E5_natural": {
+  "1NN-ED+linear": {
+   "accuracy": 0.5898254598662207,
+   "balanced_accuracy": 0.5885281589325707,
+   "macro_f1": 0.5902077725744023
+  },
+  "AeonMiniRocket+linear": {
+   "accuracy": 0.7106704446921838,
+   "balanced_accuracy": 0.7098122429494977,
+   "macro_f1": 0.7055536892070792
+  },
+  "AeonMiniRocket+resample": {
+   "accuracy": 0.7181185521402913,
+   "balanced_accuracy": 0.7172603503976053,
+   "macro_f1": 0.7111239995957487
+  },
+  "LightGBM-NaN": {
+   "accuracy": 0.6046699812868291,
+   "balanced_accuracy": 0.5999130791594026,
+   "macro_f1": 0.5984295499241605
+  },
+  "MaskRocket-noC": {
+   "accuracy": 0.7290768611420785,
+   "balanced_accuracy": 0.7312016505643957,
+   "macro_f1": 0.7217504001184345
+  },
+  "MissRocket": {
+   "accuracy": 0.7334557431296562,
+   "balanced_accuracy": 0.7317872740911956,
+   "macro_f1": 0.7235190660153555
+  },
+  "MissRocket-g0": {
+   "accuracy": 0.7253079046557308,
+   "balanced_accuracy": 0.7242452173824723,
+   "macro_f1": 0.7165453720297464
+  }
+ }
+}
