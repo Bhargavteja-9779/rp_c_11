@@ -3125,6 +3125,42 @@
    "time_s": 65.23285680100162,
    "n_train": 8000,
    "n_test": 4000
+  },
+  {
+   "method": "MissRocket-select",
+   "seed": 0,
+   "auroc": 0.8060732564978538,
+   "auprc": 0.4906195212177538,
+   "time_s": 373.42622503500024,
+   "n_train": 8000,
+   "n_test": 4000
+  },
+  {
+   "method": "MaskRocket-noC",
+   "seed": 0,
+   "auroc": 0.7845062632178298,
+   "auprc": 0.4514384244739385,
+   "time_s": 53.34451684399755,
+   "n_train": 8000,
+   "n_test": 4000
+  },
+  {
+   "method": "LightGBM-NaN",
+   "seed": 0,
+   "auroc": 0.8456522881705899,
+   "auprc": 0.5215429860005983,
+   "time_s": 12.380072562998976,
+   "n_train": 8000,
+   "n_test": 4000
+  },
+  {
+   "method": "GRU-D",
+   "seed": 0,
+   "auroc": 0.8598926305514885,
+   "auprc": 0.5403264833140883,
+   "time_s": 1148.499581903001,
+   "n_train": 8000,
+   "n_test": 4000
   }
  ],
  "E5_p12_selection": [
@@ -3142,6 +3178,152 @@
    "ci95_high": 0.00849542115641818,
    "bootstrap_p": 0.54,
    "n_boot": 2000
+  },
+  {
+   "baseline": "\u03b3, mask selected by LOO",
+   "auroc_diff_seed_ensemble": -0.0033452215589842016,
+   "ci95_low": -0.015778193436345164,
+   "ci95_high": 0.00849542115641818,
+   "bootstrap_p": 0.54,
+   "n_boot": 2000
+  },
+  {
+   "baseline": "Native masked MiniRocket (group-mean)",
+   "auroc_diff_seed_ensemble": 0.01822177172103978,
+   "ci95_low": -0.0011573130538128779,
+   "ci95_high": 0.037040127074615924,
+   "bootstrap_p": 0.068,
+   "n_boot": 2000
+  },
+  {
+   "baseline": "LightGBM (native NaN)",
+   "auroc_diff_seed_ensemble": -0.04292425323172033,
+   "ci95_low": -0.06011902825290085,
+   "ci95_high": -0.025836301339378302,
+   "bootstrap_p": 0.0,
+   "n_boot": 2000
+  },
+  {
+   "baseline": "GRU-D",
+   "auroc_diff_seed_ensemble": -0.057164595612618885,
+   "ci95_low": -0.07361389554200799,
+   "ci95_high": -0.04164068470164113,
+   "bootstrap_p": 0.0,
+   "n_boot": 2000
+  }
+ ],
+ "E7": [
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-g0-nf10000",
+   "mean": 0.6392010693335218,
+   "std": 0.19800858279291877,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-g0-nf20000",
+   "mean": 0.6504599225824729,
+   "std": 0.19212998911937215,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-g0-nf2500",
+   "mean": 0.6375191862311702,
+   "std": 0.192865831428315,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-g0-nf5000",
+   "mean": 0.6388983113824017,
+   "std": 0.20016941734980978,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma0.0",
+   "mean": 0.646782072635118,
+   "std": 0.19960003654104022,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma0.25",
+   "mean": 0.6761233080874726,
+   "std": 0.1847559237341122,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma0.5",
+   "mean": 0.6829244008473838,
+   "std": 0.18200169658988094,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma1.0",
+   "mean": 0.6762796678952245,
+   "std": 0.19171149139136656,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma2.0",
+   "mean": 0.6733871673540165,
+   "std": 0.19110591236116842,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-gamma4.0",
+   "mean": 0.6578914535117777,
+   "std": 0.19264988421924487,
+   "count": 21
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-nf10000",
+   "mean": 0.6686911981424113,
+   "std": 0.19044685923519145,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-nf20000",
+   "mean": 0.6653593324257604,
+   "std": 0.19945649874189844,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-nf2500",
+   "mean": 0.6676437168962494,
+   "std": 0.1916491718681664,
+   "count": 22
+  },
+  {
+   "mechanism": "block",
+   "test_rate": 0.5,
+   "method": "MissRocket-nf5000",
+   "mean": 0.6746115320301397,
+   "std": 0.18693220763045618,
+   "count": 22
   }
  ]
 }

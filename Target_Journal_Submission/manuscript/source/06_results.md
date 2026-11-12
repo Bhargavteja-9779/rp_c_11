@@ -105,15 +105,16 @@ This holds even though the training data contain no missing values, and the reas
 
 PhysioNet 2012 differs from the UCR experiments in four ways: the series are multivariate, short (48 hourly bins) and very sparse, and their missingness is informative by nature. The results (@tab:p12, @tab:p12boot) are a clear *negative* finding for the random-convolution family.
 - **No gain from weighting.** MissRocket (AUROC {{Q:table_p12;method=MissRocket (proposed);col=auroc_mean;fmt=f3}}) does not improve on its unweighted counterpart (AUROC {{Q:table_p12;method=w/o weighting (γ=0);col=auroc_mean;fmt=f3}}). Training-set selection chooses γ=0 without mask features.
-- **Gradient boosting is best.** LightGBM on the raw hourly values with native missing-value handling reaches AUROC {{Q:table_p12;method=LightGBM (native NaN);col=auroc_mean;fmt=f3}}, clearly the best of all methods. Its advantage over MissRocket is significant: the AUROC difference is {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=auroc_diff_seed_ensemble;fmt=f3}} with 95% CI {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_high;fmt=f3}}.
-- **GRU-D:** {{P12_GRUD_SENTENCE}}
+- **The deep missing-aware model is best.** GRU-D, which models the mask and the time since the last observation explicitly, attains the highest AUROC ({{Q:table_p12;method=GRU-D;col=auroc_mean;fmt=f3}}) and AUPRC ({{Q:table_p12;method=GRU-D;col=auprc_mean;fmt=f3}}). Its training takes about {{Q:table_p12;method=GRU-D;col=time_s_mean;fmt=int}} s, against {{Q:table_p12;method=MissRocket (proposed);col=time_s_mean;fmt=int}} s for MissRocket.
+- **Gradient boosting comes second.** LightGBM on the raw hourly values with native missing-value handling follows (AUROC {{Q:table_p12;method=LightGBM (native NaN);col=auroc_mean;fmt=f3}}).
+- **Both beat MissRocket significantly.** The AUROC difference between MissRocket and GRU-D is {{Q:table_p12_bootstrap;baseline=GRU-D;col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_high;fmt=f3}}). Against LightGBM it is {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_high;fmt=f3}}).
 
 We attribute the gap to the nature of the data:
 - whether, and when, a laboratory value was measured carries information about patient severity;
 - the measured *levels* matter more than local temporal shape;
 - many channel–patient series are entirely empty.
 
-Tree ensembles exploit each of these directly. Kernels designed to detect shape do not. Observed-tap weighting addresses fabricated responses inside interpolated gaps, and it cannot add the missingness-pattern and level information that this task needs. We therefore regard MissRocket as suited to *shape-based* classification of sensor-like series with gaps, not as a general method for sparse, irregular clinical records.
+Models that see the mask and the measured levels directly can exploit each of these; GRU-D does so through its decay mechanism and tree ensembles through their native handling of missing values. Kernels designed to detect shape cannot. Observed-tap weighting addresses fabricated responses inside interpolated gaps, and it cannot add the missingness-pattern and level information that this task needs. We therefore regard MissRocket as suited to *shape-based* classification of sensor-like series with gaps, not as a general method for sparse, irregular clinical records.
 
 ### 6.5 Naturally incomplete and variable-length data (RQ5)
 

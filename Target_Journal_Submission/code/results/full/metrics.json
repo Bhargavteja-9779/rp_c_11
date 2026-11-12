@@ -171,5 +171,77 @@
    "balanced_accuracy": 0.7801957135463995,
    "macro_f1": 0.7764074000142641
   }
+ },
+ "E7": {
+  "MissRocket-g0-nf10000": {
+   "accuracy": 0.6392010693335218,
+   "balanced_accuracy": 0.5621939026285722,
+   "macro_f1": 0.5544187501552336
+  },
+  "MissRocket-g0-nf20000": {
+   "accuracy": 0.6504599225824729,
+   "balanced_accuracy": 0.5720517385355196,
+   "macro_f1": 0.566447503974516
+  },
+  "MissRocket-g0-nf2500": {
+   "accuracy": 0.6375191862311702,
+   "balanced_accuracy": 0.556027204850497,
+   "macro_f1": 0.5453406976263384
+  },
+  "MissRocket-g0-nf5000": {
+   "accuracy": 0.6388983113824017,
+   "balanced_accuracy": 0.5604899387332285,
+   "macro_f1": 0.5524925514201243
+  },
+  "MissRocket-gamma0.0": {
+   "accuracy": 0.646782072635118,
+   "balanced_accuracy": 0.5661078979918375,
+   "macro_f1": 0.5579935091143682
+  },
+  "MissRocket-gamma0.25": {
+   "accuracy": 0.6761233080874726,
+   "balanced_accuracy": 0.5971970774221033,
+   "macro_f1": 0.5916720623130769
+  },
+  "MissRocket-gamma0.5": {
+   "accuracy": 0.6829244008473838,
+   "balanced_accuracy": 0.6032167191966998,
+   "macro_f1": 0.5970965280573601
+  },
+  "MissRocket-gamma1.0": {
+   "accuracy": 0.6762796678952245,
+   "balanced_accuracy": 0.5962710025322471,
+   "macro_f1": 0.5899324801919276
+  },
+  "MissRocket-gamma2.0": {
+   "accuracy": 0.6733871673540165,
+   "balanced_accuracy": 0.5918797806222921,
+   "macro_f1": 0.5877259308689171
+  },
+  "MissRocket-gamma4.0": {
+   "accuracy": 0.6578914535117777,
+   "balanced_accuracy": 0.5762793647618791,
+   "macro_f1": 0.5719967061214632
+  },
+  "MissRocket-nf10000": {
+   "accuracy": 0.6686911981424113,
+   "balanced_accuracy": 0.5923192902959328,
+   "macro_f1": 0.5861800470589672
+  },
+  "MissRocket-nf20000": {
+   "accuracy": 0.6653593324257604,
+   "balanced_accuracy": 0.5903947971291275,
+   "macro_f1": 0.5861523063124247
+  },
+  "MissRocket-nf2500": {
+   "accuracy": 0.6676437168962494,
+   "balanced_accuracy": 0.5863527447752461,
+   "macro_f1": 0.5767633083496829
+  },
+  "MissRocket-nf5000": {
+   "accuracy": 0.6746115320301397,
+   "balanced_accuracy": 0.5940126412786912,
+   "macro_f1": 0.5853919524416695
+  }
  }
 }

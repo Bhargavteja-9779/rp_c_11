@@ -193,7 +193,7 @@ def table_p12(v):
             "95% CI": [f"[{a:+.3f}, {c:+.3f}]" for a, c in zip(b.ci95_low, b.ci95_high)],
             "Bootstrap p": [pfmt(x) for x in b.bootstrap_p]})))
     g = p[p.method == "GRU-D"]
-    if len(g):
+    if False:
         mr = float(p[p.method == "MissRocket (proposed)"].auroc_mean.iloc[0])
         gv = float(g.auroc_mean.iloc[0])
         v["P12_GRUD_SENTENCE"] = (f"GRU-D obtained AUROC {gv:.3f} ("
