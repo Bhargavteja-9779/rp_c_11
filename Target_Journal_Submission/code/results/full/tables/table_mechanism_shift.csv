@@ -1,0 +1,6 @@
+mechanism,test_rate,method,mean,std,count
+mcar>block,0.5,AeonMiniRocket+knn,0.8466666666666667,,1
+mcar>block,0.5,AeonMiniRocket+linear,0.6333333333333333,,1
+mcar>block,0.5,MaskRocket-noC,0.5933333333333334,,1
+mcar>block,0.5,MissRocket,0.7666666666666667,,1
+mcar>block,0.5,MissRocket-g0,0.64,,1

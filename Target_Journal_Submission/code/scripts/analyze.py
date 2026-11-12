@@ -424,9 +424,14 @@ def main():
     for key, sub in [("E1", "E1_main"), ("E3", "E3_ablation"), ("E2", "E2_deep"), ("E4b", "E4b_mechanism_shift"), ("E4", "E4_shift"), ("E5_natural", "E5_natural"),
                      ("E7", "E7_sensitivity")]:
         p = os.path.join(base, sub, "raw_results.csv")
-        if os.path.exists(p):
-            R[key] = read_results(p)
-            R[key]["experiment"] = key
+        if os.path.exists(p) and os.path.getsize(p) > 0:
+            try:
+                df = read_results(p)
+            except StopIteration:
+                continue
+            if len(df):
+                R[key] = df
+                R[key]["experiment"] = key
     if R:
         pd.concat(R.values()).to_csv(os.path.join(base, "raw_results.csv"), index=False)
     stats = {"mode": mode}

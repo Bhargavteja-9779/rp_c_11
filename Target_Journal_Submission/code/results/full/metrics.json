@@ -6,34 +6,34 @@
    "macro_f1": 0.560798721853698
   },
   "AeonMiniRocket+knn": {
-   "accuracy": 0.7300307230292938,
-   "balanced_accuracy": 0.7052318861519284,
-   "macro_f1": 0.6987591539249819
+   "accuracy": 0.7303193034483637,
+   "balanced_accuracy": 0.7055507090549951,
+   "macro_f1": 0.6990860233106264
   },
   "AeonMiniRocket+linear": {
-   "accuracy": 0.7380071327328966,
-   "balanced_accuracy": 0.7129904259497513,
-   "macro_f1": 0.7076621580721559
+   "accuracy": 0.7383266362295638,
+   "balanced_accuracy": 0.7133404376254223,
+   "macro_f1": 0.7080186676354826
   },
   "AeonMiniRocket+locf": {
-   "accuracy": 0.7193594419662419,
-   "balanced_accuracy": 0.6933393416565377,
-   "macro_f1": 0.6875786966579919
+   "accuracy": 0.7197016865492099,
+   "balanced_accuracy": 0.6937133180691516,
+   "macro_f1": 0.6879596982474333
   },
   "AeonMiniRocket+mean": {
-   "accuracy": 0.6595369287917522,
-   "balanced_accuracy": 0.6308826599128684,
-   "macro_f1": 0.6233974018099309
+   "accuracy": 0.6599114772525754,
+   "balanced_accuracy": 0.6312921526040316,
+   "macro_f1": 0.623816447642709
   },
   "AeonMiniRocket+zero": {
-   "accuracy": 0.6736017445792337,
-   "balanced_accuracy": 0.6459724118483382,
-   "macro_f1": 0.639247456749977
+   "accuracy": 0.6739916611508852,
+   "balanced_accuracy": 0.646396022728198,
+   "macro_f1": 0.6396792679815014
   },
   "HydraMultiRocket+linear": {
-   "accuracy": 0.7456352424866228,
-   "balanced_accuracy": 0.7217982710911266,
-   "macro_f1": 0.717441881773411
+   "accuracy": 0.7459454434104197,
+   "balanced_accuracy": 0.722137541492235,
+   "macro_f1": 0.717786464844419
   },
   "LightGBM-NaN": {
    "accuracy": 0.6025152173643864,
@@ -46,19 +46,19 @@
    "macro_f1": 0.6669182062441462
   },
   "MissRocket": {
-   "accuracy": 0.7537207063071947,
-   "balanced_accuracy": 0.7291624330533067,
-   "macro_f1": 0.7239841916142062
+   "accuracy": 0.7540129168279581,
+   "balanced_accuracy": 0.7294845926877945,
+   "macro_f1": 0.7243126653641888
   },
   "MissRocket-g0": {
-   "accuracy": 0.742591228876031,
-   "balanced_accuracy": 0.7176009517500951,
-   "macro_f1": 0.7124130191377667
+   "accuracy": 0.742905142011548,
+   "balanced_accuracy": 0.7179453408333267,
+   "macro_f1": 0.7127637349680864
   },
   "MultiRocket+linear": {
-   "accuracy": 0.7442688715467267,
-   "balanced_accuracy": 0.720424002474852,
-   "macro_f1": 0.715844807931506
+   "accuracy": 0.7445807387765477,
+   "balanced_accuracy": 0.7207649488132973,
+   "macro_f1": 0.7161913386535407
   }
  },
  "E3": {
@@ -115,19 +115,46 @@
  },
  "E2": {
   "AeonMiniRocket+linear": {
-   "accuracy": 0.9638418703137468,
-   "balanced_accuracy": 0.9539937731725395,
-   "macro_f1": 0.957518960938377
+   "accuracy": 0.8780365272620133,
+   "balanced_accuracy": 0.8760950854085917,
+   "macro_f1": 0.8727643819504892
   },
   "GRU-D": {
-   "accuracy": 0.48678837295661576,
-   "balanced_accuracy": 0.4799207915387604,
-   "macro_f1": 0.40561757987361247
+   "accuracy": 0.5761710165007199,
+   "balanced_accuracy": 0.5758800555680067,
+   "macro_f1": 0.5191319091079378
   },
   "MissRocket": {
-   "accuracy": 0.9574691981322145,
-   "balanced_accuracy": 0.947156503008058,
-   "macro_f1": 0.9504816883091181
+   "accuracy": 0.8931654794125391,
+   "balanced_accuracy": 0.8908682209042348,
+   "macro_f1": 0.888570102727169
+  }
+ },
+ "E4b": {
+  "AeonMiniRocket+knn": {
+   "accuracy": 0.8466666666666667,
+   "balanced_accuracy": 0.8466666666666667,
+   "macro_f1": 0.8497374454703627
+  },
+  "AeonMiniRocket+linear": {
+   "accuracy": 0.6333333333333333,
+   "balanced_accuracy": 0.6333333333333334,
+   "macro_f1": 0.6287578665871029
+  },
+  "MaskRocket-noC": {
+   "accuracy": 0.5933333333333334,
+   "balanced_accuracy": 0.5933333333333334,
+   "macro_f1": 0.5900003360553819
+  },
+  "MissRocket": {
+   "accuracy": 0.7666666666666667,
+   "balanced_accuracy": 0.7666666666666666,
+   "macro_f1": 0.767239959945046
+  },
+  "MissRocket-g0": {
+   "accuracy": 0.64,
+   "balanced_accuracy": 0.64,
+   "macro_f1": 0.6355305316203689
   }
  },
  "E4": {
