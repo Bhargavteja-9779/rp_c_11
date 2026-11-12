@@ -1,0 +1,232 @@
+{
+ "correlations": [
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "length",
+   "spearman_rho": -0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "n_train",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "n_classes",
+   "spearman_rho": -0.8660254037844387,
+   "p_value": 0.33333333333333326,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "roughness",
+   "spearman_rho": -0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "mean_gap_len",
+   "spearman_rho": -0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "length",
+   "spearman_rho": -0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "n_train",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "n_classes",
+   "spearman_rho": -0.8660254037844387,
+   "p_value": 0.33333333333333326,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "roughness",
+   "spearman_rho": -0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "length",
+   "spearman_rho": -1.0,
+   "p_value": 0.0,
+   "n": 3,
+   "p_holm_within_mechanism": 0.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "n_train",
+   "spearman_rho": 1.0,
+   "p_value": 0.0,
+   "n": 3,
+   "p_holm_within_mechanism": 0.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "n_classes",
+   "spearman_rho": -0.8660254037844387,
+   "p_value": 0.33333333333333326,
+   "n": 3,
+   "p_holm_within_mechanism": 0.6666666666666665
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "roughness",
+   "spearman_rho": 0.5,
+   "p_value": 0.6666666666666666,
+   "n": 3,
+   "p_holm_within_mechanism": 0.6666666666666666
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "mean_gap_len",
+   "spearman_rho": -1.0,
+   "p_value": 0.0,
+   "n": 3,
+   "p_holm_within_mechanism": 0.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": 1.0,
+   "p_value": 0.0,
+   "n": 3,
+   "p_holm_within_mechanism": 0.0
+  }
+ ],
+ "extremes": [
+  {
+   "dataset": "ArrowHead",
+   "mean_gain_all_conditions": -0.005714285714285672
+  },
+  {
+   "dataset": "ECG200",
+   "mean_gain_all_conditions": 0.02333333333333328
+  },
+  {
+   "dataset": "GunPoint",
+   "mean_gain_all_conditions": 0.02888888888888878
+  },
+  {
+   "dataset": "ArrowHead",
+   "mean_gain_all_conditions": -0.005714285714285672
+  },
+  {
+   "dataset": "ECG200",
+   "mean_gain_all_conditions": 0.02333333333333328
+  },
+  {
+   "dataset": "GunPoint",
+   "mean_gain_all_conditions": 0.02888888888888878
+  }
+ ],
+ "frac_datasets_gain_pos": 0.6666666666666666,
+ "frac_datasets_gain_neg": 0.3333333333333333,
+ "confusion": {
+  "largest_loss": {
+   "dataset": "ArrowHead",
+   "MissRocket": {
+    "accuracy": 0.6171428571428571,
+    "per_class_recall": [
+     0.6086956521739131,
+     0.5660377358490566,
+     0.6792452830188679
+    ]
+   },
+   "AeonMiniRocket+linear": {
+    "accuracy": 0.5885714285714285,
+    "per_class_recall": [
+     0.6376811594202898,
+     0.49056603773584906,
+     0.6226415094339622
+    ]
+   }
+  },
+  "largest_gain": {
+   "dataset": "GunPoint",
+   "MissRocket": {
+    "accuracy": 0.8533333333333334,
+    "per_class_recall": [
+     0.8421052631578947,
+     0.8648648648648649
+    ]
+   },
+   "AeonMiniRocket+linear": {
+    "accuracy": 0.7866666666666666,
+    "per_class_recall": [
+     0.7763157894736842,
+     0.7972972972972973
+    ]
+   }
+  }
+ }
+}

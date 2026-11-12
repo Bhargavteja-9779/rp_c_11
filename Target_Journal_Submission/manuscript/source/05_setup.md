@@ -58,7 +58,7 @@ No method's hyperparameters were tuned on confirmatory data. Baseline settings a
 
 All candidates and their development results are documented in Online Resource 1, including the negative results.
 
-**Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-specified" because the protocol was not lodged with an external registry. The freezing commit is identified in the code repository.
+**Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-registered" because the protocol was not lodged with an external registry. The freezing commit is identified in the code repository.
 
 **Disclosed deviations.** Three deviations occurred, none of which changed the proposed method:
 

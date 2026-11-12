@@ -1,6 +1,6 @@
 # MissRocket: missingness-aware MiniRocket for time series classification with missing values
 
-Code, configuration and raw results for the study **"Observed-tap-weighted pooling makes random-convolution time series classifiers robust to missing values: a pre-registered evaluation on 91 UCR datasets and PhysioNet 2012"**.
+Code, configuration and raw results for the study **"Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation"** (submitted to the *Journal of King Saud University – Computer and Information Sciences*).
 
 Every number, table and figure in the manuscript is produced by the code in this directory from the raw result files under `results/full/`.
 
@@ -49,7 +49,7 @@ python scripts/build_registry.py
 
 `data/registry.csv` lists every UCR dataset with its size, its kind (complete / native-missing / variable-length) and its role:
 - **development:** 10 datasets used for all design decisions;
-- **confirmatory:** 103 datasets; 91 satisfy the pre-registered compute rule;
+- **confirmatory:** 103 datasets; 91 satisfy the pre-specified compute rule;
 - **natural:** 15 datasets that are incomplete by nature.
 
 ## 3. Reproducing the study
@@ -64,7 +64,7 @@ Quick mode is a pipeline check on 3 development datasets with 1 seed. It takes a
 python run_all.py --mode full
 ```
 
-Full mode runs every pre-registered experiment. It takes roughly 25 CPU-hours on 4 cores. It is resumable: rerun the same command after an interruption.
+Full mode runs every pre-specified experiment. It takes roughly 15–20 hours of wall time on 4 cores. It is resumable: rerun the same command after an interruption.
 
 Useful options:
 - `--only E1,E5_p12` runs a subset of experiments.
@@ -72,14 +72,17 @@ Useful options:
 
 | Exp. | Script | What it does |
 |---|---|---|
-| E1 | `experiments/e1_main.py` | 91 datasets × {MCAR, block, MNAR} × {0.2, 0.5, 0.8} × seeds {0,1,2}; proposed method + 11 baselines |
+| E1 | `experiments/e1_main.py` | 91 datasets × {MCAR, block, MNAR} × {0.2, 0.5, 0.8}, seed 0 (seeds 1–2 on a 30-dataset subset); proposed method + 10 baselines + γ=0 ablation |
 | E3 | `experiments/e3_ablation.py` | Ablations and variants (γ, mask features, training-set selection, gap filler), seed 0 |
 | E4 | `experiments/e4_shift.py` | Train/test missing-rate shift |
 | E5a | `experiments/e5_natural.py` | 15 naturally incomplete / variable-length UCR datasets |
 | E5b | `experiments/e5_p12.py` | PhysioNet 2012 mortality (sets a+b train, set c test), multivariate channel-wise |
 | E7 | `experiments/e7_sensitivity.py` | Feature budget and γ sensitivity |
-| E2 | `experiments/e2_deep.py` | GRU-D on a pre-registered small/short UCR subset |
+| E2 | `experiments/e2_deep.py` | GRU-D on a pre-specified small/short UCR subset |
+| E4b | `experiments/e4b_mechanism_shift.py` | Train/test *mechanism* shift (added during internal review; post hoc) |
 | E8 | `scripts/error_analysis.py` | Gains vs dataset properties, extremes, confusion matrices |
+| — | `scripts/benchmark_scaling.py` | Controlled transform-time and memory benchmark (run on an idle machine) |
+| — | `scripts/reproducibility_check.py` | Re-runs a sample of stored runs and checks exact equality |
 
 Outputs are written under `results/<mode>/`:
 - `<EXP>/raw_results.csv`: one row per dataset × condition × seed × method;

@@ -1,0 +1,34 @@
+mechanism,rate,method,mean_rank
+block,0.5,Hydra-MultiRocket + linear interp.,2.0
+block,0.5,MiniRocket + kNN impute,2.3333333333333335
+block,0.5,MissRocket (proposed),2.8333333333333335
+block,0.5,MultiRocket + linear interp.,3.1666666666666665
+block,0.5,MiniRocket + linear interp.,5.333333333333333
+block,0.5,1-NN ED + linear interp.,6.833333333333333
+block,0.5,MiniRocket + LOCF,7.0
+block,0.5,LightGBM (native NaN),7.333333333333333
+block,0.5,Native masked MiniRocket (group-mean),8.833333333333334
+block,0.5,MiniRocket + zero fill,10.0
+block,0.5,MiniRocket + mean fill,10.333333333333334
+mcar,0.5,MultiRocket + linear interp.,2.1666666666666665
+mcar,0.5,Hydra-MultiRocket + linear interp.,2.6666666666666665
+mcar,0.5,MiniRocket + LOCF,4.166666666666667
+mcar,0.5,MiniRocket + kNN impute,4.333333333333333
+mcar,0.5,MiniRocket + linear interp.,4.666666666666667
+mcar,0.5,MissRocket (proposed),4.833333333333333
+mcar,0.5,1-NN ED + linear interp.,6.166666666666667
+mcar,0.5,Native masked MiniRocket (group-mean),7.833333333333333
+mcar,0.5,MiniRocket + zero fill,9.0
+mcar,0.5,MiniRocket + mean fill,9.666666666666666
+mcar,0.5,LightGBM (native NaN),10.5
+mnar,0.5,Hydra-MultiRocket + linear interp.,2.5
+mnar,0.5,MultiRocket + linear interp.,3.0
+mnar,0.5,MissRocket (proposed),3.3333333333333335
+mnar,0.5,Native masked MiniRocket (group-mean),5.166666666666667
+mnar,0.5,MiniRocket + linear interp.,5.5
+mnar,0.5,MiniRocket + mean fill,6.333333333333333
+mnar,0.5,MiniRocket + kNN impute,6.833333333333333
+mnar,0.5,MiniRocket + zero fill,7.0
+mnar,0.5,MiniRocket + LOCF,7.333333333333333
+mnar,0.5,LightGBM (native NaN),9.5
+mnar,0.5,1-NN ED + linear interp.,9.5

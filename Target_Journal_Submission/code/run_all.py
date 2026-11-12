@@ -1,7 +1,7 @@
 """Reproduce the full study.
 
     python run_all.py --mode quick     # pipeline check: 3 small datasets, 1 seed (~5-10 min on 4 cores)
-    python run_all.py --mode full      # complete pre-registered experiments (many CPU hours; resumable)
+    python run_all.py --mode full      # complete pre-specified experiments (many CPU hours; resumable)
 
 Steps: (1) data check/preparation, (2) clear numba caches, (3) experiments E1, E3, E5a, E5b, E4, E7, E2,
 (4) statistics, tables and figures via scripts/analyze.py. Every experiment appends to CSV/JSONL files

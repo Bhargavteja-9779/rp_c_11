@@ -3,12 +3,14 @@
 Auto-resume instructions: read this file and `git log`, then continue from the first unchecked item.
 Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/code/`.
 
-## Status
-- [x] Phase 0: target journal selected. JKSU-CIS (Springer Nature); measured median received→accepted 66 d; JIF 6.4.
-- [~] Phases 1–5: topic = missing values in random-convolution time-series classification (ROCKET family).
-- [~] Phases 6–10: core transform (numba), missingness simulator, imputers, runner, tests (17 passing).
-- [ ] Phases 11–20: confirmatory experiments
-- [ ] Phases 21–42: manuscript, reviews, DOCX, package
+## Status (final, 2026-11-12)
+- [x] Phase 0: target journal JKSU-CIS (Springer Nature); measured median received→accepted 66 d; JIF 6.4.
+- [x] Phases 1–5: topic, literature matrix, novelty map, hypotheses (supplementary/research_design).
+- [x] Phases 6–10: implementation, run_all.py, tests (18 passing).
+- [x] Phases 11–20: all experiments complete (E1 16,308 runs; E2–E7, E4b); statistics, figures, tables generated.
+- [x] Phases 21–42: manuscript (DOCX+PDF), Online Resources, title page, cover letter, 10 review rounds,
+      consistency and reproducibility audits, rejection-risk report. Decision: READY FOR SUBMISSION
+      (after the human authors complete the placeholders).
 
 ## Protocol decisions (pre-registered before confirmatory runs)
 - UCR 2018: 113 complete datasets. A development set of 10 is used for design decisions: the 5 pilot datasets
@@ -83,3 +85,13 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
     counting each dataset 3 times (pseudo-replication). The strong 'gain grows with gap length' associations were a
     between-rate confound. The per-rate analysis (n=91) shows significant associations only at block 80%. Manuscript
     claims were rewritten accordingly (Sect. 6.8, 7.1, 7.4).
+
+16. REVIEW ROUNDS 1–10 complete. Main fixes:
+    - "pre-registered" → "pre-specified";
+    - amendments disclosed;
+    - pseudo-replication in the error analysis fixed;
+    - 16 overstatements corrected;
+    - literature paraphrases corrected against primary sources;
+    - mechanism-shift experiment E4b added (post hoc);
+    - controlled scaling benchmark added.
+    Reproducibility: 24/24 sampled runs re-executed with exact equality; fresh quick mode passes.

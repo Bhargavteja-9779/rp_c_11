@@ -1,4 +1,4 @@
-"""E2: deep missing-aware baseline (GRU-D) on a pre-registered, cost-limited UCR subset."""
+"""E2: deep missing-aware baseline (GRU-D) on a pre-specified, cost-limited UCR subset."""
 from common import CFG, REG, confirmatory_datasets, quick_datasets, out, log
 from src.training.runner import run_settings
 

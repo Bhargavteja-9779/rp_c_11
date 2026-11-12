@@ -47,7 +47,7 @@ E3_ablation:      # ablations/variants on seed 0 only (cost); compared with seed
     - MissRocket-knn             # weighting with cross-series kNN gap filling (fit on train)
     - MissRocket-g0-knn          #   ... unweighted counterpart
 
-E2_deep:          # GRU-D on a pre-registered UCR subset (cost-limited): length <= 300 and n_train <= 500
+E2_deep:          # GRU-D on a pre-specified UCR subset (cost-limited; amendment 2): length <= 200 and n_train <= 300
   methods: [GRU-D, MissRocket, AeonMiniRocket+linear]
   rates: [0.5]
   seeds: [0]
