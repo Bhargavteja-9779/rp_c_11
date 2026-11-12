@@ -34,5 +34,6 @@
  "ERR_WORST_NTEST": "OliveOil: 30, Wine: 54, Herring: 64, Coffee: 28",
  "GRUD_MED_S": "13.8",
  "MR_MED_S_E2": "0.45",
- "GRUD_TIME_RATIO": "30"
+ "GRUD_TIME_RATIO": "30",
+ "SEED_VAR_TEXT": "[PENDING: the seed-variability runs (seeds 1-2 on 30 datasets) have not completed; this paragraph is generated automatically once they have.]"
 }

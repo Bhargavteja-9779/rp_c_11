@@ -274,6 +274,31 @@ def table_mechshift(v):
     v["_tables"]["mechshift"] = md_table(pd.DataFrame(rows), first=2)
 
 
+def seed_var(v):
+    stp = os.path.join(RES, "statistics", "statistics.json")
+    st = json.load(open(stp)) if os.path.exists(stp) else {}
+    n = st.get("E1_seed_variability_n_datasets", 0)
+    sv = t("table_seed_variability")
+    complete = sv is not None and n == 30 and all(c in sv.columns for c in ["0", "1", "2"]) and sv[["0", "1", "2"]].notna().all().all()
+    if not complete:
+        v["SEED_VAR_TEXT"] = "[PENDING: the seed-variability runs (seeds 1-2 on 30 datasets) have not completed; this paragraph is generated automatically once they have.]"
+        return
+    key = sv[sv.baseline.isin(["MiniRocket + linear interp.", "w/o weighting (γ=0)"])]
+    agree = key.sign_agreement.mean()
+    sig = key[(key.mechanism == "block") & (key.rate >= 0.5)]
+    v["SEED_VAR_TEXT"] = (
+        f"On the 30-dataset subset, run with seeds 0, 1 and 2, the sign of the mean difference between MissRocket and "
+        f"MiniRocket with interpolation, and between MissRocket and its γ=0 ablation, agreed across all three seeds in "
+        f"{100 * agree:.0f}% of the 18 mechanism–rate–baseline combinations. The standard deviation over seeds of the mean "
+        f"difference had a median of {100 * key.sd_over_seeds.median():.2f} pp. Under block missingness at 50% and 80%, "
+        f"the mean gain over MiniRocket with interpolation ranged from {100 * sig[sig.baseline == 'MiniRocket + linear interp.'][['0', '1', '2']].min().min():+.2f} "
+        f"to {100 * sig[sig.baseline == 'MiniRocket + linear interp.'][['0', '1', '2']].max().max():+.2f} pp across seeds. "
+        + ("Seed-level differences on individual small test sets are larger (Section 6.8), but the dataset-level conclusions are stable "
+           if agree >= 0.9 else
+           "The direction of the effect is therefore not stable across seeds for some conditions, mainly those where the mean difference is close to zero; conclusions for those conditions should be read with caution ")
+        + "(Online Resource 1, Table S5).")
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -281,7 +306,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v); seed_var(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
