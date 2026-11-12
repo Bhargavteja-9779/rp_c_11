@@ -31,9 +31,11 @@ def setting_seed(*parts) -> int:
 
 
 def corrupt(dataset, mechanism, train_rate, test_rate, seed, data=None):
+    """mechanism may be 'a>b' (train mechanism a, test mechanism b) for mechanism-shift experiments."""
     Xtr, ytr, Xte, yte = data if data is not None else load_ucr(dataset)
-    Xtr_m = apply_missingness(Xtr, train_rate, mechanism, setting_seed(dataset, mechanism, train_rate, seed, "train"))
-    Xte_m = apply_missingness(Xte, test_rate, mechanism, setting_seed(dataset, mechanism, test_rate, seed, "test"))
+    m_tr, m_te = mechanism.split(">") if ">" in mechanism else (mechanism, mechanism)
+    Xtr_m = apply_missingness(Xtr, train_rate, m_tr, setting_seed(dataset, m_tr, train_rate, seed, "train"))
+    Xte_m = apply_missingness(Xte, test_rate, m_te, setting_seed(dataset, m_te, test_rate, seed, "test"))
     return Xtr_m, ytr, Xte_m, yte
 
 

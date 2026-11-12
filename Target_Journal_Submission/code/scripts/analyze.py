@@ -421,7 +421,7 @@ def main():
     for p in (T, F, S):
         os.makedirs(p, exist_ok=True)
     R = {}
-    for key, sub in [("E1", "E1_main"), ("E3", "E3_ablation"), ("E2", "E2_deep"), ("E4", "E4_shift"), ("E5_natural", "E5_natural"),
+    for key, sub in [("E1", "E1_main"), ("E3", "E3_ablation"), ("E2", "E2_deep"), ("E4b", "E4b_mechanism_shift"), ("E4", "E4_shift"), ("E5_natural", "E5_natural"),
                      ("E7", "E7_sensitivity")]:
         p = os.path.join(base, sub, "raw_results.csv")
         if os.path.exists(p):
@@ -439,6 +439,7 @@ def main():
     p12_tables(mode, T, F, stats)
     generic_table(R, "E2", T, stats, "deep_baseline")
     generic_table(R, "E7", T, stats, "sensitivity")
+    generic_table(R, "E4b", T, stats, "mechanism_shift")
     sensitivity_figure(R, F, T, stats)
     with open(os.path.join(S, "statistics.json"), "w") as f:
         json.dump(stats, f, indent=1, default=float)

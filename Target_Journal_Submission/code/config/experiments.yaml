@@ -61,6 +61,10 @@ E4_shift:         # RQ4: train/test missingness-rate shift (30-dataset subset, s
   mechanisms: [mcar, block]
   methods: [MissRocket, AeonMiniRocket+linear, MaskRocket-noC, LightGBM-NaN]
 
+E4b_mechanism_shift:   # added in review round 5 (post hoc, labelled as such): train/test MECHANISM shift, 30-dataset subset
+  pairs: [["mcar>block", 0.5], ["block>mcar", 0.5]]
+  methods: [MissRocket, AeonMiniRocket+linear, MissRocket-g0, AeonMiniRocket+knn, MaskRocket-noC, LightGBM-NaN]
+
 E5_natural:       # RQ5: naturally incomplete / variable-length UCR datasets (no simulated missingness)
   methods: [MissRocket, MissRocket-g0, AeonMiniRocket+linear, AeonMiniRocket+resample, MaskRocket-noC, LightGBM-NaN, 1NN-ED+linear]
 

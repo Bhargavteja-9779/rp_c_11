@@ -19,7 +19,7 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "experiments"))
 
 EXPERIMENTS = [("E1", "e1_main"), ("E5_natural", "e5_natural"), ("E3", "e3_ablation"), ("E4", "e4_shift"),
-               ("E5_p12", "e5_p12"), ("E7", "e7_sensitivity"), ("E2", "e2_deep"), ("E1_seed2", "e1_main:run_seed2")]
+               ("E5_p12", "e5_p12"), ("E7", "e7_sensitivity"), ("E2", "e2_deep"), ("E4b", "e4b_mechanism_shift"), ("E1_seed2", "e1_main:run_seed2")]
 
 
 def check_data():
