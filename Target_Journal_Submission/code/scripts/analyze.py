@@ -54,9 +54,13 @@ def ablation_tables(R, T, stats):
     if "E1" not in R or "E3" not in R:
         return
     e1 = R["E1"]
-    base = e1[(e1.seed == 0) & e1.method.isin([PROPOSED, "MissRocket-g0", "AeonMiniRocket+linear"])]
-    d = pd.concat([base, R["E3"]])
+    e3 = R["E3"]
+    keep_ds, keep_rates = set(e3.dataset), set(e3.test_rate)
+    base = e1[(e1.seed == 0) & e1.method.isin([PROPOSED, "MissRocket-g0", "AeonMiniRocket+linear"])
+              & e1.dataset.isin(keep_ds) & e1.test_rate.isin(keep_rates)]
+    d = pd.concat([base, e3])
     a = seed_avg(d)
+    stats["E3_n_datasets"] = int(len(keep_ds))
     rows, means = [], []
     for (mech, rate), g in a.groupby(["mechanism", "test_rate"]):
         tab = g.pivot(index="dataset", columns="method", values="accuracy").dropna()
@@ -233,7 +237,9 @@ def ablation_figure(R, F):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     e1 = R["E1"]
-    a = seed_avg(pd.concat([e1[(e1.seed == 0) & e1.method.isin([PROPOSED, "MissRocket-g0"])], R["E3"]]))
+    e3 = R["E3"]
+    a = seed_avg(pd.concat([e1[(e1.seed == 0) & e1.method.isin([PROPOSED, "MissRocket-g0"]) & e1.dataset.isin(set(e3.dataset))
+                               & e1.test_rate.isin(set(e3.test_rate))], e3]))
     ms = [PROPOSED, "MissRocket-g0", "MissRocket-g0.5", "MissRocket-g2", "MissRocket+mask", "MissRocket-select"]
     g = a[a.method.isin(ms)].groupby(["mechanism", "method"]).accuracy.mean().unstack()
     g = g[[m for m in ms if m in g]]
