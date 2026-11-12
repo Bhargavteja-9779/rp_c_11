@@ -138,7 +138,7 @@ Models that see the mask and the measured levels directly can exploit each of th
 
 ### 6.5 Naturally incomplete and variable-length data (RQ5)
 
-{#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket
+{#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket (the MiniRocket implementation in aeon 1.6 does not support unequal lengths natively; its documented options are padding, truncation or resizing)
 
 {{TABLE:natural}}
 
