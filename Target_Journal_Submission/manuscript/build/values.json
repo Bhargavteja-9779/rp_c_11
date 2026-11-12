@@ -30,5 +30,8 @@
  "CM_GAIN_MR": "0.793",
  "CM_GAIN_REF": "0.462",
  "ERR_WORST_CASES": "OliveOil (MCAR 50%, -23.3 pp); Wine (MCAR 20%, -18.5 pp); Wine (MCAR 50%, -14.8 pp); OliveOil (MCAR 20%, -13.3 pp); Herring (MCAR 80%, -10.9 pp); Coffee (Block 80%, -10.7 pp)",
- "ERR_WORST_NTEST": "OliveOil: 30, Wine: 54, Herring: 64, Coffee: 28"
+ "ERR_WORST_NTEST": "OliveOil: 30, Wine: 54, Herring: 64, Coffee: 28",
+ "GRUD_MED_S": "13.8",
+ "MR_MED_S_E2": "0.45",
+ "GRUD_TIME_RATIO": "30"
 }

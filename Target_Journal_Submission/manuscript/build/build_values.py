@@ -240,6 +240,20 @@ def error_values(v):
     v["ERR_WORST_NTEST"] = ", ".join(f"{d}: {int(reg.loc[d, 'n_test'])}" for d in dict.fromkeys(worst.dataset))
 
 
+def e2_values(v):
+    p = os.path.join(RES, "E2_deep", "raw_results.csv")
+    if not os.path.exists(p):
+        return
+    sys.path.insert(0, CODE)
+    from src.evaluation.io import read_results
+    d = read_results(p)
+    d = d[d.status == "ok"]
+    med = (d.fit_s + d.predict_s).groupby(d.method).median()
+    v["GRUD_MED_S"] = f"{med['GRU-D']:.1f}"
+    v["MR_MED_S_E2"] = f"{med['MissRocket']:.2f}"
+    v["GRUD_TIME_RATIO"] = f"{med['GRU-D'] / med['MissRocket']:.0f}"
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -247,7 +261,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
