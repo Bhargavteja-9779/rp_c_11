@@ -70,3 +70,21 @@ MissRocket is not significantly different from two alternatives:
 The native estimator is competitive here because the missing segment is a single trailing block rather than many interior gaps.
 
 On the four datasets with genuinely missing interior values (DodgerLoopDay, DodgerLoopGame, DodgerLoopWeekend and MelbournePedestrian), the missing fraction is below 1% and all ROCKET-family methods perform similarly. With 15 datasets, these comparisons have limited power.
+
+### 6.6 Computational cost (RQ6)
+
+{#tab:eff} Wall-clock cost per run (fit + predict, including gap filling) on a 4-core CPU without GPU, over all E1 runs (seed 0, nine conditions, {{N_CONF}} datasets). Our MiniRocket implementation (MissRocket, γ=0) is a numba re-implementation; "MiniRocket + …" rows use the optimised reference implementation in aeon
+
+{{TABLE:efficiency}}
+
+@tab:eff summarises the measured costs.
+
+**The weighting is essentially free.** MissRocket and its unweighted counterpart (γ=0) have practically identical run times. The only additions are a per-position count of observed taps and a ten-bin histogram per feature (Section 4.3).
+
+**Implementation, not method, explains the gap to aeon.** Both of our variants are about {{TIME_RATIO_MR_VS_MINI}}× slower than the reference aeon MiniRocket. This reflects the difference between our straightforward numba implementation and aeon's heavily optimised one, not the method; the transform has the same asymptotic cost as MiniRocket.
+
+**Cheaper than the stronger transforms.** Even with this implementation gap, MissRocket is about {{TIME_RATIO_HYDRA_VS_MR}}× faster than Hydra-MultiRocket and uses fewer than a fifth of its features. At the same time, it is at least as accurate on average (Section 6.1).
+
+**Model-based imputation adds cost and memory.** kNN imputation must store the training set and compare every test series with it. Its cost grows with the size of the training set, whereas MissRocket processes each series independently.
+
+GRU-D, which needs iterative training with early stopping, is reported separately in Section 6.7.
