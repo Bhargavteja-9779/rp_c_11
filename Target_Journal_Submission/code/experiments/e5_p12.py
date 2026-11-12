@@ -58,7 +58,7 @@ def run(mode="full"):
     sd = np.nanstd(X[tr], axis=(0, 2))
     sd = np.where(sd > 0, sd, 1.0)
     Z = ((X - mu[None, :, None]) / sd[None, :, None]).astype(np.float32)
-    seeds = [0] if mode == "quick" else CFG["common"]["seeds"]
+    seeds = [0]  # amendment 2: seed 0 + patient-level bootstrap CIs
     path = out(f"{mode}/E5_p12/raw_results.jsonl")
     done = set()
     try:

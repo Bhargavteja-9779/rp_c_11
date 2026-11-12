@@ -68,3 +68,14 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
 13. EXECUTION-ORDER AMENDMENT (08:05 UTC, results-blind: only timing and status inspected). E1 seeds 0–1 run first, then
     E3, E5a, E5b, E4, E7 and E2, then E1 seed 2 last (same results file). Analyses use every completed seed. If seed 2 does
     not complete, the paper reports 2 seeds and states the deviation.
+14. INFRASTRUCTURE FAILURE #2 + AMENDMENT 2 (2026-11-12 05:40 UTC, results-blind: no accuracy inspected).
+    My turn ended after a wait call; the idle container was reclaimed and E1 stopped at 3,765 rows (seed 0 ≈ 38%).
+    About 21 h of wall time were lost; files are intact.
+    Rescope:
+    - E1 primary = seed 0 on all 91 eligible datasets.
+    - Seeds 1–2 only on a pre-declared random 30-dataset subset (RandomState(11)), run last.
+    - E3 (rate 0.5) and E4 run on the same subset.
+    - P12 uses seed 0 + patient-level bootstrap.
+    - E2 restricted to length ≤ 200 and n_train ≤ 300.
+    - Order: E1 → E5a → E3 → E4 → E5b → E7 → E2 → E1 seeds 1–2.
+    Primary analyses use E1 seed 0. Rule from now on: never end a turn while compute runs; commit results about every 30 min.

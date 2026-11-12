@@ -24,11 +24,17 @@ E1_main:          # RQ1 + RQ2 (baselines) + RQ3 (ablation): matched train/test m
     - LightGBM-NaN               # conventional ML with native NaN handling
     - 1NN-ED+linear              # classical baseline
 
-E1_seed2:         # execution-order amendment (2026-11-11 08:05 UTC, results-blind): E1 seed 2 is run last, after all
-  seeds: [2]      # other experiments, into the same results file; analyses use every completed seed.
+# AMENDMENT 2 (2026-11-12 05:40 UTC, results-blind; infrastructure: idle containers are reclaimed, killing compute):
+#   E1 primary = seed 0 on all eligible datasets; seeds 1-2 only on a pre-declared random subset of 30 datasets (seed 11),
+#   run last; E3/E4 on the same subset; E3 at rate 0.5; P12 seed 0 with bootstrap CIs; E2 restricted further.
+subset30_seed: 11
+E1_seed2:         # seeds run last on the 30-dataset subset (seed-variability analysis)
+  seeds: [1, 2]
 
 E3_ablation:      # ablations/variants on seed 0 only (cost); compared with seed-0 MissRocket and MissRocket-g0 rows of E1
   seeds: [0]
+  rates: [0.5]
+  subset30: true
   methods:
     - MissRocket-g0.5            # weaker weighting
     - MissRocket-g2              # stronger weighting
@@ -45,10 +51,12 @@ E2_deep:          # GRU-D on a pre-registered UCR subset (cost-limited): length 
   methods: [GRU-D, MissRocket, AeonMiniRocket+linear]
   rates: [0.5]
   seeds: [0]
-  max_length: 300
-  max_train: 500
+  max_length: 200
+  max_train: 300
 
-E4_shift:         # RQ4: train/test missingness-rate shift
+E4_shift:         # RQ4: train/test missingness-rate shift (30-dataset subset, seed 0)
+  subset30: true
+  seeds: [0]
   pairs: [[0.0, 0.5], [0.0, 0.8], [0.2, 0.8]]
   mechanisms: [mcar, block]
   methods: [MissRocket, AeonMiniRocket+linear, MaskRocket-noC, LightGBM-NaN]

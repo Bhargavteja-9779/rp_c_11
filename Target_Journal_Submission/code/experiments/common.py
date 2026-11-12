@@ -42,3 +42,9 @@ def out(path):
 def log(s):
     if not s.startswith("Trace"):
         print(s, flush=True)
+
+
+def subset30():
+    """Pre-declared random subset of 30 eligible confirmatory datasets (amendment 2; seed fixed before results)."""
+    conf = confirmatory_datasets()
+    return sorted(np.random.RandomState(CFG["subset30_seed"]).choice(conf, 30, replace=False).tolist())
