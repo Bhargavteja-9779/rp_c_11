@@ -79,3 +79,7 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
     - E2 restricted to length ≤ 200 and n_train ≤ 300.
     - Order: E1 → E5a → E3 → E4 → E5b → E7 → E2 → E1 seeds 1–2.
     Primary analyses use E1 seed 0. Rule from now on: never end a turn while compute runs; commit results about every 30 min.
+15. ANALYSIS ERROR FOUND IN REVIEW 3 AND FIXED: the error-analysis correlations had pooled the 3 rates per mechanism (n=273),
+    counting each dataset 3 times (pseudo-replication). The strong 'gain grows with gap length' associations were a
+    between-rate confound. The per-rate analysis (n=91) shows significant associations only at block 80%. Manuscript
+    claims were rewritten accordingly (Sect. 6.8, 7.1, 7.4).

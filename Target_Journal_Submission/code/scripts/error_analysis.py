@@ -63,11 +63,13 @@ def main():
                        rel_gap_len=gap_stats(Xm) / Xm.shape[1]))
     g = g.merge(pd.DataFrame(gl), on=["dataset", "mechanism", "test_rate"])
     g.to_csv(os.path.join(T, "table_error_analysis_per_dataset.csv"), index=False)
+    # Correlations are computed WITHIN each (mechanism, rate) so that every dataset contributes one point
+    # (n = number of datasets); pooling the three rates would count each dataset three times (pseudo-replication).
     rows = []
-    for mech, gg in g.groupby("mechanism"):
+    for (mech, rate), gg in g.groupby(["mechanism", "test_rate"]):
         for prop in ["length", "n_train", "n_classes", "roughness", "mean_gap_len", "rel_gap_len"]:
             rho, p = spearmanr(gg[prop].astype(float), gg.gain)
-            rows.append(dict(mechanism=mech, property=prop, spearman_rho=rho, p_value=p, n=len(gg)))
+            rows.append(dict(mechanism=mech, rate=rate, property=prop, spearman_rho=rho, p_value=p, n=len(gg)))
     C = pd.DataFrame(rows)
     C["p_holm_within_mechanism"] = C.groupby("mechanism").p_value.transform(lambda p: holm(p.values))
     C.to_csv(os.path.join(T, "table_error_analysis_correlations.csv"), index=False)

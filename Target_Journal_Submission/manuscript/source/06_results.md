@@ -75,6 +75,8 @@ The ablations were run on a pre-declared random subset of 30 confirmatory datase
 
 **The benefit is not tied to linear interpolation.** Weighting also improves LOCF filling under block missingness (@tab:filler). It does *not* improve kNN filling, which does not draw straight lines through gaps and therefore does not produce the fabricated responses of Proposition 3.
 
+**Statistical power.** With 30 datasets and Holm correction over twelve comparisons, non-significant differences in this subset are inconclusive rather than evidence of no effect. The comparison with γ=0 on all {{N_CONF}} datasets (@tab:stats) is the primary evidence for the effect of weighting.
+
 **The exponent is not critical.** γ=0.5 and γ=2 are not significantly different from γ=1 in any mechanism. Selecting γ and the mask option on the training set by leave-one-out brings no significant improvement either. This is consistent with the development-set observation that motivated fixing γ=1.
 
 **Missingness-pattern features do not help.** Adding them to MissRocket gives no significant gain under block or MNAR missingness. Under MCAR they are slightly harmful ({{Q:table_ablation_statistics;mechanism=mcar;baseline=+ mask-pattern features;col=mean_diff;fmt=pp}} pp in favour of MissRocket without them, p (Holm) {{Q:table_ablation_statistics;mechanism=mcar;baseline=+ mask-pattern features;col=p_holm;fmt=p}}), where the mask is pure noise.
@@ -103,7 +105,7 @@ This holds even though the training data contain no missing values, and the reas
 
 {{TABLE:p12}}
 
-{#tab:p12boot} Paired bootstrap (2,000 resamples of test patients) of the AUROC difference between MissRocket and each method
+{#tab:p12boot} Paired bootstrap (2,000 resamples of test patients) of the AUROC difference between MissRocket and each method; p < 0.001 means that no resample produced a difference of the opposite sign
 
 {{TABLE:p12boot}}
 
@@ -179,11 +181,13 @@ GRU-D, which needs iterative training with early stopping, is compared in Sectio
 
 **Overall distribution.** Averaged over the nine conditions, MissRocket is more accurate than MiniRocket with interpolation on {{ERR_FRAC_POS}}% of the {{N_CONF}} datasets and less accurate on {{ERR_FRAC_NEG}}%. The largest average losses are small: {{ERR_WORST}}. The largest average gains are much larger: {{ERR_BEST}}.
 
-**When the method helps.** @fig:gap relates the per-dataset gain to the realised mean gap length relative to the series length. The gain increases with the mean gap length under block missingness (Spearman ρ = {{Q:table_error_analysis_correlations;mechanism=block;property=mean_gap_len;col=spearman_rho;fmt=f2}}, Holm-adjusted p {{Q:table_error_analysis_correlations;mechanism=block;property=mean_gap_len;col=p_holm_within_mechanism;fmt=p}}) and under MNAR (ρ = {{Q:table_error_analysis_correlations;mechanism=mnar;property=mean_gap_len;col=spearman_rho;fmt=f2}}, p {{Q:table_error_analysis_correlations;mechanism=mnar;property=mean_gap_len;col=p_holm_within_mechanism;fmt=p}}). This is consistent with Proposition 3: the longer the gaps, the more windows are fabricated and the more the weighting matters. Under block missingness the gain also increases with series length (ρ = {{Q:table_error_analysis_correlations;mechanism=block;property=length;col=spearman_rho;fmt=f2}}). Signal roughness, measured on the complete training series, is not associated with the gain under any mechanism.
+**When the method helps.** Across conditions, the pattern is clear. The gain is large under block missingness, grows with the missing rate under block and MNAR missingness, and is absent under MCAR (@tab:main, @tab:stats). Within a condition, dataset properties explain little of the variation across datasets. We computed Spearman correlations separately for each mechanism and rate, so that each dataset contributes one point (n = {{N_CONF}}), with Holm correction within each mechanism.
+
+The only significant associations occur at 80% block missingness. There the gain increases with series length (ρ = {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=length;col=spearman_rho;fmt=f2}}, Holm-adjusted p {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=length;col=p_holm_within_mechanism;fmt=p}}) and with the absolute mean gap length (ρ = {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=mean_gap_len;col=spearman_rho;fmt=f2}}, p {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=mean_gap_len;col=p_holm_within_mechanism;fmt=p}}). It decreases with the gap length *relative* to the series length (ρ = {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=rel_gap_len;col=spearman_rho;fmt=f2}}, p {{Q:table_error_analysis_correlations;mechanism=block;rate=0.8;property=rel_gap_len;col=p_holm_within_mechanism;fmt=p}}). This is consistent with the gain arising when gaps are long compared with the kernel windows, while enough of the series remains observed. Signal roughness is not associated with the gain in any condition.
 
 ![](../code/results/full/figures/Fig_error_gain_vs_gap.png){width=16.5cm}
 
-{#fig:gap} Per-dataset gain of MissRocket over MiniRocket with linear interpolation (percentage points) against the realised mean gap length relative to the series length, by mechanism and rate (seed 0; one point per dataset and rate)
+{#fig:gap} Per-dataset gain of MissRocket over MiniRocket with linear interpolation (percentage points) against the realised mean gap length relative to the series length, by mechanism and rate (seed 0; one point per dataset and rate). The vertical spread within a rate is much larger than any trend
 
 **Failure cases.** The largest single-condition losses all occur on datasets with small test sets, mostly smooth spectrograms: {{ERR_WORST_CASES}}. Their test-set sizes are {{ERR_WORST_NTEST}}, so one misclassified series changes accuracy by 1.6–3.6 pp. For such smooth signals with short, scattered gaps, linear interpolation is nearly exact, and down-weighting those windows discards accurate information. With so few test series these differences are also very noisy. OliveOil, for example, shows the worst single-condition loss and yet one of the largest average gains. Section 6.9 reports variability across seeds.
 

@@ -2,147 +2,489 @@
  "correlations": [
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "length",
-   "spearman_rho": 0.20653980352127013,
-   "p_value": 0.000594656810343832,
-   "n": 273,
-   "p_holm_within_mechanism": 0.00297328405171916
+   "spearman_rho": 0.11777001844133224,
+   "p_value": 0.2662249560940299,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "n_train",
-   "spearman_rho": -0.05957822846907008,
-   "p_value": 0.32671676038718594,
-   "n": 273,
-   "p_holm_within_mechanism": 0.6534335207743719
+   "spearman_rho": 0.08646309940619938,
+   "p_value": 0.4151117533136541,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "n_classes",
-   "spearman_rho": 0.15748117274584247,
-   "p_value": 0.009151024030855338,
-   "n": 273,
-   "p_holm_within_mechanism": 0.027453072092566012
+   "spearman_rho": 0.05340544338804496,
+   "p_value": 0.6151246872992595,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "roughness",
-   "spearman_rho": -0.020062527368853545,
-   "p_value": 0.7414002892502022,
-   "n": 273,
-   "p_holm_within_mechanism": 0.7414002892502022
+   "spearman_rho": 0.10351899325560877,
+   "p_value": 0.3288248582779084,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "mean_gap_len",
-   "spearman_rho": 0.2762191145938034,
-   "p_value": 3.596989275335661e-06,
-   "n": 273,
-   "p_holm_within_mechanism": 2.1581935652013965e-05
+   "spearman_rho": 0.11510213891378712,
+   "p_value": 0.27728376059980214,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "block",
+   "rate": 0.2,
    "property": "rel_gap_len",
-   "spearman_rho": 0.1964411494180043,
-   "p_value": 0.0011035809891961508,
-   "n": 273,
-   "p_holm_within_mechanism": 0.004414323956784603
+   "spearman_rho": -0.017698209474207468,
+   "p_value": 0.8677561706405233,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
-   "mechanism": "mcar",
+   "mechanism": "block",
+   "rate": 0.5,
    "property": "length",
-   "spearman_rho": -0.15985940217633077,
-   "p_value": 0.008139434451227074,
-   "n": 273,
-   "p_holm_within_mechanism": 0.032557737804908296
+   "spearman_rho": 0.1641245969428325,
+   "p_value": 0.12004912490621371,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
-   "mechanism": "mcar",
+   "mechanism": "block",
+   "rate": 0.5,
    "property": "n_train",
-   "spearman_rho": 0.1795844158066471,
-   "p_value": 0.002902749208420196,
-   "n": 273,
-   "p_holm_within_mechanism": 0.017416495250521177
+   "spearman_rho": -0.1792328540271037,
+   "p_value": 0.0891437317425996,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
-   "mechanism": "mcar",
+   "mechanism": "block",
+   "rate": 0.5,
    "property": "n_classes",
-   "spearman_rho": 0.03313452055395431,
-   "p_value": 0.5856780024432795,
-   "n": 273,
-   "p_holm_within_mechanism": 0.7289741564155169
+   "spearman_rho": 0.19712238766325416,
+   "p_value": 0.06108855265451879,
+   "n": 91,
+   "p_holm_within_mechanism": 0.8552397371632631
   },
   {
-   "mechanism": "mcar",
+   "mechanism": "block",
+   "rate": 0.5,
    "property": "roughness",
-   "spearman_rho": 0.101067103341123,
-   "p_value": 0.09561185926135819,
-   "n": 273,
-   "p_holm_within_mechanism": 0.2868355777840746
+   "spearman_rho": -0.0498373399529242,
+   "p_value": 0.6389713483354318,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
-   "mechanism": "mcar",
+   "mechanism": "block",
+   "rate": 0.5,
    "property": "mean_gap_len",
-   "spearman_rho": 0.05509605275124325,
-   "p_value": 0.36448707820775844,
-   "n": 273,
-   "p_holm_within_mechanism": 0.7289741564155169
+   "spearman_rho": 0.16715112870640486,
+   "p_value": 0.11327545085912599,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": -0.035064387045323775,
+   "p_value": 0.7414222961081578,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "length",
+   "spearman_rho": 0.34620539928737054,
+   "p_value": 0.0007751330705842168,
+   "n": 91,
+   "p_holm_within_mechanism": 0.013177262199931684
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "n_train",
+   "spearman_rho": -0.08522114527851246,
+   "p_value": 0.4218693625519811,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "n_classes",
+   "spearman_rho": 0.23091237931270792,
+   "p_value": 0.02765359915838843,
+   "n": 91,
+   "p_holm_within_mechanism": 0.4148039873758264
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "roughness",
+   "spearman_rho": -0.08812368860160996,
+   "p_value": 0.4061752754373271,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.3414002902586277,
+   "p_value": 0.0009268860896012555,
+   "n": 91,
+   "p_holm_within_mechanism": 0.014830177433620088
+  },
+  {
+   "mechanism": "block",
+   "rate": 0.8,
+   "property": "rel_gap_len",
+   "spearman_rho": -0.36278210498990104,
+   "p_value": 0.00040919390079762694,
+   "n": 91,
+   "p_holm_within_mechanism": 0.007365490214357285
   },
   {
    "mechanism": "mcar",
+   "rate": 0.2,
+   "property": "length",
+   "spearman_rho": -0.18935416809747188,
+   "p_value": 0.07223189065238549,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.2,
+   "property": "n_train",
+   "spearman_rho": 0.16607879793672004,
+   "p_value": 0.11564073091910301,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.2,
+   "property": "n_classes",
+   "spearman_rho": 0.0019963670590776223,
+   "p_value": 0.9850159069863446,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.2,
+   "property": "roughness",
+   "spearman_rho": 0.14617638378814782,
+   "p_value": 0.16678867791726862,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.2,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.04575797593307216,
+   "p_value": 0.6666902849148167,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.2,
    "property": "rel_gap_len",
-   "spearman_rho": 0.17774341518891815,
-   "p_value": 0.003210518918977386,
-   "n": 273,
-   "p_holm_within_mechanism": 0.017416495250521177
+   "spearman_rho": 0.192164103097243,
+   "p_value": 0.06802593116422984,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "length",
+   "spearman_rho": -0.033911012415358495,
+   "p_value": 0.7496428362156128,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "n_train",
+   "spearman_rho": 0.28512427696956316,
+   "p_value": 0.006154724565612666,
+   "n": 91,
+   "p_holm_within_mechanism": 0.110785042181028
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "n_classes",
+   "spearman_rho": -0.03360510593212695,
+   "p_value": 0.7518278903598004,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "roughness",
+   "spearman_rho": 0.03510842728117587,
+   "p_value": 0.7411089721580353,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.013262245265152515,
+   "p_value": 0.9007053887929767,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": 0.03698126083552143,
+   "p_value": 0.727824367132032,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "length",
+   "spearman_rho": -0.2413233717560589,
+   "p_value": 0.021198780656830656,
+   "n": 91,
+   "p_holm_within_mechanism": 0.3391804905092905
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "n_train",
+   "spearman_rho": 0.11074713485426982,
+   "p_value": 0.29598841181763674,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "n_classes",
+   "spearman_rho": 0.10289414905171827,
+   "p_value": 0.3317684634037477,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "roughness",
+   "spearman_rho": 0.1027812639833852,
+   "p_value": 0.33230203853821416,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "mean_gap_len",
+   "spearman_rho": -0.12508814824657383,
+   "p_value": 0.2374374343856886,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mcar",
+   "rate": 0.8,
+   "property": "rel_gap_len",
+   "spearman_rho": 0.24561126821817877,
+   "p_value": 0.018942498237223118,
+   "n": 91,
+   "p_holm_within_mechanism": 0.322022470032793
   },
   {
    "mechanism": "mnar",
+   "rate": 0.2,
    "property": "length",
-   "spearman_rho": 0.024430080811196107,
-   "p_value": 0.6877877668099582,
-   "n": 273,
+   "spearman_rho": -0.020372722246499383,
+   "p_value": 0.8479954739505512,
+   "n": 91,
    "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "mnar",
+   "rate": 0.2,
    "property": "n_train",
-   "spearman_rho": -0.012660517637107101,
-   "p_value": 0.8350457994307888,
-   "n": 273,
+   "spearman_rho": 0.022472236218540675,
+   "p_value": 0.8325480740120818,
+   "n": 91,
    "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "mnar",
+   "rate": 0.2,
    "property": "n_classes",
-   "spearman_rho": 0.11231281485489109,
-   "p_value": 0.06387309887998571,
-   "n": 273,
-   "p_holm_within_mechanism": 0.28951548238548985
-  },
-  {
-   "mechanism": "mnar",
-   "property": "roughness",
-   "spearman_rho": -0.017368360320314413,
-   "p_value": 0.7751253629979482,
-   "n": 273,
+   "spearman_rho": 0.028228196146230403,
+   "p_value": 0.7905393805368217,
+   "n": 91,
    "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "mnar",
-   "property": "mean_gap_len",
-   "spearman_rho": 0.3258824483565714,
-   "p_value": 3.569520462217982e-08,
-   "n": 273,
-   "p_holm_within_mechanism": 2.1417122773307893e-07
+   "rate": 0.2,
+   "property": "roughness",
+   "spearman_rho": -0.032165760496321694,
+   "p_value": 0.7621349691726743,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   },
   {
    "mechanism": "mnar",
+   "rate": 0.2,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.18287417972845277,
+   "p_value": 0.08273079289677374,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.2,
    "property": "rel_gap_len",
-   "spearman_rho": 0.11492396924082192,
-   "p_value": 0.057903096477097966,
-   "n": 273,
-   "p_holm_within_mechanism": 0.28951548238548985
+   "spearman_rho": 0.05940366143124557,
+   "p_value": 0.575932780012192,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "length",
+   "spearman_rho": 0.01143518705205736,
+   "p_value": 0.9143286571748879,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "n_train",
+   "spearman_rho": -0.028413933716643976,
+   "p_value": 0.7891930366665104,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "n_classes",
+   "spearman_rho": 0.05039158476421208,
+   "p_value": 0.6352421908421354,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "roughness",
+   "spearman_rho": 0.04380908412925069,
+   "p_value": 0.6800954181120662,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "mean_gap_len",
+   "spearman_rho": -0.18726943233456084,
+   "p_value": 0.07548565190891017,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.5,
+   "property": "rel_gap_len",
+   "spearman_rho": -0.03911580997321556,
+   "p_value": 0.7127809776193668,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "length",
+   "spearman_rho": 0.09988287937595053,
+   "p_value": 0.34618819713427157,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "n_train",
+   "spearman_rho": -0.11187018061146792,
+   "p_value": 0.2910873701846472,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "n_classes",
+   "spearman_rho": 0.19911443472872417,
+   "p_value": 0.05846877071481091,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "roughness",
+   "spearman_rho": -0.009727370831995893,
+   "p_value": 0.9270853012010206,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "mean_gap_len",
+   "spearman_rho": 0.11554939730010237,
+   "p_value": 0.27540865318909663,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "rate": 0.8,
+   "property": "rel_gap_len",
+   "spearman_rho": -0.08124293254690865,
+   "p_value": 0.4439373713048445,
+   "n": 91,
+   "p_holm_within_mechanism": 1.0
   }
  ],
  "extremes": [
