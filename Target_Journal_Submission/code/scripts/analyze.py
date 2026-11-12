@@ -378,6 +378,40 @@ def generic_table(R, key, T, stats, name):
             stats[key + "_statistics"] = c.to_dict("records")
 
 
+def sensitivity_figure(R, F, T, stats):
+    if "E7" not in R:
+        return
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    a = seed_avg(R["E7"])
+    g = a.groupby(["mechanism", "method"]).accuracy.mean().unstack(0)
+    gam = sorted([(float(m.split("gamma")[1]), m) for m in g.index if "gamma" in m])
+    nfs = sorted([(int(m.split("nf")[1]), m) for m in g.index if m.startswith("MissRocket-nf")])
+    nf0 = {int(m.split("nf")[1]): m for m in g.index if m.startswith("MissRocket-g0-nf")}
+    fig, axs = plt.subplots(1, 2, figsize=(7.1, 2.5))
+    for mech, mk, col in [("block", "o", "tab:blue"), ("mcar", "s", "tab:orange")]:
+        name = "MCAR" if mech == "mcar" else "Block"
+        axs[0].plot([x for x, _ in gam], [g.loc[m, mech] for _, m in gam], marker=mk, color=col, label=f"{name} 50%")
+        axs[1].plot([x for x, _ in nfs], [g.loc[m, mech] for _, m in nfs], marker=mk, color=col, label=f"{name}, γ=1")
+        axs[1].plot([x for x, _ in nfs], [g.loc[nf0[x], mech] for x, _ in nfs], marker=mk, color=col, ls="--", mfc="none",
+                    label=f"{name}, γ=0")
+    axs[0].axvline(1.0, color="grey", lw=0.6, ls=":")
+    axs[0].set_xlabel("weighting exponent γ"); axs[0].set_ylabel("mean accuracy (30 datasets)"); axs[0].legend(fontsize=6)
+    axs[1].set_xscale("log"); axs[1].set_xlabel("number of features"); axs[1].legend(fontsize=6, ncol=2)
+    from matplotlib.ticker import NullFormatter
+    axs[1].set_xticks([x for x, _ in nfs]); axs[1].set_xticklabels([f"{x:,}" for x, _ in nfs])
+    axs[1].xaxis.set_minor_formatter(NullFormatter())
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(F, f"Fig_sensitivity.{ext}"), dpi=300)
+    plt.close(fig)
+    rows = [dict(parameter="gamma", value=x, mechanism=mech, accuracy=g.loc[m, mech]) for x, m in gam for mech in g.columns]
+    rows += [dict(parameter="num_features_gamma1", value=x, mechanism=mech, accuracy=g.loc[m, mech]) for x, m in nfs for mech in g.columns]
+    rows += [dict(parameter="num_features_gamma0", value=x, mechanism=mech, accuracy=g.loc[nf0[x], mech]) for x, _ in nfs for mech in g.columns]
+    md(pd.DataFrame(rows), os.path.join(T, "table_sensitivity_summary"))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", default="full")
@@ -405,6 +439,7 @@ def main():
     p12_tables(mode, T, F, stats)
     generic_table(R, "E2", T, stats, "deep_baseline")
     generic_table(R, "E7", T, stats, "sensitivity")
+    sensitivity_figure(R, F, T, stats)
     with open(os.path.join(S, "statistics.json"), "w") as f:
         json.dump(stats, f, indent=1, default=float)
     metrics = {}
