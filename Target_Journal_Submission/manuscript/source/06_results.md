@@ -77,6 +77,22 @@ The ablations were run on a pre-declared random subset of 30 confirmatory datase
 
 **The gap filler matters.** Zero filling is far worse than linear filling even with weighting. kNN filling is the strongest filler under block missingness but loses under MCAR and MNAR, mirroring the main comparison.
 
+### 6.3 Robustness to train–test missingness shift (RQ4)
+
+In deployment, a classifier is often trained on curated, complete data and then applied to series with gaps. It may also be trained on data with modest gaps and then face much heavier ones. @tab:shift reports three such shifts, on the 30-dataset subset (seed 0).
+
+{#tab:shift} Accuracy under train–test missing-rate shift (30 datasets). Baseline cells: accuracy (MissRocket minus baseline in pp; W/T/L; Holm-corrected p within the shift condition)
+
+{{TABLE:shift}}
+
+**Block missingness.** Here the shift is most harmful, and MissRocket is markedly more robust. Trained on complete data and tested with 50% block missingness, it reaches {{Q:table_shift;mechanism=block;train_rate=0.0;test_rate=0.5;baseline=MiniRocket + linear interp.;col=proposed_mean;fmt=f3}}, against {{Q:table_shift;mechanism=block;train_rate=0.0;test_rate=0.5;baseline=MiniRocket + linear interp.;col=baseline_mean;fmt=f3}} for MiniRocket with interpolation (p (Holm) {{Q:table_shift;mechanism=block;train_rate=0.0;test_rate=0.5;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}}).
+
+This holds even though the training data contain no missing values, and the reason is the test-time weighting. When the model is trained on complete series, all weights equal one during training. At test time, the weighting removes the fabricated responses inside long gaps, so the pooled features stay closer to the distribution seen in training.
+
+**MCAR.** The shift has little effect on either interpolation-based method. Differences are small: {{Q:table_shift;mechanism=mcar;train_rate=0.0;test_rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp for 0%→50% (not significant) and {{Q:table_shift;mechanism=mcar;train_rate=0.2;test_rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp for 20%→80% (p (Holm) {{Q:table_shift;mechanism=mcar;train_rate=0.2;test_rate=0.8;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}}).
+
+**Native estimators under shift.** The native group-mean estimator and LightGBM degrade severely under MCAR shift. Both rely on statistics whose distribution changes with the missing rate.
+
 ### 6.5 Naturally incomplete and variable-length data (RQ5)
 
 {#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket

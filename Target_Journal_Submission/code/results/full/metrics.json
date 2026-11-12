@@ -115,24 +115,24 @@
  },
  "E4": {
   "AeonMiniRocket+linear": {
-   "accuracy": 0.7289655546064969,
-   "balanced_accuracy": 0.71711679042043,
-   "macro_f1": 0.7114472271388487
+   "accuracy": 0.5510483836813821,
+   "balanced_accuracy": 0.5409844921475425,
+   "macro_f1": 0.49830987280773187
   },
   "LightGBM-NaN": {
-   "accuracy": 0.4934277004144261,
-   "balanced_accuracy": 0.4867103748504114,
-   "macro_f1": 0.4227796502991992
+   "accuracy": 0.4535013296653349,
+   "balanced_accuracy": 0.43094904494501435,
+   "macro_f1": 0.3717528993327837
   },
   "MaskRocket-noC": {
-   "accuracy": 0.4575459842638437,
-   "balanced_accuracy": 0.4578496573023383,
-   "macro_f1": 0.36351194199493464
+   "accuracy": 0.44168501394411697,
+   "balanced_accuracy": 0.44536140103076605,
+   "macro_f1": 0.3900954452607055
   },
   "MissRocket": {
-   "accuracy": 0.7258462407278784,
-   "balanced_accuracy": 0.7067558197656915,
-   "macro_f1": 0.7026818155881553
+   "accuracy": 0.6051528650857875,
+   "balanced_accuracy": 0.5956784751412714,
+   "macro_f1": 0.571407424106323
   }
  },
  "E5_natural": {

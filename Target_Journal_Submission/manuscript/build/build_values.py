@@ -163,6 +163,22 @@ def table_ablation(v):
     v["_tables"]["weighting_by_filler"] = md_table(pd.DataFrame(rows))
 
 
+def table_shift(v):
+    c = t("table_shift")
+    if c is None:
+        return
+    rows = []
+    for (mech, tr, te), g in c.groupby(["mechanism", "train_rate", "test_rate"], sort=False):
+        r = {"Mechanism": MECH[mech], "Train → test rate": f"{int(tr * 100)}% → {int(te * 100)}%",
+             "MissRocket": f"{g.proposed_mean.iloc[0]:.3f}"}
+        for b, lab in [("MiniRocket + linear interp.", "MiniRocket + interp."), ("Native masked MiniRocket (group-mean)", "Native masked"),
+                       ("LightGBM (native NaN)", "LightGBM")]:
+            x = g[g.baseline == b].iloc[0]
+            r[lab] = f"{x.baseline_mean:.3f} ({x.mean_diff * 100:+.1f}; {x.wins}/{x.ties}/{x.losses}; p {pfmt(x.p_holm)})"
+        rows.append(r)
+    v["_tables"]["shift"] = md_table(pd.DataFrame(rows))
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -170,7 +186,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 

@@ -11095,3 +11095,6 @@ UWaveGestureLibraryZ block 0.2/0.8 s0 LightGBM-NaN: acc=0.3738 [ok]
 === E5_p12 (full) ===
 P12 MissRocket s0: AUROC=0.8027 AUPRC=0.4889 (66s)
 P12 MissRocket-g0 s0: AUROC=0.8061 AUPRC=0.4906 (65s)
+P12 MissRocket-select s0: AUROC=0.8061 AUPRC=0.4906 (373s)
+P12 MaskRocket-noC s0: AUROC=0.7845 AUPRC=0.4514 (53s)
+P12 LightGBM-NaN s0: AUROC=0.8457 AUPRC=0.5215 (12s)
