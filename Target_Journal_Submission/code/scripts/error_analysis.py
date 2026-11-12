@@ -43,7 +43,7 @@ def gap_stats(X):
 
 def main():
     d = read_results(os.path.join(BASE, "E1_main", "raw_results.csv"))
-    d = d[d.status == "ok"]
+    d = d[(d.status == "ok") & (d.seed == 0)]  # primary analysis: seed 0 on all eligible datasets
     a = d.groupby(["dataset", "mechanism", "test_rate", "method"]).accuracy.mean().unstack()
     g = (a["MissRocket"] - a[REF]).rename("gain").reset_index()
     reg = pd.read_csv(os.path.join(ROOT, "data", "registry.csv")).set_index("dataset")
@@ -98,6 +98,8 @@ def figures(g, P):
             s = gg[gg.test_rate == r]
             ax.scatter(s.rel_gap_len, s.gain * 100, s=6, marker=mk, alpha=0.6, label=f"rate {r:.1f}")
         ax.axhline(0, color="grey", lw=0.7); ax.set_xscale("log")
+        from matplotlib.ticker import NullFormatter
+        ax.xaxis.set_minor_formatter(NullFormatter())
         ax.set_title(mech.upper() if mech != "block" else "Block"); ax.set_xlabel("mean gap length / series length")
     axs[0].set_ylabel("gain over MiniRocket+interp. (pp)"); axs[0].legend(fontsize=6)
     fig.tight_layout()

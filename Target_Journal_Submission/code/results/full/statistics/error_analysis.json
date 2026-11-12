@@ -1,0 +1,352 @@
+{
+ "correlations": [
+  {
+   "mechanism": "block",
+   "property": "length",
+   "spearman_rho": 0.20653980352127013,
+   "p_value": 0.000594656810343832,
+   "n": 273,
+   "p_holm_within_mechanism": 0.00297328405171916
+  },
+  {
+   "mechanism": "block",
+   "property": "n_train",
+   "spearman_rho": -0.05957822846907008,
+   "p_value": 0.32671676038718594,
+   "n": 273,
+   "p_holm_within_mechanism": 0.6534335207743719
+  },
+  {
+   "mechanism": "block",
+   "property": "n_classes",
+   "spearman_rho": 0.15748117274584247,
+   "p_value": 0.009151024030855338,
+   "n": 273,
+   "p_holm_within_mechanism": 0.027453072092566012
+  },
+  {
+   "mechanism": "block",
+   "property": "roughness",
+   "spearman_rho": -0.020062527368853545,
+   "p_value": 0.7414002892502022,
+   "n": 273,
+   "p_holm_within_mechanism": 0.7414002892502022
+  },
+  {
+   "mechanism": "block",
+   "property": "mean_gap_len",
+   "spearman_rho": 0.2762191145938034,
+   "p_value": 3.596989275335661e-06,
+   "n": 273,
+   "p_holm_within_mechanism": 2.1581935652013965e-05
+  },
+  {
+   "mechanism": "block",
+   "property": "rel_gap_len",
+   "spearman_rho": 0.1964411494180043,
+   "p_value": 0.0011035809891961508,
+   "n": 273,
+   "p_holm_within_mechanism": 0.004414323956784603
+  },
+  {
+   "mechanism": "mcar",
+   "property": "length",
+   "spearman_rho": -0.15985940217633077,
+   "p_value": 0.008139434451227074,
+   "n": 273,
+   "p_holm_within_mechanism": 0.032557737804908296
+  },
+  {
+   "mechanism": "mcar",
+   "property": "n_train",
+   "spearman_rho": 0.1795844158066471,
+   "p_value": 0.002902749208420196,
+   "n": 273,
+   "p_holm_within_mechanism": 0.017416495250521177
+  },
+  {
+   "mechanism": "mcar",
+   "property": "n_classes",
+   "spearman_rho": 0.03313452055395431,
+   "p_value": 0.5856780024432795,
+   "n": 273,
+   "p_holm_within_mechanism": 0.7289741564155169
+  },
+  {
+   "mechanism": "mcar",
+   "property": "roughness",
+   "spearman_rho": 0.101067103341123,
+   "p_value": 0.09561185926135819,
+   "n": 273,
+   "p_holm_within_mechanism": 0.2868355777840746
+  },
+  {
+   "mechanism": "mcar",
+   "property": "mean_gap_len",
+   "spearman_rho": 0.05509605275124325,
+   "p_value": 0.36448707820775844,
+   "n": 273,
+   "p_holm_within_mechanism": 0.7289741564155169
+  },
+  {
+   "mechanism": "mcar",
+   "property": "rel_gap_len",
+   "spearman_rho": 0.17774341518891815,
+   "p_value": 0.003210518918977386,
+   "n": 273,
+   "p_holm_within_mechanism": 0.017416495250521177
+  },
+  {
+   "mechanism": "mnar",
+   "property": "length",
+   "spearman_rho": 0.024430080811196107,
+   "p_value": 0.6877877668099582,
+   "n": 273,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "property": "n_train",
+   "spearman_rho": -0.012660517637107101,
+   "p_value": 0.8350457994307888,
+   "n": 273,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "property": "n_classes",
+   "spearman_rho": 0.11231281485489109,
+   "p_value": 0.06387309887998571,
+   "n": 273,
+   "p_holm_within_mechanism": 0.28951548238548985
+  },
+  {
+   "mechanism": "mnar",
+   "property": "roughness",
+   "spearman_rho": -0.017368360320314413,
+   "p_value": 0.7751253629979482,
+   "n": 273,
+   "p_holm_within_mechanism": 1.0
+  },
+  {
+   "mechanism": "mnar",
+   "property": "mean_gap_len",
+   "spearman_rho": 0.3258824483565714,
+   "p_value": 3.569520462217982e-08,
+   "n": 273,
+   "p_holm_within_mechanism": 2.1417122773307893e-07
+  },
+  {
+   "mechanism": "mnar",
+   "property": "rel_gap_len",
+   "spearman_rho": 0.11492396924082192,
+   "p_value": 0.057903096477097966,
+   "n": 273,
+   "p_holm_within_mechanism": 0.28951548238548985
+  }
+ ],
+ "extremes": [
+  {
+   "dataset": "Wine",
+   "mean_gain_all_conditions": -0.03497942386831276
+  },
+  {
+   "dataset": "SmallKitchenAppliances",
+   "mean_gain_all_conditions": -0.015111111111111087
+  },
+  {
+   "dataset": "EOGVerticalSignal",
+   "mean_gain_all_conditions": -0.01350521792510744
+  },
+  {
+   "dataset": "WormsTwoClass",
+   "mean_gain_all_conditions": -0.012987012987012991
+  },
+  {
+   "dataset": "Lightning2",
+   "mean_gain_all_conditions": -0.01275045537340622
+  },
+  {
+   "dataset": "Earthquakes",
+   "mean_gain_all_conditions": -0.01039168665067943
+  },
+  {
+   "dataset": "EOGHorizontalSignal",
+   "mean_gain_all_conditions": -0.007673419275629238
+  },
+  {
+   "dataset": "Herring",
+   "mean_gain_all_conditions": -0.003472222222222222
+  },
+  {
+   "dataset": "Car",
+   "mean_gain_all_conditions": 0.04259259259259258
+  },
+  {
+   "dataset": "ACSF1",
+   "mean_gain_all_conditions": 0.04444444444444446
+  },
+  {
+   "dataset": "Meat",
+   "mean_gain_all_conditions": 0.05185185185185188
+  },
+  {
+   "dataset": "BirdChicken",
+   "mean_gain_all_conditions": 0.05555555555555555
+  },
+  {
+   "dataset": "PigAirwayPressure",
+   "mean_gain_all_conditions": 0.06730769230769233
+  },
+  {
+   "dataset": "PigArtPressure",
+   "mean_gain_all_conditions": 0.0747863247863248
+  },
+  {
+   "dataset": "OliveOil",
+   "mean_gain_all_conditions": 0.07777777777777778
+  },
+  {
+   "dataset": "PigCVP",
+   "mean_gain_all_conditions": 0.10042735042735032
+  }
+ ],
+ "frac_datasets_gain_pos": 0.8571428571428571,
+ "frac_datasets_gain_neg": 0.12087912087912088,
+ "confusion": {
+  "largest_loss": {
+   "dataset": "HouseTwenty",
+   "MissRocket": {
+    "accuracy": 0.7899159663865546,
+    "per_class_recall": [
+     0.8115942028985508,
+     0.76
+    ]
+   },
+   "AeonMiniRocket+linear": {
+    "accuracy": 0.8823529411764706,
+    "per_class_recall": [
+     0.9565217391304348,
+     0.78
+    ]
+   }
+  },
+  "largest_gain": {
+   "dataset": "PigCVP",
+   "MissRocket": {
+    "accuracy": 0.7932692307692307,
+    "per_class_recall": [
+     0.5,
+     1.0,
+     0.5,
+     0.75,
+     0.75,
+     1.0,
+     1.0,
+     1.0,
+     0.75,
+     0.5,
+     1.0,
+     0.5,
+     1.0,
+     0.25,
+     1.0,
+     1.0,
+     0.5,
+     1.0,
+     0.5,
+     1.0,
+     0.75,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     0.75,
+     1.0,
+     0.25,
+     1.0,
+     1.0,
+     0.5,
+     0.25,
+     0.75,
+     0.5,
+     1.0,
+     0.75,
+     0.75,
+     0.75,
+     1.0,
+     1.0,
+     1.0,
+     0.75,
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "AeonMiniRocket+linear": {
+    "accuracy": 0.46153846153846156,
+    "per_class_recall": [
+     0.0,
+     0.25,
+     0.25,
+     0.0,
+     0.25,
+     1.0,
+     0.25,
+     0.5,
+     0.5,
+     0.5,
+     0.25,
+     0.0,
+     1.0,
+     0.0,
+     0.5,
+     0.25,
+     0.25,
+     0.5,
+     0.25,
+     0.5,
+     0.5,
+     0.75,
+     0.5,
+     0.75,
+     0.5,
+     0.5,
+     1.0,
+     0.75,
+     0.75,
+     1.0,
+     0.25,
+     0.75,
+     0.75,
+     0.25,
+     0.25,
+     0.75,
+     0.0,
+     0.5,
+     0.25,
+     0.75,
+     0.5,
+     0.25,
+     1.0,
+     0.5,
+     0.25,
+     0.5,
+     0.0,
+     0.25,
+     0.5,
+     0.75,
+     0.0,
+     1.0
+    ]
+   }
+  }
+ }
+}
