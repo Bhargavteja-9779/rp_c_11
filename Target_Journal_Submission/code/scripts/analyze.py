@@ -186,11 +186,11 @@ def figures_main(a, summ, comp, F):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9})
-    show = [PROPOSED, "AeonMiniRocket+linear", "MultiRocket+linear", "HydraMultiRocket+linear", "AeonMiniRocket+zero",
-            "MaskRocket-noC", "LightGBM-NaN", "1NN-ED+linear"]
-    mk = dict(zip(show, ["o", "s", "^", "v", "D", "P", "X", "*"]))
+    show = [PROPOSED, "AeonMiniRocket+linear", "MultiRocket+linear", "HydraMultiRocket+linear", "AeonMiniRocket+knn",
+            "AeonMiniRocket+zero", "MaskRocket-noC", "LightGBM-NaN", "1NN-ED+linear"]
+    mk = dict(zip(show, ["o", "s", "^", "v", "h", "D", "P", "X", "*"]))
     mechs = ["mcar", "block", "mnar"]
-    fig, axs = plt.subplots(1, 3, figsize=(7.1, 2.6), sharey=True)
+    fig, axs = plt.subplots(1, 3, figsize=(7.1, 3.3), sharey=True)
     for ax, mech in zip(axs, mechs):
         for m in show:
             s = summ[(summ.mechanism == mech) & (summ.key == m)].sort_values("rate")
@@ -200,8 +200,9 @@ def figures_main(a, summ, comp, F):
         ax.set_title({"mcar": "MCAR", "block": "Block (contiguous gaps)", "mnar": "MNAR (self-masking)"}[mech])
         ax.set_xlabel("Missing rate"); ax.grid(alpha=0.3)
     axs[0].set_ylabel("Mean accuracy over datasets")
-    axs[0].legend(fontsize=6, loc="lower left")
-    fig.tight_layout()
+    h, l = axs[0].get_legend_handles_labels()
+    fig.legend(h, l, loc="lower center", ncol=3, fontsize=6.5, frameon=False)
+    fig.tight_layout(rect=(0, 0.2, 1, 1))
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(F, f"Fig_accuracy_vs_rate.{ext}"), dpi=300)
     plt.close(fig)

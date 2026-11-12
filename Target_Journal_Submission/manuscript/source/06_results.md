@@ -4,7 +4,7 @@
 
 @tab:main reports mean test accuracy over the {{N_CONF}} confirmatory datasets for every mechanism and rate. Paired comparisons with the strongest competitors are given in @tab:stats, and pooled comparisons in @tab:pooled. @fig:rate shows accuracy against the missing rate.
 
-{#tab:main} Mean test accuracy over {{N_CONF}} UCR datasets (seed 0) under MCAR, block (contiguous-gap) and MNAR (self-masking) missingness at 20%, 50% and 80% missing values. Mean rank is computed among the twelve methods compared in the main study (the γ=0 ablation is excluded). Best value per column in bold
+{#tab:main} Mean test accuracy over {{N_CONF}} UCR datasets (seed 0) under MCAR, block (contiguous-gap) and MNAR (self-masking) missingness at 20%, 50% and 80% missing values. Mean rank is computed among the eleven methods of the main comparison (the γ=0 ablation is excluded). Best value per column in bold
 
 {{TABLE:main_accuracy}}
 
@@ -26,7 +26,7 @@ At 50% and 80%, MissRocket is also significantly more accurate than MultiRocket 
 
 **Scattered gaps.** Under MCAR, MissRocket is not significantly different from MiniRocket with interpolation at any rate: the mean differences are {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}}, {{Q:table_main_statistics;mechanism=mcar;rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} and {{Q:table_main_statistics;mechanism=mcar;rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp. At 20% MCAR it is slightly but significantly *less* accurate than MultiRocket ({{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MultiRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MultiRocket + linear interp.;col=p_holm;fmt=p}}) and than Hydra-MultiRocket ({{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=Hydra-MultiRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=Hydra-MultiRocket + linear interp.;col=p_holm;fmt=p}}).
 
-{#tab:stats} Paired comparison of MissRocket with the strongest competitors and with its own unweighted ablation (γ=0), per condition. Δ is the mean accuracy difference in percentage points (positive favours MissRocket), with a dataset-level bootstrap 95% CI; W/T/L are wins/ties/losses over datasets; r_rb is the matched-pairs rank-biserial correlation; p is the two-sided Wilcoxon signed-rank test, Holm-corrected within each condition over all eleven baselines (γ=0: separate single comparison)
+{#tab:stats} Paired comparison of MissRocket with the strongest competitors and with its own unweighted ablation (γ=0), per condition. Δ is the mean accuracy difference in percentage points (positive favours MissRocket), with a dataset-level bootstrap 95% CI; W/T/L are wins/ties/losses over datasets; r_rb is the matched-pairs rank-biserial correlation; p is the two-sided Wilcoxon signed-rank test, Holm-corrected within each condition over the ten baselines (γ=0: separate single comparison)
 
 {{TABLE:main_statistics}}
 
