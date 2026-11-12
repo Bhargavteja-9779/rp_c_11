@@ -285,17 +285,29 @@ def seed_var(v):
         return
     key = sv[sv.baseline.isin(["MiniRocket + linear interp.", "w/o weighting (γ=0)"])]
     agree = key.sign_agreement.mean()
-    sig = key[(key.mechanism == "block") & (key.rate >= 0.5)]
+    allc = sv.sign_agreement.mean()
+    bad = sv[~sv.sign_agreement.astype(bool)]
+    bad_txt = "; ".join(f"{MECH[r.mechanism]} {int(r.rate * 100)}% vs {r.baseline.rstrip('.')}" for r in bad.itertuples())
+    # machine check: every Holm-significant main comparison keeps its sign in every seed of the subset
+    st = t("table_main_statistics"); g0 = t("table_weighting_vs_unweighted_3seeds")
+    sigs = [(r.mechanism, r.rate, r.baseline, np.sign(r.mean_diff)) for r in st.itertuples() if r.p_holm < 0.05]
+    sigs += [(r.mechanism, r.rate, "w/o weighting (γ=0)", np.sign(r.mean_diff)) for r in g0.itertuples() if r.p_holm < 0.05]
+    ok = True
+    for mech, rate, b, sg in sigs:
+        row = sv[(sv.mechanism == mech) & np.isclose(sv.rate, rate) & (sv.baseline == b)]
+        if len(row) != 1 or not all(np.sign(row[c].iloc[0]) == sg for c in ["0", "1", "2"]):
+            ok = False
+    v["SEED_SIG_CHECK"] = ok
+    blk = sv[(sv.mechanism == "block") & (sv.rate >= 0.5) & (sv.baseline == "MiniRocket + linear interp.")][["0", "1", "2"]]
     v["SEED_VAR_TEXT"] = (
-        f"On the 30-dataset subset, run with seeds 0, 1 and 2, the sign of the mean difference between MissRocket and "
-        f"MiniRocket with interpolation, and between MissRocket and its γ=0 ablation, agreed across all three seeds in "
-        f"{100 * agree:.0f}% of the 18 mechanism–rate–baseline combinations. The standard deviation over seeds of the mean "
-        f"difference had a median of {100 * key.sd_over_seeds.median():.2f} pp. Under block missingness at 50% and 80%, "
-        f"the mean gain over MiniRocket with interpolation ranged from {100 * sig[sig.baseline == 'MiniRocket + linear interp.'][['0', '1', '2']].min().min():+.2f} "
-        f"to {100 * sig[sig.baseline == 'MiniRocket + linear interp.'][['0', '1', '2']].max().max():+.2f} pp across seeds. "
-        + ("Seed-level differences on individual small test sets are larger (Section 6.8), but the dataset-level conclusions are stable "
-           if agree >= 0.9 else
-           "The direction of the effect is therefore not stable across seeds for some conditions, mainly those where the mean difference is close to zero; conclusions for those conditions should be read with caution ")
+        f"On the 30-dataset subset, run with seeds 0, 1 and 2, we computed the mean difference between MissRocket and each baseline separately for each seed. "
+        f"Its sign agreed across all three seeds in {100 * allc:.0f}% of the {len(sv)} condition–baseline combinations. "
+        f"The combinations without agreement were {bad_txt}. In all of them the mean difference stayed within ±{100 * bad[['0', '1', '2']].abs().max().max():.1f} pp, that is, close to zero. "
+        f"For the two key comparisons, with MiniRocket and interpolation and with the γ=0 ablation, the sign agreed in {100 * agree:.0f}% of the condition–baseline combinations. "
+        f"The median standard deviation over seeds of the mean difference was {100 * sv.sd_over_seeds.median():.2f} pp. "
+        f"Under block missingness at 50% and 80%, the gain over MiniRocket with interpolation ranged from {100 * blk.min().min():+.2f} to {100 * blk.max().max():+.2f} pp across seeds. "
+        + ("Every effect reported as significant in Section 6.1 has the same sign in every seed; only differences that are already near zero change sign "
+           if ok else "Not every effect reported as significant in Section 6.1 keeps its sign in every seed; details are given ")
         + "(Online Resource 1, Table S5).")
 
 

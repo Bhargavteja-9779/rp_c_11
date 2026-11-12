@@ -171,6 +171,13 @@ On the four datasets with genuinely missing interior values (DodgerLoopDay, Dodg
 
 **Cheaper than the stronger transforms.** Even with this implementation gap, MissRocket is about {{TIME_RATIO_HYDRA_VS_MR}}× faster than Hydra-MultiRocket and uses fewer than a fifth of its features. At the same time, it is at least as accurate on average (Section 6.1).
 
+**Controlled scaling benchmark.** To separate method from implementation we ran a controlled benchmark of the transform alone. It used synthetic random-walk series with 50% block missingness, measured each configuration in an isolated process on an otherwise idle machine, and took the median of three repeats after a warm-up (Online Resource 1, Fig. S13).
+- *Weighting is free:* at n = 1,000 series of length 2,048, MissRocket took {{Q:table_scaling;method=MissRocket;n=1000;L=2048;col=time_s;fmt=f1}} s and its γ=0 variant {{Q:table_scaling;method=MissRocket-g0;n=1000;L=2048;col=time_s;fmt=f1}} s.
+- *Implementation gap:* aeon's MiniRocket took {{Q:table_scaling;method=MiniRocket+interp;n=1000;L=2048;col=time_s;fmt=f1}} s. Our transform is thus an order of magnitude slower than the optimised reference implementation; with the classifier included, the gap shrinks to the factor of about four in @tab:eff.
+- *Stronger transforms:* MultiRocket took {{Q:table_scaling;method=MultiRocket+interp;n=1000;L=2048;col=time_s;fmt=f1}} s and Hydra-MultiRocket {{Q:table_scaling;method=HydraMultiRocket+interp;n=1000;L=2048;col=time_s;fmt=f1}} s.
+- *Memory:* the peak resident memory of MissRocket ({{Q:table_scaling;method=MissRocket;n=1000;L=2048;col=peak_rss_mb;fmt=int}} MB) was the lowest of all methods. Hydra-MultiRocket needed {{Q:table_scaling;method=HydraMultiRocket+interp;n=1000;L=2048;col=peak_rss_mb;fmt=int}} MB.
+- *Scaling:* all methods scaled approximately linearly in the number and length of the series.
+
 **Model-based imputation adds cost and memory.** kNN imputation must store the training set and compare every test series with it. Its cost grows with the size of the training set, whereas MissRocket processes each series independently.
 
 GRU-D, which needs iterative training with early stopping, is compared in Sections 6.4 and 6.9.

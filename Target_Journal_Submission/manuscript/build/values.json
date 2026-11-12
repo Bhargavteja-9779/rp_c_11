@@ -35,7 +35,8 @@
  "GRUD_MED_S": "13.8",
  "MR_MED_S_E2": "0.45",
  "GRUD_TIME_RATIO": "30",
- "SEED_VAR_TEXT": "[PENDING: the seed-variability runs (seeds 1-2 on 30 datasets) have not completed; this paragraph is generated automatically once they have.]",
+ "SEED_SIG_CHECK": true,
+ "SEED_VAR_TEXT": "On the 30-dataset subset, run with seeds 0, 1 and 2, we computed the mean difference between MissRocket and each baseline separately for each seed. Its sign agreed across all three seeds in 95% of the 99 condition–baseline combinations. The combinations without agreement were Block 80% vs MiniRocket + kNN impute; MCAR 80% vs MiniRocket + linear interp; MCAR 80% vs MultiRocket + linear interp; MCAR 80% vs w/o weighting (γ=0); MNAR 20% vs MultiRocket + linear interp. In all of them the mean difference stayed within ±1.3 pp, that is, close to zero. For the two key comparisons, with MiniRocket and interpolation and with the γ=0 ablation, the sign agreed in 89% of the condition–baseline combinations. The median standard deviation over seeds of the mean difference was 0.40 pp. Under block missingness at 50% and 80%, the gain over MiniRocket with interpolation ranged from +4.16 to +5.29 pp across seeds. Every effect reported as significant in Section 6.1 has the same sign in every seed; only differences that are already near zero change sign (Online Resource 1, Table S5).",
  "TITLE": "Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation",
  "COVER_LETTER_PARAGRAPHS": [
   "We submit the manuscript “Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation” for consideration as an original research article in the Journal of King Saud University – Computer and Information Sciences.",
@@ -45,7 +46,7 @@
   "We confirm that the manuscript is original, has not been published previously, and is not under consideration for publication elsewhere. All authors have approved the manuscript and agree with its submission. The study uses only public, de-identified data, so ethics approval was not required. The authors declare no competing interests [to be confirmed by the authors]. As required by the journal's policy, the use of an AI agent in the research workflow is documented in the Methods section and in the Statements and Declarations. In line with the journal's double-anonymous review, the manuscript has been anonymised, and author information is provided on the separate title page.",
   "Thank you for considering our submission."
  ],
- "WORD_COUNT": "approx. 9,227 (main text incl. abstract, excluding tables, equations and references)",
+ "WORD_COUNT": "approx. 9,636 (main text incl. abstract, excluding tables, equations and references)",
  "N_FIGS": "7",
  "N_TABLES": "11"
 }
