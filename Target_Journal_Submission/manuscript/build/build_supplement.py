@@ -84,13 +84,13 @@ def main():
         if d is not None:
             parts.append(f"## {title}\n")
             parts.append(fmt(d))
-    for fig, cap in [("Fig_p12_roc_pr.png", "S12 PhysioNet 2012: ROC and precision-recall curves (test set c)"),
-                     ("Fig_dataset_distribution.png", "S13 Distribution of series length, training-set size and number of classes over the confirmatory datasets"),
-                     ("Fig_scaling.png", "S14 Controlled scaling benchmark: transform time vs series length")]:
+    for fig, cap in [("Fig_p12_roc_pr.png", "S11 PhysioNet 2012: ROC and precision-recall curves (test set c)"),
+                     ("Fig_dataset_distribution.png", "S12 Distribution of series length, training-set size and number of classes over the confirmatory datasets"),
+                     ("Fig_scaling.png", "S13 Controlled scaling benchmark: transform time vs series length")]:
         fp = os.path.join(RES, "figures", fig)
         if os.path.exists(fp):
             parts.append(f"## {cap}\n\n![]({fp}){{width=16cm}}")
-    parts.append("## S15 Raw results\n\nAll per-run results are provided as Online Resource 2 (ESM_2.csv). Columns: dataset, mechanism, train_rate, "
+    parts.append("## S14 Raw results\n\nAll per-run results are provided as Online Resource 2 (ESM_2.csv). Columns: dataset, mechanism, train_rate, "
                  "test_rate, seed, method, accuracy, balanced_accuracy, macro_f1, auroc, auprc, fit_s, predict_s, n_features, "
                  "train_obs_frac, test_obs_frac, selected_gamma, selected_mask, status, timestamp, experiment.")
     md = os.path.join(HERE, "ESM_1.md")
