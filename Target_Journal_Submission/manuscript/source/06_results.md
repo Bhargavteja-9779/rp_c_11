@@ -53,6 +53,30 @@ The pooled differences from MultiRocket ({{Q:table_pooled_statistics;baseline=Mu
 
 {#fig:diff} Distribution over datasets of the accuracy difference between MissRocket and MiniRocket with linear interpolation (percentage points). Boxes show quartiles, whiskers 1.5 IQR, points outliers
 
+### 6.2 Ablation study (RQ2–RQ3)
+
+The ablations were run on a pre-declared random subset of 30 confirmatory datasets, at rate 0.5, for each mechanism (seed 0). @tab:ablation compares MissRocket with each variant. @tab:filler isolates the effect of weighting for each gap filler.
+
+{#tab:ablation} Ablations on 30 datasets at 50% missing values. "acc." is the mean accuracy of the variant; Δ is MissRocket minus the variant in percentage points (positive favours MissRocket), with the Holm-corrected Wilcoxon p-value (family: the twelve comparisons within a mechanism)
+
+{{TABLE:ablation}}
+
+{#tab:filler} Effect of observed-tap weighting (γ=1 vs γ=0) for each gap filler on the same 30 datasets at 50% missing values: mean difference in pp (W/T/L; Holm-corrected p over the twelve filler × mechanism comparisons)
+
+{{TABLE:weighting_by_filler}}
+
+**Weighting is the active component.** Removing it (γ=0) costs {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=mean_diff;fmt=ppabs}} pp under block missingness (p (Holm) {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=p_holm;fmt=p}}), with {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=wins;fmt=int}} of 30 datasets improving. On all {{N_CONF}} datasets and rates the effect is consistent (@tab:stats):
+- weighting improves on γ=0 under block missingness at every rate, and under MNAR at 50% and 80%;
+- it is neutral under MCAR, except for a small significant loss at 50% ({{Q:table_weighting_vs_unweighted_3seeds;mechanism=mcar;rate=0.5;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_weighting_vs_unweighted_3seeds;mechanism=mcar;rate=0.5;col=p_holm;fmt=p}}).
+
+**The benefit is not tied to linear interpolation.** Weighting also improves LOCF filling under block missingness (@tab:filler). It does *not* improve kNN filling, which does not draw straight lines through gaps and therefore does not produce the fabricated responses of Proposition 3.
+
+**The exponent is not critical.** γ=0.5 and γ=2 are not significantly different from γ=1 in any mechanism. Selecting γ and the mask option on the training set by leave-one-out brings no significant improvement either. This is consistent with the development-set observation that motivated fixing γ=1.
+
+**Missingness-pattern features do not help.** Adding them to MissRocket gives no significant gain under block or MNAR missingness. Under MCAR they are slightly harmful ({{Q:table_ablation_statistics;mechanism=mcar;baseline=+ mask-pattern features;col=mean_diff;fmt=pp}} pp in favour of MissRocket without them, p (Holm) {{Q:table_ablation_statistics;mechanism=mcar;baseline=+ mask-pattern features;col=p_holm;fmt=p}}), where the mask is pure noise.
+
+**The gap filler matters.** Zero filling is far worse than linear filling even with weighting. kNN filling is the strongest filler under block missingness but loses under MCAR and MNAR, mirroring the main comparison.
+
 ### 6.5 Naturally incomplete and variable-length data (RQ5)
 
 {#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket

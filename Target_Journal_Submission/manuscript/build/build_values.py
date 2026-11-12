@@ -130,6 +130,39 @@ def table_natural(v):
     v["_tables"]["natural"] = md_table(n)
 
 
+def table_ablation(v):
+    c = t("table_ablation_statistics")
+    m = t("table_ablation_means")
+    if c is None:
+        return
+    order = ["w/o weighting (γ=0)", "γ=0.5", "γ=2", "+ mask-pattern features", "γ, mask selected by LOO",
+             "LOCF gap filling, γ=1", "zero gap filling, γ=1", "kNN gap filling, γ=1"]
+    rows = []
+    for b in order:
+        r = {"Variant (vs. MissRocket)": b}
+        for mech in ["mcar", "block", "mnar"]:
+            x = c[(c.mechanism == mech) & (c.baseline == b)].iloc[0]
+            acc = float(m[m.mechanism == mech][b].iloc[0])
+            r[f"{MECH[mech]}: acc."] = f"{acc:.3f}"
+            r[f"{MECH[mech]}: Δ (pp), p"] = f"{x.mean_diff * 100:+.2f}, {pfmt(x.p_holm)}"
+        rows.append(r)
+    top = {"Variant (vs. MissRocket)": "MissRocket (γ=1, linear filling)"}
+    for mech in ["mcar", "block", "mnar"]:
+        top[f"{MECH[mech]}: acc."] = f"{float(m[m.mechanism == mech]['MissRocket (proposed)'].iloc[0]):.3f}"
+        top[f"{MECH[mech]}: Δ (pp), p"] = "–"
+    v["_tables"]["ablation"] = md_table(pd.DataFrame([top] + rows))
+    w = t("table_weighting_by_gap_filler")
+    w = w[np.isclose(w.rate, 0.5)]
+    rows = []
+    for fill in ["linear", "LOCF", "zero", "kNN"]:
+        r = {"Gap filler": fill}
+        for mech in ["mcar", "block", "mnar"]:
+            x = w[(w.mechanism == mech) & (w.gap_filler == fill)].iloc[0]
+            r[MECH[mech]] = f"{x.mean_diff * 100:+.2f} ({x.wins}/{x.ties}/{x.losses}; p {pfmt(x.p_holm)})"
+        rows.append(r)
+    v["_tables"]["weighting_by_filler"] = md_table(pd.DataFrame(rows))
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -137,7 +170,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
