@@ -3,6 +3,7 @@
 ### 5.1 Data
 
 **UCR archive.** We use the 2018 UCR archive [@Dau2019] with its fixed train/test splits. Of the 113 complete, equal-length datasets:
+
 - 10 form a *development set* used for every design decision. These are the five datasets used for an initial feasibility pilot (ArrowHead, GunPoint, ECG200, Wafer, ShapesAll) plus five drawn at random with a fixed seed (CinCECGTorso, MoteStrain, MixedShapesSmallTrain, DistalPhalanxOutlineAgeGroup, MiddlePhalanxOutlineAgeGroup).
 - The remaining 103 form the *confirmatory set*. A compute rule fixed before any confirmatory run (at most 2,000 training series and 2×10⁶ values in total) retains {{N_CONF}} of them. The excluded datasets are {{EXCLUDED_LIST}}.
 
@@ -13,6 +14,7 @@ The 15 archive datasets with native missing values (4) or variable lengths (11) 
 ### 5.2 Missingness simulation
 
 Missingness is simulated independently for every series. Training and test masks are generated with different seeds, derived by hashing the dataset, mechanism, rate, seed and split, so every method sees exactly the same corrupted data. Three mechanisms are used:
+
 - **MCAR:** each point is removed independently with probability $r$.
 - **Block:** contiguous gaps of geometric length with mean 10% of the series length, placed uniformly until a fraction $r$ is removed. This models sensor dropout.
 - **MNAR (self-masking):** $P(\text{missing})=\sigma(a+2z_t)$, where $z_t$ is the standardised value and $a$ is solved per series so that the expected fraction equals $r$. High values are preferentially lost, as with saturation.
@@ -21,7 +23,7 @@ We use $r\in\{0.2,0.5,0.8\}$ and keep at least two observed points per series. U
 
 ### 5.3 Methods compared
 
-All ROCKET-family methods use the standard ridge head (standardisation followed by `RidgeClassifierCV`, $\alpha\in\{10^{-3},\dots,10^3\}$).
+All ROCKET-family methods use the standard ridge head (standardisation followed by `RidgeClassifierCV` from scikit-learn [@Pedregosa2011], $\alpha\in\{10^{-3},\dots,10^3\}$).
 
 1. **Proposed: MissRocket.** Linear gap filling, MiniRocket kernels (10,000 features) and observed-tap-weighted PPV with $\gamma=1$ (Section 4.2).
 2. **Imputation + reference MiniRocket.** The aeon implementation [@Middlehurst2024aeon] after:
@@ -37,6 +39,7 @@ All ROCKET-family methods use the standard ridge head (standardisation followed 
 7. **Deep missing-aware baseline:** GRU-D [@Che2018] with 64 hidden units, Adam (learning rate $10^{-3}$), early stopping on a stratified 20% validation split of the training data, and at most 60 epochs. On UCR it is run on a pre-registered subset (length ≤ 300, at most 500 training series; rate 0.5; seed 0) because of CPU cost. It is also run on PhysioNet 2012.
 
 **Ablations** (Section 6.2) use the same pipeline with one change each:
+
 - $\gamma=0$, which is linear interpolation + MiniRocket in our implementation;
 - $\gamma\in\{0.5,2\}$;
 - adding missingness-pattern features;
@@ -48,6 +51,7 @@ No method's hyperparameters were tuned on confirmatory data. Baseline settings a
 ### 5.4 Protocol and pre-registration
 
 Design choices were made on the 10 development datasets only (seed 0; MCAR, block and MNAR at rates 0.3 and 0.6). The choices covered:
+
 - the estimator family: native group-mean, partial convolution, gap-adaptive hybrid, feature fusion and reliability weighting;
 - the value $\gamma=1$;
 - the default exclusion of mask features.
@@ -63,10 +67,12 @@ The primary metric is test accuracy. Balanced accuracy and macro-F1 are also rep
 **Unit of analysis.** For UCR, the dataset is the unit of analysis. Accuracies are first averaged over seeds, and the per-dataset paired differences are then tested.
 
 **Tests.** For each mechanism–rate condition we used:
+
 - the two-sided Wilcoxon signed-rank test [@Wilcoxon1945], with zero differences split, as recommended for comparing classifiers over multiple datasets [@Demsar2006; @Benavoli2016];
-- Holm's (1979) correction over the family of comparisons of MissRocket against all baselines within the condition.
+- Holm's step-down correction [@Holm1979] over the family of comparisons of MissRocket against all baselines within the condition.
 
 **Effect sizes:**
+
 - mean and median paired difference;
 - percentile-bootstrap 95% confidence interval of the mean difference, from 10,000 resamples of datasets;
 - matched-pairs rank-biserial correlation;

@@ -4,13 +4,14 @@
 
 @tab:main reports mean test accuracy over the {{N_CONF}} confirmatory datasets for every mechanism and rate. Paired comparisons with the strongest competitors are given in @tab:stats, and pooled comparisons in @tab:pooled. @fig:rate shows accuracy against the missing rate.
 
-{#tab:main} Mean test accuracy over {{N_CONF}} UCR datasets (seed 0) under MCAR, block (contiguous-gap) and MNAR (self-masking) missingness at 20%, 50% and 80% missing values. Mean rank is computed among the eleven methods of the main comparison (the γ=0 ablation is excluded). Best value per column in bold
+{#tab:main} Mean test accuracy over {{N_CONF}} UCR datasets (seed 0) under MCAR, block (contiguous-gap) and MNAR (self-masking) missingness at 20%, 50% and 80% missing values. Columns: C, B and N denote MCAR, block and MNAR missingness; the number is the missing rate in %. Mean rank is computed among the eleven methods of the main comparison (the γ=0 ablation is excluded). Best value per column in bold
 
 {{TABLE:main_accuracy}}
 
 Averaged over the nine conditions, MissRocket attains the highest mean accuracy and the best mean rank. The differences are condition-specific, however.
 
 **Long gaps.** Under block missingness, MissRocket improves on MiniRocket with linear interpolation at every rate:
+
 - 20%: {{Q:table_main_statistics;mechanism=block;rate=0.2;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp;
 - 50%: {{Q:table_main_statistics;mechanism=block;rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp;
 - 80%: {{Q:table_main_statistics;mechanism=block;rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp;
@@ -20,19 +21,21 @@ all with Holm-adjusted p ≤ {{Q:table_main_statistics;mechanism=block;rate=0.2;
 At 50% and 80%, MissRocket is also significantly more accurate than MultiRocket and Hydra-MultiRocket after interpolation. Both are considerably more expensive transforms; Section 6.6 gives the costs.
 
 **Value-dependent missingness.** Under MNAR, the gains over MiniRocket with interpolation grow with the missing rate:
+
 - 20%: {{Q:table_main_statistics;mechanism=mnar;rate=0.2;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mnar;rate=0.2;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}};
 - 50%: {{Q:table_main_statistics;mechanism=mnar;rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mnar;rate=0.5;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}};
 - 80%: {{Q:table_main_statistics;mechanism=mnar;rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mnar;rate=0.8;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}}.
 
 **Scattered gaps.** Under MCAR, MissRocket is not significantly different from MiniRocket with interpolation at any rate: the mean differences are {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}}, {{Q:table_main_statistics;mechanism=mcar;rate=0.5;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} and {{Q:table_main_statistics;mechanism=mcar;rate=0.8;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp. At 20% MCAR it is slightly but significantly *less* accurate than MultiRocket ({{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MultiRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=MultiRocket + linear interp.;col=p_holm;fmt=p}}) and than Hydra-MultiRocket ({{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=Hydra-MultiRocket + linear interp.;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_main_statistics;mechanism=mcar;rate=0.2;baseline=Hydra-MultiRocket + linear interp.;col=p_holm;fmt=p}}).
 
-{#tab:stats} Paired comparison of MissRocket with the strongest competitors and with its own unweighted ablation (γ=0), per condition. Δ is the mean accuracy difference in percentage points (positive favours MissRocket), with a dataset-level bootstrap 95% CI; W/T/L are wins/ties/losses over datasets; r_rb is the matched-pairs rank-biserial correlation; p is the two-sided Wilcoxon signed-rank test, Holm-corrected within each condition over the ten baselines (γ=0: separate single comparison)
+{#tab:stats} Paired comparison of MissRocket with the strongest competitors and with its own unweighted ablation (γ=0) per condition (C, B, N: MCAR, block, MNAR at the given rate in %): mean accuracy difference in percentage points over the {{N_CONF}} datasets (positive favours MissRocket) and, in parentheses, the two-sided Wilcoxon signed-rank p-value, Holm-corrected within each condition over the ten baselines (γ=0: separate single comparison). Bootstrap 95% CIs, win/tie/loss counts and rank-biserial correlations for all comparisons are given in Online Resource 1
 
 {{TABLE:main_statistics}}
 
 **Cross-series kNN imputation.** kNN imputation followed by MiniRocket behaves very differently by mechanism. It is the most accurate method under block missingness. At 50% blocks it is {{Q:table_main_statistics;mechanism=block;rate=0.5;baseline=MiniRocket + kNN impute;col=mean_diff;fmt=ppabs}} pp better than MissRocket (p (Holm) {{Q:table_main_statistics;mechanism=block;rate=0.5;baseline=MiniRocket + kNN impute;col=p_holm;fmt=p}}). Under MCAR and MNAR, by contrast, it is substantially worse; at 80% MCAR, MissRocket is {{Q:table_main_statistics;mechanism=mcar;rate=0.8;baseline=MiniRocket + kNN impute;col=mean_diff;fmt=pp}} pp better. Exploiting aligned training series therefore pays off when whole segments are missing, but it is harmful when the gaps are short and scattered.
 
 **Native estimation and generic learners.**
+
 - The native group-mean estimator is significantly worse than MissRocket in every condition. This confirms, on held-out data, the development-set observation and Proposition 2: an unbiased but high-variance response estimate loses to interpolation.
 - LightGBM with native missing-value handling, and 1-NN after interpolation, are far less accurate than every ROCKET-family pipeline.
 - Zero and mean filling are the worst gap fillers for MiniRocket. This matters because zero filling is common in practice.
@@ -66,6 +69,7 @@ The ablations were run on a pre-declared random subset of 30 confirmatory datase
 {{TABLE:weighting_by_filler}}
 
 **Weighting is the active component.** Removing it (γ=0) costs {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=mean_diff;fmt=ppabs}} pp under block missingness (p (Holm) {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=p_holm;fmt=p}}), with {{Q:table_weighting_by_gap_filler;mechanism=block;rate=0.5;gap_filler=linear;col=wins;fmt=int}} of 30 datasets improving. On all {{N_CONF}} datasets and rates the effect is consistent (@tab:stats):
+
 - weighting improves on γ=0 under block missingness at every rate, and under MNAR at 50% and 80%;
 - it is neutral under MCAR, except for a small significant loss at 50% ({{Q:table_weighting_vs_unweighted_3seeds;mechanism=mcar;rate=0.5;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_weighting_vs_unweighted_3seeds;mechanism=mcar;rate=0.5;col=p_holm;fmt=p}}).
 
@@ -104,12 +108,14 @@ This holds even though the training data contain no missing values, and the reas
 {{TABLE:p12boot}}
 
 PhysioNet 2012 differs from the UCR experiments in four ways: the series are multivariate, short (48 hourly bins) and very sparse, and their missingness is informative by nature. The results (@tab:p12, @tab:p12boot) are a clear *negative* finding for the random-convolution family.
+
 - **No gain from weighting.** MissRocket (AUROC {{Q:table_p12;method=MissRocket (proposed);col=auroc_mean;fmt=f3}}) does not improve on its unweighted counterpart (AUROC {{Q:table_p12;method=w/o weighting (γ=0);col=auroc_mean;fmt=f3}}). Training-set selection chooses γ=0 without mask features.
 - **The deep missing-aware model is best.** GRU-D, which models the mask and the time since the last observation explicitly, attains the highest AUROC ({{Q:table_p12;method=GRU-D;col=auroc_mean;fmt=f3}}) and AUPRC ({{Q:table_p12;method=GRU-D;col=auprc_mean;fmt=f3}}). Its training takes about {{Q:table_p12;method=GRU-D;col=time_s_mean;fmt=int}} s, against {{Q:table_p12;method=MissRocket (proposed);col=time_s_mean;fmt=int}} s for MissRocket.
 - **Gradient boosting comes second.** LightGBM on the raw hourly values with native missing-value handling follows (AUROC {{Q:table_p12;method=LightGBM (native NaN);col=auroc_mean;fmt=f3}}).
 - **Both beat MissRocket significantly.** The AUROC difference between MissRocket and GRU-D is {{Q:table_p12_bootstrap;baseline=GRU-D;col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_high;fmt=f3}}). Against LightGBM it is {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_high;fmt=f3}}).
 
 We attribute the gap to the nature of the data:
+
 - whether, and when, a laboratory value was measured carries information about patient severity;
 - the measured *levels* matter more than local temporal shape;
 - many channel–patient series are entirely empty.
@@ -127,6 +133,7 @@ Models that see the mask and the measured levels directly can exploit each of th
 For variable-length series, interpolation extends the last observed value over the padded tail. This creates exactly the fabricated, constant windows of Proposition 3, and MissRocket gives them zero weight.
 
 MissRocket is not significantly different from two alternatives:
+
 - the standard resampling approach ({{Q:table_natural_statistics;baseline=MiniRocket + resampling;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_natural_statistics;baseline=MiniRocket + resampling;col=p_holm;fmt=p}});
 - the native group-mean estimator ({{Q:table_natural_statistics;baseline=Native masked MiniRocket (group-mean);col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_natural_statistics;baseline=Native masked MiniRocket (group-mean);col=p_holm;fmt=p}}).
 
@@ -150,13 +157,14 @@ On the four datasets with genuinely missing interior values (DodgerLoopDay, Dodg
 
 **Model-based imputation adds cost and memory.** kNN imputation must store the training set and compare every test series with it. Its cost grows with the size of the training set, whereas MissRocket processes each series independently.
 
-GRU-D, which needs iterative training with early stopping, is reported separately in Section 6.7.
+GRU-D, which needs iterative training with early stopping, is compared in Sections 6.4 and 6.9.
 
 ### 6.7 Sensitivity analysis
 
 @fig:sens shows how MissRocket responds to the weighting exponent and to the feature budget. The evaluation uses 30 confirmatory datasets drawn with a fixed seed, at 50% block and MCAR missingness.
 
 **Weighting exponent γ.**
+
 - *Block missingness:* every γ between 0.25 and 2 is clearly better than γ=0 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.0;mechanism=block;col=accuracy;fmt=f3}}). The curve peaks at γ=0.5 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.5;mechanism=block;col=accuracy;fmt=f3}}), against {{Q:table_sensitivity_summary;parameter=gamma;value=1.0;mechanism=block;col=accuracy;fmt=f3}} for the pre-registered γ=1.
 - *MCAR:* accuracy is flat up to γ=0.5 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.0;mechanism=mcar;col=accuracy;fmt=f3}} at γ=0, {{Q:table_sensitivity_summary;parameter=gamma;value=0.5;mechanism=mcar;col=accuracy;fmt=f3}} at γ=0.5). It then declines slowly ({{Q:table_sensitivity_summary;parameter=gamma;value=1.0;mechanism=mcar;col=accuracy;fmt=f3}} at γ=1) and sharply at γ=4 ({{Q:table_sensitivity_summary;parameter=gamma;value=4.0;mechanism=mcar;col=accuracy;fmt=f3}}). At γ=4 the pooling effectively discards every window that contains a single missing tap.
 - *Interpretation:* γ=0.5 would have been a marginally better choice than γ=1 on these data. Because γ=1 was fixed on the development set before the confirmatory runs, we keep it as the reported method and note γ≈0.5 as a recommendation for practitioners. The effect sizes involved are small compared with the effect of using any γ>0 under long gaps.
@@ -180,6 +188,7 @@ GRU-D, which needs iterative training with early stopping, is reported separatel
 **Failure cases.** The largest single-condition losses all occur on datasets with small test sets, mostly smooth spectrograms: {{ERR_WORST_CASES}}. Their test-set sizes are {{ERR_WORST_NTEST}}, so one misclassified series changes accuracy by 1.6–3.6 pp. For such smooth signals with short, scattered gaps, linear interpolation is nearly exact, and down-weighting those windows discards accurate information. With so few test series these differences are also very noisy. OliveOil, for example, shows the worst single-condition loss and yet one of the largest average gains. Section 6.9 reports variability across seeds.
 
 **Confusion matrices.** @fig:cm shows the confusion matrices for the largest loss and the largest gain at 50% block missingness.
+
 - *Largest loss:* {{CM_LOSS_DS}}, accuracy {{CM_LOSS_MR}} vs {{CM_LOSS_REF}}. The loss comes from reduced recall on one of the two classes.
 - *Largest gain:* {{CM_GAIN_DS}}, a 52-class dataset, accuracy {{CM_GAIN_MR}} vs {{CM_GAIN_REF}}. The improvement is spread over many classes. This is consistent with interpolated gaps making series from different classes look alike, through identical straight segments, and with the weighting removing that confound.
 

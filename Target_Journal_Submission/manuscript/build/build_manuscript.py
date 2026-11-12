@@ -207,9 +207,9 @@ def build(values_path, outdir, sources=ORDER, name="Final_Manuscript"):
     text = number_floats(text)
     text = equations(text)
     decl = os.path.join(SRC, "09_declarations.md")
-    text += "\n\n" + reference_list(refs, used)
-    if os.path.exists(decl):
-        text += "\n\n" + fill(open(decl, encoding="utf-8").read(), values)
+    decl_text = cite(fill(open(decl, encoding="utf-8").read(), values), refs, used) if os.path.exists(decl) else ""
+    # Springer: "Statements and Declarations" placed after the References section
+    text += "\n\n" + reference_list(refs, used) + "\n\n" + decl_text
     left = re.findall(r"\{\{[^}]+\}\}|(?<![\w.])@[A-Z][A-Za-z0-9]+", text)
     if left:
         raise RuntimeError(f"unresolved: {left[:10]}")

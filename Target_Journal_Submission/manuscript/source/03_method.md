@@ -2,7 +2,7 @@
 
 ### 3.1 Classification with missing values
 
-Let $\mathcal{D}=\{(\mathbf{x}_i,\mathbf{m}_i,y_i)\}_{i=1}^{n}$ be a training set of univariate series $\mathbf{x}_i\in\mathbb{R}^{L}$ with observation masks $\mathbf{m}_i\in\{0,1\}^{L}$ ($m_{it}=1$ if $x_{it}$ is observed) and labels $y_i\in\{1,\dots,K\}$. Values at positions with $m_{it}=0$ are unavailable. The task is to learn $f(\mathbf{x}\odot\mathbf{m},\mathbf{m})\mapsto y$. Variable-length series are represented by right-padding with unobserved positions. Following @Rubin1976, missingness is *missing completely at random* (MCAR) if $\mathbf{m}$ is independent of $(\mathbf{x},y)$, and *missing not at random* (MNAR) if it depends on the unobserved values themselves.
+Let $\mathcal{D}=\{(\mathbf{x}_i,\mathbf{m}_i,y_i)\}_{i=1}^{n}$ be a training set of univariate series $\mathbf{x}_i\in\mathbb{R}^{L}$ with observation masks $\mathbf{m}_i\in\{0,1\}^{L}$ ($m_{it}=1$ if $x_{it}$ is observed) and labels $y_i\in\{1,\dots,K\}$. Values at positions with $m_{it}=0$ are unavailable. The task is to learn $f(\mathbf{x}\odot\mathbf{m},\mathbf{m})\mapsto y$. Variable-length series are represented by right-padding with unobserved positions. Following @Rubin1976 and @Little2019, missingness is *missing completely at random* (MCAR) if $\mathbf{m}$ is independent of $(\mathbf{x},y)$, and *missing not at random* (MNAR) if it depends on the unobserved values themselves.
 
 ### 3.2 MiniRocket as a contrast of tap-group means
 
@@ -79,6 +79,7 @@ MissRocket keeps the low-variance interpolated responses but weights each positi
 $$\mathrm{PPV}^{\gamma}_{k,d,b}=\frac{\sum_{t\in T}w_\gamma(c(t))\,\mathbb{1}[\tilde C_k(t)>b]}{\sum_{t\in T}w_\gamma(c(t))} \tag{5}$$
 
 where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Positions with $c(t)=0$, which are exactly the fabricated windows of Proposition 3, receive zero weight for any $\gamma>0$. The exponent $\gamma$ interpolates between three cases:
+
 - $\gamma=0$ gives MiniRocket on the interpolated series;
 - $\gamma=1$ gives each window the fraction of its taps that were observed;
 - $\gamma\to\infty$ keeps only completely observed windows.
@@ -86,6 +87,7 @@ where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Pos
 We fixed $\gamma=1$ for the proposed method using the development datasets only (Section 5.4). The other values, and a variant that selects $\gamma$ on the training set, are reported as ablations.
 
 **Proposition 4 (special cases).**
+
 - If $\mathbf{m}\equiv\mathbf{1}$, MissRocket equals MiniRocket for every $\gamma$.
 - For $\gamma=0$, MissRocket equals MiniRocket applied to the linearly interpolated series.
 
@@ -94,6 +96,7 @@ We fixed $\gamma=1$ for the proposed method using the development datasets only 
 Biases are drawn as in MiniRocket, from the responses of a random training series at positions with $c(t)\ge1$. The classifier is MiniRocket's ridge head (standardisation followed by `RidgeClassifierCV` with $\alpha\in\{10^{-3},\dots,10^{3}\}$).
 
 **Optional components (ablations).**
+
 - *Missingness-pattern features:* MiniRocket applied to the binary mask, giving 1,000 features. This is a time-series analogue of the missing-indicator method [@VanNess2023].
 - *Training-set selection:* $(\gamma,\text{mask})$ chosen from $\{0,0.5,1,2\}\times\{\text{off},\text{on}\}$ by the ridge head's leave-one-out criterion.
 - *Other gap fillers:* zero, last observation carried forward (LOCF), and cross-series k-nearest-neighbour imputation.

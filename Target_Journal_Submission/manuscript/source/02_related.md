@@ -8,7 +8,8 @@ All of these methods assume complete, equal-length input. Benchmark practice fol
 
 ### 2.2 Learning with missing values in time series
 
-Deep missing-aware models encode the mask or time gaps inside a recurrent, attention or continuous-time architecture:
+Deep learning for complete series is reviewed by @IsmailFawaz2019. Deep missing-aware models encode the mask or time gaps inside a recurrent, attention or continuous-time architecture:
+
 - GRU-D [@Che2018], which decays inputs and hidden states toward empirical means;
 - recurrent models with missingness indicators [@Lipton2016];
 - BRITS [@Cao2018], with bidirectional recurrent imputation;
@@ -17,7 +18,7 @@ Deep missing-aware models encode the mask or time gaps inside a recurrent, atten
 - graph-guided networks for irregular multivariate series [@Zhang2022];
 - neural controlled differential equations [@Kidger2020].
 
-Other approaches impute first and then classify, using statistical, kernel-based or learned imputers. Examples include the time series cluster kernel [@Mikalsen2018] and the self-attention imputer SAITS [@Du2023]. Closest to our setting, @Yao2024 trained a GRU imputer jointly with a multi-scale convolutional classifier on 68 UCR datasets with simulated MCAR missingness, but compared only against deep models. @Rhodes2025 proposed label-guided imputation using forest-based proximities, including proximities derived from ROCKET, and evaluated it on 85 UCR datasets under MCAR, MAR and MNAR with downstream random-forest and k-NN classifiers. Their method changes the imputer, not the transform.
+Other approaches impute first and then classify, using statistical, kernel-based or learned imputers. Examples include the time series cluster kernel [@Mikalsen2018] and the self-attention imputer SAITS [@Du2023]. @Kim2023 instead train a probabilistic imputer jointly with the classifier. Closest to our setting, @Yao2024 trained a GRU imputer jointly with a multi-scale convolutional classifier on 68 UCR datasets with simulated MCAR missingness, but compared only against deep models. @Rhodes2025 proposed label-guided imputation using forest-based proximities, including proximities derived from ROCKET, and evaluated it on 85 UCR datasets under MCAR, MAR and MNAR with downstream random-forest and k-NN classifiers. Their method changes the imputer, not the transform.
 
 ### 2.3 Theory and practice of missing-value handling
 
@@ -28,6 +29,7 @@ These results assume flexible learners. ROCKET-family classifiers are instead *f
 ### 2.4 Gap addressed by this study
 
 The literature therefore lacks:
+
 - (i) a principled treatment of missingness inside random-convolution transforms;
 - (ii) evidence on how imputation, native estimation, reliability weighting and indicator features compare for these classifiers across missingness mechanisms (MCAR, long gaps, value-dependent MNAR) and rates;
 - (iii) an assessment of robustness to train–test missingness shift and on naturally incomplete data.

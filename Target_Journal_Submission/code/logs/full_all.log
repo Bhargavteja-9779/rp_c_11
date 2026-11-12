@@ -11973,3 +11973,29 @@ ItalyPowerDemand mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.8649 [ok]
 Plane mcar 0.5/0.5 s0 GRU-D: acc=0.3905 [ok]
 Plane mcar 0.5/0.5 s0 MissRocket: acc=0.9905 [ok]
 Plane mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.9905 [ok]
+cleared 12 numba cache files
+=== E1 (full) ===
+=== E1 done in 1s ===
+=== E5_natural (full) ===
+=== E5_natural done in 0s ===
+=== E3 (full) ===
+=== E3 done in 0s ===
+=== E4 (full) ===
+=== E4 done in 0s ===
+=== E5_p12 (full) ===
+=== E5_p12 done in 1s ===
+=== E7 (full) ===
+=== E7 done in 0s ===
+=== E2 (full) ===
+PowerCons mcar 0.5/0.5 s0 GRU-D: acc=0.9000 [ok]
+PowerCons mcar 0.5/0.5 s0 MissRocket: acc=0.9833 [ok]
+PowerCons mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.9833 [ok]
+SmoothSubspace mcar 0.5/0.5 s0 GRU-D: acc=0.6267 [ok]
+SmoothSubspace mcar 0.5/0.5 s0 MissRocket: acc=0.7333 [ok]
+SmoothSubspace mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.7200 [ok]
+SonyAIBORobotSurface1 mcar 0.5/0.5 s0 GRU-D: acc=0.4626 [ok]
+SonyAIBORobotSurface1 mcar 0.5/0.5 s0 MissRocket: acc=0.7687 [ok]
+SonyAIBORobotSurface1 mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.7770 [ok]
+SonyAIBORobotSurface2 mcar 0.5/0.5 s0 GRU-D: acc=0.6380 [ok]
+SonyAIBORobotSurface2 mcar 0.5/0.5 s0 MissRocket: acc=0.7943 [ok]
+SonyAIBORobotSurface2 mcar 0.5/0.5 s0 AeonMiniRocket+linear: acc=0.7817 [ok]

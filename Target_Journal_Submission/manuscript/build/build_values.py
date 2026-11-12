@@ -18,6 +18,11 @@ from common import confirmatory_datasets, excluded_confirmatory, subset30  # noq
 COND = [("mcar", 0.2), ("mcar", 0.5), ("mcar", 0.8), ("block", 0.2), ("block", 0.5), ("block", 0.8),
         ("mnar", 0.2), ("mnar", 0.5), ("mnar", 0.8)]
 MECH = {"mcar": "MCAR", "block": "Block", "mnar": "MNAR"}
+CODE_ = {"mcar": "C", "block": "B", "mnar": "N"}
+
+
+def ccode(mech, rate):
+    return f"{CODE_[mech]}{int(rate * 100)}"
 
 
 def t(name):
@@ -29,9 +34,11 @@ def pfmt(p):
     return "<0.001" if p < 0.001 else f"{p:.3f}"
 
 
-def md_table(df):
+def md_table(df, first=3):
+    """Pipe table; dash counts set relative column widths in pandoc (first column `first` times wider)."""
     cols = list(df.columns)
-    out = "| " + " | ".join(cols) + " |\n|" + "|".join([":---"] + ["---:"] * (len(cols) - 1)) + "|\n"
+    seps = [":" + "-" * (10 * first)] + ["-" * 10 + ":"] * (len(cols) - 1)
+    out = "| " + " | ".join(cols) + " |\n|" + "|".join(seps) + "|\n"
     for _, r in df.iterrows():
         out += "| " + " | ".join(str(r[c]) for c in cols) + " |\n"
     return out
@@ -45,7 +52,7 @@ def table_main(v):
     for meth in p.index:
         r = {"Method": meth}
         for mech, rate in COND:
-            r[f"{MECH[mech]} {int(rate * 100)}%"] = f"{p.loc[meth, (mech, rate)]:.3f}"
+            r[ccode(mech, rate)] = f"{p.loc[meth, (mech, rate)]:.3f}"
         r["Mean"] = f"{np.mean([p.loc[meth, c] for c in COND]):.3f}"
         rr = rk[rk.method == meth].mean_rank
         r["Mean rank"] = f"{rr.mean():.2f}" if len(rr) else "–"
@@ -78,8 +85,17 @@ def table_stats(v):
                             "W/T/L": f"{r.wins}/{r.ties}/{r.losses}", "r_rb": f"{r.rank_biserial:+.2f}",
                             "p (Holm)": pfmt(r.p_holm)}))
     df = pd.DataFrame(rows)
-    df.loc[df.Condition.duplicated(), "Condition"] = ""
-    v["_tables"]["main_statistics"] = md_table(df)
+    full = df.copy()
+    full.loc[full.Condition.duplicated(), "Condition"] = ""
+    v["_tables"]["main_statistics_full"] = md_table(full, first=1)
+    df["cell"] = [f"{d.split(' [')[0]} ({p})" for d, p in zip(df["Δ acc. (pp) [95% CI]"], df["p (Holm)"])]
+    piv = df.pivot(index="Baseline", columns="Condition", values="cell")
+    piv = piv[[f"{MECH[m]} {int(r * 100)}%" for m, r in COND]]
+    piv.columns = [ccode(m, r) for m, r in COND]
+    order = ["MiniRocket + linear interp.", "w/o weighting (γ=0)", "MultiRocket + linear interp.",
+             "Hydra-MultiRocket + linear interp.", "MiniRocket + kNN impute"]
+    piv = piv.loc[order].reset_index().rename(columns={"Baseline": "MissRocket vs."})
+    v["_tables"]["main_statistics"] = md_table(piv, first=2)
 
 
 def table_pooled(v):

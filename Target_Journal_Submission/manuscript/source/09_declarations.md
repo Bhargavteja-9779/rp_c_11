@@ -7,6 +7,7 @@
 **Author contributions.** [To be completed by the authors on the separate title page and in the submission system, as required for double-anonymous review.]
 
 **Data availability.** All data analysed in this study are publicly available:
+
 - the UCR Time Series Classification Archive 2018 [@Dau2019], obtained from timeseriesclassification.com;
 - the PhysioNet/Computing in Cardiology Challenge 2012 data [@Silva2012; @Goldberger2000], available at https://physionet.org/content/challenge-2012/1.0.0/ under the Open Data Commons Attribution License v1.0.
 
@@ -17,6 +18,7 @@ The simulated missingness masks are fully determined by the published code and s
 **Ethics approval.** Not applicable. The study uses only public, de-identified benchmark data. The PhysioNet 2012 data were de-identified by the data providers and are distributed openly.
 
 **Use of large language models.** The research workflow was carried out with the assistance of an AI agent (Anthropic Claude), as required to be documented by the journal's policy. Its use covered:
+
 - literature and journal searching;
 - code implementation;
 - experiment orchestration;
