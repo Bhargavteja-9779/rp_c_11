@@ -203,6 +203,27 @@ def table_p12(v):
         v["P12_GRUD_SENTENCE"] = "GRU-D did not complete (see Limitations)."
 
 
+def error_values(v):
+    p = os.path.join(RES, "statistics", "error_analysis.json")
+    if not os.path.exists(p):
+        return
+    e = json.load(open(p))
+    v["ERR_FRAC_POS"] = f"{100 * e['frac_datasets_gain_pos']:.0f}"
+    v["ERR_FRAC_NEG"] = f"{100 * e['frac_datasets_gain_neg']:.0f}"
+    ex = sorted(e["extremes"], key=lambda r: r["mean_gain_all_conditions"])
+    v["ERR_WORST"] = ", ".join(f"{r['dataset']} ({100 * r['mean_gain_all_conditions']:+.1f} pp)" for r in ex[:3])
+    v["ERR_BEST"] = ", ".join(f"{r['dataset']} ({100 * r['mean_gain_all_conditions']:+.1f} pp)" for r in ex[::-1][:3])
+    c = e["confusion"]
+    v["CM_LOSS_DS"] = c["largest_loss"]["dataset"]; v["CM_GAIN_DS"] = c["largest_gain"]["dataset"]
+    v["CM_LOSS_MR"] = f"{c['largest_loss']['MissRocket']['accuracy']:.3f}"; v["CM_LOSS_REF"] = f"{c['largest_loss']['AeonMiniRocket+linear']['accuracy']:.3f}"
+    v["CM_GAIN_MR"] = f"{c['largest_gain']['MissRocket']['accuracy']:.3f}"; v["CM_GAIN_REF"] = f"{c['largest_gain']['AeonMiniRocket+linear']['accuracy']:.3f}"
+    g = pd.read_csv(os.path.join(TAB, "table_error_analysis_per_dataset.csv"))
+    worst = g.sort_values("gain").head(6)
+    v["ERR_WORST_CASES"] = "; ".join(f"{r.dataset} ({MECH[r.mechanism]} {int(r.test_rate * 100)}%, {100 * r.gain:+.1f} pp)" for r in worst.itertuples())
+    reg = pd.read_csv(os.path.join(CODE, "data", "registry.csv")).set_index("dataset")
+    v["ERR_WORST_NTEST"] = ", ".join(f"{d}: {int(reg.loc[d, 'n_test'])}" for d in dict.fromkeys(worst.dataset))
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -210,7 +231,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 

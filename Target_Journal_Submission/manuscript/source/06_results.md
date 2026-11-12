@@ -151,3 +151,23 @@ On the four datasets with genuinely missing interior values (DodgerLoopDay, Dodg
 **Model-based imputation adds cost and memory.** kNN imputation must store the training set and compare every test series with it. Its cost grows with the size of the training set, whereas MissRocket processes each series independently.
 
 GRU-D, which needs iterative training with early stopping, is reported separately in Section 6.7.
+
+### 6.8 Error analysis
+
+**Overall distribution.** Averaged over the nine conditions, MissRocket is more accurate than MiniRocket with interpolation on {{ERR_FRAC_POS}}% of the {{N_CONF}} datasets and less accurate on {{ERR_FRAC_NEG}}%. The largest average losses are small: {{ERR_WORST}}. The largest average gains are much larger: {{ERR_BEST}}.
+
+**When the method helps.** @fig:gap relates the per-dataset gain to the realised mean gap length relative to the series length. The gain increases with the mean gap length under block missingness (Spearman ρ = {{Q:table_error_analysis_correlations;mechanism=block;property=mean_gap_len;col=spearman_rho;fmt=f2}}, Holm-adjusted p {{Q:table_error_analysis_correlations;mechanism=block;property=mean_gap_len;col=p_holm_within_mechanism;fmt=p}}) and under MNAR (ρ = {{Q:table_error_analysis_correlations;mechanism=mnar;property=mean_gap_len;col=spearman_rho;fmt=f2}}, p {{Q:table_error_analysis_correlations;mechanism=mnar;property=mean_gap_len;col=p_holm_within_mechanism;fmt=p}}). This is consistent with Proposition 3: the longer the gaps, the more windows are fabricated and the more the weighting matters. Under block missingness the gain also increases with series length (ρ = {{Q:table_error_analysis_correlations;mechanism=block;property=length;col=spearman_rho;fmt=f2}}). Signal roughness, measured on the complete training series, is not associated with the gain under any mechanism.
+
+![](../code/results/full/figures/Fig_error_gain_vs_gap.png){width=16.5cm}
+
+{#fig:gap} Per-dataset gain of MissRocket over MiniRocket with linear interpolation (percentage points) against the realised mean gap length relative to the series length, by mechanism and rate (seed 0; one point per dataset and rate)
+
+**Failure cases.** The largest single-condition losses all occur on datasets with small test sets, mostly smooth spectrograms: {{ERR_WORST_CASES}}. Their test-set sizes are {{ERR_WORST_NTEST}}, so one misclassified series changes accuracy by 1.6–3.6 pp. For such smooth signals with short, scattered gaps, linear interpolation is nearly exact, and down-weighting those windows discards accurate information. With so few test series these differences are also very noisy. OliveOil, for example, shows the worst single-condition loss and yet one of the largest average gains. Section 6.9 reports variability across seeds.
+
+**Confusion matrices.** @fig:cm shows the confusion matrices for the largest loss and the largest gain at 50% block missingness.
+- *Largest loss:* {{CM_LOSS_DS}}, accuracy {{CM_LOSS_MR}} vs {{CM_LOSS_REF}}. The loss comes from reduced recall on one of the two classes.
+- *Largest gain:* {{CM_GAIN_DS}}, a 52-class dataset, accuracy {{CM_GAIN_MR}} vs {{CM_GAIN_REF}}. The improvement is spread over many classes. This is consistent with interpolated gaps making series from different classes look alike, through identical straight segments, and with the weighting removing that confound.
+
+![](../code/results/full/figures/Fig_confusion_extremes.png){width=15cm}
+
+{#fig:cm} Confusion matrices at 50% block missingness (seed 0) for the dataset with the largest loss (top) and the largest gain (bottom) of MissRocket (left) relative to MiniRocket with linear interpolation (right)
