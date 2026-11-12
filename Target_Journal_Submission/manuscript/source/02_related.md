@@ -34,4 +34,4 @@ The literature therefore lacks:
 - (ii) evidence on how imputation, native estimation, reliability weighting and indicator features compare for these classifiers across missingness mechanisms (MCAR, long gaps, value-dependent MNAR) and rates;
 - (iii) an assessment of robustness to train–test missingness shift and on naturally incomplete data.
 
-This study addresses all three under a pre-registered protocol with a separate development set.
+This study addresses all three under a pre-specified protocol with a separate development set.

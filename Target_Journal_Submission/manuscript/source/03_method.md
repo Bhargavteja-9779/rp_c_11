@@ -84,6 +84,16 @@ where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Pos
 - $\gamma=1$ gives each window the fraction of its taps that were observed;
 - $\gamma\to\infty$ keeps only completely observed windows.
 
+@fig:pipeline summarises the pipeline. @fig:example illustrates it on a real series.
+
+![](../code/results/full/figures/Fig1_pipeline.png){width=16.5cm}
+
+{#fig:pipeline} MissRocket pipeline. The only differences from MiniRocket are the gap filling of the input and the use of the observation mask to weight each response in the proportion-of-positive-values pooling
+
+![](../code/results/full/figures/Fig2_worked_example.png){width=16cm}
+
+{#fig:example} Worked example computed with the released code on a development-set series (GunPoint, first training series, 40% block missingness). **a** Observed points and linear interpolation. **b** Response of one MiniRocket kernel (dilation 1) on the complete and on the interpolated series. Red points mark windows with no observed tap (c = 0), where the interpolated response is constant within each gap, as stated by Proposition 3. **c** The observed-tap weight c/9 used by MissRocket (γ = 1), which is zero exactly on those windows
+
 We fixed $\gamma=1$ for the proposed method using the development datasets only (Section 5.4). The other values, and a variant that selects $\gamma$ on the training set, are reported as ablations.
 
 **Proposition 4 (special cases).**

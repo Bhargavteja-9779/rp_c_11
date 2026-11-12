@@ -165,7 +165,7 @@ GRU-D, which needs iterative training with early stopping, is compared in Sectio
 
 **Weighting exponent γ.**
 
-- *Block missingness:* every γ between 0.25 and 2 is clearly better than γ=0 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.0;mechanism=block;col=accuracy;fmt=f3}}). The curve peaks at γ=0.5 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.5;mechanism=block;col=accuracy;fmt=f3}}), against {{Q:table_sensitivity_summary;parameter=gamma;value=1.0;mechanism=block;col=accuracy;fmt=f3}} for the pre-registered γ=1.
+- *Block missingness:* every γ between 0.25 and 2 is clearly better than γ=0 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.0;mechanism=block;col=accuracy;fmt=f3}}). The curve peaks at γ=0.5 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.5;mechanism=block;col=accuracy;fmt=f3}}), against {{Q:table_sensitivity_summary;parameter=gamma;value=1.0;mechanism=block;col=accuracy;fmt=f3}} for the pre-specified γ=1.
 - *MCAR:* accuracy is flat up to γ=0.5 ({{Q:table_sensitivity_summary;parameter=gamma;value=0.0;mechanism=mcar;col=accuracy;fmt=f3}} at γ=0, {{Q:table_sensitivity_summary;parameter=gamma;value=0.5;mechanism=mcar;col=accuracy;fmt=f3}} at γ=0.5). It then declines slowly ({{Q:table_sensitivity_summary;parameter=gamma;value=1.0;mechanism=mcar;col=accuracy;fmt=f3}} at γ=1) and sharply at γ=4 ({{Q:table_sensitivity_summary;parameter=gamma;value=4.0;mechanism=mcar;col=accuracy;fmt=f3}}). At γ=4 the pooling effectively discards every window that contains a single missing tap.
 - *Interpretation:* γ=0.5 would have been a marginally better choice than γ=1 on these data. Because γ=1 was fixed on the development set before the confirmatory runs, we keep it as the reported method and note γ≈0.5 as a recommendation for practitioners. The effect sizes involved are small compared with the effect of using any γ>0 under long gaps.
 
@@ -173,7 +173,7 @@ GRU-D, which needs iterative training with early stopping, is compared in Sectio
 
 ![](../code/results/full/figures/Fig_sensitivity.png){width=16cm}
 
-{#fig:sens} Sensitivity of MissRocket on 30 datasets at 50% missing values: (left) weighting exponent γ (γ=0 is MiniRocket on the interpolated series; dotted line: the pre-registered γ=1); (right) number of features, for γ=1 (solid) and γ=0 (dashed)
+{#fig:sens} Sensitivity of MissRocket on 30 datasets at 50% missing values: (left) weighting exponent γ (γ=0 is MiniRocket on the interpolated series; dotted line: the pre-specified γ=1); (right) number of features, for γ=1 (solid) and γ=0 (dashed)
 
 ### 6.8 Error analysis
 

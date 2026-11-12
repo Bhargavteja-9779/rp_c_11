@@ -36,7 +36,7 @@ All ROCKET-family methods use the standard ridge head (standardisation followed 
 4. **Native estimator:** the group-mean MiniRocket of Section 4.1, which uses no imputation.
 5. **Conventional ML with native missing-value handling:** LightGBM [@Ke2017] on the raw time points (300 trees, learning rate 0.05, 31 leaves, `min_child_samples`=5, row and column subsampling).
 6. **Classical baseline:** 1-NN with Euclidean distance after linear interpolation.
-7. **Deep missing-aware baseline:** GRU-D [@Che2018] with 64 hidden units, Adam (learning rate $10^{-3}$), early stopping on a stratified 20% validation split of the training data, and at most 60 epochs. On UCR it is run on a pre-registered subset (length ≤ 300, at most 500 training series; rate 0.5; seed 0) because of CPU cost. It is also run on PhysioNet 2012.
+7. **Deep missing-aware baseline:** GRU-D [@Che2018] with 64 hidden units, Adam (learning rate $10^{-3}$), early stopping on a stratified 20% validation split of the training data, and at most 60 epochs. On UCR it is run on a pre-specified subset (length ≤ 300, at most 500 training series; rate 0.5; seed 0) because of CPU cost. It is also run on PhysioNet 2012.
 
 **Ablations** (Section 6.2) use the same pipeline with one change each:
 
@@ -48,23 +48,38 @@ All ROCKET-family methods use the standard ridge head (standardisation followed 
 
 No method's hyperparameters were tuned on confirmatory data. Baseline settings are the library defaults, or the defaults stated above.
 
-### 5.4 Protocol and pre-registration
+### 5.4 Protocol, pre-specification and amendments
 
-Design choices were made on the 10 development datasets only (seed 0; MCAR, block and MNAR at rates 0.3 and 0.6). The choices covered:
+**Development phase.** Design choices were made on the 10 development datasets only (seed 0; MCAR, block and MNAR at rates 0.3 and 0.6). The choices covered:
 
 - the estimator family: native group-mean, partial convolution, gap-adaptive hybrid, feature fusion and reliability weighting;
 - the value $\gamma=1$;
 - the default exclusion of mask features.
 
-All candidates and their development results are documented in the supplementary development log, including the negative results. The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. One deviation is disclosed. A pipeline smoke test ran on three confirmatory datasets (Coffee, ItalyPowerDemand, SyntheticControl) before the freeze. It led us to add kNN-filled variants to the ablations after screening them on the development set; it did not change the proposed method.
+All candidates and their development results are documented in Online Resource 1, including the negative results.
 
-E1 used three seeds (0, 1 and 2) fixed in advance. A seed controls the missingness masks and the bias sampling of the transforms. The ablation experiment E3 used seed 0.
+**Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-specified" because the protocol was not lodged with an external registry. The freezing commit is identified in the code repository.
+
+**Disclosed deviations.** Three deviations occurred, none of which changed the proposed method:
+
+1. *Smoke test on confirmatory data.* Before the freeze, a pipeline smoke test ran on three confirmatory datasets (Coffee, ItalyPowerDemand, SyntheticControl). It prompted us to screen kNN-filled variants on the development set and add them to the ablations.
+2. *Execution order.* The frozen protocol specified three seeds for E1 and all experiments on all eligible datasets. Our cloud environment reclaims idle compute containers, which repeatedly interrupted long runs. We therefore changed the execution order, running seed 0 first.
+3. *Rescoped experiments.* We then rescoped the study:
+   - the primary benchmark E1 uses seed 0 on all {{N_CONF}} eligible datasets;
+   - seeds 1 and 2 were run only on a random subset of 30 eligible datasets drawn with a fixed seed (Online Resource 1), for the seed-variability analysis of Section 6.9;
+   - the ablation (E3) and shift (E4) experiments use the same subset; E3 is run at rate 0.5;
+   - PhysioNet 2012 uses one seed with a patient-level bootstrap;
+   - GRU-D on UCR is restricted to series of length ≤ 200 with at most 300 training series.
+
+Amendments 2 and 3 were decided and committed while only run counts and run times, and no accuracy values, of the confirmatory experiments had been inspected.
+
+**Seeds.** A seed controls the missingness masks and the bias sampling of the transforms.
 
 ### 5.5 Metrics and statistical analysis
 
 The primary metric is test accuracy. Balanced accuracy and macro-F1 are also reported. For PhysioNet 2012 we report AUROC and AUPRC.
 
-**Unit of analysis.** For UCR, the dataset is the unit of analysis. Accuracies are first averaged over seeds, and the per-dataset paired differences are then tested.
+**Unit of analysis.** For UCR, the dataset is the unit of analysis. The primary analyses use seed 0. The natural datasets were run with three seeds, and their accuracies are averaged over seeds before testing.
 
 **Tests.** For each mechanism–rate condition we used:
 
@@ -77,6 +92,8 @@ The primary metric is test accuracy. Balanced accuracy and macro-F1 are also rep
 - percentile-bootstrap 95% confidence interval of the mean difference, from 10,000 resamples of datasets;
 - matched-pairs rank-biserial correlation;
 - win/tie/loss counts.
+
+**Multiplicity.** Each mechanism–rate condition is treated as a separate, pre-specified question, and Holm's correction controls the family-wise error rate within a condition only. The pooled comparison over all nine conditions serves as the single overall test. Per-condition p-values describe where an effect appears and should not be read as nine independent confirmations.
 
 **PhysioNet 2012.** Patients are the unit of analysis. We give a paired bootstrap (2,000 resamples) of the AUROC difference between seed-averaged score ensembles.
 

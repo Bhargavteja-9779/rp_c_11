@@ -1,6 +1,6 @@
 ## 8 Conclusion
 
-We asked how missing values should enter random-convolution time series classifiers and answered for MiniRocket, both analytically and in a pre-registered evaluation.
+We asked how missing values should enter random-convolution time series classifiers and answered for MiniRocket, both analytically and in a pre-specified evaluation.
 
 **The analysis.** Viewing the zero-sum MiniRocket response as a contrast of tap-group means yields a native estimator from observed taps. The same view explains why this estimator, although unbiased, loses to interpolation: its variance is higher. It also explains why interpolation fails inside long gaps, where it produces responses that do not depend on the signal.
 
