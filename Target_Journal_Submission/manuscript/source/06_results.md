@@ -93,6 +93,28 @@ This holds even though the training data contain no missing values, and the reas
 
 **Native estimators under shift.** The native group-mean estimator and LightGBM degrade severely under MCAR shift. Both rely on statistics whose distribution changes with the missing rate.
 
+### 6.4 External validation: PhysioNet 2012 mortality prediction (RQ5)
+
+{#tab:p12} In-hospital mortality prediction on PhysioNet/CinC 2012 (37 hourly variables over 48 h, 79.7% missing). Train: sets a+b (8,000 stays). Test: set c (4,000 stays). Seed 0. ROCKET-family methods are applied channel-wise (252 features per channel). Time is wall clock for training and prediction on 4 CPU cores
+
+{{TABLE:p12}}
+
+{#tab:p12boot} Paired bootstrap (2,000 resamples of test patients) of the AUROC difference between MissRocket and each method
+
+{{TABLE:p12boot}}
+
+PhysioNet 2012 differs from the UCR experiments in four ways: the series are multivariate, short (48 hourly bins) and very sparse, and their missingness is informative by nature. The results (@tab:p12, @tab:p12boot) are a clear *negative* finding for the random-convolution family.
+- **No gain from weighting.** MissRocket (AUROC {{Q:table_p12;method=MissRocket (proposed);col=auroc_mean;fmt=f3}}) does not improve on its unweighted counterpart (AUROC {{Q:table_p12;method=w/o weighting (γ=0);col=auroc_mean;fmt=f3}}). Training-set selection chooses γ=0 without mask features.
+- **Gradient boosting is best.** LightGBM on the raw hourly values with native missing-value handling reaches AUROC {{Q:table_p12;method=LightGBM (native NaN);col=auroc_mean;fmt=f3}}, clearly the best of all methods. Its advantage over MissRocket is significant: the AUROC difference is {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=auroc_diff_seed_ensemble;fmt=f3}} with 95% CI {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_high;fmt=f3}}.
+- **GRU-D:** {{P12_GRUD_SENTENCE}}
+
+We attribute the gap to the nature of the data:
+- whether, and when, a laboratory value was measured carries information about patient severity;
+- the measured *levels* matter more than local temporal shape;
+- many channel–patient series are entirely empty.
+
+Tree ensembles exploit each of these directly. Kernels designed to detect shape do not. Observed-tap weighting addresses fabricated responses inside interpolated gaps, and it cannot add the missingness-pattern and level information that this task needs. We therefore regard MissRocket as suited to *shape-based* classification of sensor-like series with gaps, not as a general method for sparse, irregular clinical records.
+
 ### 6.5 Naturally incomplete and variable-length data (RQ5)
 
 {#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket

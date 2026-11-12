@@ -179,6 +179,30 @@ def table_shift(v):
     v["_tables"]["shift"] = md_table(pd.DataFrame(rows))
 
 
+def table_p12(v):
+    p = t("table_p12")
+    if p is None:
+        return
+    df = pd.DataFrame(dict(Method=p.method, AUROC=[f"{x:.3f}" for x in p.auroc_mean], AUPRC=[f"{x:.3f}" for x in p.auprc_mean],
+                           **{"Time (s)": [f"{x:.0f}" for x in p.time_s_mean]}))
+    v["_tables"]["p12"] = md_table(df)
+    b = t("table_p12_bootstrap")
+    if b is not None:
+        v["_tables"]["p12boot"] = md_table(pd.DataFrame(dict(Method=b.baseline, **{
+            "ΔAUROC (MissRocket − method)": [f"{x:+.3f}" for x in b.auroc_diff_seed_ensemble],
+            "95% CI": [f"[{a:+.3f}, {c:+.3f}]" for a, c in zip(b.ci95_low, b.ci95_high)],
+            "Bootstrap p": [pfmt(x) for x in b.bootstrap_p]})))
+    g = p[p.method == "GRU-D"]
+    if len(g):
+        mr = float(p[p.method == "MissRocket (proposed)"].auroc_mean.iloc[0])
+        gv = float(g.auroc_mean.iloc[0])
+        v["P12_GRUD_SENTENCE"] = (f"GRU-D obtained AUROC {gv:.3f} ("
+                                  + ("higher" if gv > mr else "lower") + f" than MissRocket's {mr:.3f}), at a training time of "
+                                  f"{float(g.time_s_mean.iloc[0]):.0f} s on CPU.")
+    else:
+        v["P12_GRUD_SENTENCE"] = "GRU-D did not complete (see Limitations)."
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -186,7 +210,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
