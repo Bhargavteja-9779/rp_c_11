@@ -128,6 +128,8 @@ PhysioNet 2012 differs from the UCR experiments in four ways: the series are mul
 - **Gradient boosting comes second.** LightGBM on the raw hourly values with native missing-value handling follows (AUROC {{Q:table_p12;method=LightGBM (native NaN);col=auroc_mean;fmt=f3}}).
 - **Both beat MissRocket significantly.** The AUROC difference between MissRocket and GRU-D is {{Q:table_p12_bootstrap;baseline=GRU-D;col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=GRU-D;col=ci95_high;fmt=f3}}). Against LightGBM it is {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=auroc_diff_seed_ensemble;fmt=f3}} (95% CI {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_low;fmt=f3}} to {{Q:table_p12_bootstrap;baseline=LightGBM (native NaN);col=ci95_high;fmt=f3}}).
 
+The test-set bootstrap captures uncertainty from patient sampling, not from training stochasticity (for example GRU-D's initialisation), since each method was trained once. ROC and precision–recall curves are given in Online Resource 1.
+
 We attribute the gap to the nature of the data:
 
 - whether, and when, a laboratory value was measured carries information about patient severity;
