@@ -44,9 +44,51 @@ def cite(text, refs, used):
     return text
 
 
+RESULTS = os.path.abspath(os.path.join(MS, "..", "code", "results", "full"))
+
+
+def fmt_value(v, fmt):
+    import math
+    if fmt == "pp":
+        return f"{v * 100:+.2f}"
+    if fmt == "ppabs":
+        return f"{abs(v) * 100:.2f}"
+    if fmt == "pct":
+        return f"{v * 100:.1f}"
+    if fmt == "p":
+        return "< 0.001" if v < 0.001 else f"= {v:.3f}"
+    if fmt == "int":
+        return str(int(round(v)))
+    if fmt.startswith("f"):
+        return f"{v:.{int(fmt[1:])}f}"
+    if fmt == "x":
+        return f"{v:.1f}"
+    return str(v)
+
+
+def query(spec):
+    """Q:table;col=..;fmt=..;key=value;... -> formatted value of the unique matching row."""
+    import pandas as pd
+    parts = spec.split(";")
+    table = parts[0]
+    kv = dict(p.split("=", 1) for p in parts[1:])
+    col, fmt = kv.pop("col"), kv.pop("fmt", "raw")
+    df = pd.read_csv(os.path.join(RESULTS, "tables", table + ".csv"))
+    for k, v in kv.items():
+        if df[k].dtype.kind in "fi":
+            df = df[(df[k] - float(v)).abs() < 1e-9]
+        else:
+            df = df[df[k].astype(str) == v]
+    if len(df) != 1:
+        raise KeyError(f"query {spec} matched {len(df)} rows")
+    return fmt_value(df.iloc[0][col], fmt)
+
+
 def fill(text, values):
     def rep(m):
         k = m.group(1)
+        if k.startswith("Q:"):
+            return query(k[2:])
         if k.startswith("TABLE:"):
             name = k.split(":", 1)[1]
             if name not in values.get("_tables", {}):
@@ -55,7 +97,7 @@ def fill(text, values):
         if k not in values:
             raise KeyError("missing value " + k)
         return str(values[k])
-    return re.sub(r"\{\{([A-Za-z0-9_:\-\.]+)\}\}", rep, text)
+    return re.sub(r"\{\{([^{}]+)\}\}", rep, text)
 
 
 def number_floats(text):
