@@ -78,7 +78,7 @@ MissRocket keeps the low-variance interpolated responses but weights each positi
 
 $$\mathrm{PPV}^{\gamma}_{k,d,b}=\frac{\sum_{t\in T}w_\gamma(c(t))\,\mathbb{1}[\tilde C_k(t)>b]}{\sum_{t\in T}w_\gamma(c(t))} \tag{5}$$
 
-where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Positions with $c(t)=0$, which are exactly the fabricated windows of Proposition 3, receive zero weight for any $\gamma>0$. The exponent $\gamma$ interpolates between three cases:
+where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Missing values before the first or after the last observation take the nearest observed value. As in MiniRocket, taps beyond the ends of the series under zero padding count as observed zeros, which preserves exact equivalence with MiniRocket on complete data. Positions with $c(t)=0$, which are exactly the fabricated windows of Proposition 3, receive zero weight for any $\gamma>0$. The exponent $\gamma$ interpolates between three cases:
 
 - $\gamma=0$ gives MiniRocket on the interpolated series;
 - $\gamma=1$ gives each window the fraction of its taps that were observed;
@@ -114,7 +114,7 @@ Biases are drawn as in MiniRocket, from the responses of a random training serie
 
 **Optional components (ablations).**
 
-- *Missingness-pattern features:* MiniRocket applied to the binary mask, giving 1,000 features. This is a time-series analogue of the missing-indicator method [@VanNess2023].
+- *Missingness-pattern features:* MiniRocket applied to the binary mask, with a budget of 1,000 features (924 after rounding to whole multiples of the 84 kernels). This is a time-series analogue of the missing-indicator method [@VanNess2023].
 - *Training-set selection:* $(\gamma,\text{mask})$ chosen from $\{0,0.5,1,2\}\times\{\text{off},\text{on}\}$ by the ridge head's leave-one-out criterion.
 - *Other gap fillers:* zero, last observation carried forward (LOCF), and cross-series k-nearest-neighbour imputation.
 

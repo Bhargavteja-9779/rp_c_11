@@ -34,9 +34,9 @@ All ROCKET-family methods use the standard ridge head (standardisation followed 
    - cross-series k-nearest-neighbour imputation ($k=5$), fit on the training set.
 3. **Stronger convolution classifiers after linear interpolation:** MultiRocket [@Tan2022] and Hydra concatenated with MultiRocket [@Dempster2023], both from aeon. These are among the most accurate convolution-based methods in the recent bake-off [@Middlehurst2024].
 4. **Native estimator:** the group-mean MiniRocket of Section 4.1, which uses no imputation.
-5. **Conventional ML with native missing-value handling:** LightGBM [@Ke2017] on the raw time points (300 trees, learning rate 0.05, 31 leaves, `min_child_samples`=5, row and column subsampling).
+5. **Conventional ML with native missing-value handling:** LightGBM [@Ke2017] on the raw time points (300 trees, learning rate 0.05, 31 leaves, `min_child_samples`=5, row subsampling 0.8, column subsampling 0.5). On PhysioNet 2012, with 8,000 training stays, we used 500 trees, learning rate 0.03 and `min_child_samples`=20.
 6. **Classical baseline:** 1-NN with Euclidean distance after linear interpolation.
-7. **Deep missing-aware baseline:** GRU-D [@Che2018] with 64 hidden units, Adam (learning rate $10^{-3}$), early stopping on a stratified 20% validation split of the training data, and at most 60 epochs. On UCR it is run on a pre-specified subset (length ≤ 300, at most 500 training series; rate 0.5; seed 0) because of CPU cost. It is also run on PhysioNet 2012.
+7. **Deep missing-aware baseline:** GRU-D [@Che2018] with 64 hidden units, Adam (learning rate $10^{-3}$), early stopping (patience 8 epochs, restoring the best weights) on a stratified 20% validation split of the training data, and at most 60 epochs. On UCR it is run on a pre-specified subset (length ≤ 300, at most 500 training series; rate 0.5; seed 0) because of CPU cost. It is also run on PhysioNet 2012.
 
 **Ablations** (Section 6.2) use the same pipeline with one change each:
 
