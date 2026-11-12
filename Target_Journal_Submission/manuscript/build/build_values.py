@@ -111,6 +111,25 @@ def table_eff(v):
     v["TIME_RATIO_HYDRA_VS_MR"] = f"{hy / mr:.1f}"
 
 
+def table_natural(v):
+    n = t("table_natural")
+    if n is None:
+        return
+    order = ["dataset", "MissRocket (proposed)", "w/o weighting (γ=0)", "MiniRocket + linear interp.", "MiniRocket + resampling",
+             "Native masked MiniRocket (group-mean)", "LightGBM (native NaN)", "1-NN ED + linear interp."]
+    n = n[order].rename(columns={"dataset": "Dataset"})
+    for c in order[1:]:
+        n[c] = [f"{x:.3f}" for x in n[c]]
+    for i, r in n.iterrows():
+        vals = [float(r[c]) for c in order[1:]]
+        best = max(vals)
+        for c in order[1:]:
+            if float(r[c]) == best:
+                n.at[i, c] = f"**{r[c]}**"
+    n["Dataset"] = n["Dataset"].replace({"MEAN": "Mean"})
+    v["_tables"]["natural"] = md_table(n)
+
+
 def main():
     v = {"_tables": {}}
     conf = confirmatory_datasets()
@@ -118,7 +137,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 

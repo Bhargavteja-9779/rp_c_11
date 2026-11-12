@@ -52,3 +52,21 @@ The pooled differences from MultiRocket ({{Q:table_pooled_statistics;baseline=Mu
 ![](../code/results/full/figures/Fig_paired_differences.png){width=16.5cm}
 
 {#fig:diff} Distribution over datasets of the accuracy difference between MissRocket and MiniRocket with linear interpolation (percentage points). Boxes show quartiles, whiskers 1.5 IQR, points outliers
+
+### 6.5 Naturally incomplete and variable-length data (RQ5)
+
+{#tab:natural} Accuracy (mean over three seeds) on the 15 UCR datasets that contain native missing values (DodgerLoop*, MelbournePedestrian) or series of unequal length (all others). Variable-length series are right-padded with missing values; "resampling" stretches each series to the common length before MiniRocket
+
+{{TABLE:natural}}
+
+@tab:natural reports the 15 archive datasets that are incomplete by nature, analysed without any simulated missingness. MissRocket is more accurate than MiniRocket with linear interpolation, by {{Q:table_natural_statistics;baseline=MiniRocket + linear interp.;col=mean_diff;fmt=pp}} pp ({{Q:table_natural_statistics;baseline=MiniRocket + linear interp.;col=wins;fmt=int}} wins, {{Q:table_natural_statistics;baseline=MiniRocket + linear interp.;col=losses;fmt=int}} losses; p (Holm) {{Q:table_natural_statistics;baseline=MiniRocket + linear interp.;col=p_holm;fmt=p}}).
+
+For variable-length series, interpolation extends the last observed value over the padded tail. This creates exactly the fabricated, constant windows of Proposition 3, and MissRocket gives them zero weight.
+
+MissRocket is not significantly different from two alternatives:
+- the standard resampling approach ({{Q:table_natural_statistics;baseline=MiniRocket + resampling;col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_natural_statistics;baseline=MiniRocket + resampling;col=p_holm;fmt=p}});
+- the native group-mean estimator ({{Q:table_natural_statistics;baseline=Native masked MiniRocket (group-mean);col=mean_diff;fmt=pp}} pp, p (Holm) {{Q:table_natural_statistics;baseline=Native masked MiniRocket (group-mean);col=p_holm;fmt=p}}).
+
+The native estimator is competitive here because the missing segment is a single trailing block rather than many interior gaps.
+
+On the four datasets with genuinely missing interior values (DodgerLoopDay, DodgerLoopGame, DodgerLoopWeekend and MelbournePedestrian), the missing fraction is below 1% and all ROCKET-family methods perform similarly. With 15 datasets, these comparisons have limited power.
