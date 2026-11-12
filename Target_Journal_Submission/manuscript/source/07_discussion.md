@@ -13,6 +13,8 @@ The experiments answer the motivating question in a nuanced but consistent way.
 - weighting also repairs LOCF filling, which produces fabricated *constant* segments;
 - weighting does not improve kNN filling, which does not create such segments.
 
+**Consistency with earlier benchmarks.** These findings are consistent with the observation that unadapted MiniRocket ranked first on naturally irregular datasets [@Spinnato2025]. MiniRocket with interpolation is a strong pipeline, and our natural-data results show it close to the best (Section 6.5). The gains from weighting concentrate where gaps are long.
+
 **Third, robustness to train–test shift.** The robustness under train–test shift (Section 6.3) is, in our view, the most practically relevant result. A model trained on complete data and deployed on series with long gaps loses heavily with interpolation, and much less with observed-tap weighting.
 
 ### 7.2 What the evidence does not support
@@ -40,4 +42,4 @@ Our evidence supports the following guidance for practitioners using ROCKET-fami
 4. **Choice of γ.** γ was fixed at 1 on the development set; the confirmatory sensitivity analysis suggests γ≈0.5 is marginally better. We did not re-tune after seeing confirmatory results.
 5. **Scope of the method.** The method is developed for MiniRocket's PPV pooling and univariate (or channel-wise multivariate) series. Observed-tap weighting was *not* applied to MultiRocket or Hydra, which were compared only after linear interpolation. Weighted versions of their pooling operators might gain similarly. Extending the approach to them and to genuinely irregular sampling times is left for future work.
 6. **Implementation.** Our numba implementation is slower than the optimised reference implementation of MiniRocket. Timing comparisons across implementations therefore reflect engineering as well as method.
-7. **Deep baselines.** Deep models other than GRU-D (e.g. BRITS, SAITS-based pipelines, Raindrop, mTAN) and the end-to-end model of @Yao2024 were not run. On UCR, GRU-D was run only on a small, short-series subset because of CPU cost.
+7. **Deep baselines.** Deep models other than GRU-D (e.g. BRITS, SAITS-based pipelines, Raindrop, mTAN) were not run. Nor was the end-to-end model of @Yao2024: we did not use or verify a public implementation. Its reported results (MCAR only, a different dataset subset and protocol) are not comparable with ours, so we make no numerical comparison. On UCR, GRU-D was run only on a small, short-series subset because of CPU cost.

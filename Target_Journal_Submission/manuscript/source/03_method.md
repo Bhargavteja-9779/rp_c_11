@@ -58,7 +58,7 @@ This equals $18\sigma^2$ for complete windows and grows to $72\sigma^2$ when $n_
 
 *Proof.* The two group means are independent, with variances $\sigma^2/n_P$ and $\sigma^2/n_Q$. ∎
 
-Proposition 2 explains a central negative result of this study (Section 6). The native estimator is unbiased, but it discards the temporal smoothness that interpolation exploits. When gaps are short and scattered, which is typical of MCAR, an interpolated tap is a low-variance estimate of the missing value. A tap-wise unbiased estimate is noisier, and the noise propagates through the threshold in Eq. (3).
+These results are elementary, but they are consequential. Proposition 2 explains a central negative result of this study (Section 6). The native estimator is unbiased, but it discards the temporal smoothness that interpolation exploits. When gaps are short and scattered, which is typical of MCAR, an interpolated tap is a low-variance estimate of the missing value. A tap-wise unbiased estimate is noisier, and the noise propagates through the threshold in Eq. (3).
 
 ### 4.2 MissRocket: observed-tap-weighted pooling
 
@@ -95,6 +95,13 @@ where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Pos
 {#fig:example} Worked example computed with the released code on a development-set series (GunPoint, first training series, 40% block missingness). **a** Observed points and linear interpolation. **b** Response of one MiniRocket kernel (dilation 1) on the complete and on the interpolated series. Red points mark windows with no observed tap (c = 0), where the interpolated response is constant within each gap, as stated by Proposition 3. **c** The observed-tap weight c/9 used by MissRocket (γ = 1), which is zero exactly on those windows
 
 We fixed $\gamma=1$ for the proposed method using the development datasets only (Section 5.4). The other values, and a variant that selects $\gamma$ on the training set, are reported as ablations.
+
+**Relation to masked pooling and partial convolution.** Excluding invalid positions from pooling is a familiar idea. Sequence models routinely average only over non-padded positions, and partial convolutions renormalise each response by the fraction of valid inputs [@Liu2018]. Observed-tap weighting differs from both in three respects:
+- (i) the weights are fractional reliabilities of whole windows, computed per dilation from the original mask, rather than binary validity flags;
+- (ii) they enter a thresholded pooling (PPV), not an average;
+- (iii) the response itself is computed on the gap-filled series and left unchanged, which keeps the low variance of interpolation.
+
+The two alternatives correspond to variants we evaluated. Partial-convolution renormalisation changes the response value (Section 4.1) and was the least accurate of the four response estimators on the development set (Online Resource 1). Binary support pooling combined with responses estimated from observed taps is the native estimator, which was significantly less accurate than MissRocket in every confirmatory condition (Section 6.1).
 
 **Proposition 4 (special cases).**
 
