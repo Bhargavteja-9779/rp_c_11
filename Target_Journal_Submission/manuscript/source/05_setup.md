@@ -91,7 +91,7 @@ No method's hyperparameters were tuned on confirmatory data. Baseline settings a
 
 All candidates and their development results are documented in Online Resource 1, including the negative results.
 
-**Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-registered" because the protocol was not lodged with an external registry. The freezing commit is identified in the code repository.
+**Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-registered" because the protocol was not lodged with an external registry. The freezing commit is recorded in the version history of the code, which is available on request.
 
 **Disclosed deviations.** Four deviations occurred, none of which changed the proposed method:
 
@@ -151,4 +151,4 @@ All of these use seed 0. Seed 1 is used to check that the differences among the 
 
 **Timing.** Wall-clock time was measured on a 4-core CPU with no GPU.
 
-**Use of AI tools.** In line with the journal's policy, we document that an AI agent (Anthropic Claude) assisted with the literature search, the implementation of the code, experiment orchestration, analysis scripting and drafting. Every number in this paper is produced by the released code from the raw outputs, and every reference was verified against bibliographic databases (see Statements and Declarations).
+**Use of AI tools.** In line with the journal's policy, we document that an AI assistant (Anthropic Claude) assisted with the literature search, the implementation of the code, experiment orchestration, analysis scripting and drafting. Every number in this paper is produced by the study code from the raw outputs, and every reference was verified against bibliographic databases (see Statements and Declarations).

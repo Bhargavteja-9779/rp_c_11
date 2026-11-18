@@ -1178,5 +1178,17 @@
    ]
   ],
   "cite": "Smith and Randall 2015"
+ },
+ "CWRU": {
+  "entry": "Case Western Reserve University Bearing Data Center (2026) Seeded fault test data (12k drive end bearing fault data; normal baseline data). https://engineering.case.edu/bearingdatacenter. Accessed 18 November 2026",
+  "first": "Case Western Reserve University Bearing Data Center",
+  "year": 2026,
+  "authors": [
+   [
+    "Case Western Reserve University Bearing Data Center",
+    ""
+   ]
+  ],
+  "cite": "Case Western Reserve University Bearing Data Center 2026"
  }
 }

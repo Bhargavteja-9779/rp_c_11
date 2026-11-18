@@ -92,7 +92,7 @@ where $\tilde C_k$ is Eq. (1) evaluated on the linearly interpolated series. Mis
 
 ![](../code/results/full/figures/Fig2_worked_example.png){width=16cm}
 
-{#fig:example} Worked example computed with the released code on a development-set series (GunPoint, first training series, 40% block missingness). **a** Observed points and linear interpolation. **b** Response of one MiniRocket kernel (dilation 1) on the complete and on the interpolated series. Red points mark windows with no observed tap (c = 0), where the interpolated response is constant within each gap, as stated by Proposition 3. **c** The observed-tap weight c/9 used by MissRocket (γ = 1), which is zero exactly on those windows
+{#fig:example} Worked example computed with the study code on a development-set series (GunPoint, first training series, 40% block missingness). **a** Observed points and linear interpolation. **b** Response of one MiniRocket kernel (dilation 1) on the complete and on the interpolated series. Red points mark windows with no observed tap (c = 0), where the interpolated response is constant within each gap, as stated by Proposition 3. **c** The observed-tap weight c/9 used by MissRocket (γ = 1), which is zero exactly on those windows
 
 We fixed $\gamma=1$ for the proposed method using the development datasets only (Section 5.5). The other values, and a variant that selects $\gamma$ on the training set, are reported as ablations.
 

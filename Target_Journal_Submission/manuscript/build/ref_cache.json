@@ -1400,5 +1400,19 @@
   "type": "journal-article",
   "publisher": "Elsevier BV",
   "source": "crossref"
+ },
+ "CWRU": {
+  "authors": [
+   [
+    "Case Western Reserve University Bearing Data Center",
+    ""
+   ]
+  ],
+  "year": 2026,
+  "title": "Seeded fault test data (12k drive end bearing fault data; normal baseline data)",
+  "venue": "",
+  "url": "https://engineering.case.edu/bearingdatacenter. Accessed 18 November 2026",
+  "dataset": true,
+  "source": "manual (verified: https://engineering.case.edu/bearingdatacenter. Accessed 18 November 2026)"
  }
 }
