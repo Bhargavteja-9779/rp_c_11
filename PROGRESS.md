@@ -95,3 +95,13 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
     - mechanism-shift experiment E4b added (post hoc);
     - controlled scaling benchmark added.
     Reproducibility: 24/24 sampled runs re-executed with exact equality; fresh quick mode passes.
+
+## Revision after external (professor) review — 2026-11-18
+17. New industrial case study E9 (CWRU bearing vibration; sensor dropouts), requested by the reviewer. The design was
+    written to config/experiments.yaml BEFORE running:
+    - data: 10 classes; leave-one-load-out folds; normal files decimated 48→12 kHz;
+    - 13 conditions: complete; random 10/30/50%; outages short/medium/long at 30%; long at 50%;
+      train-complete → test-incomplete shifts;
+    - 7 methods; seeds 0,1 for the core 3 methods and seed 0 for the others.
+    DISCLOSURE: a timing test of one setting (fold 3, medium outages 30%, seed-1/2 masks) printed accuracies before this
+    commit; the design was not changed afterwards. The E9 freeze is the commit titled "E9 DESIGN FREEZE".

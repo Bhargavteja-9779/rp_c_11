@@ -9,6 +9,7 @@ Classifier head for all ROCKET-family transforms: StandardScaler + RidgeClassifi
 """
 from __future__ import annotations
 
+import os
 import time
 
 import numpy as np
@@ -125,14 +126,24 @@ def _aeon_factory(kind):
 
 
 class _Aeon3D:
+    """aeon transformer wrapper. If the environment variable AEON_CHUNK is set (used only for the CWRU experiment),
+    the transformer is fitted on all training series and then applied in chunks to bound peak memory."""
+
     def __init__(self, t):
         self.t = t
+        self.chunk = int(os.environ.get("AEON_CHUNK", "0"))
 
     def fit_transform(self, X):
-        return np.asarray(self.t.fit_transform(X[:, None, :].astype(np.float64)), dtype=np.float32)
+        if not self.chunk:
+            return np.asarray(self.t.fit_transform(X[:, None, :].astype(np.float64)), dtype=np.float32)
+        self.t.fit(X[:, None, :].astype(np.float64))
+        return self.transform(X)
 
     def transform(self, X):
-        return np.asarray(self.t.transform(X[:, None, :].astype(np.float64)), dtype=np.float32)
+        if not self.chunk:
+            return np.asarray(self.t.transform(X[:, None, :].astype(np.float64)), dtype=np.float32)
+        return np.vstack([np.asarray(self.t.transform(X[i:i + self.chunk, None, :].astype(np.float64)), dtype=np.float32)
+                          for i in range(0, len(X), self.chunk)])
 
 
 class _Concat3D:

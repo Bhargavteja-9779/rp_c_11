@@ -77,3 +77,25 @@ E7_sensitivity:   # feature budget and gamma grid, 30 confirmatory datasets draw
   n_datasets: 30
   num_features: [2500, 5000, 10000, 20000]
   gammas: [0.0, 0.25, 0.5, 1.0, 2.0, 4.0]
+
+# E9: industrial case study added after external (professor) review. Design fixed and committed BEFORE any run.
+E9_cwru:
+  description: CWRU 12 kHz drive-end bearing vibration, 10 classes, leave-one-load-out (4 folds), simulated sensor dropouts
+  folds: [0, 1, 2, 3]
+  seeds: [0, 1]
+  methods: [MissRocket, MissRocket-g0, AeonMiniRocket+linear, AeonMiniRocket+knn, HydraMultiRocket+linear, MaskRocket-noC, LightGBM-NaN]
+  seed1_methods: [MissRocket, MissRocket-g0, AeonMiniRocket+linear]   # compute budget: secondary baselines seed 0 only
+  conditions:   # train_* = missingness of training data, test_* = of test data; block@G = outages with mean length G samples
+    - {name: complete,            train_mech: mcar,       train_rate: 0.0, test_mech: mcar,       test_rate: 0.0}
+    - {name: random10,            train_mech: mcar,       train_rate: 0.1, test_mech: mcar,       test_rate: 0.1}
+    - {name: random30,            train_mech: mcar,       train_rate: 0.3, test_mech: mcar,       test_rate: 0.3}
+    - {name: random50,            train_mech: mcar,       train_rate: 0.5, test_mech: mcar,       test_rate: 0.5}
+    - {name: outage_short30,      train_mech: block@16,   train_rate: 0.3, test_mech: block@16,   test_rate: 0.3}
+    - {name: outage_medium30,     train_mech: block@128,  train_rate: 0.3, test_mech: block@128,  test_rate: 0.3}
+    - {name: outage_long30,       train_mech: block@4096, train_rate: 0.3, test_mech: block@4096, test_rate: 0.3}
+    - {name: outage_long50,       train_mech: block@4096, train_rate: 0.5, test_mech: block@4096, test_rate: 0.5}
+    - {name: shift_random30,      train_mech: mcar,       train_rate: 0.0, test_mech: mcar,       test_rate: 0.3}
+    - {name: shift_outage_short30,  train_mech: mcar,     train_rate: 0.0, test_mech: block@16,   test_rate: 0.3}
+    - {name: shift_outage_medium30, train_mech: mcar,     train_rate: 0.0, test_mech: block@128,  test_rate: 0.3}
+    - {name: shift_outage_long30,   train_mech: mcar,     train_rate: 0.0, test_mech: block@4096, test_rate: 0.3}
+    - {name: shift_outage_long50,   train_mech: mcar,     train_rate: 0.0, test_mech: block@4096, test_rate: 0.5}

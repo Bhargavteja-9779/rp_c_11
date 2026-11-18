@@ -70,9 +70,15 @@ def mask_series(x: np.ndarray, r: float, mechanism: str, rng: np.random.RandomSt
 
 
 def apply_missingness(X: np.ndarray, r: float, mechanism: str, seed: int, **kw) -> np.ndarray:
-    """X: (n, L) float array (NaN allowed). Returns a copy with simulated NaNs."""
+    """X: (n, L) float array (NaN allowed). Returns a copy with simulated NaNs.
+
+    mechanism 'block@G' = contiguous outages with a geometric length distribution of mean G samples
+    (absolute duration, independent of the series length)."""
     rng = np.random.RandomState(seed)
     Xm = np.array(X, dtype=np.float32, copy=True)
+    if mechanism.startswith("block@"):
+        kw = dict(kw, gap_frac=float(mechanism.split("@")[1]) / Xm.shape[1])
+        mechanism = "block"
     for i in range(Xm.shape[0]):
         miss = mask_series(Xm[i], r, mechanism, rng, **kw)
         Xm[i, miss] = np.nan
