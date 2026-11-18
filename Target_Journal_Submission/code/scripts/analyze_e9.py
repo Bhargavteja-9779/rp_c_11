@@ -76,7 +76,7 @@ def seed_check(d):
         for s in (0, 1):
             t = g[g.seed == s].pivot(index="fold", columns="method", values="accuracy")
             for b in core[1:]:
-                r[f"diff_{b}_s{s}"] = (t[P] - t[b]).mean() if len(t) else np.nan
+                r[f"diff_{b}_s{s}"] = (t[P] - t[b]).mean() if (P in t and b in t) else np.nan
         for m in core:
             r[f"acc_{m}_2seeds"] = g[g.method == m].accuracy.mean()
         rows.append(r)

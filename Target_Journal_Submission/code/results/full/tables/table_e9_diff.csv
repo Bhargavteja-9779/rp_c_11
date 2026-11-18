@@ -1,235 +1,235 @@
 condition,scenario,setting,metric,baseline,label,mean_diff,min_diff,max_diff,wins,ties,losses,n
-complete,Complete,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0022259321090707385,0.0,0.006677796327212215,1,2,0,3
-complete,Complete,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0022259321090707385,0.0,0.006677796327212215,1,2,0,3
-complete,Complete,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.03224633648673717,-0.053333333333333344,0.0,0,1,2,3
-complete,Complete,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.37355499907252837,0.31500000000000006,0.4066666666666666,3,0,0,3
-complete,Complete,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.002397955074059895,0.0,0.007193865222179685,1,2,0,3
-complete,Complete,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.002397955074059895,0.0,0.007193865222179685,1,2,0,3
-complete,Complete,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.03683763095124141,-0.06573174577316887,0.0,0,1,2,3
-complete,Complete,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.3790639841956407,0.31311891100926337,0.4146908963212472,3,0,0,3
-complete,Complete,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0022222222222222365,0.0,0.00666666666666671,1,2,0,3
-complete,Complete,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0022222222222222365,0.0,0.00666666666666671,1,2,0,3
-complete,Complete,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.03222222222222212,-0.05333333333333312,0.0,0,1,2,3
-complete,Complete,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,3,0,3
-complete,Complete,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.37356873822975517,0.31499999999999995,0.4066666666666666,3,0,0,3
-outage_long30,"Long outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.007225932109070669,-0.015000000000000013,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,-0.0011129660545353322,-0.0033388981636059967,0.0,0,2,1,3
-outage_long30,"Long outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.008892598775737412,0.0016666666666668162,0.018333333333333313,3,0,0,3
-outage_long30,"Long outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0250231867928028,-0.04173622704507518,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0011083286959748067,-0.005008347245408995,0.006666666666666599,2,0,1,3
-outage_long30,"Long outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.4819374884066036,0.44999999999999996,0.5083333333333334,3,0,0,3
-outage_long30,"Long outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.007834836732806086,-0.016784659294981408,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,-0.0011431923196628668,-0.0034295769589886005,0.0,0,2,1,3
-outage_long30,"Long outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.01116594888254896,0.0016667824154456001,0.023390807230262323,3,0,0,3
-outage_long30,"Long outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.025972192289111073,-0.04194149841583039,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0016099631706035418,-0.004827876335193992,0.007990983431559018,2,0,1,3
-outage_long30,"Long outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.49381730607240587,0.46060777657125496,0.5227967039716495,3,0,0,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.007222222222222278,-0.015000000000000013,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,-0.0011111111111111367,-0.0033333333333334103,0.0,0,2,1,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.008888888888888872,0.0016666666666668162,0.0183333333333332,3,0,0,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.024999999999999984,-0.04166666666666674,0.0,0,1,2,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0011111111111111738,-0.0050000000000000044,0.00666666666666671,2,0,1,3
-outage_long30,"Long outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4818549905838041,0.44999999999999996,0.5083333333333334,3,0,0,3
-outage_long50,"Long outages, 50%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0027796327212020002,-0.0033388981636059967,-0.0016666666666668162,0,0,3,3
-outage_long50,"Long outages, 50%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004451864218141366,-0.0016666666666668162,0.013355592654424098,2,0,1,3
-outage_long50,"Long outages, 50%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.02390187349285855,0.010000000000000009,0.03833333333333355,3,0,0,3
-outage_long50,"Long outages, 50%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.015573177518085735,-0.03171953255425719,0.0066666666666663765,1,0,2,3
-outage_long50,"Long outages, 50%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0022212947505100646,-0.0016694490818029983,0.010000000000000009,1,0,2,3
-outage_long50,"Long outages, 50%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5097236134297903,0.49833333333333346,0.5283333333333332,3,0,0,3
-outage_long50,"Long outages, 50%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0028729221833863803,-0.0039250060002583576,-0.0016667824154456001,0,0,3,3
-outage_long50,"Long outages, 50%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004431647356116823,-0.0016667824154456001,0.013325802050785596,2,0,1,3
-outage_long50,"Long outages, 50%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.02760875254740854,0.010141206675224557,0.04633921481332881,3,0,0,3
-outage_long50,"Long outages, 50%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.016086494692181524,-0.031739786876538334,0.006759412324049974,1,0,2,3
-outage_long50,"Long outages, 50%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.002683578451074068,-0.0016667824154456001,0.01130047488279784,1,0,2,3
-outage_long50,"Long outages, 50%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5219093493363699,0.5125610269826413,0.5390351785837263,3,0,0,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.002777777777777731,-0.0033333333333334103,-0.0016666666666665941,0,0,3,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004444444444444547,-0.0016666666666665941,0.01333333333333342,2,0,1,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.02388888888888896,0.010000000000000231,0.03833333333333322,3,0,0,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.015555555555555581,-0.031666666666666954,0.006666666666666821,1,0,2,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0022222222222222734,-0.0016666666666665941,0.010000000000000009,1,0,2,3
-outage_long50,"Long outages, 50%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5096421845574387,0.4983333333333334,0.5283333333333334,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.00778890743832313,-0.02003338898163598,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0005546280838434706,-0.0016694490818027763,0.0033333333333331883,1,1,1,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0027787052494900135,0.0016666666666668162,0.0050000000000000044,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0300241142645149,-0.04833333333333356,0.0016666666666668162,1,0,2,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.0055639028009646,-0.015025041736226985,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.49361342979039136,0.46666666666666656,0.51,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0087097759064666,-0.021160590922541633,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0012258241003195725,-0.002084287785315886,0.005761760086274603,1,1,1,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0036170382624503747,0.0016667824154456001,0.007259361442080392,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.033305111746837555,-0.05709302838081021,0.0016667824154456001,1,0,2,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.0060913594008081455,-0.015595780069580845,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5005824015459609,0.46695264682363885,0.521376728732659,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.007777777777777846,-0.020000000000000018,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0005555555555554573,-0.0016666666666668162,0.0033333333333331883,1,1,1,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.002777777777777768,0.0016666666666664831,0.0050000000000000044,3,0,0,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0300000000000001,-0.04833333333333356,0.0016666666666668162,1,0,2,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.005555555555555647,-0.015000000000000124,0.0,0,1,2,3
-outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4935216572504708,0.4666666666666666,0.51,3,0,0,3
-outage_short30,"Short outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0011120385828231234,-0.0016694490818027763,0.0,0,1,2,3
-outage_short30,"Short outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.00167037655351517,-0.0016666666666665941,0.006677796327212104,1,1,1,3
-outage_short30,"Short outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.020019476905954365,0.0033333333333331883,0.03505843071786319,3,0,0,3
-outage_short30,"Short outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.02168521610090886,-0.03338898163605997,0.0016666666666668162,1,0,2,3
-outage_short30,"Short outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.006110183639399043,-0.0016694490818027763,0.01666666666666672,2,0,1,3
-outage_short30,"Short outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5441912446670377,0.5233333333333334,0.565,3,0,0,3
-outage_short30,"Short outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0011021696594322912,-0.0022289708251712614,0.0,0,1,2,3
-outage_short30,"Short outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.002507348144900131,-0.001961652304872774,0.009483696739573166,1,1,1,3
-outage_short30,"Short outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.024430029054590168,0.003333564830890978,0.04256356757811275,3,0,0,3
-outage_short30,"Short outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.022927223195946016,-0.03608446966140599,0.0016667824154456001,1,0,2,3
-outage_short30,"Short outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0076063249346000434,-0.001620802875145655,0.021106212848054806,2,0,1,3
-outage_short30,"Short outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5553198807260394,0.5286759355358441,0.5768672869588215,3,0,0,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0011111111111111367,-0.0016666666666668162,0.0,0,1,2,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.001666666666666668,-0.0016666666666665941,0.006666666666666599,1,1,1,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.019999999999999945,0.0033333333333331883,0.03499999999999992,3,0,0,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.021666666666666796,-0.03333333333333355,0.0016666666666665941,1,0,2,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0061111111111109935,-0.0016666666666668162,0.016666666666666607,2,0,1,3
-outage_short30,"Short outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5440207156308852,0.5233333333333334,0.5650000000000002,3,0,0,3
-random10,Random 10%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0016685216100908635,-0.0033388981636059967,0.0,0,1,2,3
-random10,Random 10%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.000560192914116168,-0.00666666666666671,0.008347245409015214,1,1,1,3
-random10,Random 10%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.0016648117232424358,-0.008333333333333304,0.0033388981636059967,1,1,1,3
-random10,Random 10%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.026131515488777568,-0.04166666666666674,0.0,0,1,2,3
-random10,Random 10%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0016685216100908635,0.0,0.0033388981636059967,2,1,0,3
-random10,Random 10%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.46636894824707853,0.41333333333333333,0.5216666666666667,3,0,0,3
-random10,Random 10%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0021554249352955246,-0.004101702119354567,0.0,0,1,2,3
-random10,Random 10%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,-0.0002752519505834587,-0.009219380452628156,0.00839362460087778,1,1,1,3
-random10,Random 10%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.0022771985894765034,-0.010790163489171944,0.003958567720742434,1,1,1,3
-random10,Random 10%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.02978555366748899,-0.05004239990981396,0.0,0,1,2,3
-random10,Random 10%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0019041265413330215,0.0,0.00293851367406861,2,1,0,3
-random10,Random 10%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.47579965829969906,0.41144373944910306,0.5381090709080206,3,0,0,3
-random10,Random 10%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.001666666666666668,-0.0033333333333334103,0.0,0,1,2,3
-random10,Random 10%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0005555555555555314,-0.006666666666666599,0.008333333333333193,1,1,1,3
-random10,Random 10%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.0016666666666667052,-0.008333333333333304,0.0033333333333331883,1,1,1,3
-random10,Random 10%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.026111111111111085,-0.04166666666666652,0.0,0,1,2,3
-random10,Random 10%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0016666666666665941,0.0,0.0033333333333331883,2,1,0,3
-random10,Random 10%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4662523540489642,0.41333333333333333,0.5216666666666667,3,0,0,3
-random30,Random 30%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.002220367278798004,-0.010000000000000009,0.0033388981636059967,1,1,1,3
-random30,Random 30%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.00500463735856053,0.0,0.008347245409014992,2,1,0,3
-random30,Random 30%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.01000649230198473,0.0050000000000000044,0.013333333333333197,3,0,0,3
-random30,Random 30%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.00277406789092934,-0.01666666666666683,0.006677796327211993,2,0,1,3
-random30,Random 30%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),9.274717121347346e-07,-0.0033333333333334103,0.0016694490818029983,2,0,1,3
-random30,Random 30%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.546973659803376,0.5349999999999999,0.5533333333333335,3,0,0,3
-random30,Random 30%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.00276998758180406,-0.01187433245040459,0.0035643697049924095,1,1,1,3
-random30,Random 30%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.005925949680140967,0.0,0.009695215575922456,2,1,0,3
-random30,Random 30%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.012263641980943355,0.005029893107389216,0.01598957962848846,3,0,0,3
-random30,Random 30%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0031605010683497157,-0.019153101230372727,0.00800481560987798,2,0,1,3
-random30,Random 30%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0009450986079017065,-0.004355812853126917,0.005524326261386436,2,0,1,3
-random30,Random 30%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5587587712755618,0.5456113864788772,0.5668537091603263,3,0,0,3
-random30,Random 30%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0022222222222222734,-0.010000000000000009,0.0033333333333331883,1,1,1,3
-random30,Random 30%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004999999999999967,0.0,0.008333333333333193,2,1,0,3
-random30,Random 30%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.009999999999999934,0.0050000000000000044,0.013333333333333197,3,0,0,3
-random30,Random 30%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.002777777777777731,-0.01666666666666683,0.006666666666666821,2,0,1,3
-random30,Random 30%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,-0.0033333333333334103,0.0016666666666668162,2,0,1,3
-random30,Random 30%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5468079096045197,0.5349999999999999,0.5533333333333335,3,0,0,3
-random50,Random 50%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.019471341124095803,0.0016666666666668162,0.048414023372287174,3,0,0,3
-random50,Random 50%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.018360230012984664,0.0,0.048414023372287174,2,1,0,3
-random50,Random 50%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0010971990354295598,-0.025041736227045086,0.030000000000000138,1,0,2,3
-random50,Random 50%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.015005564830272525,-0.026666666666666394,-0.008333333333333193,0,0,3,3
-random50,Random 50%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.010022259321090576,-0.04006677796327196,0.01333333333333342,1,0,2,3
-random50,Random 50%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5802930810610278,0.5275459098497497,0.6066666666666668,3,0,0,3
-random50,Random 50%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.022742415503534952,0.0016172649383180415,0.05681368297966216,3,0,0,3
-random50,Random 50%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0217478162876662,0.0008034027770058572,0.057862322760598106,3,0,0,3
-random50,Random 50%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0025282974866145023,-0.02740435101583516,0.0366581109134928,1,0,2,3
-random50,Random 50%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.015685263043597075,-0.02880892259865442,-0.008337386470878783,0,0,3,3
-random50,Random 50%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.009595728680924065,-0.0405424511996052,0.0150781771448244,1,0,2,3
-random50,Random 50%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5931175039374379,0.5371191632001924,0.6211207619835584,3,0,0,3
-random50,Random 50%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.019661016949152454,0.0016666666666665941,0.04898305084745758,3,0,0,3
-random50,Random 50%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.018587570621468912,0.0,0.049096045197740135,2,1,0,3
-random50,Random 50%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0009510357815441702,-0.0254802259887007,0.030000000000000027,1,0,2,3
-random50,Random 50%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.015056497175141311,-0.026666666666666616,-0.008333333333333415,0,0,3,3
-random50,Random 50%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.0101600753295669,-0.04048022598870071,0.01333333333333342,1,0,2,3
-random50,Random 50%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5800282485875706,0.5267514124293784,0.6066666666666668,3,0,0,3
-shift_outage_long30,"Long outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5362924318308292,0.5216666666666667,0.5509181969949917,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5988425153032833,0.5866666666666667,0.6110183639398999,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.11342376182526431,0.10851419031719534,0.11833333333333329,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8248567056204785,0.8216666666666667,0.8280467445742905,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.004180578742348284,-0.016694490818029983,0.008333333333333415,1,0,1,2
-shift_outage_long30,"Long outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.580492487479132,0.57,0.5909849749582639,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.6006744067119842,0.5831636722117752,0.6181851412121933,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6754629670524721,0.667260119452052,0.6836658146528921,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.1292176381930863,0.1122649940766628,0.1461702823095098,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8984260361644102,0.8884894773419082,0.9083625949869122,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.0012764345103634667,-0.016977506531582587,0.014424637510855653,1,0,1,2
-shift_outage_long30,"Long outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.6093157478114912,0.6077191483208572,0.6109123473021254,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5358333333333334,0.5216666666666667,0.5499999999999999,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5983474576271186,0.5866666666666667,0.6100282485875705,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.11333333333333334,0.10833333333333328,0.1183333333333334,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.825,0.8216666666666667,0.8283333333333333,2,0,0,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.004166666666666652,-0.01666666666666672,0.008333333333333415,1,0,1,2
-shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5800988700564972,0.5700000000000001,0.5901977401129943,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.6655467445742906,0.6560934891485811,0.675,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6838842515303285,0.6611018363939901,0.7066666666666668,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5028825820812466,0.4590984974958265,0.5466666666666667,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.7664593767390095,0.7512520868113522,0.7816666666666667,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.03837924318308289,-0.05509181969949917,-0.021666666666666612,0,0,2,2
-shift_outage_long50,"Long outages, 50%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.6980550918196995,0.6661101836393991,0.73,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.7499943809210373,0.7397022609522702,0.7602865008898044,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.7559060646013516,0.717143209614797,0.7946689195879062,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5380581828911287,0.4760037208276848,0.6001126449545726,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8396418206447482,0.8278381056290186,0.8514455356604778,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.031775340190829726,-0.055645391313131065,-0.007905289068528387,0,0,2,2
-shift_outage_long50,"Long outages, 50%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.7440949411706619,0.70864224273029,0.7795476396110338,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.6650282485875707,0.6550564971751414,0.6749999999999999,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6835310734463278,0.6603954802259889,0.7066666666666666,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5025000000000001,0.4583333333333335,0.5466666666666666,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.7666666666666667,0.7516666666666668,0.7816666666666666,2,0,0,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.038333333333333275,-0.05499999999999983,-0.021666666666666723,0,0,2,2
-shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.6975,0.6650000000000003,0.7299999999999999,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.446217306622148,0.43166666666666653,0.4607679465776294,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5654730105731776,0.5633333333333332,0.5676126878130218,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.11340011129660543,0.08013355592654425,0.1466666666666666,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8106761268781302,0.8099999999999999,0.8113522537562604,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-6.956037840843976e-06,-0.00834724540901488,0.008333333333333193,1,0,1,2
-shift_outage_medium30,"Medium outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5729799666110184,0.57,0.5759599332220368,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.49227002386815566,0.46523094112277796,0.5193091066135334,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6180628358941473,0.6019446968221132,0.6341809749661814,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.12155613842942181,0.07814633924313463,0.164965937615709,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8777305717094617,0.8732025304111267,0.8822586130077967,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.003821227090586854,-0.00826036767925753,0.015902821860431238,1,0,1,2
-shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5980854747571938,0.5949895864361452,0.6011813630782424,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.4458333333333333,0.43166666666666653,0.46,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5650282485875706,0.5633333333333332,0.566723163841808,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.11333333333333329,0.08000000000000007,0.1466666666666665,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8108333333333333,0.8099999999999999,0.8116666666666666,2,0,0,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-1.1102230246251565e-16,-0.008333333333333415,0.008333333333333193,1,0,1,2
-shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5725423728813559,0.57,0.5750847457627118,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.2627337228714524,0.245,0.28046744574290483,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.30774902615470234,0.2988313856427379,0.31666666666666676,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.09003756260434054,0.045075125208681066,0.135,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6455662214802449,0.6116666666666668,0.679465776293823,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.00918475236505295,-0.0033333333333331883,0.02170283806343909,1,0,1,2
-shift_outage_short30,"Short outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5971814134668894,0.5766666666666668,0.6176961602671118,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.26628602222436176,0.23411619334092326,0.29845585110780026,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.3114574403572885,0.29839711465015817,0.32451776606441884,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.07903947830216779,0.03796547475265133,0.12011348185168425,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6993268102848991,0.6585505097927822,0.740103110777016,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.007998438585710144,-0.007285199645785001,0.02328207681720529,1,0,1,2
-shift_outage_short30,"Short outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.6274208932093492,0.6099638836590445,0.6448779027596541,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.26249999999999996,0.245,0.2799999999999999,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.30750000000000005,0.29833333333333334,0.31666666666666676,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.09000000000000008,0.04500000000000004,0.13500000000000012,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6456073446327685,0.6116666666666668,0.6795480225988701,2,0,0,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.009166666666666712,-0.0033333333333331883,0.021666666666666612,1,0,1,2
-shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5967231638418079,0.5766666666666667,0.6167796610169491,2,0,0,2
-shift_random30,Random 30%,shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.07281858653311069,0.05666666666666664,0.08833333333333326,3,0,0,3
-shift_random30,Random 30%,shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.07560192914116115,0.06999999999999984,0.08347245409015025,3,0,0,3
-shift_random30,Random 30%,shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.026679651270636245,-0.046666666666666634,-0.010000000000000009,0,0,3,3
-shift_random30,Random 30%,shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.17730569467631233,0.1502504173622704,0.22499999999999987,3,0,0,3
-shift_random30,Random 30%,shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.019439807085883925,-0.036666666666666625,0.008347245409014992,1,0,2,3
-shift_random30,Random 30%,shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.4879048414023372,0.4858096828046744,0.49,2,0,0,2
-shift_random30,Random 30%,shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.08844697541605455,0.07121511460689844,0.10509059883636973,3,0,0,3
-shift_random30,Random 30%,shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.09753310226003609,0.08033513283557336,0.1184501896846849,3,0,0,3
-shift_random30,Random 30%,shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.028030736425990816,-0.053925764556224,-0.003910769522990631,0,0,3,3
-shift_random30,Random 30%,shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.2450920939816252,0.21032705572453103,0.3093765075338234,3,0,0,3
-shift_random30,Random 30%,shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.03362965428620938,-0.05980306423875903,-0.004747960925676864,0,0,3,3
-shift_random30,Random 30%,shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5102623972199698,0.5052588869680255,0.5152659074719143,2,0,0,2
-shift_random30,Random 30%,shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.07277777777777768,0.05666666666666664,0.08833333333333315,3,0,0,3
-shift_random30,Random 30%,shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.07555555555555549,0.06999999999999984,0.08333333333333326,3,0,0,3
-shift_random30,Random 30%,shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.02666666666666669,-0.046666666666666634,-0.010000000000000009,0,0,3,3
-shift_random30,Random 30%,shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.17722222222222214,0.1499999999999999,0.22499999999999987,3,0,0,3
-shift_random30,Random 30%,shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.01944444444444456,-0.036666666666666514,0.008333333333333193,1,0,2,3
-shift_random30,Random 30%,shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4875706214689266,0.48514124293785305,0.4900000000000001,2,0,0,2
+complete,Complete,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0012527824151363498,-0.0016666666666668162,0.006677796327212215,1,2,1,4
+complete,Complete,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0012527824151363498,-0.0016666666666668162,0.006677796327212215,1,2,1,4
+complete,Complete,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.024601419031719585,-0.053333333333333344,0.0,0,1,3,4
+complete,Complete,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.38516624930439625,0.31500000000000006,0.4199999999999998,4,0,0,4
+complete,Complete,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0013817707016835212,-0.0016667824154456001,0.007193865222179685,1,2,1,4
+complete,Complete,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0013817707016835212,-0.0016667824154456001,0.007193865222179685,1,2,1,4
+complete,Complete,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.028044918817292458,-0.06573174577316887,0.0,0,1,3,4
+complete,Complete,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.39446967605139976,0.31311891100926337,0.440686751618677,4,0,0,4
+complete,Complete,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0012500000000000289,-0.0016666666666665941,0.00666666666666671,1,2,1,4
+complete,Complete,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.0012500000000000289,-0.0016666666666665941,0.00666666666666671,1,2,1,4
+complete,Complete,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.024583333333333235,-0.05333333333333312,0.0,0,1,3,4
+complete,Complete,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0,0.0,0.0,0,4,0,4
+complete,Complete,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.3851765536723164,0.31499999999999995,0.42000000000000004,4,0,0,4
+outage_long30,"Long outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.005002782415136298,-0.015000000000000013,0.0016666666666668162,1,1,2,4
+outage_long30,"Long outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.00124860879243191,-0.0033388981636059967,0.008333333333333637,1,2,1,4
+outage_long30,"Long outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.018336115748469772,0.0016666666666668162,0.046666666666666856,4,0,0,4
+outage_long30,"Long outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.017100723427935394,-0.04173622704507518,0.006666666666666821,1,1,2,4
+outage_long30,"Long outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.001247913188647809,-0.005008347245408995,0.006666666666666599,3,0,1,4
+outage_long30,"Long outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.4852031163049527,0.44999999999999996,0.5083333333333334,4,0,0,4
+outage_long30,"Long outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.005462819020665255,-0.016784659294981408,0.0016532341157572406,1,1,2,4
+outage_long30,"Long outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.001251414133293438,-0.0034295769589886005,0.008435233492162353,1,2,1,4
+outage_long30,"Long outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.020868813660605223,0.0016667824154456001,0.049977407994774015,4,0,0,4
+outage_long30,"Long outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.017805235819119053,-0.04194149841583039,0.006695633590857009,1,1,2,4
+outage_long30,"Long outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.001627993700744762,-0.004827876335193992,0.007990983431559018,3,0,1,4
+outage_long30,"Long outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.49767038275347686,0.46060777657125496,0.5227967039716495,4,0,0,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0050000000000000044,-0.015000000000000013,0.0016666666666668162,1,1,2,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0012500000000000566,-0.0033333333333334103,0.008333333333333637,1,2,1,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.018333333333333368,0.0016666666666668162,0.046666666666666856,4,0,0,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.017083333333333284,-0.04166666666666674,0.006666666666666821,1,1,2,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012500000000000844,-0.0050000000000000044,0.00666666666666671,3,0,1,4
+outage_long30,"Long outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4851412429378531,0.44999999999999996,0.5083333333333334,4,0,0,4
+outage_long50,"Long outages, 50%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0012513912075682032,-0.0033388981636059967,0.0033333333333331883,1,0,3,4
+outage_long50,"Long outages, 50%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0041722314969393215,-0.0016666666666668162,0.013355592654424098,3,0,1,4
+outage_long50,"Long outages, 50%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.038759738452977255,0.010000000000000009,0.08333333333333337,4,0,0,4
+outage_long50,"Long outages, 50%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.010846549805231004,-0.03171953255425719,0.0066666666666663765,2,0,2,4
+outage_long50,"Long outages, 50%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012493043962158445,-0.0016694490818029983,0.010000000000000009,1,0,3,4
+outage_long50,"Long outages, 50%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5131260434056761,0.49833333333333346,0.5283333333333332,4,0,0,4
+outage_long50,"Long outages, 50%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0012823659909712848,-0.0039250060002583576,0.0034893025862740012,1,0,3,4
+outage_long50,"Long outages, 50%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004141552466324222,-0.0016667824154456001,0.013325802050785596,3,0,1,4
+outage_long50,"Long outages, 50%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.04371956094562973,0.010141206675224557,0.09205198614029331,4,0,0,4
+outage_long50,"Long outages, 50%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.01119045897430665,-0.031739786876538334,0.006759412324049974,2,0,2,4
+outage_long50,"Long outages, 50%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0016129668590190438,-0.0016667824154456001,0.01130047488279784,1,0,3,4
+outage_long50,"Long outages, 50%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5265333357503674,0.5125610269826413,0.5404052949923603,4,0,0,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0012500000000000011,-0.0033333333333334103,0.0033333333333331883,1,0,3,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004166666666666707,-0.0016666666666665941,0.01333333333333342,3,0,1,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.03875000000000006,0.010000000000000231,0.08333333333333337,4,0,0,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.01083333333333339,-0.031666666666666954,0.006666666666666821,2,0,2,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012500000000000566,-0.0016666666666665941,0.010000000000000009,1,0,3,4
+outage_long50,"Long outages, 50%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5130649717514124,0.4983333333333334,0.5283333333333334,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0050083472454090505,-0.02003338898163598,0.0033333333333331883,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0029159710628825497,-0.0016694490818027763,0.009999999999999787,2,1,1,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.010417362270450814,0.0016666666666668162,0.033333333333333215,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.023351419031719584,-0.04833333333333356,0.0016666666666668162,1,0,3,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012437395659431472,-0.015025041736226985,0.02166666666666639,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.49687673900946017,0.46666666666666656,0.51,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0057309604634090405,-0.021160590922541633,0.0032054858657636354,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0034582173590956833,-0.002084287785315886,0.010155397135424016,2,1,1,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.011419905484843923,0.0016667824154456001,0.03482850715202457,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.025827507511883757,-0.05709302838081021,0.0016667824154456001,1,0,3,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0009743493443284401,-0.015595780069580845,0.022171475579738198,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5054216488820253,0.46695264682363885,0.521376728732659,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.005000000000000088,-0.020000000000000018,0.0033333333333331883,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0029166666666665952,-0.0016666666666668162,0.010000000000000009,2,1,1,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.010416666666666657,0.0016666666666664831,0.033333333333333326,4,0,0,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.023333333333333428,-0.04833333333333356,0.0016666666666668162,1,0,3,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012499999999999178,-0.015000000000000124,0.021666666666666612,1,1,2,4
+outage_medium30,"Medium outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.49680790960451976,0.4666666666666666,0.51,4,0,0,4
+outage_short30,"Short outages, 30%",matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.000832637729549307,-0.0016694490818027763,0.006666666666666599,1,1,2,4
+outage_short30,"Short outages, 30%",matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004169449081803028,-0.0016666666666665941,0.011666666666666603,2,1,1,4
+outage_short30,"Short outages, 30%",matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.023347941012799106,0.0033333333333331883,0.03505843071786319,4,0,0,4
+outage_short30,"Short outages, 30%",matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.020013912075681595,-0.03338898163605997,0.0016666666666668162,1,0,3,4
+outage_short30,"Short outages, 30%",matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.00374930439621593,-0.0033333333333334103,0.01666666666666672,2,0,2,4
+outage_short30,"Short outages, 30%",matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5452267668336116,0.5233333333333334,0.565,4,0,0,4
+outage_short30,"Short outages, 30%",matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0008155859074988892,-0.0022289708251712614,0.00656885260829243,1,1,2,4
+outage_short30,"Short outages, 30%",matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0050061853888594965,-0.001961652304872774,0.012502697120737594,2,1,1,4
+outage_short30,"Short outages, 30%",matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.026728050919563484,0.003333564830890978,0.04256356757811275,4,0,0,4
+outage_short30,"Short outages, 30%",matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.021334541829224618,-0.03608446966140599,0.0016667824154456001,1,0,3,4
+outage_short30,"Short outages, 30%",matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.004678598133022599,-0.0041045822717097336,0.021106212848054806,2,0,2,4
+outage_short30,"Short outages, 30%",matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5566874574752168,0.5286759355358441,0.5768672869588215,4,0,0,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.0008333333333333526,-0.0016666666666668162,0.006666666666666821,1,1,2,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004166666666666652,-0.0016666666666665941,0.011666666666666603,2,1,1,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.02333333333333329,0.0033333333333331883,0.03499999999999992,4,0,0,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0200000000000001,-0.03333333333333355,0.0016666666666665941,1,0,3,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0037499999999998923,-0.0033333333333334103,0.016666666666666607,2,0,2,4
+outage_short30,"Short outages, 30%",matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5450988700564972,0.5233333333333334,0.5650000000000002,4,0,0,4
+random10,Random 10%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0008347245409014437,-0.0033388981636059967,0.0016666666666668162,1,1,2,4
+random10,Random 10%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.00042014468558712603,-0.00666666666666671,0.008347245409015214,1,2,1,4
+random10,Random 10%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.0012486087924318268,-0.008333333333333304,0.0033388981636059967,1,2,1,4
+random10,Random 10%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.020848636616583177,-0.04166666666666674,0.0,0,1,3,4
+random10,Random 10%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),1.3912075681465907e-06,-0.0050000000000000044,0.0033388981636059967,2,1,1,4
+random10,Random 10%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.4718600445186422,0.41333333333333333,0.5216666666666667,4,0,0,4
+random10,Random 10%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0011993518420181648,-0.004101702119354567,0.0016688674378139146,1,1,2,4
+random10,Random 10%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,-0.0002131305011983664,-0.009219380452628156,0.00839362460087778,1,1,2,4
+random10,Random 10%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.00171459048036815,-0.010790163489171944,0.003958567720742434,1,1,2,4
+random10,Random 10%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.023589425733611252,-0.05004239990981396,0.0,0,1,3,4
+random10,Random 10%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.00017783442300525754,-0.005001041931978034,0.00293851367406861,2,1,1,4
+random10,Random 10%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.48384873486846086,0.41144373944910306,0.5381090709080206,4,0,0,4
+random10,Random 10%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.0008333333333333526,-0.0033333333333334103,0.0016666666666665941,1,1,2,4
+random10,Random 10%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.00041666666666664853,-0.006666666666666599,0.008333333333333193,1,2,1,4
+random10,Random 10%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.0012500000000000289,-0.008333333333333304,0.0033333333333331883,1,2,1,4
+random10,Random 10%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.020833333333333315,-0.04166666666666652,0.0,0,1,3,4
+random10,Random 10%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-5.551115123125783e-17,-0.0050000000000000044,0.0033333333333331883,2,1,1,4
+random10,Random 10%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.4717725988700565,0.41333333333333333,0.5216666666666667,4,0,0,4
+random30,Random 30%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.00041527545909850194,-0.010000000000000009,0.0050000000000000044,2,1,1,4
+random30,Random 30%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004586811352253806,0.0,0.008347245409014992,3,1,0,4
+random30,Random 30%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.011671535893155255,0.0050000000000000044,0.01666666666666683,4,0,0,4
+random30,Random 30%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.0049972175848636,-0.01666666666666683,0.006677796327211993,2,0,2,4
+random30,Random 30%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012506956037841022,-0.0033333333333334103,0.0050000000000000044,3,0,1,4
+random30,Random 30%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5531469115191987,0.5349999999999999,0.5716666666666668,4,0,0,4
+random30,Random 30%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.000763946029904955,-0.01187433245040459,0.005254178625792361,2,1,1,4
+random30,Random 30%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.0052851501863403205,0.0,0.009695215575922456,3,1,0,4
+random30,Random 30%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.013310626609545628,0.005029893107389216,0.016451580495352447,4,0,0,4
+random30,Random 30%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.005301894483115188,-0.019153101230372727,0.00800481560987798,2,0,2,4
+random30,Random 30%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.002015677074113681,-0.004355812853126917,0.005524326261386436,3,0,1,4
+random30,Random 30%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5650761203164446,0.5456113864788772,0.584028167439093,4,0,0,4
+random30,Random 30%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),-0.00041666666666670404,-0.010000000000000009,0.0050000000000000044,2,1,1,4
+random30,Random 30%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.004583333333333384,0.0,0.008333333333333193,3,1,0,4
+random30,Random 30%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.011666666666666659,0.0050000000000000044,0.01666666666666683,4,0,0,4
+random30,Random 30%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.004999999999999949,-0.01666666666666683,0.006666666666666821,2,0,2,4
+random30,Random 30%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0012500000000000011,-0.0033333333333334103,0.0050000000000000044,3,0,1,4
+random30,Random 30%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5530225988700566,0.5349999999999999,0.5716666666666669,4,0,0,4
+random50,Random 50%,matched,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.015853505843071852,0.0016666666666668162,0.048414023372287174,4,0,0,4
+random50,Random 50%,matched,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.012520172509738497,-0.0050000000000000044,0.048414023372287174,2,1,1,4
+random50,Random 50%,matched,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.016656232609905564,-0.025041736227045086,0.06333333333333357,2,0,2,4
+random50,Random 50%,matched,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.017920840289370993,-0.026666666666666394,-0.008333333333333193,0,0,4,4
+random50,Random 50%,matched,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.002899972175848753,-0.04006677796327196,0.04166666666666674,2,0,2,4
+random50,Random 50%,matched,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5848031441291043,0.5275459098497497,0.6066666666666668,4,0,0,4
+random50,Random 50%,matched,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.01810058017273536,0.0016172649383180415,0.05681368297966216,4,0,0,4
+random50,Random 50%,matched,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.014803588804361306,-0.006029093645553374,0.057862322760598106,3,0,1,4
+random50,Random 50%,matched,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.018578960366449043,-0.02740435101583516,0.06673094900595267,2,0,2,4
+random50,Random 50%,matched,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.01876779799768527,-0.02880892259865442,-0.008337386470878783,0,0,4,4
+random50,Random 50%,matched,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.00393423520787925,-0.0405424511996052,0.044524126874289194,2,0,2,4
+random50,Random 50%,matched,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5967727899639979,0.5371191632001924,0.6211207619835584,4,0,0,4
+random50,Random 50%,matched,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.015995762711864342,0.0016666666666665941,0.04898305084745758,4,0,0,4
+random50,Random 50%,matched,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.012690677966101627,-0.0050000000000002265,0.049096045197740135,2,1,1,4
+random50,Random 50%,matched,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.016546610169491466,-0.0254802259887007,0.06333333333333335,2,0,2,4
+random50,Random 50%,matched,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,-0.017959039548022693,-0.02666666666666684,-0.008333333333333415,0,0,4,4
+random50,Random 50%,matched,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.0027966101694914536,-0.04048022598870071,0.04166666666666652,2,0,2,4
+random50,Random 50%,matched,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5846045197740113,0.5267514124293784,0.6066666666666668,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5368962159154147,0.5016666666666667,0.5733333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6044212576516417,0.5866666666666667,0.6283333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.10296188091263217,0.06666666666666665,0.1183333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8149283528102393,0.7966666666666667,0.8280467445742905,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.013340289371174152,-0.023333333333333428,0.008333333333333415,1,0,3,4
+shift_outage_long30,"Long outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5881629104062327,0.57,0.6033333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5899124250181241,0.5289993591666567,0.6293015274818712,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6753511230700322,0.6488213800635592,0.7016571781116254,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.10961878641166262,0.06299899064654446,0.1461702823095098,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8986274930789592,0.8838120723123052,0.9138458276747109,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.012544785854268492,-0.024122599068016615,0.014424637510855653,1,0,3,4
+shift_outage_long30,"Long outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.6131178320925939,0.6074999206351333,0.6263399121122595,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5366666666666666,0.5016666666666667,0.5733333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6041737288135594,0.5866666666666667,0.6283333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.10291666666666668,0.06666666666666676,0.1183333333333334,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8150000000000001,0.7966666666666667,0.8283333333333333,4,0,0,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.013333333333333336,-0.023333333333333428,0.008333333333333415,1,0,3,4
+shift_outage_long30,"Long outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5879661016949153,0.5700000000000001,0.6033333333333334,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.6665233722871453,0.6560934891485811,0.675,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6994421257651642,0.6611018363939901,0.72,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5047746243739566,0.4590984974958265,0.5466666666666667,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.7748963550361714,0.7512520868113522,0.7866666666666666,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.03668962159154149,-0.06500000000000017,-0.0050000000000000044,0,0,4,4
+shift_outage_long50,"Long outages, 50%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.7031942125765165,0.6661101836393991,0.74,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.7438467876234381,0.7242728945718326,0.7602865008898044,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.7653342000810113,0.717143209614797,0.7946689195879062,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5263688571353233,0.4760037208276848,0.6001126449545726,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8477517325612776,0.8278381056290186,0.8672724315555522,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.035200889028523086,-0.0652807628186386,-0.007905289068528387,0,0,4,4
+shift_outage_long50,"Long outages, 50%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.7502605169836081,0.70864224273029,0.7891725685568292,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.6662641242937855,0.6550564971751414,0.6749999999999999,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6992655367231639,0.6603954802259889,0.7200000000000002,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.5045833333333334,0.4583333333333335,0.5466666666666666,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.7750000000000001,0.7516666666666668,0.7866666666666668,4,0,0,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.0366666666666666,-0.06499999999999995,-0.004999999999999893,0,0,4,4
+shift_outage_long50,"Long outages, 50%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.7029166666666667,0.6650000000000003,0.7400000000000002,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.49144198664440736,0.43166666666666653,0.5366666666666668,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5802365052865888,0.5566666666666669,0.6333333333333333,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.10878338898163609,0.08013355592654425,0.1466666666666666,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.8036713967723985,0.7850000000000001,0.8113522537562604,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.012920144685587082,-0.03333333333333344,0.008333333333333193,1,0,3,4
+shift_outage_medium30,"Medium outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5873233166388425,0.57,0.6250000000000001,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.5326379431586783,0.46523094112277796,0.5868926564932798,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.6367784826493494,0.6019446968221132,0.7081351300130523,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.11050115544652087,0.07389934398252773,0.164965937615709,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.877664376641341,0.868160036669599,0.8870363264768417,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.011430729928055078,-0.03505387401440163,0.015902821860431238,1,0,3,4
+shift_outage_medium30,"Medium outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.6107071224104124,0.5911598650588947,0.6554976750683671,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.49125,0.43166666666666653,0.5366666666666668,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.5800141242937853,0.5566666666666669,0.6333333333333333,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.10874999999999996,0.08000000000000007,0.1466666666666665,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.80375,0.7850000000000001,0.8116666666666666,4,0,0,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.012916666666666743,-0.03333333333333355,0.008333333333333193,1,0,3,4
+shift_outage_medium30,"Medium outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5871045197740113,0.57,0.6250000000000002,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.28970019476905956,0.245,0.3450000000000001,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.3201245130773512,0.2988313856427379,0.3566666666666666,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.055435447968836954,0.006666666666666599,0.135,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6302831107401226,0.5750000000000002,0.679465776293823,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.012490957150806808,-0.046666666666666745,0.02170283806343909,1,0,3,4
+shift_outage_short30,"Short outages, 30%",shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.5777573734001114,0.5216666666666666,0.6176961602671118,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.2878462890359985,0.23411619334092326,0.34239568088008243,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.32463634971527805,0.2926376141071476,0.38299290403938757,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,0.047657423189520154,0.0011745304814732016,0.12011348185168425,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6852563451851204,0.6175706989530321,0.740103110777016,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.013277939701064084,-0.04681191624900838,0.02328207681720529,1,0,3,4
+shift_outage_short30,"Short outages, 30%",shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.6037624672312004,0.5353778310750134,0.6448779027596541,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.2895833333333334,0.245,0.3450000000000001,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.3200000000000001,0.29833333333333334,0.3566666666666669,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,0.055416666666666836,0.006666666666666821,0.13500000000000012,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.6303036723163844,0.5750000000000002,0.6795480225988701,4,0,0,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),-0.012499999999999817,-0.0466666666666663,0.021666666666666612,1,0,3,4
+shift_outage_short30,"Short outages, 30%",shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.5775282485875708,0.521666666666667,0.6167796610169491,4,0,0,4
+shift_random30,Random 30%,shift,accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.07378060656649968,0.05666666666666664,0.08833333333333326,4,0,0,4
+shift_random30,Random 30%,shift,accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.08170144685587086,0.06999999999999984,0.09999999999999998,4,0,0,4
+shift_random30,Random 30%,shift,accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.03167640511964384,-0.046666666666666634,-0.010000000000000009,0,0,4,4
+shift_random30,Random 30%,shift,accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.17381260434056758,0.1502504173622704,0.22499999999999987,4,0,0,4
+shift_random30,Random 30%,shift,accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.012920144685587054,-0.036666666666666625,0.10999999999999999,2,0,2,4
+shift_random30,Random 30%,shift,accuracy,LightGBM-NaN,LightGBM (native NaN),0.49395242070116857,0.43333333333333335,0.5666666666666665,4,0,0,4
+shift_random30,Random 30%,shift,macro_f1,MissRocket-g0,MissRocket w/o weighting (γ=0),0.08819670711141334,0.07121511460689844,0.10509059883636973,4,0,0,4
+shift_random30,Random 30%,shift,macro_f1,AeonMiniRocket+linear,MiniRocket + linear interp.,0.10249935628346671,0.08033513283557336,0.1184501896846849,4,0,0,4
+shift_random30,Random 30%,shift,macro_f1,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.033635891533069784,-0.053925764556224,-0.003910769522990631,0,0,4,4
+shift_random30,Random 30%,shift,macro_f1,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.23791277197888236,0.21032705572453103,0.3093765075338234,4,0,0,4
+shift_random30,Random 30%,shift,macro_f1,MaskRocket-noC,Native masked MiniRocket (group-mean),0.003199088979343623,-0.05980306423875903,0.11368531877600263,1,0,3,4
+shift_random30,Random 30%,shift,macro_f1,LightGBM-NaN,LightGBM (native NaN),0.5090188721443305,0.4241393811999955,0.591411312937387,4,0,0,4
+shift_random30,Random 30%,shift,balanced_accuracy,MissRocket-g0,MissRocket w/o weighting (γ=0),0.07374999999999993,0.05666666666666664,0.08833333333333315,4,0,0,4
+shift_random30,Random 30%,shift,balanced_accuracy,AeonMiniRocket+linear,MiniRocket + linear interp.,0.08166666666666661,0.06999999999999984,0.09999999999999998,4,0,0,4
+shift_random30,Random 30%,shift,balanced_accuracy,AeonMiniRocket+knn,MiniRocket + kNN impute,-0.03166666666666665,-0.046666666666666634,-0.010000000000000009,0,0,4,4
+shift_random30,Random 30%,shift,balanced_accuracy,HydraMultiRocket+linear,Hydra-MultiRocket + linear interp.,0.17374999999999993,0.1499999999999999,0.22499999999999987,4,0,0,4
+shift_random30,Random 30%,shift,balanced_accuracy,MaskRocket-noC,Native masked MiniRocket (group-mean),0.012916666666666604,-0.036666666666666514,0.1100000000000001,2,0,2,4
+shift_random30,Random 30%,shift,balanced_accuracy,LightGBM-NaN,LightGBM (native NaN),0.49378531073446325,0.43333333333333335,0.5666666666666665,4,0,0,4
