@@ -2,7 +2,7 @@
 
 **Abstract**
 
-Sensors in deployed monitoring systems drop out: wireless nodes lose packets, acquisition units disconnect and instruments saturate. Classifiers trained on clean recordings must nevertheless remain reliable. Random-convolution classifiers such as MiniRocket are fast and accurate but defined only for complete series, so gaps are usually interpolated first. Writing MiniRocket's zero-sum kernel response as a contrast of tap-group means shows why a native estimator from observed values is unbiased but noisy, and why interpolation fabricates responses inside long gaps. We propose MissRocket, which keeps interpolated responses but weights each response's contribution to pooling by the fraction of its taps that were observed. It adds no learned parameters and reduces to MiniRocket on complete data. In a pre-specified evaluation on 91 UCR datasets with three missingness mechanisms at three rates, MissRocket improved on MiniRocket with interpolation by +1.57 percentage points on average (Holm-adjusted Wilcoxon p < 0.001), by up to +4.46 points for contiguous gaps, and not significantly under random missingness. In a bearing-fault case study (CWRU), models trained on complete data and tested with long sensor outages kept 0.930 accuracy with MissRocket, whereas interpolation-based MiniRocket fell to 0.331, mostly by missing faults. With the same outages in the training data, missing-value handling mattered little and Hydra-MultiRocket was most accurate. Cross-series kNN imputation was more accurate for long gaps on UCR, and on sparse clinical records (PhysioNet 2012) GRU-D and gradient boosting outperformed all random-convolution methods.
+Sensors in deployed monitoring systems drop out: wireless nodes lose packets, acquisition units disconnect and instruments saturate. Classifiers trained on clean recordings must nevertheless remain reliable. Random-convolution classifiers such as MiniRocket are fast and accurate but defined only for complete series, so gaps are usually interpolated first. Writing MiniRocket's zero-sum kernel response as a contrast of tap-group means shows why a native estimator from observed values is unbiased but noisy, and why interpolation fabricates responses inside long gaps. We propose MissRocket, which keeps interpolated responses but weights each response's contribution to pooling by the fraction of its taps that were observed. It adds no learned parameters and reduces to MiniRocket on complete data. In a pre-specified evaluation on 91 UCR datasets with three missingness mechanisms at three rates, MissRocket improved on MiniRocket with interpolation by +1.57 percentage points on average (Holm-adjusted Wilcoxon p < 0.001), by up to +4.46 points for contiguous gaps, and not significantly under random missingness. In a bearing-fault case study (CWRU), models trained on complete data and tested with long sensor outages kept 0.944 accuracy with MissRocket (0.957 with the native estimator), whereas interpolation-based MiniRocket fell to 0.340, mostly by confusing fault types. With the same outages in the training data, missing-value handling mattered little and Hydra-MultiRocket was most accurate. Cross-series kNN imputation was more accurate for long gaps on UCR, and on sparse clinical records (PhysioNet 2012) GRU-D and gradient boosting outperformed all random-convolution methods.
 
 **Keywords** Time series classification · Missing values · Sensor dropout · MiniRocket · Condition monitoring · Robustness
 
@@ -47,11 +47,11 @@ Our contributions are:
 2. **MissRocket**, an observed-tap-weighted pooling scheme that requires no imputation model and no training beyond the usual ridge head (Section 4.2).
 3. A pre-specified evaluation with a separate development set. It covers 91 UCR datasets, three missingness mechanisms (MCAR, contiguous gaps and value-dependent MNAR) at three rates, and eleven competitors, including reference MiniRocket, MultiRocket and Hydra with five imputation strategies, LightGBM with native missing-value handling, and GRU-D. It also includes ablations, train–test missingness shift, 15 naturally incomplete UCR datasets and PhysioNet 2012 mortality prediction (Sections 5–6). An industrial case study on bearing-vibration data (CWRU) adds simulated sensor dropouts of different durations, leave-one-load-out evaluation, train–test shift, per-class recall and single-core inference cost (Section 6.10).
 4. Empirical evidence on where each strategy succeeds and fails:
-   - observed-tap weighting helps substantially when gaps are long, when missingness depends on the values, and under train–test missingness shift;
+   - observed-tap weighting helps substantially when gaps are long, when missingness depends on the values, and under train–test missingness shift; on bearing-vibration data, it prevents the collapse of interpolation-based pipelines when outages occur only in operation;
    - it neither helps nor materially hurts under scattered random gaps;
-   - native estimation is consistently inferior to interpolation;
-   - cross-series kNN imputation and clinical-specific models are better in their respective niches;
-   - these findings are summarised as a practical decision guide (Sections 6–7, Table 15).
+   - native estimation is consistently inferior to interpolation on UCR, but competitive on rough vibration signals under deployment shift;
+   - cross-series kNN imputation, stronger transforms when training data contain the same dropouts, and clinical-specific models are better in their respective niches;
+   - these findings are summarised as a practical decision guide (Sections 6–7, with decision rules in Section 7.3).
 
 The datasets are public; the code, raw per-run results and analysis scripts are available from the corresponding author on reasonable request.
 
@@ -251,7 +251,7 @@ The 15 archive datasets with native missing values (4) or variable lengths (11) 
 
 **PhysioNet/CinC 2012.** The challenge data (Goldberger et al. 2000; Silva et al. 2012) contain 12,000 intensive-care stays (sets a, b and c) with outcomes. We bin 37 time-varying variables into 48 hourly intervals; a bin with no measurement is missing. This gives 79.7% missing entries, missingness that is informative by nature, and 14.2% in-hospital mortality. Sets a and b (8,000 stays) are used for training and set c (4,000 stays) for testing. Variables are standardised with training statistics. Static descriptors are not used by any method.
 
-**CWRU bearing vibration data (industrial case study).** We used the 12 kHz drive-end accelerometer recordings of the Case Western Reserve University Bearing Data Center (Online Resource 1 gives the file list):
+**CWRU bearing vibration data (industrial case study).** We used the 12 kHz drive-end accelerometer recordings of the Case Western Reserve University Bearing Data Center (Case Western Reserve University Bearing Data Center 2026) (Online Resource 1 gives the file list):
 - *classes:* ten condition classes, namely normal operation and inner-race, ball and outer-race (6 o'clock) faults of 0.007, 0.014 and 0.021 inch;
 - *operating conditions:* each class recorded at four motor loads (0–3 hp);
 - *normal recordings:* the normal-baseline recordings are sampled at 48 kHz (Smith and Randall 2015) and were decimated to 12 kHz with a zero-phase anti-aliasing filter, so that the sampling rate cannot identify the class;
@@ -277,6 +277,8 @@ For the CWRU case study, missing values model sensor dropouts:
 Each scenario was evaluated with the same missingness in training and test data, and also with complete training data and incomplete test data (deployment shift). These are simulated dropouts on real vibration recordings, not naturally occurring sensor failures.
 
 ### 5.3 Overview of experiments
+
+Table 1 lists all experiments, with the datasets, conditions, seeds and methods of each. Only E1 on 91 datasets is the primary analysis. The 30-dataset subset was drawn at random for the secondary experiments, and CWRU is used only in E9.
 
 **Table 1** Overview of the experiments. "Primary" denotes the pre-specified main analysis; all other experiments are secondary. E4b and E9 were added after the protocol was frozen (E4b in an internal review round, E9 in response to an external review) and are reported as such
 
@@ -738,48 +740,60 @@ This experiment asks whether the UCR findings carry over to an industrial vibrat
 
 **Table 13** CWRU bearing fault diagnosis (10 classes; leave-one-load-out, mean over 4 folds; seed 0): accuracy, with macro-F1 in parentheses. Upper rows: the same missingness in training and test data. "Shift" rows: trained on complete data, tested with dropouts. The best accuracy in each row is in bold. Hydra-MR: Hydra-MultiRocket; native masked: the group-mean estimator of Section 4.1
 
-| Scenario | MissRocket | γ=0 | MiniRocket + interp. | MiniRocket + kNN | Hydra-MR + interp. | Native masked | LightGBM (NaN) |
-|:------------------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
-| Complete | 0.954 (0.949) | 0.954 (0.949) | 0.952 (0.947) | 0.952 (0.947) | **0.986 (0.986)** | 0.954 (0.949) | 0.580 (0.570) |
-| Random 10% | 0.953 (0.949) | 0.955 (0.951) | 0.953 (0.950) | 0.955 (0.952) | **0.979 (0.979)** | 0.952 (0.947) | 0.487 (0.473) |
-| Random 30% | 0.958 (0.956) | 0.960 (0.959) | 0.953 (0.950) | 0.948 (0.944) | **0.961 (0.959)** | 0.958 (0.955) | 0.411 (0.397) |
-| Random 50% | 0.943 (0.940) | 0.923 (0.917) | 0.924 (0.918) | 0.942 (0.938) | **0.958 (0.956)** | 0.953 (0.950) | 0.362 (0.347) |
-| Short outages, 30% | 0.961 (0.959) | 0.962 (0.960) | 0.959 (0.956) | 0.940 (0.934) | **0.982 (0.982)** | 0.954 (0.951) | 0.416 (0.403) |
-| Medium outages, 30% | 0.954 (0.950) | 0.962 (0.959) | 0.953 (0.949) | 0.951 (0.947) | **0.984 (0.984)** | 0.959 (0.956) | 0.460 (0.450) |
-| Long outages, 30% | 0.961 (0.960) | 0.968 (0.968) | 0.962 (0.961) | 0.952 (0.949) | **0.986 (0.986)** | 0.960 (0.958) | 0.479 (0.466) |
-| Long outages, 50% | 0.964 (0.963) | 0.967 (0.966) | 0.959 (0.959) | 0.940 (0.935) | **0.979 (0.979)** | 0.962 (0.960) | 0.454 (0.441) |
-| Shift: Random 30% | 0.859 (0.841) | 0.787 (0.753) | 0.784 (0.744) | **0.886 (0.869)** | 0.682 (0.596) | 0.879 (0.875) | 0.342 (0.295) |
-| Shift: Short outages, 30% | **0.926 (0.916)** | 0.663 (0.649) | 0.618 (0.604) | 0.836 (0.837) | 0.280 (0.216) | 0.917 (0.908) | 0.329 (0.288) |
-| Shift: Medium outages, 30% | 0.927 (0.923) | 0.481 (0.431) | 0.362 (0.305) | 0.814 (0.801) | 0.117 (0.045) | **0.927 (0.919)** | 0.354 (0.325) |
-| Shift: Long outages, 30% | 0.930 (0.926) | 0.394 (0.325) | 0.331 (0.250) | 0.817 (0.797) | 0.105 (0.027) | **0.934 (0.927)** | 0.349 (0.317) |
-| Shift: Long outages, 50% | 0.873 (0.869) | 0.208 (0.119) | 0.189 (0.113) | 0.370 (0.331) | 0.107 (0.029) | **0.912 (0.901)** | 0.175 (0.125) |
+| Scenario | Miss-Rocket | γ=0 | MiniRocket + interp. | MiniRocket + kNN | Hydra-MR + interp. | Native masked | LightGBM (NaN) |
+|:--------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| Complete | 0.965 (0.961) | 0.965 (0.961) | 0.964 (0.960) | 0.964 (0.960) | **0.990 (0.990)** | 0.965 (0.961) | 0.580 (0.567) |
+| Random 10% | 0.964 (0.961) | 0.965 (0.962) | 0.963 (0.961) | 0.965 (0.962) | **0.985 (0.984)** | 0.964 (0.961) | 0.492 (0.477) |
+| Random 30% | 0.965 (0.964) | 0.965 (0.964) | 0.960 (0.958) | 0.953 (0.950) | **0.970 (0.969)** | 0.964 (0.962) | 0.412 (0.399) |
+| Random 50% | 0.949 (0.946) | 0.933 (0.928) | 0.936 (0.932) | 0.932 (0.928) | **0.967 (0.965)** | 0.946 (0.943) | 0.364 (0.350) |
+| Short outages, 30% | 0.962 (0.961) | 0.962 (0.960) | 0.958 (0.956) | 0.939 (0.934) | **0.982 (0.982)** | 0.959 (0.956) | 0.417 (0.404) |
+| Medium outages, 30% | 0.962 (0.960) | 0.967 (0.966) | 0.960 (0.956) | 0.952 (0.948) | **0.986 (0.986)** | 0.961 (0.959) | 0.466 (0.454) |
+| Long outages, 30% | 0.970 (0.969) | 0.975 (0.975) | 0.969 (0.968) | 0.952 (0.948) | **0.987 (0.987)** | 0.969 (0.967) | 0.485 (0.471) |
+| Long outages, 50% | 0.970 (0.970) | 0.972 (0.971) | 0.966 (0.966) | 0.932 (0.926) | **0.981 (0.981)** | 0.969 (0.968) | 0.457 (0.443) |
+| Shift: Random 30% | 0.849 (0.830) | 0.775 (0.741) | 0.767 (0.727) | **0.881 (0.863)** | 0.675 (0.592) | 0.836 (0.826) | 0.355 (0.321) |
+| Shift: Short outages, 30% | 0.934 (0.928) | 0.644 (0.640) | 0.614 (0.604) | 0.878 (0.881) | 0.303 (0.243) | **0.946 (0.942)** | 0.356 (0.325) |
+| Shift: Medium outages, 30% | 0.945 (0.942) | 0.454 (0.410) | 0.365 (0.306) | 0.836 (0.832) | 0.141 (0.065) | **0.958 (0.954)** | 0.358 (0.332) |
+| Shift: Long outages, 30% | 0.944 (0.942) | 0.407 (0.352) | 0.340 (0.266) | 0.841 (0.832) | 0.129 (0.043) | **0.957 (0.954)** | 0.356 (0.328) |
+| Shift: Long outages, 50% | 0.887 (0.882) | 0.220 (0.138) | 0.187 (0.117) | 0.382 (0.356) | 0.112 (0.034) | **0.923 (0.917)** | 0.183 (0.132) |
 
 
 ![](../code/results/full/figures/Fig_cwru.png){width=16.5cm}
 
 **Fig. 8** CWRU accuracy (mean over the four load folds, seed 0) for each dropout scenario. **a** The same missingness in training and test data. **b** Trained on complete data, tested with dropouts. Short, medium and long outages have mean durations of about 1.5, 7.6 and 26 ms
 
-**When training data contain the same dropouts, missingness handling matters little.** Every random-convolution method lost at most a few points relative to complete data. Hydra-MultiRocket was the most accurate method in every matched scenario, as it was on complete data (0.986 against 0.954 for MissRocket and 0.952 for MiniRocket with interpolation). MissRocket beat MiniRocket with interpolation in 9 of 21 fold–scenario pairs, so the two were on par. Observed-tap weighting gave no benefit over its unweighted variant here: MissRocket beat the γ=0 variant in only 4 of 21 pairs. When the classifier has seen outages during training, it learns to tolerate interpolated segments, which is consistent with the small matched-condition gains on UCR under MCAR.
+**When training data contain the same dropouts, missingness handling matters little.** No random-convolution method lost more than about three points relative to complete data. Hydra-MultiRocket was the most accurate method in every matched scenario, as it was on complete data (0.990 against 0.965 for MissRocket and 0.964 for MiniRocket with interpolation). MissRocket beat MiniRocket with interpolation in 14 of 28 fold–scenario pairs, so the two were on par. Observed-tap weighting gave no benefit over its unweighted variant here: MissRocket beat the γ=0 variant in only 11 of 28 pairs. Presumably, a classifier that has seen outages during training learns to tolerate interpolated segments. This is consistent with the small matched-condition gains on UCR under MCAR.
 
-**When dropouts appear only in operation, interpolation fails and observed-tap weighting prevents the failure.** With complete training data, MiniRocket with interpolation fell from 0.952 to 0.618, 0.362 and 0.331 under short, medium and long outages covering 30% of the signal. Hydra-MultiRocket collapsed to chance level (0.105 under long outages). MissRocket kept 0.926, 0.927 and 0.930, and 0.873 even with 50% of the signal lost in long outages. It beat MiniRocket with interpolation, the γ=0 variant and Hydra-MultiRocket in 11 of 11, 11 of 11 and 11 of 11 fold–scenario pairs, respectively. The unweighted γ=0 variant failed like MiniRocket with interpolation. So the robustness comes from the weighting, not from our implementation. kNN imputation, which uses the training series to fill gaps, degraded more gracefully than interpolation, but less so than MissRocket under medium and long outages.
+**When dropouts appear only in operation, interpolation fails and observed-tap weighting prevents the failure.** With complete training data, MiniRocket with interpolation fell from 0.964 to 0.614, 0.365 and 0.340 under short, medium and long outages covering 30% of the signal. Hydra-MultiRocket collapsed to near chance level (10 classes; 0.129 under long outages). MissRocket kept 0.934, 0.945 and 0.944, and 0.887 even with 50% of the signal lost in long outages. It beat MiniRocket with interpolation, the γ=0 variant and Hydra-MultiRocket in 20 of 20, 20 of 20 and 20 of 20 fold–scenario pairs, respectively. The unweighted γ=0 variant failed like MiniRocket with interpolation. So the robustness comes from the weighting, not from our implementation. kNN imputation, which uses the training series to fill gaps, degraded more gracefully than interpolation, but less so than MissRocket under medium and long outages.
 
-**The native estimator, which lost on UCR, is competitive here.** Under medium and long outages with complete training data, the native group-mean estimator was as accurate as MissRocket or slightly more (0.934 vs 0.930 under long outages at 30%; MissRocket was ahead in 4 of 11 shift pairs). Vibration segments are rough, broadband signals. For them, the smoothness that makes interpolation a low-variance estimator on many UCR datasets (Proposition 2) is absent, while the long, regular segments supply many observed taps per window. Both methods avoid fabricated responses: the native estimator never computes them, and MissRocket removes them from the pooled features.
+**The native estimator, which lost on UCR, is competitive here.** Under outages of all three durations with complete training data, the native group-mean estimator was slightly more accurate than MissRocket (0.957 vs 0.944 under long outages at 30%; MissRocket was ahead in 5 of 20 shift pairs). Vibration segments are rough, broadband signals. For them, the smoothness that makes interpolation a low-variance estimator on many UCR datasets (Proposition 2) is absent. Moreover, when outages are contiguous, most windows outside them have all nine taps observed, so the native estimator's variance penalty is small. Both methods avoid fabricated responses: the native estimator never computes them, and MissRocket removes them from the pooled features.
 
-**Failure mode: dropouts make a faulty machine look healthy.** Per-class recall shows how interpolation fails. With complete training data and long outages at 30%, MiniRocket with interpolation still recognised 99.2% of normal segments, but only 25.8% of fault segments on average. Most faulty segments were classified as normal, because a straight line interpolated across an outage resembles a quiet, healthy signal. For predictive maintenance this is the costly error: missed faults. MissRocket recognised 100.0% of normal and 92.2% of fault segments on average. The hardest class for all methods, also on complete data, was the largest ball fault (B021).
+**Failure mode: interpolated outages turn into the wrong diagnosis.** To see where the errors go, we re-ran the medium- and long-outage shift scenarios for MiniRocket with interpolation, MissRocket and the native estimator, and recorded the confusion matrices. The re-runs reproduced the stored accuracies exactly. With complete training data and long outages at 30%, MiniRocket with interpolation:
 
-**Random loss of readings.** With complete training data and 30% of readings lost at random, all methods degraded. MissRocket (0.859) and kNN imputation (0.886) were less affected than MiniRocket with interpolation (0.784). Scattered gaps leave few windows without observed taps, so the weighting has less to remove.
+- still recognised 96.2% of normal segments, but only 27.1% of fault segments on average;
+- assigned 63.6% of fault segments to a wrong fault class;
+- placed 40.7% and 28.3% of all its predictions in just two classes (IR014 and B014);
+- called 9.4% of fault segments normal, i.e. missed faults.
 
-**Seeds.** For the three core methods, a second seed gave differences with the same sign in every shift scenario (Online Resource 1, S15).
+MissRocket missed no faults in this scenario (0.0%) and misdiagnosed 6.2% of fault segments. For predictive maintenance, both error types are costly: a missed fault leaves a damaged bearing in service, and a wrong fault type or severity misdirects the repair. The hardest class for all random-convolution methods, also on complete data, was the largest ball fault (B021).
 
-**Inference cost on a single CPU thread.** Table 14 reports the cost of a fitted model in a fresh process restricted to one thread, as a proxy for a single-core edge processor. All three methods classify an 85 ms segment in a few milliseconds, well within real time. MissRocket's single-segment latency was 1.0 ms, against 1.0 ms for aeon's MiniRocket and 1.0 ms for Hydra-MultiRocket. Its fitted model occupied 1.0 MB and its inference process peaked at 1 MB of resident memory, including the Python interpreter and libraries. These are measurements of particular implementations on a server CPU, not of embedded hardware. They show that the method is practical for edge-class workloads, not that it is the fastest implementation.
+**Random loss of readings.** With complete training data and 30% of readings lost at random, all methods degraded. MissRocket (0.849) and kNN imputation (0.881) were less affected than MiniRocket with interpolation (0.767). kNN imputation was the most accurate method in this scenario. Scattered gaps leave few windows without observed taps, so the weighting has less to remove.
+
+**Seeds.** For the three core methods, a second seed gave differences with the same sign in every shift scenario: MissRocket was ahead of both MiniRocket with interpolation and the γ=0 variant under both seeds (Online Resource 1, S15).
+
+**Inference cost on a single CPU thread.** Table 14 reports the cost of a fitted model in a fresh process restricted to one thread, as a proxy for a single-core edge processor.
+
+- *Latency:* aeon's MiniRocket classified one 85 ms segment in 2.8 ms (median). MissRocket took 45.7 ms and Hydra-MultiRocket 58.9 ms. All three are faster than real time on one core of this CPU, but MissRocket's margin is much smaller than MiniRocket's (95th percentile 62.9 ms). The gap to MiniRocket is the implementation gap of Section 6.6 and is larger on a single thread; the algorithmic cost of the weighting is a count of observed taps (Section 4.3).
+- *Memory:* the fitted MissRocket model occupied 0.7 MB, and its inference process peaked at 336 MB of resident memory, including the Python interpreter and libraries. The corresponding peaks were 528 MB for MiniRocket and 2789 MB for Hydra-MultiRocket. Training Hydra-MultiRocket peaked at 7322 MB.
+
+These are measurements of particular implementations on a server CPU, not of embedded hardware. A deployment with a tight latency budget would need an optimised implementation of the weighted pooling, which we have not attempted.
 
 **Table 14** Single-thread training and inference cost on CWRU (fold 0; test segments with long outages at 30%). Latency: prediction of one 1,024-sample segment, including gap filling (median and 95th percentile over 200 segments). Batch: prediction of all 599 test segments, per segment. Peak RSS: maximum resident memory of a fresh inference process, including interpreter and libraries
 
 | Method | Fit time (s) | Latency per segment, median (ms) | Latency, 95th pct. (ms) | Batch time per segment (ms) | Model size (MB) | Peak RSS, inference (MB) |
 |:------------------------------|----------:|----------:|----------:|----------:|----------:|----------:|
-| MissRocket | 1.0 | 1.00 | 1.00 | 1.00 | 1.0 | 1 |
-| MiniRocket (aeon) + linear | 1.0 | 1.00 | 1.00 | 1.00 | 1.0 | 1 |
-| Hydra-MultiRocket (aeon) + linear | 1.0 | 1.00 | 1.00 | 1.00 | 1.0 | 1 |
+| MissRocket | 95.1 | 45.65 | 62.95 | 45.82 | 0.7 | 336 |
+| MiniRocket (aeon) + linear | 7.4 | 2.82 | 4.20 | 2.01 | 0.7 | 528 |
+| Hydra-MultiRocket (aeon) + linear | 206.6 | 58.86 | 73.14 | 83.26 | 3.7 | 2789 |
 
 
 
@@ -789,7 +803,7 @@ This experiment asks whether the UCR findings carry over to an industrial vibrat
 
 The experiments answer the motivating question in a nuanced but consistent way.
 
-**First, native estimation from observed taps loses to interpolation.** The group-mean estimator is principled: it is exact on complete data, invariant to the level of the series, and unbiased under MCAR (Proposition 1). Yet it was significantly less accurate than MissRocket in every one of the nine confirmatory conditions, and in most conditions less accurate than plain interpolation as well. Proposition 2 explains why. Estimating a response from one or two taps per group inflates its variance up to fourfold. Interpolation, in contrast, exploits the smoothness of the signal to produce low-variance tap values whenever gaps are short. For random-convolution features, which are thresholded and pooled, variance appears to matter more than bias. We regard this negative result as useful: it rules out the most natural "missingness-aware" modification of the transform.
+**First, native estimation from observed taps loses to interpolation.** The group-mean estimator is principled: it is exact on complete data, invariant to the level of the series, and unbiased under MCAR (Proposition 1). Yet it was significantly less accurate than MissRocket in every one of the nine confirmatory conditions, and in most conditions less accurate than plain interpolation as well. Proposition 2 explains why. Estimating a response from one or two taps per group inflates its variance up to fourfold. Interpolation, in contrast, exploits the smoothness of the signal to produce low-variance tap values whenever gaps are short. For random-convolution features, which are thresholded and pooled, variance appears to matter more than bias. We regard this negative result as useful: on smooth benchmark series, it rules out the most natural "missingness-aware" modification of the transform. It does not generalise to every signal type, however: on rough vibration signals under deployment shift, the native estimator was competitive (Section 6.10).
 
 **Second, interpolation fails in a specific, identifiable way, and the failure can be repaired cheaply.** Inside a long gap, an interpolated window carries no information about the signal beyond the gap's two end points (Proposition 3); its response depends only on the slope between them. Weighting each response by the fraction of its taps that were observed removes these windows from the pooled statistics. Several results are consistent with this being the operative mechanism:
 
@@ -800,7 +814,7 @@ The experiments answer the motivating question in a nuanced but consistent way.
 
 **Consistency with earlier benchmarks.** These findings are consistent with the observation that unadapted MiniRocket ranked first on naturally irregular datasets (Spinnato and Landi 2025). MiniRocket with interpolation is a strong pipeline, and our natural-data results show it close to the best (Section 6.5). The gains from weighting concentrate where gaps are long.
 
-**Third, robustness to train–test shift.** The robustness under train–test shift (Section 6.3) is, in our view, the most practically relevant result. A model trained on complete data and deployed on series with long gaps loses heavily with interpolation, and much less with observed-tap weighting. The industrial case study (Section 6.10) reproduces this on real vibration data, where the effect is far larger: interpolation turned outages into apparently healthy signals and caused missed faults, while MissRocket stayed close to its accuracy on complete data. When training data contained the same dropouts, by contrast, the choice of missing-value handling mattered little on CWRU.
+**Third, robustness to train–test shift.** The robustness under train–test shift (Section 6.3) is, in our view, the most practically relevant result. A model trained on complete data and deployed on series with long gaps loses heavily with interpolation, and much less with observed-tap weighting. The industrial case study (Section 6.10) reproduces this on real vibration data, where the effect is far larger: interpolation collapsed most predictions onto two fault classes and missed some faults altogether, while MissRocket stayed close to its accuracy on complete data. When training data contained the same dropouts, by contrast, the choice of missing-value handling mattered little on CWRU.
 
 ### 7.2 What the evidence does not support
 
@@ -809,7 +823,7 @@ We do not claim that MissRocket is the best approach to classification with miss
 - **Stronger transforms.** Pooled over all conditions, its advantage over MultiRocket and Hydra-MultiRocket is not statistically significant. Under 20% MCAR it is slightly worse than both.
 - **kNN imputation.** Cross-series kNN imputation is more accurate on average under contiguous gaps, significantly so at 50%. In such settings the aligned training series contain more information about a missing segment than its two end points. The combination of kNN filling and weighting did not help (Table 6). The two approaches are complementary rather than nested, and choosing between them per dataset is an open question. In our ablation, selecting the configuration on the training set by leave-one-out did not improve accuracy.
 - **Stronger transforms on matched data.** On CWRU, Hydra-MultiRocket was the most accurate method whenever training and test data had the same missingness. Its advantage disappeared, and it failed completely, once dropouts appeared only at test time.
-- **The native estimator is not uniformly worse.** It lost to interpolation on UCR, but on the rough, broadband vibration signals of CWRU it matched or exceeded MissRocket under train–test shift. Which response estimator is preferable therefore depends on the smoothness of the signal (Proposition 2).
+- **The native estimator is not uniformly worse.** It lost to interpolation on UCR, but on the rough, broadband vibration signals of CWRU it slightly exceeded MissRocket when outages appeared only at test time. Which response estimator is preferable therefore depends on the smoothness of the signal (Proposition 2).
 - **Boundary of applicability: sparse clinical records.** On PhysioNet 2012, both a deep missing-aware model (GRU-D) and gradient boosting with native missing-value handling were significantly better than every random-convolution method, MissRocket included. We regard this as a boundary of the method's applicability, not as noise. Shape-based kernels are poorly matched to very sparse, short, multivariate records in which the *presence* and *level* of measurements carry the signal. In these records, 80% of entries are missing and a "gap" is the normal state, not a sensor failure.
 
 ### 7.3 Deployment under sensor dropouts and decision rules
@@ -820,17 +834,17 @@ In condition monitoring and predictive maintenance, a classifier is usually trai
 - an acquisition unit reconnects;
 - an amplifier saturates.
 
-Dropouts during operation therefore rarely match those in the training archive. Our results suggest that this mismatch, rather than the amount of missing data, is what makes missing-value handling critical. On CWRU, every method tolerated dropouts it had seen during training. Interpolation-based pipelines, however, lost most of their accuracy when long outages appeared only at test time, and their errors were mostly missed faults. For such deployments, a method whose features ignore fabricated windows is the safer default, even if a stronger transform is slightly more accurate on clean data. Table 15 condenses the evidence into decision rules.
+Dropouts during operation therefore rarely match those in the training archive. Our results suggest that this mismatch, rather than the amount of missing data, is what makes missing-value handling critical. On CWRU, every method tolerated dropouts it had seen during training. Interpolation-based pipelines, however, lost most of their accuracy when long outages appeared only at test time, and their errors were mostly wrong fault diagnoses, with some missed faults. For such deployments, a method whose features ignore fabricated windows is the safer default, even if a stronger transform is slightly more accurate on clean data. Table 15 condenses the evidence into decision rules.
 
 **Table 15** Decision rules for ROCKET-family classifiers on incomplete series, with the supporting evidence from this study. The rules summarise average behaviour on the data studied here; individual datasets can deviate
 
 | Data situation | Recommended | Evidence | Caveat |
-|:--------------------|:----------|:----------|:----------|
+|:--------------|:----------------|:----------------------|:----------------|
 | Complete data | MiniRocket (fastest) or Hydra-MultiRocket (most accurate) | MissRocket reduces exactly to MiniRocket (Sect. 4.2); Hydra-MR best on complete CWRU (Sect. 6.10) | – |
 | Scattered random loss of readings, also present in training data | MiniRocket + linear interpolation | No significant gain from weighting under MCAR (Sect. 6.1); on par on CWRU (Sect. 6.10) | Avoid zero or mean filling (Sect. 6.1) |
 | Contiguous outages or value-dependent loss, also present in training data | MissRocket; or kNN imputation if training series are aligned and can be stored | Largest UCR gains under block and MNAR missingness (Sect. 6.1); kNN better on average for long gaps (Sect. 6.2) | On CWRU, where training data had the same outages, all methods were close and Hydra-MR was best (Sect. 6.10) |
 | Trained on complete data, dropouts possible in operation (deployment shift) | MissRocket; the native estimator for rough, broadband signals | Robust under rate shift on UCR (Sect. 6.3) and under outage shift on CWRU, where interpolation-based pipelines failed (Sect. 6.10) | kNN imputation also degrades gracefully but needs the training set at prediction time |
-| Tight memory or latency budget at the edge | MiniRocket-family transforms; avoid kNN imputation | Single-thread latency of a few ms per segment (Sect. 6.10) | Our MissRocket implementation is slower than aeon's MiniRocket (Sect. 6.6) |
+| Tight memory or latency budget at the edge | MiniRocket (aeon) where dropouts are rare; MissRocket where they are expected and tens of milliseconds per segment are acceptable; avoid Hydra-MultiRocket and kNN imputation | Single-thread latency 2.8 ms (MiniRocket), 45.7 ms (MissRocket), 58.9 ms (Hydra-MR) per 85 ms segment; Hydra-MR needed GBs of memory (Sect. 6.10) | Our MissRocket implementation is not optimised (Sect. 6.6) |
 | Sparse, irregular multivariate records with informative missingness (e.g. ICU) | GRU-D or gradient boosting with native missing-value handling | Both significantly better than all random-convolution methods on PhysioNet 2012 (Sect. 6.4) | Boundary of applicability of MissRocket |
 
 Further practical notes:
@@ -859,7 +873,7 @@ We asked whether a fast random-convolution classifier can be made more reliable 
 
 **The method.** MissRocket keeps interpolated responses but weights their contribution to pooling by the fraction of observed taps. It adds no learned parameters and essentially no computation beyond MiniRocket's, and it reduces to MiniRocket on complete data.
 
-**The evidence.** Across 91 UCR datasets, MissRocket improved substantially on interpolation with MiniRocket when gaps were long, and when missingness depended on the values at higher missing rates. It made no significant difference under scattered random gaps. It was much more robust when test data were more incomplete than training data, and on average it matched more expensive transforms. In a bearing-fault case study, it prevented the collapse of interpolation-based pipelines when sensor outages occurred only in operation, a collapse that took the form of missed faults.
+**The evidence.** Across 91 UCR datasets, MissRocket improved substantially on interpolation with MiniRocket when gaps were long, and when missingness depended on the values at higher missing rates. It made no significant difference under scattered random gaps. It was much more robust when test data were more incomplete than training data, and on average it matched more expensive transforms. In a bearing-fault case study, it prevented the collapse of interpolation-based pipelines when sensor outages occurred only in operation, a collapse that took the form of wrong fault diagnoses and missed faults.
 
 **The limits.** The study also delineates the method's limits. kNN imputation was preferable for contiguous gaps in aligned datasets. When training data contained the same dropouts, stronger transforms such as Hydra-MultiRocket were more accurate on vibration data. Models that use the measurement pattern directly were clearly superior on sparse clinical records, which mark a boundary of the method's applicability.
 

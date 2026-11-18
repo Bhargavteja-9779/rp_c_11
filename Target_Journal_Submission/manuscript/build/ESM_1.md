@@ -1,4 +1,4 @@
-*Online Resource 1 — Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation. Journal of King Saud University – Computer and Information Sciences. [Author names and affiliations withheld for double-anonymous review]*
+*Online Resource 1 — Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket and a pre-specified evaluation. Journal of King Saud University – Computer and Information Sciences. [Author names and affiliations withheld for double-anonymous review]*
 
 
 ## S1 Development log (design iterations, negative results, protocol issues)
@@ -483,4 +483,159 @@ Verbatim from the project's version-controlled progress log. Items refer to the 
 
 ## S14 Raw results
 
-All per-run results are provided as Online Resource 2 (ESM_2.csv). Columns: dataset, mechanism, train_rate, test_rate, seed, method, accuracy, balanced_accuracy, macro_f1, auroc, auprc, fit_s, predict_s, n_features, train_obs_frac, test_obs_frac, selected_gamma, selected_mask, status, timestamp, experiment.
+All per-run results are provided as Online Resource 2 (ESM_2.csv). Columns: dataset, mechanism, train_rate, test_rate, seed, method, accuracy, balanced_accuracy, macro_f1, auroc, auprc, fit_s, predict_s, n_features, train_obs_frac, test_obs_frac, selected_gamma, selected_mask, status, timestamp, experiment. The per-run results of the CWRU case study (E9) are provided as Online Resource 3 (ESM_3.csv), with one row per fold × scenario × seed × method and per-class recall in JSON format.
+
+## S15 Industrial case study (E9, CWRU): data, full results and per-class recall
+
+Files (CWRU Bearing Data Center, https://engineering.case.edu/bearingdatacenter; loads 0, 1, 2, 3 hp in this order): Normal: 97, 98, 99, 100; IR007: 105, 106, 107, 108; B007: 118, 119, 120, 121; OR007@6: 130, 131, 132, 133; IR014: 169, 170, 171, 172; B014: 185, 186, 187, 188; OR014@6: 197, 198, 199, 200; IR021: 209, 210, 211, 212; B021: 222, 223, 224, 225; OR021@6: 234, 235, 236, 237. Normal-baseline files (97–100) are sampled at 48 kHz and were decimated to 12 kHz. Seed 0; mean and standard deviation over the four leave-one-load-out folds; *_drop* = mean accuracy loss relative to the same method on complete data.
+
+| scenario | setting | method | accuracy | accuracy_sd | macro_f1 | balanced_accuracy | accuracy_drop |
+|:--------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| Complete | matched | MiniRocket + kNN impute | 0.964 | 0.042 | 0.960 | 0.964 | 0.000 |
+| Complete | matched | MiniRocket + linear interp. | 0.964 | 0.042 | 0.960 | 0.964 | 0.000 |
+| Complete | matched | Hydra-MultiRocket + linear interp. | 0.990 | 0.012 | 0.990 | 0.990 | 0.000 |
+| Complete | matched | LightGBM (native NaN) | 0.580 | 0.031 | 0.567 | 0.580 | 0.000 |
+| Complete | matched | Native masked MiniRocket (group-mean) | 0.965 | 0.040 | 0.961 | 0.965 | 0.000 |
+| Complete | matched | MissRocket (proposed) | 0.965 | 0.040 | 0.961 | 0.965 | 0.000 |
+| Complete | matched | MissRocket w/o weighting (γ=0) | 0.965 | 0.040 | 0.961 | 0.965 | 0.000 |
+| Random 10% | matched | MiniRocket + kNN impute | 0.965 | 0.038 | 0.962 | 0.965 | -0.001 |
+| Random 10% | matched | MiniRocket + linear interp. | 0.963 | 0.040 | 0.961 | 0.963 | 0.000 |
+| Random 10% | matched | Hydra-MultiRocket + linear interp. | 0.985 | 0.018 | 0.984 | 0.985 | 0.005 |
+| Random 10% | matched | LightGBM (native NaN) | 0.492 | 0.025 | 0.477 | 0.492 | 0.088 |
+| Random 10% | matched | Native masked MiniRocket (group-mean) | 0.964 | 0.042 | 0.961 | 0.964 | 0.001 |
+| Random 10% | matched | MissRocket (proposed) | 0.964 | 0.039 | 0.961 | 0.964 | 0.001 |
+| Random 10% | matched | MissRocket w/o weighting (γ=0) | 0.965 | 0.037 | 0.962 | 0.965 | 0.000 |
+| Random 30% | matched | MiniRocket + kNN impute | 0.953 | 0.038 | 0.950 | 0.953 | 0.010 |
+| Random 30% | matched | MiniRocket + linear interp. | 0.960 | 0.040 | 0.958 | 0.960 | 0.003 |
+| Random 30% | matched | Hydra-MultiRocket + linear interp. | 0.970 | 0.041 | 0.969 | 0.970 | 0.020 |
+| Random 30% | matched | LightGBM (native NaN) | 0.412 | 0.034 | 0.399 | 0.412 | 0.168 |
+| Random 30% | matched | Native masked MiniRocket (group-mean) | 0.964 | 0.035 | 0.962 | 0.964 | 0.001 |
+| Random 30% | matched | MissRocket (proposed) | 0.965 | 0.036 | 0.964 | 0.965 | 0.000 |
+| Random 30% | matched | MissRocket w/o weighting (γ=0) | 0.965 | 0.037 | 0.964 | 0.965 | -0.000 |
+| Random 50% | matched | MiniRocket + kNN impute | 0.932 | 0.042 | 0.928 | 0.932 | 0.032 |
+| Random 50% | matched | MiniRocket + linear interp. | 0.936 | 0.071 | 0.932 | 0.936 | 0.028 |
+| Random 50% | matched | Hydra-MultiRocket + linear interp. | 0.967 | 0.052 | 0.965 | 0.967 | 0.023 |
+| Random 50% | matched | LightGBM (native NaN) | 0.364 | 0.016 | 0.350 | 0.364 | 0.216 |
+| Random 50% | matched | Native masked MiniRocket (group-mean) | 0.946 | 0.034 | 0.943 | 0.946 | 0.019 |
+| Random 50% | matched | MissRocket (proposed) | 0.949 | 0.048 | 0.946 | 0.949 | 0.016 |
+| Random 50% | matched | MissRocket w/o weighting (γ=0) | 0.933 | 0.070 | 0.928 | 0.933 | 0.032 |
+| Short outages, 30% | matched | MiniRocket + kNN impute | 0.939 | 0.043 | 0.934 | 0.939 | 0.025 |
+| Short outages, 30% | matched | MiniRocket + linear interp. | 0.958 | 0.032 | 0.956 | 0.958 | 0.005 |
+| Short outages, 30% | matched | Hydra-MultiRocket + linear interp. | 0.982 | 0.015 | 0.982 | 0.983 | 0.007 |
+| Short outages, 30% | matched | LightGBM (native NaN) | 0.417 | 0.023 | 0.404 | 0.417 | 0.163 |
+| Short outages, 30% | matched | Native masked MiniRocket (group-mean) | 0.959 | 0.031 | 0.956 | 0.959 | 0.006 |
+| Short outages, 30% | matched | MissRocket (proposed) | 0.962 | 0.030 | 0.961 | 0.963 | 0.003 |
+| Short outages, 30% | matched | MissRocket w/o weighting (γ=0) | 0.962 | 0.029 | 0.960 | 0.962 | 0.003 |
+| Medium outages, 30% | matched | MiniRocket + kNN impute | 0.952 | 0.033 | 0.948 | 0.952 | 0.012 |
+| Medium outages, 30% | matched | MiniRocket + linear interp. | 0.960 | 0.035 | 0.956 | 0.960 | 0.004 |
+| Medium outages, 30% | matched | Hydra-MultiRocket + linear interp. | 0.986 | 0.012 | 0.986 | 0.986 | 0.004 |
+| Medium outages, 30% | matched | LightGBM (native NaN) | 0.466 | 0.029 | 0.454 | 0.466 | 0.114 |
+| Medium outages, 30% | matched | Native masked MiniRocket (group-mean) | 0.961 | 0.029 | 0.959 | 0.961 | 0.004 |
+| Medium outages, 30% | matched | MissRocket (proposed) | 0.962 | 0.037 | 0.960 | 0.963 | 0.003 |
+| Medium outages, 30% | matched | MissRocket w/o weighting (γ=0) | 0.967 | 0.030 | 0.966 | 0.968 | -0.003 |
+| Long outages, 30% | matched | MiniRocket + kNN impute | 0.952 | 0.033 | 0.948 | 0.952 | 0.012 |
+| Long outages, 30% | matched | MiniRocket + linear interp. | 0.969 | 0.031 | 0.968 | 0.969 | -0.005 |
+| Long outages, 30% | matched | Hydra-MultiRocket + linear interp. | 0.987 | 0.013 | 0.987 | 0.987 | 0.003 |
+| Long outages, 30% | matched | LightGBM (native NaN) | 0.485 | 0.030 | 0.471 | 0.485 | 0.095 |
+| Long outages, 30% | matched | Native masked MiniRocket (group-mean) | 0.969 | 0.033 | 0.967 | 0.969 | -0.004 |
+| Long outages, 30% | matched | MissRocket (proposed) | 0.970 | 0.035 | 0.969 | 0.970 | -0.005 |
+| Long outages, 30% | matched | MissRocket w/o weighting (γ=0) | 0.975 | 0.030 | 0.975 | 0.975 | -0.010 |
+| Long outages, 50% | matched | MiniRocket + kNN impute | 0.932 | 0.039 | 0.926 | 0.932 | 0.032 |
+| Long outages, 50% | matched | MiniRocket + linear interp. | 0.966 | 0.036 | 0.966 | 0.966 | -0.002 |
+| Long outages, 50% | matched | Hydra-MultiRocket + linear interp. | 0.981 | 0.012 | 0.981 | 0.981 | 0.008 |
+| Long outages, 50% | matched | LightGBM (native NaN) | 0.457 | 0.019 | 0.443 | 0.457 | 0.123 |
+| Long outages, 50% | matched | Native masked MiniRocket (group-mean) | 0.969 | 0.032 | 0.968 | 0.969 | -0.004 |
+| Long outages, 50% | matched | MissRocket (proposed) | 0.970 | 0.030 | 0.970 | 0.970 | -0.005 |
+| Long outages, 50% | matched | MissRocket w/o weighting (γ=0) | 0.972 | 0.028 | 0.971 | 0.972 | -0.007 |
+| Random 30% | shift | MiniRocket + kNN impute | 0.881 | 0.039 | 0.863 | 0.881 | 0.083 |
+| Random 30% | shift | MiniRocket + linear interp. | 0.767 | 0.059 | 0.727 | 0.767 | 0.196 |
+| Random 30% | shift | Hydra-MultiRocket + linear interp. | 0.675 | 0.019 | 0.592 | 0.675 | 0.314 |
+| Random 30% | shift | LightGBM (native NaN) | 0.355 | 0.024 | 0.321 | 0.355 | 0.225 |
+| Random 30% | shift | Native masked MiniRocket (group-mean) | 0.836 | 0.104 | 0.826 | 0.836 | 0.129 |
+| Random 30% | shift | MissRocket (proposed) | 0.849 | 0.048 | 0.830 | 0.849 | 0.116 |
+| Random 30% | shift | MissRocket w/o weighting (γ=0) | 0.775 | 0.043 | 0.741 | 0.775 | 0.190 |
+| Short outages, 30% | shift | MiniRocket + kNN impute | 0.878 | 0.061 | 0.881 | 0.878 | 0.085 |
+| Short outages, 30% | shift | MiniRocket + linear interp. | 0.614 | 0.045 | 0.604 | 0.614 | 0.350 |
+| Short outages, 30% | shift | Hydra-MultiRocket + linear interp. | 0.303 | 0.070 | 0.243 | 0.303 | 0.686 |
+| Short outages, 30% | shift | LightGBM (native NaN) | 0.356 | 0.038 | 0.325 | 0.356 | 0.224 |
+| Short outages, 30% | shift | Native masked MiniRocket (group-mean) | 0.946 | 0.040 | 0.942 | 0.946 | 0.019 |
+| Short outages, 30% | shift | MissRocket (proposed) | 0.934 | 0.026 | 0.928 | 0.934 | 0.031 |
+| Short outages, 30% | shift | MissRocket w/o weighting (γ=0) | 0.644 | 0.028 | 0.640 | 0.644 | 0.321 |
+| Medium outages, 30% | shift | MiniRocket + kNN impute | 0.836 | 0.034 | 0.832 | 0.836 | 0.128 |
+| Medium outages, 30% | shift | MiniRocket + linear interp. | 0.365 | 0.048 | 0.306 | 0.365 | 0.599 |
+| Medium outages, 30% | shift | Hydra-MultiRocket + linear interp. | 0.141 | 0.038 | 0.065 | 0.141 | 0.848 |
+| Medium outages, 30% | shift | LightGBM (native NaN) | 0.358 | 0.009 | 0.332 | 0.358 | 0.222 |
+| Medium outages, 30% | shift | Native masked MiniRocket (group-mean) | 0.958 | 0.036 | 0.954 | 0.958 | 0.007 |
+| Medium outages, 30% | shift | MissRocket (proposed) | 0.945 | 0.026 | 0.942 | 0.945 | 0.020 |
+| Medium outages, 30% | shift | MissRocket w/o weighting (γ=0) | 0.454 | 0.039 | 0.410 | 0.454 | 0.511 |
+| Long outages, 30% | shift | MiniRocket + kNN impute | 0.841 | 0.030 | 0.832 | 0.841 | 0.123 |
+| Long outages, 30% | shift | MiniRocket + linear interp. | 0.340 | 0.031 | 0.266 | 0.340 | 0.624 |
+| Long outages, 30% | shift | Hydra-MultiRocket + linear interp. | 0.129 | 0.034 | 0.043 | 0.129 | 0.860 |
+| Long outages, 30% | shift | LightGBM (native NaN) | 0.356 | 0.014 | 0.328 | 0.356 | 0.224 |
+| Long outages, 30% | shift | Native masked MiniRocket (group-mean) | 0.957 | 0.031 | 0.954 | 0.958 | 0.007 |
+| Long outages, 30% | shift | MissRocket (proposed) | 0.944 | 0.021 | 0.942 | 0.944 | 0.021 |
+| Long outages, 30% | shift | MissRocket w/o weighting (γ=0) | 0.407 | 0.027 | 0.352 | 0.407 | 0.558 |
+| Long outages, 50% | shift | MiniRocket + kNN impute | 0.382 | 0.026 | 0.356 | 0.382 | 0.582 |
+| Long outages, 50% | shift | MiniRocket + linear interp. | 0.187 | 0.003 | 0.117 | 0.187 | 0.777 |
+| Long outages, 50% | shift | Hydra-MultiRocket + linear interp. | 0.112 | 0.008 | 0.034 | 0.112 | 0.878 |
+| Long outages, 50% | shift | LightGBM (native NaN) | 0.183 | 0.024 | 0.132 | 0.184 | 0.396 |
+| Long outages, 50% | shift | Native masked MiniRocket (group-mean) | 0.923 | 0.033 | 0.917 | 0.923 | 0.042 |
+| Long outages, 50% | shift | MissRocket (proposed) | 0.887 | 0.024 | 0.882 | 0.887 | 0.078 |
+| Long outages, 50% | shift | MissRocket w/o weighting (γ=0) | 0.220 | 0.018 | 0.138 | 0.220 | 0.745 |
+
+
+**Per-class recall** (mean over folds, seed 0), for complete data and long outages at 30%:
+
+| condition | method | Normal | IR007 | B007 | OR007@6 | IR014 | B014 | OR014@6 | IR021 | B021 | OR021@6 |
+|:--------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| complete | MiniRocket + kNN impute | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.94 | 1.00 | 1.00 | 0.70 | 1.00 |
+| complete | MiniRocket + linear interp. | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.94 | 1.00 | 1.00 | 0.70 | 1.00 |
+| complete | Hydra-MultiRocket + linear interp. | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.98 | 1.00 | 1.00 | 0.91 | 1.00 |
+| complete | LightGBM (native NaN) | 0.89 | 0.67 | 0.73 | 0.62 | 0.12 | 0.43 | 0.59 | 0.72 | 0.30 | 0.72 |
+| complete | Native masked MiniRocket (group-mean) | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.95 | 1.00 | 1.00 | 0.71 | 1.00 |
+| complete | MissRocket (proposed) | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.95 | 1.00 | 1.00 | 0.71 | 1.00 |
+| complete | MissRocket w/o weighting (γ=0) | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.95 | 1.00 | 1.00 | 0.71 | 1.00 |
+| outage_long30 | MiniRocket + kNN impute | 1.00 | 1.00 | 1.00 | 1.00 | 0.89 | 0.94 | 1.00 | 1.00 | 0.69 | 1.00 |
+| outage_long30 | MiniRocket + linear interp. | 1.00 | 1.00 | 1.00 | 1.00 | 0.97 | 0.93 | 1.00 | 1.00 | 0.80 | 1.00 |
+| outage_long30 | Hydra-MultiRocket + linear interp. | 1.00 | 1.00 | 1.00 | 1.00 | 0.99 | 0.99 | 0.99 | 1.00 | 0.91 | 1.00 |
+| outage_long30 | LightGBM (native NaN) | 0.90 | 0.50 | 0.59 | 0.56 | 0.13 | 0.31 | 0.44 | 0.66 | 0.25 | 0.51 |
+| outage_long30 | Native masked MiniRocket (group-mean) | 1.00 | 1.00 | 1.00 | 1.00 | 0.99 | 0.91 | 1.00 | 1.00 | 0.79 | 1.00 |
+| outage_long30 | MissRocket (proposed) | 1.00 | 1.00 | 1.00 | 1.00 | 0.99 | 0.92 | 1.00 | 1.00 | 0.80 | 1.00 |
+| outage_long30 | MissRocket w/o weighting (γ=0) | 1.00 | 1.00 | 1.00 | 1.00 | 0.99 | 0.90 | 1.00 | 1.00 | 0.86 | 1.00 |
+| shift_outage_long30 | MiniRocket + kNN impute | 1.00 | 0.81 | 0.85 | 0.99 | 0.92 | 0.93 | 0.79 | 0.93 | 0.27 | 0.93 |
+| shift_outage_long30 | MiniRocket + linear interp. | 0.96 | 0.08 | 0.05 | 0.02 | 0.75 | 0.88 | 0.00 | 0.12 | 0.18 | 0.35 |
+| shift_outage_long30 | Hydra-MultiRocket + linear interp. | 0.00 | 0.00 | 0.31 | 0.00 | 0.00 | 0.96 | 0.00 | 0.00 | 0.00 | 0.02 |
+| shift_outage_long30 | LightGBM (native NaN) | 0.97 | 0.18 | 0.12 | 0.22 | 0.12 | 0.33 | 0.46 | 0.33 | 0.18 | 0.65 |
+| shift_outage_long30 | Native masked MiniRocket (group-mean) | 1.00 | 1.00 | 1.00 | 1.00 | 0.97 | 0.93 | 1.00 | 1.00 | 0.68 | 1.00 |
+| shift_outage_long30 | MissRocket (proposed) | 1.00 | 1.00 | 0.98 | 1.00 | 0.88 | 0.91 | 1.00 | 0.99 | 0.73 | 0.96 |
+| shift_outage_long30 | MissRocket w/o weighting (γ=0) | 1.00 | 0.28 | 0.30 | 0.08 | 0.65 | 0.82 | 0.05 | 0.14 | 0.10 | 0.65 |
+
+
+**Seed check** (seeds 0 and 1; mean over folds of MissRocket − baseline accuracy):
+
+| scenario | setting | diff_MissRocket-g0_s0 | diff_AeonMiniRocket+linear_s0 | diff_MissRocket-g0_s1 | diff_AeonMiniRocket+linear_s1 |
+|:--------------------|----------:|----------:|----------:|----------:|----------:|
+| Complete | matched | 0.000 | 0.001 | 0.000 | -0.008 |
+| Long outages, 30% | matched | -0.005 | 0.001 | 0.001 | 0.001 |
+| Long outages, 50% | matched | -0.001 | 0.004 | -0.007 | -0.003 |
+| Medium outages, 30% | matched | -0.005 | 0.003 | -0.000 | 0.004 |
+| Short outages, 30% | matched | 0.001 | 0.004 | 0.001 | 0.006 |
+| Random 10% | matched | -0.001 | 0.000 | 0.000 | 0.001 |
+| Random 30% | matched | -0.000 | 0.005 | 0.000 | 0.002 |
+| Random 50% | matched | 0.016 | 0.013 | 0.013 | 0.008 |
+| Long outages, 30% | shift | 0.537 | 0.604 | 0.625 | 0.628 |
+| Long outages, 50% | shift | 0.667 | 0.699 | 0.717 | 0.692 |
+| Medium outages, 30% | shift | 0.491 | 0.580 | 0.631 | 0.618 |
+| Short outages, 30% | shift | 0.290 | 0.320 | 0.374 | 0.365 |
+| Random 30% | shift | 0.074 | 0.082 | 0.063 | 0.054 |
+
+
+## S16 Single-thread inference cost on CWRU (edge-CPU proxy)
+
+One CPU thread; fitted on fold 0, inference on the test segments with long outages (30%). Latency: single-segment prediction including gap filling; peak RSS includes the Python interpreter and libraries.
+
+| method | fit_s | fit_peak_rss_mb | rss_after_imports_mb | model_mb | latency_ms_median | latency_ms_p95 | batch_ms_per_segment | infer_rss_after_load_mb | infer_peak_rss_mb | infer_rss_after_imports_mb | n_test |
+|:--------------------|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| MissRocket | 95.13 | 855.83 | 130.74 | 0.65 | 45.65 | 62.95 | 45.82 | 239.16 | 335.98 | 130.81 | 599 |
+| MiniRocket (aeon) + linear | 7.39 | 1039.37 | 130.39 | 0.67 | 2.82 | 4.20 | 2.01 | 431.60 | 527.85 | 131.04 | 599 |
+| Hydra-MultiRocket (aeon) + linear | 206.59 | 7322.16 | 130.66 | 3.66 | 58.86 | 73.14 | 83.26 | 435.59 | 2788.81 | 130.74 | 599 |

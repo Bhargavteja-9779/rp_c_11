@@ -86,6 +86,7 @@ Useful options:
 | E9 | `experiments/e9_cwru.py`, `scripts/analyze_e9.py` | Industrial case study (added after external review): CWRU bearing faults, leave-one-load-out, simulated sensor dropouts (random 10/30/50%, short/medium/long outages), matched and train-complete → test-incomplete |
 | E8 | `scripts/error_analysis.py` | Gains vs dataset properties, extremes, confusion matrices |
 | — | `scripts/benchmark_scaling.py` | Controlled transform-time and memory benchmark (run on an idle machine) |
+| — | `scripts/e9_confusion.py` | Re-runs the E9 medium/long-outage shift settings for three methods, checks exact reproduction of the stored accuracies and records confusion matrices |
 | — | `scripts/benchmark_edge.py` | Single-thread inference latency and peak memory on CWRU (edge-CPU proxy; run on an idle machine) |
 | — | `scripts/reproducibility_check.py` | Re-runs a sample of stored runs and checks exact equality |
 

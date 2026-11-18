@@ -13,7 +13,7 @@ The 15 archive datasets with native missing values (4) or variable lengths (11) 
 
 **PhysioNet/CinC 2012.** The challenge data [@Silva2012; @Goldberger2000] contain 12,000 intensive-care stays (sets a, b and c) with outcomes. We bin 37 time-varying variables into 48 hourly intervals; a bin with no measurement is missing. This gives 79.7% missing entries, missingness that is informative by nature, and 14.2% in-hospital mortality. Sets a and b (8,000 stays) are used for training and set c (4,000 stays) for testing. Variables are standardised with training statistics. Static descriptors are not used by any method.
 
-**CWRU bearing vibration data (industrial case study).** We used the 12 kHz drive-end accelerometer recordings of the Case Western Reserve University Bearing Data Center (Online Resource 1 gives the file list):
+**CWRU bearing vibration data (industrial case study).** We used the 12 kHz drive-end accelerometer recordings of the Case Western Reserve University Bearing Data Center [@CWRU] (Online Resource 1 gives the file list):
 - *classes:* ten condition classes, namely normal operation and inner-race, ball and outer-race (6 o'clock) faults of 0.007, 0.014 and 0.021 inch;
 - *operating conditions:* each class recorded at four motor loads (0–3 hp);
 - *normal recordings:* the normal-baseline recordings are sampled at 48 kHz [@Smith2015] and were decimated to 12 kHz with a zero-phase anti-aliasing filter, so that the sampling rate cannot identify the class;
@@ -39,6 +39,8 @@ For the CWRU case study, missing values model sensor dropouts:
 Each scenario was evaluated with the same missingness in training and test data, and also with complete training data and incomplete test data (deployment shift). These are simulated dropouts on real vibration recordings, not naturally occurring sensor failures.
 
 ### 5.3 Overview of experiments
+
+@tab:overview lists all experiments, with the datasets, conditions, seeds and methods of each. Only E1 on {{N_CONF}} datasets is the primary analysis. The 30-dataset subset was drawn at random for the secondary experiments, and CWRU is used only in E9.
 
 {#tab:overview} Overview of the experiments. "Primary" denotes the pre-specified main analysis; all other experiments are secondary. E4b and E9 were added after the protocol was frozen (E4b in an internal review round, E9 in response to an external review) and are reported as such
 

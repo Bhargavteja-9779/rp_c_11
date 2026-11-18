@@ -92,6 +92,27 @@ def recall(d0):
     return pd.DataFrame(rows)
 
 
+def confusion_summary():
+    """Pools the confusion matrices of scripts/e9_confusion.py over folds (seed 0)."""
+    p = os.path.join(T, "table_e9_confusion.csv")
+    if not os.path.exists(p):
+        return
+    c = pd.read_csv(p)
+    rows = []
+    for (cond, m), g in c.groupby(["condition", "method"]):
+        cm = sum(np.array(json.loads(x)) for x in g.confusion)
+        fault = cm[1:]
+        pred = cm.sum(0) / cm.sum()
+        top = np.argsort(pred)[::-1][:2]
+        rows.append(dict(condition=cond, method=m, n_fault=int(fault.sum()),
+                         fault_as_normal=float(fault[:, 0].sum() / fault.sum()),
+                         fault_misdiagnosed_as_other_fault=float((fault[:, 1:].sum() - np.trace(cm[1:, 1:])) / fault.sum()),
+                         top1_class=CLASSES[top[0]], top1_share=float(pred[top[0]]),
+                         top2_class=CLASSES[top[1]], top2_share=float(pred[top[1]]),
+                         reproduced=bool(np.allclose(g.accuracy, g.stored_accuracy))))
+    pd.DataFrame(rows).to_csv(os.path.join(T, "table_e9_confusion_summary.csv"), index=False)
+
+
 def figure(s):
     import matplotlib
     matplotlib.use("Agg")
@@ -101,8 +122,8 @@ def figure(s):
     sty = dict(zip(METHODS, ["-", "--", "-", "-", "-", "-", "-"]))
     mk = dict(zip(METHODS, ["o", "o", "s", "h", "v", "P", "X"]))
     fig, axs = plt.subplots(1, 2, figsize=(7.1, 3.4), sharey=True, gridspec_kw=dict(width_ratios=[8, 5]))
-    for ax, setting, title in zip(axs, ["matched", "shift"], ["(a) Same missingness in training and test data",
-                                                             "(b) Trained on complete data, tested incomplete"]):
+    for ax, setting, title in zip(axs, ["matched", "shift"], ["(a) Same missingness in training\nand test data",
+                                                             "(b) Trained on complete data,\ntested with dropouts"]):
         conds = [c for c in COND if COND[c][1] == setting]
         if setting == "shift":
             conds = ["complete"] + conds
@@ -130,6 +151,7 @@ def main():
     df = diffs(d0); df.to_csv(os.path.join(T, "table_e9_diff.csv"), index=False)
     seed_check(d).to_csv(os.path.join(T, "table_e9_seed.csv"), index=False)
     recall(d0).to_csv(os.path.join(T, "table_e9_recall.csv"), index=False)
+    confusion_summary()
     figure(s)
     piv = s.pivot(index="condition", columns="method", values="accuracy").reindex(list(COND))[METHODS]
     print(piv.round(3).to_string())

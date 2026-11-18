@@ -65,3 +65,31 @@ The overall rejection risk is **not zero**. The dominant risks are perceived inc
 - the submission date in the cover letter.
 
 Justification: every pre-specified experiment, plus the post-hoc robustness and scaling experiments requested in review, has been executed. All claims are supported by machine-generated evidence, all identified errors were corrected, and the remaining weaknesses are disclosed limitations rather than defects requiring further experiments.
+
+## Revision after external review (2026-11-18)
+
+**Changes.**
+- New industrial case study E9 (CWRU, 520 runs, all completed).
+- Edge-CPU proxy benchmark and confusion diagnostic; the diagnostic reproduced all 24 stored accuracies exactly.
+- New title, research question and abstract; novelty positioning; algorithmic vs measured cost.
+- P12 framed as a boundary of applicability; decision-rule table; explanation of the excluded datasets; experiment overview table.
+- Declarations rewritten: no funding, no competing interests, author contributions, data links, code on request, AI use.
+- Response document: `REVIEW/response_to_external_review.md`.
+
+**Consistency.** `manuscript/build/consistency_check.py`: 0 FAIL. The abstract has 240 words, and all its numbers are generated from tables.
+
+**Two draft claims were found false and corrected before packaging** (PROGRESS item 18):
+- "errors were mostly missed faults": they were mostly fault-type confusions;
+- "a few ms latency for all methods": MissRocket takes 46 ms per segment.
+
+**Updated rejection risks.**
+- Risk 3 (simulation only) is reduced by the real vibration recordings, although the dropouts are still simulated.
+- Risk 1 (novelty) is reduced by the explicit positioning paragraph.
+- New risk: E9 was added after external review, and a timing test printed one setting's accuracies before the design commit. Severity: low. This is disclosed in Sect. 5.5.
+- New risk: on CWRU, the native estimator, not MissRocket, was best under deployment shift. Severity: low–medium. This is reported openly and reflected in the decision table.
+
+**Decision: READY FOR SUBMISSION to JKSU-CIS**, after the authors complete the bracketed fields on the title page and in the cover letter:
+- second (corresponding) author name, affiliations, e-mail and ORCIDs;
+- the date of the cover letter.
+
+The anonymised manuscript contains no placeholders.

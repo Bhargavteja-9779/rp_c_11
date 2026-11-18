@@ -105,3 +105,11 @@ Package root: `Target_Journal_Submission/`. Code: `Target_Journal_Submission/cod
     - 7 methods; seeds 0,1 for the core 3 methods and seed 0 for the others.
     DISCLOSURE: a timing test of one setting (fold 3, medium outages 30%, seed-1/2 masks) printed accuracies before this
     commit; the design was not changed afterwards. The E9 freeze is the commit titled "E9 DESIGN FREEZE".
+18. E9 completed (520 runs, all ok). Edge-CPU proxy benchmark (scripts/benchmark_edge.py, one thread, idle machine) and
+    confusion diagnostic (scripts/e9_confusion.py) run afterwards. The diagnostic reproduced all 24 stored accuracies exactly.
+    CORRECTION: a draft of Section 6.10 said that interpolation-based MiniRocket misclassified faults mostly as "normal". The
+    confusion matrices contradict this: under long-outage shift it put 41% and 28% of all predictions in two fault classes
+    (IR014, B014), misdiagnosed 64% of fault segments as another fault, and called 9% of fault segments normal (MissRocket: 0%).
+    The text was corrected before submission. Also corrected: the draft claimed latencies of "a few ms" for all methods;
+    measured single-thread latency is 2.8 ms (aeon MiniRocket), 46 ms (MissRocket) and 59 ms (Hydra-MultiRocket).
+

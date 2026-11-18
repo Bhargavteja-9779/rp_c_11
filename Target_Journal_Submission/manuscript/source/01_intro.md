@@ -38,10 +38,10 @@ Our contributions are:
 2. **MissRocket**, an observed-tap-weighted pooling scheme that requires no imputation model and no training beyond the usual ridge head (Section 4.2).
 3. A pre-specified evaluation with a separate development set. It covers {{N_CONF}} UCR datasets, three missingness mechanisms (MCAR, contiguous gaps and value-dependent MNAR) at three rates, and eleven competitors, including reference MiniRocket, MultiRocket and Hydra with five imputation strategies, LightGBM with native missing-value handling, and GRU-D. It also includes ablations, train–test missingness shift, 15 naturally incomplete UCR datasets and PhysioNet 2012 mortality prediction (Sections 5–6). An industrial case study on bearing-vibration data (CWRU) adds simulated sensor dropouts of different durations, leave-one-load-out evaluation, train–test shift, per-class recall and single-core inference cost (Section 6.10).
 4. Empirical evidence on where each strategy succeeds and fails:
-   - observed-tap weighting helps substantially when gaps are long, when missingness depends on the values, and under train–test missingness shift;
+   - observed-tap weighting helps substantially when gaps are long, when missingness depends on the values, and under train–test missingness shift; on bearing-vibration data, it prevents the collapse of interpolation-based pipelines when outages occur only in operation;
    - it neither helps nor materially hurts under scattered random gaps;
-   - native estimation is consistently inferior to interpolation;
-   - cross-series kNN imputation and clinical-specific models are better in their respective niches;
-   - these findings are summarised as a practical decision guide (Sections 6–7, @tab:decision).
+   - native estimation is consistently inferior to interpolation on UCR, but competitive on rough vibration signals under deployment shift;
+   - cross-series kNN imputation, stronger transforms when training data contain the same dropouts, and clinical-specific models are better in their respective niches;
+   - these findings are summarised as a practical decision guide (Sections 6–7, with decision rules in Section 7.3).
 
 The datasets are public; the code, raw per-run results and analysis scripts are available from the corresponding author on reasonable request.
