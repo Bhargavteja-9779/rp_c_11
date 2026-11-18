@@ -311,6 +311,58 @@ def seed_var(v):
         + "(Online Resource 1, Table S5).")
 
 
+E9_METHODS = [("MissRocket", "MissRocket"), ("MissRocket-g0", "γ=0"), ("AeonMiniRocket+linear", "MiniRocket + interp."),
+              ("AeonMiniRocket+knn", "MiniRocket + kNN"), ("HydraMultiRocket+linear", "Hydra-MR + interp."),
+              ("MaskRocket-noC", "Native masked"), ("LightGBM-NaN", "LightGBM (NaN)")]
+E9_ORDER = ["complete", "random10", "random30", "random50", "outage_short30", "outage_medium30", "outage_long30", "outage_long50",
+            "shift_random30", "shift_outage_short30", "shift_outage_medium30", "shift_outage_long30", "shift_outage_long50"]
+
+
+def table_cwru(v):
+    s = t("table_e9_summary")
+    if s is None:
+        return
+    rows = []
+    for c in E9_ORDER:
+        g = s[s.condition == c].set_index("method")
+        if g.empty:
+            continue
+        sc = g.scenario.iloc[0]
+        r = {"Scenario": ("Shift: " if c.startswith("shift") else "") + sc}
+        best = max(g.loc[m, "accuracy"] for m, _ in E9_METHODS if m in g.index)
+        for m, lab in E9_METHODS:
+            if m not in g.index:
+                r[lab] = "–"; continue
+            a, f = g.loc[m, "accuracy"], g.loc[m, "macro_f1"]
+            txt = f"{a:.3f} ({f:.3f})"
+            r[lab] = f"**{txt}**" if abs(a - best) < 1e-12 else txt
+        rows.append(r)
+    v["_tables"]["cwru"] = md_table(pd.DataFrame(rows), first=3)
+    d = t("table_e9_diff")
+    if d is not None:
+        d = d[d.metric == "accuracy"]
+        for b, key in [("AeonMiniRocket+linear", "MINI"), ("MissRocket-g0", "G0"), ("HydraMultiRocket+linear", "HYDRA"),
+                       ("AeonMiniRocket+knn", "KNN"), ("MaskRocket-noC", "NATIVE")]:
+            sh = d[(d.baseline == b) & d.condition.str.startswith("shift")]
+            v[f"E9_SHIFT_WINS_{key}"] = f"{int(sh.wins.sum())} of {int(sh.n.sum())}"
+            ma = d[(d.baseline == b) & ~d.condition.str.startswith("shift") & (d.condition != "complete")]
+            v[f"E9_MATCHED_WINS_{key}"] = f"{int(ma.wins.sum())} of {int(ma.n.sum())}"
+
+
+def table_edge(v):
+    e = t("table_edge")
+    if e is None:
+        return
+    df = pd.DataFrame({"Method": e.method,
+                       "Fit time (s)": [f"{x:.1f}" for x in e.fit_s],
+                       "Latency per segment, median (ms)": [f"{x:.2f}" for x in e.latency_ms_median],
+                       "Latency, 95th pct. (ms)": [f"{x:.2f}" for x in e.latency_ms_p95],
+                       "Batch time per segment (ms)": [f"{x:.2f}" for x in e.batch_ms_per_segment],
+                       "Model size (MB)": [f"{x:.1f}" for x in e.model_mb],
+                       "Peak RSS, inference (MB)": [f"{x:.0f}" for x in e.infer_peak_rss_mb]})
+    v["_tables"]["edge"] = md_table(df, first=3)
+
+
 def cover_letter(v):
     c = t("table_pooled_statistics")
     mr = c[c.baseline == "MiniRocket + linear interp."].iloc[0]
@@ -368,7 +420,7 @@ def main():
     v["EXCLUDED_LIST"] = ", ".join(excluded_confirmatory())
     v["N_EXCLUDED"] = str(len(excluded_confirmatory()))
     v["SUBSET30"] = ", ".join(subset30())
-    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v); seed_var(v); cover_letter(v); counts(v)
+    table_main(v); table_stats(v); table_pooled(v); table_eff(v); table_natural(v); table_ablation(v); table_shift(v); table_p12(v); error_values(v); e2_values(v); table_mechshift(v); seed_var(v); table_cwru(v); table_edge(v); cover_letter(v); counts(v)
     json.dump(v, open(os.path.join(HERE, "values.json"), "w"), indent=1, ensure_ascii=False)
     print("values:", [k for k in v if k != "_tables"], "tables:", list(v["_tables"]))
 
