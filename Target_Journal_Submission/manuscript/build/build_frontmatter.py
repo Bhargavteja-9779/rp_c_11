@@ -25,13 +25,22 @@ def title_page(v):
     p = d.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r = p.add_run(v["TITLE"]); r.bold = True; r.font.size = Pt(14)
     d.add_paragraph("Title page (not anonymised; submitted separately as required for double-anonymous peer review)").italic = True
-    for k, t in [("Authors", "[Author 1 full name]¹*, [Author 2 full name]², …"),
+    for k, t in [("Authors", "P N Bhargav Teja¹ and [Second Author Full Name]²*"),
                  ("Affiliations", "¹ [Department, Institution, City, Country]\n² [Department, Institution, City, Country]"),
-                 ("Corresponding author", "* [Name], [e-mail address], ORCID: [16-digit ORCID]"),
-                 ("Acknowledgements", "[To be completed by the authors, or 'Not applicable'.]"),
-                 ("Funding", "The authors declare that no funds, grants or other support were received during the preparation of this manuscript. [Replace if applicable.]"),
-                 ("Competing interests", "The authors have no relevant financial or non-financial interests to disclose. [Confirm.]"),
-                 ("Author contributions", "[e.g. Conceptualisation: …; Methodology: …; Software: …; Formal analysis: …; Writing – original draft: …; Writing – review & editing: …]"),
+                 ("Corresponding author", "* [Second Author Full Name], [Department, Institution, City, Country], "
+                                          "e-mail: [corresponding.author@institution], ORCID: [0000-0000-0000-0000]"),
+                 ("ORCID", "P N Bhargav Teja: [ORCID]; [Second Author Full Name]: [ORCID]"),
+                 ("Acknowledgements", "Not applicable."),
+                 ("Funding", "The authors declare that no funds, grants or other support were received during the preparation of this manuscript."),
+                 ("Competing interests", "The authors have no relevant financial or non-financial interests to disclose."),
+                 ("Author contributions", "P N Bhargav Teja: Conceptualisation, Methodology, Software, Investigation, Formal analysis, "
+                                          "Data curation, Visualisation, Writing – original draft. [Second Author Full Name]: Supervision, "
+                                          "Writing – review & editing. All authors read and approved the final manuscript."),
+                 ("Data availability", "All datasets are public: UCR Time Series Classification Archive "
+                                       "(https://www.cs.ucr.edu/~eamonn/time_series_data_2018/; https://www.timeseriesclassification.com/), "
+                                       "PhysioNet/CinC Challenge 2012 (https://physionet.org/content/challenge-2012/1.0.0/) and the Case Western "
+                                       "Reserve University Bearing Data Center (https://engineering.case.edu/bearingdatacenter)."),
+                 ("Code availability", "The code, raw per-run results and analysis scripts are available from the corresponding author on reasonable request."),
                  ("Word count (main text)", v.get("WORD_COUNT", "")),
                  ("Number of figures / tables", f"{v.get('N_FIGS', '')} / {v.get('N_TABLES', '')}")]:
         p = d.add_paragraph(); p.add_run(k + ": ").bold = True; p.add_run(t)
@@ -40,13 +49,14 @@ def title_page(v):
 
 def cover_letter(v):
     d = Document(); base(d)
-    for line in ["[Date]", "", "The Editor-in-Chief", "Journal of King Saud University – Computer and Information Sciences",
+    for line in [v.get("COVER_DATE", "[Date]"), "", "The Editor-in-Chief", "Journal of King Saud University – Computer and Information Sciences",
                  "Springer Nature", ""]:
         d.add_paragraph(line)
     d.add_paragraph("Dear Editor,")
     for para in v["COVER_LETTER_PARAGRAPHS"]:
         d.add_paragraph(para)
-    for line in ["", "Sincerely,", "", "[Corresponding author name]", "[Affiliation]", "[E-mail]", "[ORCID]"]:
+    for line in ["", "Sincerely, on behalf of all authors,", "", "[Second Author Full Name] (corresponding author)",
+                 "[Department, Institution, City, Country]", "[corresponding.author@institution]", "ORCID: [0000-0000-0000-0000]"]:
         d.add_paragraph(line)
     out = os.path.join(MS, "cover_letter.docx"); d.save(out); return out
 

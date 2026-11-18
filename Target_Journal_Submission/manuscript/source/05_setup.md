@@ -91,7 +91,7 @@ All candidates and their development results are documented in Online Resource 1
 
 **Pre-specification.** The experimental protocol (datasets, mechanisms, rates, seeds, methods, metrics and tests) was then frozen in a version-controlled configuration before any confirmatory run. We use "pre-specified" rather than "pre-registered" because the protocol was not lodged with an external registry. The freezing commit is identified in the code repository.
 
-**Disclosed deviations.** Three deviations occurred, none of which changed the proposed method:
+**Disclosed deviations.** Four deviations occurred, none of which changed the proposed method:
 
 1. *Smoke test on confirmatory data.* Before the freeze, a pipeline smoke test ran on three confirmatory datasets (Coffee, ItalyPowerDemand, SyntheticControl). It prompted us to screen kNN-filled variants on the development set and add them to the ablations.
 2. *Execution order.* The frozen protocol specified three seeds for E1 and all experiments on all eligible datasets. Our cloud environment reclaims idle compute containers, which repeatedly interrupted long runs. We therefore changed the execution order, running seed 0 first.
@@ -103,6 +103,14 @@ All candidates and their development results are documented in Online Resource 1
    - GRU-D on UCR is restricted to series of length ≤ 200 with at most 300 training series.
 
 Amendments 2 and 3 were decided and committed while only run counts and run times, and no accuracy values, of the confirmatory experiments had been inspected.
+
+4. *Industrial case study added after external review.* E9 (CWRU) was not part of the original protocol. It was added in response to an external review. Its design was committed before any E9 run:
+   - data and folds;
+   - the 13 scenarios;
+   - methods and seeds;
+   - metrics.
+
+   One exception: a timing test of a single setting (one fold, medium outages at 30%, masks from other seeds than those reported) printed the accuracies of that setting before the design commit. The design was not changed afterwards. E9 reports MissRocket with the configuration fixed on the UCR development set (γ = 1); nothing was tuned on CWRU.
 
 **Seeds.** A seed controls the missingness masks and the bias sampling of the transforms.
 
@@ -125,6 +133,17 @@ The primary metric is test accuracy. Balanced accuracy and macro-F1 are also rep
 - win/tie/loss counts.
 
 **Multiplicity.** Each mechanism–rate condition is treated as a separate, pre-specified question, and Holm's correction controls the family-wise error rate within a condition only. The pooled comparison over all nine conditions serves as the single overall test. Per-condition p-values describe where an effect appears and should not be read as nine independent confirmations.
+
+**CWRU (E9).** With only four leave-one-load-out folds, significance tests are not informative, so the E9 analysis is descriptive. We report:
+
+- the mean and standard deviation over folds of accuracy, macro-F1 and balanced accuracy;
+- the degradation of each method relative to its own accuracy on complete data;
+- per-class recall;
+- the number of folds in which MissRocket beats each baseline.
+
+All of these use seed 0. Seed 1 is used to check that the differences among the three core methods have the same sign.
+
+**Inference cost (E9).** We also measured the per-segment latency, batch throughput and peak resident memory of a fitted model in a fresh process, restricted to a single CPU thread as a proxy for a single-core edge processor (Section 6.10). This is not a measurement on embedded hardware.
 
 **PhysioNet 2012.** Patients are the unit of analysis. We give a paired bootstrap (2,000 resamples) of the AUROC difference between seed-averaged score ensembles.
 
