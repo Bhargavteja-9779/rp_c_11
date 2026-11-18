@@ -26,7 +26,8 @@ EXPERIMENTS = [("E1", "e1_main"), ("E5_natural", "e5_natural"), ("E3", "e3_ablat
 def check_data():
     ucr = os.path.join(ROOT, "data", "raw", "Univariate_ts")
     p12 = os.path.join(ROOT, "data", "raw", "physionet2012")
-    if not os.path.isdir(ucr) or not os.path.isdir(p12):
+    cwru = os.path.join(ROOT, "data", "raw", "cwru", "237.mat")
+    if not os.path.isdir(ucr) or not os.path.isdir(p12) or not os.path.exists(cwru):
         print("Data missing -> running scripts/download_data.sh", flush=True)
         subprocess.check_call(["bash", os.path.join(ROOT, "scripts", "download_data.sh")])
     reg = os.path.join(ROOT, "data", "registry.csv")
@@ -58,6 +59,9 @@ def main():
     subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "figure_method.py"), a.mode], cwd=ROOT)
     if os.path.exists(os.path.join(ROOT, "results", a.mode, "E1_main", "raw_results.csv")):
         subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "error_analysis.py"), a.mode], cwd=ROOT)
+    if os.path.exists(os.path.join(ROOT, "results", a.mode, "E9_cwru", "raw_results.csv")):
+        subprocess.check_call([sys.executable, os.path.join(ROOT, "scripts", "analyze_e9.py")], cwd=ROOT)
+    # Timing benchmarks (run separately on an idle machine): scripts/benchmark_scaling.py, scripts/benchmark_edge.py
 
 
 if __name__ == "__main__":

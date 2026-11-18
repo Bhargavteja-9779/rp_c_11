@@ -12,7 +12,7 @@
 - PhysioNet/Computing in Cardiology Challenge 2012 [@Silva2012; @Goldberger2000]: https://physionet.org/content/challenge-2012/1.0.0/ (Open Data Commons Attribution License v1.0);
 - Case Western Reserve University Bearing Data Center [@CWRU]: https://engineering.case.edu/bearingdatacenter (12k drive-end bearing fault data and normal baseline data; the file identifiers used are listed in Online Resource 1).
 
-The simulated missingness is fully determined by the experimental code and fixed seeds. Aggregated results are provided in Online Resources 1 and 2.
+The simulated missingness is fully determined by the experimental code and fixed seeds. Aggregated and per-run results are provided in Online Resources 1–3.
 
 **Code availability.** The code (method, baselines, experiment scripts, statistical analysis and figure generation) and the raw per-run results are available from the corresponding author on reasonable request.
 

@@ -4,7 +4,7 @@ Target_Journal_Submission/
   results/   raw_results.csv, metrics.json, statistics.json, error_analysis.json, experiment_logs/, per-experiment CSVs
   figures/   all generated figures (PNG 300 dpi + PDF)
   tables/    all generated tables (CSV + Markdown)
-  supplementary/  Online Resources (ESM_1.docx, ESM_2.csv), citation audit, research design documents
+  supplementary/  Online Resources (ESM_1.docx, ESM_2.csv, ESM_3.csv), citation audit, research design documents
 """
 import glob
 import os
@@ -40,7 +40,7 @@ def main():
     for f in glob.glob(os.path.join(RES, "tables", "*")):
         copy(f, os.path.join(PKG, "tables", os.path.basename(f)))
     sup = os.path.join(PKG, "supplementary")
-    for f in ["ESM_1.docx", "ESM_2.csv"]:
+    for f in ["ESM_1.docx", "ESM_2.csv", "ESM_3.csv"]:
         p = os.path.join(PKG, "manuscript", f)
         if os.path.exists(p):
             copy(p, os.path.join(sup, f))

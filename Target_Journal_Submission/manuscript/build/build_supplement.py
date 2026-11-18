@@ -20,11 +20,13 @@ RES = os.path.join(CODE, "results", "full")
 TAB = os.path.join(RES, "tables")
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(CODE, "experiments"))
+sys.path.insert(0, CODE)
 from build_values import md_table, pfmt  # noqa: E402
+from src.data.cwru import FILES as CWRU_FILES, CLASSES as CWRU_CLASSES  # noqa: E402
 from common import REG, confirmatory_datasets, excluded_confirmatory, natural_datasets, subset30  # noqa: E402
 
-HEAD = ("Online Resource 1 — Missing values in random-convolution time series classification: observed-tap weighting "
-        "for MiniRocket and a pre-specified evaluation. Journal of King Saud University – Computer and Information Sciences. "
+HEAD = ("Online Resource 1 — Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket "
+        "and a pre-specified evaluation. Journal of King Saud University – Computer and Information Sciences. "
         "[Author names and affiliations withheld for double-anonymous review]")
 
 
@@ -48,7 +50,7 @@ def dev_log():
         if l.startswith("## Negative / iteration log"):
             keep = True
             continue
-        if keep and l.startswith("## ") and "Negative" not in l:
+        if keep and l.startswith("## ") and "Negative" not in l and "Revision" not in l:
             break
         if keep:
             out.append(l)
@@ -92,7 +94,33 @@ def main():
             parts.append(f"## {cap}\n\n![]({fp}){{width=16cm}}")
     parts.append("## S14 Raw results\n\nAll per-run results are provided as Online Resource 2 (ESM_2.csv). Columns: dataset, mechanism, train_rate, "
                  "test_rate, seed, method, accuracy, balanced_accuracy, macro_f1, auroc, auprc, fit_s, predict_s, n_features, "
-                 "train_obs_frac, test_obs_frac, selected_gamma, selected_mask, status, timestamp, experiment.")
+                 "train_obs_frac, test_obs_frac, selected_gamma, selected_mask, status, timestamp, experiment. "
+                 "The per-run results of the CWRU case study (E9) are provided as Online Resource 3 (ESM_3.csv), with one row per "
+                 "fold × scenario × seed × method and per-class recall in JSON format.")
+    parts.append("## S15 Industrial case study (E9, CWRU): data, full results and per-class recall\n\n"
+                 "Files (CWRU Bearing Data Center, https://engineering.case.edu/bearingdatacenter; loads 0, 1, 2, 3 hp in this order): "
+                 + "; ".join(f"{c}: {', '.join(map(str, f))}" for c, f in CWRU_FILES.items())
+                 + ". Normal-baseline files (97–100) are sampled at 48 kHz and were decimated to 12 kHz. "
+                 "Seed 0; mean and standard deviation over the four leave-one-load-out folds; *_drop* = mean accuracy loss relative to "
+                 "the same method on complete data.")
+    e = t("table_e9_summary")
+    if e is not None:
+        parts.append(fmt(e[["scenario", "setting", "label", "accuracy", "accuracy_sd", "macro_f1", "balanced_accuracy", "accuracy_drop"]].rename(columns={"label": "method"}), 3))
+        r = t("table_e9_recall")
+        if r is not None:
+            parts.append("**Per-class recall** (mean over folds, seed 0), for complete data and long outages at 30%:")
+            r = r[r.condition.isin(["complete", "outage_long30", "shift_outage_long30"])]
+            parts.append(fmt(r[["condition", "label"] + CWRU_CLASSES].rename(columns={"label": "method"}), 2))
+        sd = t("table_e9_seed")
+        if sd is not None:
+            parts.append("**Seed check** (seeds 0 and 1; mean over folds of MissRocket − baseline accuracy):")
+            parts.append(fmt(sd[["scenario", "setting"] + [c for c in sd.columns if c.startswith("diff_")]], 3))
+    ed = t("table_edge")
+    if ed is not None:
+        parts.append("## S16 Single-thread inference cost on CWRU (edge-CPU proxy)\n\nOne CPU thread; fitted on fold 0, inference on "
+                     "the test segments with long outages (30%). Latency: single-segment prediction including gap filling; peak RSS "
+                     "includes the Python interpreter and libraries.")
+        parts.append(fmt(ed, 2))
     md = os.path.join(HERE, "ESM_1.md")
     open(md, "w", encoding="utf-8").write("\n\n".join(parts))
     out = os.path.join(MS, "ESM_1.docx")
@@ -101,6 +129,8 @@ def main():
     from build_manuscript import postprocess, to_pdf
     postprocess(out, out, size=9)
     shutil.copy(os.path.join(RES, "raw_results.csv"), os.path.join(MS, "ESM_2.csv"))
+    if os.path.exists(os.path.join(RES, "E9_cwru", "raw_results.csv")):
+        shutil.copy(os.path.join(RES, "E9_cwru", "raw_results.csv"), os.path.join(MS, "ESM_3.csv"))
     print("built", out, "and ESM_2.csv")
 
 

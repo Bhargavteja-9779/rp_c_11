@@ -32,12 +32,13 @@ CUDA and Apple-Silicon MPS are not required. The deep baseline is small and was 
 
 ## 2. Data
 
-Both datasets are public and need no registration:
+All datasets are public and need no registration:
 
 | Dataset | Source | Licence | Use |
 |---|---|---|---|
 | UCR Time Series Classification Archive 2018 (128 univariate datasets) | Dau et al. (2019); `.ts` files from timeseriesclassification.com | archive terms of use | E1–E5a, E7 |
-| PhysioNet/CinC Challenge 2012 (12,000 ICU stays) | Silva et al. (2012); physionet.org/content/challenge-2012/1.0.0 | Open Data Commons Attribution v1.0 | E5b |
+| PhysioNet/CinC Challenge 2012 (12,000 ICU stays) | Silva et al. (2012); https://physionet.org/content/challenge-2012/1.0.0/ | Open Data Commons Attribution v1.0 | E5b |
+| CWRU Bearing Data Center, 12k drive-end fault data + normal baseline (40 files: 97–100, 105–108, 118–121, 130–133, 169–172, 185–188, 197–200, 209–212, 222–225, 234–237) | https://engineering.case.edu/bearingdatacenter | provider's terms of use | E9 |
 
 ```bash
 bash scripts/download_data.sh
@@ -46,6 +47,8 @@ bash scripts/download_data.sh
 ```bash
 python scripts/build_registry.py
 ```
+
+CWRU preprocessing (`src/data/cwru.py`): drive-end channel; the 48 kHz normal-baseline files are decimated to 12 kHz; non-overlapping 1,024-sample segments, at most 60 per recording (2,399 segments).
 
 `data/registry.csv` lists every UCR dataset with its size, its kind (complete / native-missing / variable-length) and its role:
 - **development:** 10 datasets used for all design decisions;
@@ -80,8 +83,10 @@ Useful options:
 | E7 | `experiments/e7_sensitivity.py` | Feature budget and γ sensitivity |
 | E2 | `experiments/e2_deep.py` | GRU-D on a pre-specified small/short UCR subset |
 | E4b | `experiments/e4b_mechanism_shift.py` | Train/test *mechanism* shift (added during internal review; post hoc) |
+| E9 | `experiments/e9_cwru.py`, `scripts/analyze_e9.py` | Industrial case study (added after external review): CWRU bearing faults, leave-one-load-out, simulated sensor dropouts (random 10/30/50%, short/medium/long outages), matched and train-complete → test-incomplete |
 | E8 | `scripts/error_analysis.py` | Gains vs dataset properties, extremes, confusion matrices |
 | — | `scripts/benchmark_scaling.py` | Controlled transform-time and memory benchmark (run on an idle machine) |
+| — | `scripts/benchmark_edge.py` | Single-thread inference latency and peak memory on CWRU (edge-CPU proxy; run on an idle machine) |
 | — | `scripts/reproducibility_check.py` | Re-runs a sample of stored runs and checks exact equality |
 
 Outputs are written under `results/<mode>/`:
