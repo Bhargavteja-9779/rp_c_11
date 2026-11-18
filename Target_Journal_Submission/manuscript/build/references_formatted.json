@@ -1162,5 +1162,21 @@
    ]
   ],
   "cite": "Kim et al. 2023"
+ },
+ "Smith2015": {
+  "entry": "Smith WA, Randall RB (2015) Rolling element bearing diagnostics using the Case Western Reserve University data: A benchmark study. Mechanical Systems and Signal Processing 64-65:100–131. https://doi.org/10.1016/j.ymssp.2015.04.021",
+  "first": "Smith",
+  "year": 2015,
+  "authors": [
+   [
+    "Smith",
+    "WA"
+   ],
+   [
+    "Randall",
+    "RB"
+   ]
+  ],
+  "cite": "Smith and Randall 2015"
  }
 }

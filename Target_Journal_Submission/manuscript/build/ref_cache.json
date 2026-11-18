@@ -1377,5 +1377,28 @@
   "arxiv": "2308.06738",
   "type": "arxiv",
   "source": "arxiv"
+ },
+ "Smith2015": {
+  "authors": [
+   [
+    "Smith",
+    "WA"
+   ],
+   [
+    "Randall",
+    "RB"
+   ]
+  ],
+  "editors": [],
+  "year": 2015,
+  "title": "Rolling element bearing diagnostics using the Case Western Reserve University data: A benchmark study",
+  "venue": "Mechanical Systems and Signal Processing",
+  "volume": "64-65",
+  "issue": "",
+  "pages": "100-131",
+  "doi": "10.1016/j.ymssp.2015.04.021",
+  "type": "journal-article",
+  "publisher": "Elsevier BV",
+  "source": "crossref"
  }
 }

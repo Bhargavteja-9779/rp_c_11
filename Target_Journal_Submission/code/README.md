@@ -1,6 +1,6 @@
 # MissRocket: missingness-aware MiniRocket for time series classification with missing values
 
-Code, configuration and raw results for the study **"Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation"** (submitted to the *Journal of King Saud University – Computer and Information Sciences*).
+Code, configuration and raw results for the study **"Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket and a pre-specified evaluation"** (submitted to the *Journal of King Saud University – Computer and Information Sciences*).
 
 Every number, table and figure in the manuscript is produced by the code in this directory from the raw result files under `results/full/`.
 

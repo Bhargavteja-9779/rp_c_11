@@ -1,6 +1,6 @@
 ## 1 Introduction
 
-Time series classification (TSC) underpins applications such as industrial monitoring, wearable and clinical sensing, and remote sensing. In these settings the data are rarely complete. Sensors drop out for minutes or hours, communication links lose packets, values beyond an instrument's range are not recorded, and clinical variables are measured only when a clinician orders them. The resulting gaps differ in length, in how they relate to the signal, and in whether they carry information about the class.
+Time series classification (TSC) underpins condition monitoring and predictive maintenance of machines, wearable and clinical sensing, and remote sensing. In deployed systems the incoming data are rarely complete. Wireless vibration sensors lose packets, data-acquisition units disconnect for seconds or minutes, communication links fail, values beyond an instrument's range are not recorded, and clinical variables are measured only when a clinician orders them. A classifier that was trained on clean historical recordings must nevertheless keep producing reliable outputs when part of the signal is missing. The missing segments may also be longer, or differently distributed, than anything seen in training. The resulting gaps differ in length, in how they relate to the signal, and in whether they carry information about the class.
 
 Among accurate TSC methods, random-convolution transforms are the practical reference point. ROCKET [@Dempster2020], MiniRocket [@Dempster2021], MultiRocket [@Tan2022] and Hydra [@Dempster2023] are fast, and in a recent large benchmark Hydra combined with MultiRocket was, together with the far heavier HIVE-COTE 2, significantly more accurate than all other approaches [@Middlehurst2024]. All of them, however, are defined for complete, equal-length input. In practice, missing values are therefore handled by ad-hoc preprocessing:
 
@@ -16,6 +16,8 @@ This leaves a practical and a scientific question open:
 - Should the transform estimate its kernel responses from the observed values only?
 - Or should it treat responses that rely on missing data differently?
 
+This paper addresses the following research question. *Can a fast random-convolution classifier be made more reliable when sensor measurements are missing, particularly under prolonged outages and when test data are more incomplete than training data, without a learned imputation model and without increasing its computational complexity?*
+
 The answer is not obvious. Statistical theory shows that impute-then-predict is consistent when the learner is flexible enough [@Josse2019; @LeMorvan2021]. Random-convolution classifiers, however, are fixed feature maps followed by a linear model, so the way missingness enters the feature map matters directly.
 
 This paper studies the question for MiniRocket, the simplest and fastest member of the family.
@@ -24,15 +26,22 @@ This paper studies the question for MiniRocket, the simplest and fastest member 
 - **Interpolation fails in a specific way.** Interpolation produces low-variance but *fabricated* responses inside long gaps (Proposition 3). This motivates **MissRocket**: interpolated responses are retained, but each response's contribution to the proportion-of-positive-values pooling is weighted by the fraction of its taps that were actually observed.
 - **The method adds no learnable parameters.** It reduces exactly to MiniRocket on complete data and has the same asymptotic cost.
 
+We do not claim to propose the first missingness-aware classifier. Missingness indicators, masked pooling and partial convolutions are established ideas (Section 2). The specific contribution has four parts:
+- the observed-tap fraction of each convolution window is used as a reliability weight inside the thresholded PPV pooling of MiniRocket;
+- the interpolated responses are retained rather than re-estimated or renormalised;
+- an analysis explains why this targets the failure mode of interpolation;
+- a pre-specified evaluation shows where it helps, where it does not, and where other approaches are preferable.
+
 Our contributions are:
 
 1. An analysis, based on elementary but consequential observations, of missingness inside MiniRocket kernels: exactness, offset invariance, unbiasedness and the variance of a native estimator; the failure of partial-convolution renormalisation; and the fabricated-response property of interpolation (Section 4).
 2. **MissRocket**, an observed-tap-weighted pooling scheme that requires no imputation model and no training beyond the usual ridge head (Section 4.2).
-3. A pre-specified evaluation with a separate development set. It covers {{N_CONF}} UCR datasets, three missingness mechanisms (MCAR, contiguous gaps and value-dependent MNAR) at three rates, and eleven competitors, including reference MiniRocket, MultiRocket and Hydra with five imputation strategies, LightGBM with native missing-value handling, and GRU-D. It also includes ablations, train–test missingness shift, 15 naturally incomplete UCR datasets and PhysioNet 2012 mortality prediction (Sections 5–6).
+3. A pre-specified evaluation with a separate development set. It covers {{N_CONF}} UCR datasets, three missingness mechanisms (MCAR, contiguous gaps and value-dependent MNAR) at three rates, and eleven competitors, including reference MiniRocket, MultiRocket and Hydra with five imputation strategies, LightGBM with native missing-value handling, and GRU-D. It also includes ablations, train–test missingness shift, 15 naturally incomplete UCR datasets and PhysioNet 2012 mortality prediction (Sections 5–6). An industrial case study on bearing-vibration data (CWRU) adds simulated sensor dropouts of different durations, leave-one-load-out evaluation, train–test shift, per-class recall and single-core inference cost (Section 6.10).
 4. Empirical evidence on where each strategy succeeds and fails:
    - observed-tap weighting helps substantially when gaps are long, when missingness depends on the values, and under train–test missingness shift;
    - it neither helps nor materially hurts under scattered random gaps;
    - native estimation is consistently inferior to interpolation;
-   - cross-series kNN imputation and clinical-specific models are better in their respective niches (Sections 6–7).
+   - cross-series kNN imputation and clinical-specific models are better in their respective niches;
+   - these findings are summarised as a practical decision guide (Sections 6–7, @tab:decision).
 
-All code, raw per-run results and the scripts that generate every number, table and figure are released.
+The datasets are public; the code, raw per-run results and analysis scripts are available from the corresponding author on reasonable request.

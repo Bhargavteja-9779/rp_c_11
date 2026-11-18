@@ -103,6 +103,8 @@ def entry(m):
     au = fmt_authors(m["authors"], m.get("etal", False))
     y = m["year"]
     t = _t(m["title"])[:-1] if _t(m["title"]).endswith(".") else _t(m["title"])
+    if m.get("dataset"):
+        return f"{au} ({y}) {_t(t)} {m['url']}"
     if m.get("type") == "arxiv":
         return f"{au} ({y}) {_t(t)} arXiv:{m['arxiv']}. https://doi.org/10.48550/arXiv.{m['arxiv']}"
     if m.get("type") == "book" or m.get("type") == "monograph":

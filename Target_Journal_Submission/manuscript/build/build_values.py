@@ -316,8 +316,8 @@ def cover_letter(v):
     mr = c[c.baseline == "MiniRocket + linear interp."].iloc[0]
     st = t("table_main_statistics")
     b8 = st[(st.mechanism == "block") & (np.isclose(st.rate, 0.8)) & (st.baseline == "MiniRocket + linear interp.")].iloc[0]
-    v["TITLE"] = ("Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket "
-                  "and a pre-specified evaluation")
+    v["TITLE"] = ("Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket and a "
+                  "pre-specified evaluation")
     v["COVER_LETTER_PARAGRAPHS"] = [
         f"We submit the manuscript \u201c{v['TITLE']}\u201d for consideration as an original research article in the Journal of King Saud "
         "University \u2013 Computer and Information Sciences.",

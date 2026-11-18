@@ -5,11 +5,19 @@
 **UCR archive.** We use the 2018 UCR archive [@Dau2019] with its fixed train/test splits. Of the 113 complete, equal-length datasets:
 
 - 10 form a *development set* used for every design decision. These are the five datasets used for an initial feasibility pilot (ArrowHead, GunPoint, ECG200, Wafer, ShapesAll) plus five drawn at random with a fixed seed (CinCECGTorso, MoteStrain, MixedShapesSmallTrain, DistalPhalanxOutlineAgeGroup, MiddlePhalanxOutlineAgeGroup).
-- The remaining 103 form the *confirmatory set*. A compute rule fixed before any confirmatory run (at most 2,000 training series and 2×10⁶ values in total) retains {{N_CONF}} of them. The excluded datasets are {{EXCLUDED_LIST}}.
+- The remaining 103 form the *confirmatory set*. A compute rule fixed before any confirmatory run (at most 2,000 training series and 2×10⁶ values in total) retains {{N_CONF}} of them. The excluded datasets are {{EXCLUDED_LIST}}. These are the archive's largest problems, by training-set size (e.g. ElectricDevices, Crop, FordA/B) or by total size (e.g. StarLightCurves, HandOutlines). Excluding them biases the benchmark towards small and medium datasets. With larger training sets, a learned imputer such as kNN, or a more flexible classifier, could gain relative to MissRocket. We therefore make no claim about the largest datasets.
 
 The 15 archive datasets with native missing values (4) or variable lengths (11) are used without simulation in Section 6.5. Variable-length series are represented by trailing missing values.
 
 **PhysioNet/CinC 2012.** The challenge data [@Silva2012; @Goldberger2000] contain 12,000 intensive-care stays (sets a, b and c) with outcomes. We bin 37 time-varying variables into 48 hourly intervals; a bin with no measurement is missing. This gives 79.7% missing entries, missingness that is informative by nature, and 14.2% in-hospital mortality. Sets a and b (8,000 stays) are used for training and set c (4,000 stays) for testing. Variables are standardised with training statistics. Static descriptors are not used by any method.
+
+**CWRU bearing vibration data (industrial case study).** We used the 12 kHz drive-end accelerometer recordings of the Case Western Reserve University Bearing Data Center (Online Resource 1 gives the file list):
+- *classes:* ten condition classes, namely normal operation and inner-race, ball and outer-race (6 o'clock) faults of 0.007, 0.014 and 0.021 inch;
+- *operating conditions:* each class recorded at four motor loads (0–3 hp);
+- *normal recordings:* the normal-baseline recordings are sampled at 48 kHz [@Smith2015] and were decimated to 12 kHz with a zero-phase anti-aliasing filter, so that the sampling rate cannot identify the class;
+- *segments:* each recording was cut into non-overlapping 1,024-sample segments (85 ms), at most 60 per recording, giving 2,399 segments;
+- *evaluation:* leave-one-load-out (train on three loads, test on the fourth), so no recording contributes to both training and test data;
+- *scaling:* amplitudes were standardised with the mean and standard deviation of the training segments.
 
 ### 5.2 Missingness simulation
 
@@ -21,7 +29,30 @@ Missingness is simulated independently for every series. Training and test masks
 
 We use $r\in\{0.2,0.5,0.8\}$ and keep at least two observed points per series. Unit tests verify the realised rates.
 
-### 5.3 Methods compared
+For the CWRU case study, missing values model sensor dropouts:
+- *random loss of readings* (MCAR) at 10%, 30% and 50%;
+- *contiguous outages* at 30% missing values, with three outage durations: short (geometric length with mean 16 samples, realised ≈ 1.5 ms), medium (mean 128 samples, realised ≈ 7.6 ms) and long (essentially one outage covering the 30%, ≈ 26 ms);
+- *long outages at 50%* missing values.
+
+Each scenario was evaluated with the same missingness in training and test data, and also with complete training data and incomplete test data (deployment shift). These are simulated dropouts on real vibration recordings, not naturally occurring sensor failures.
+
+### 5.3 Overview of experiments
+
+{#tab:overview} Overview of the experiments. "Primary" denotes the pre-specified main analysis; all other experiments are secondary. E4b and E9 were added after the protocol was frozen (E4b in an internal review round, E9 in response to an external review) and are reported as such
+
+| Exp. | Purpose | Datasets | Conditions | Seeds | Methods |
+|:------------|------|------|------|------|------|
+| E1 (primary) | Main comparison | {{N_CONF}} UCR | 3 mechanisms × 3 rates | 0 | MissRocket, γ=0, 10 baselines |
+| E1 (seeds) | Seed variability | 30-dataset subset | 3 × 3 | 0, 1, 2 | as E1 |
+| E2 | Deep baseline | 17 small UCR | 3 mechanisms × 50% | 0 | GRU-D, MissRocket, MiniRocket |
+| E3 | Ablation | 30-dataset subset | 3 mechanisms × 50% | 0 | 10 variants |
+| E4 / E4b | Rate / mechanism shift | 30-dataset subset | 6 / 2 shifts | 0 | 4 / 6 methods |
+| E5a | Natural incompleteness | 15 UCR | as distributed | 0, 1, 2 | 7 methods |
+| E5b | Clinical external validation | PhysioNet 2012 | natural (79.7% missing) | 0 | 6 methods |
+| E7 | Sensitivity | 30-dataset subset | block, MCAR × 50% | 0 | γ grid, feature budget |
+| E9 | Industrial case study | CWRU, 4 load folds | 8 matched + 5 shift scenarios | 0 (core: 0, 1) | 7 methods |
+
+### 5.4 Methods compared
 
 All ROCKET-family methods use the standard ridge head (standardisation followed by `RidgeClassifierCV` from scikit-learn [@Pedregosa2011], $\alpha\in\{10^{-3},\dots,10^3\}$).
 
@@ -48,7 +79,7 @@ All ROCKET-family methods use the standard ridge head (standardisation followed 
 
 No method's hyperparameters were tuned on confirmatory data. Baseline settings are the library defaults, or the defaults stated above.
 
-### 5.4 Protocol, pre-specification and amendments
+### 5.5 Protocol, pre-specification and amendments
 
 **Development phase.** Design choices were made on the 10 development datasets only (seed 0; MCAR, block and MNAR at rates 0.3 and 0.6). The choices covered:
 
@@ -75,7 +106,7 @@ Amendments 2 and 3 were decided and committed while only run counts and run time
 
 **Seeds.** A seed controls the missingness masks and the bias sampling of the transforms.
 
-### 5.5 Metrics and statistical analysis
+### 5.6 Metrics and statistical analysis
 
 The primary metric is test accuracy. Balanced accuracy and macro-F1 are also reported. For PhysioNet 2012 we report AUROC and AUPRC.
 

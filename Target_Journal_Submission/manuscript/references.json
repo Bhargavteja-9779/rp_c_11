@@ -407,5 +407,27 @@
   "key": "Kim2023",
   "arxiv": "2308.06738",
   "title": "Probabilistic Imputation for Time-series Classification with Missing Data"
+ },
+ {
+  "key": "Smith2015",
+  "doi": "10.1016/j.ymssp.2015.04.021",
+  "title": "Rolling element bearing diagnostics using the Case Western Reserve University data: A benchmark study"
+ },
+ {
+  "key": "CWRU",
+  "title": "Bearing Data Center: seeded fault test data",
+  "manual": {
+   "authors": [
+    [
+     "Case Western Reserve University Bearing Data Center",
+     ""
+    ]
+   ],
+   "year": 2026,
+   "title": "Seeded fault test data (12k drive end bearing fault data; normal baseline data)",
+   "venue": "",
+   "url": "https://engineering.case.edu/bearingdatacenter. Accessed 18 November 2026",
+   "dataset": true
+  }
  }
 ]

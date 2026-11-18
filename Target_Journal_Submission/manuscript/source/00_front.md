@@ -1,4 +1,4 @@
-# Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation
+# Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket and a pre-specified evaluation
 
 **Abstract**
 

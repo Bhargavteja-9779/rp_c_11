@@ -1,28 +1,31 @@
 ## Statements and Declarations
 
-**Funding.** The authors declare that no funds, grants or other support were received during the preparation of this manuscript. [Authors: replace if applicable.]
+**Funding.** The authors declare that no funds, grants or other support were received during the preparation of this manuscript.
 
-**Competing interests.** The authors have no relevant financial or non-financial interests to disclose. [Authors: confirm.]
+**Competing interests.** The authors have no relevant financial or non-financial interests to disclose.
 
-**Author contributions.** [To be completed by the authors on the separate title page and in the submission system, as required for double-anonymous review.]
+**Author contributions.** Author contributions are given on the separate title page, in accordance with the journal's double-anonymous review policy.
 
 **Data availability.** All data analysed in this study are publicly available:
 
-- the UCR Time Series Classification Archive 2018 [@Dau2019], obtained from timeseriesclassification.com;
-- the PhysioNet/Computing in Cardiology Challenge 2012 data [@Silva2012; @Goldberger2000], available at https://physionet.org/content/challenge-2012/1.0.0/ under the Open Data Commons Attribution License v1.0.
+- UCR Time Series Classification Archive (2018 release) [@Dau2019]: https://www.cs.ucr.edu/~eamonn/time_series_data_2018/ (the `.ts` version used here is distributed at https://www.timeseriesclassification.com/);
+- PhysioNet/Computing in Cardiology Challenge 2012 [@Silva2012; @Goldberger2000]: https://physionet.org/content/challenge-2012/1.0.0/ (Open Data Commons Attribution License v1.0);
+- Case Western Reserve University Bearing Data Center [@CWRU]: https://engineering.case.edu/bearingdatacenter (12k drive-end bearing fault data and normal baseline data; the file identifiers used are listed in Online Resource 1).
 
-The simulated missingness masks are fully determined by the published code and seeds. All raw per-run results (one row per dataset, condition, seed and method), the statistics files and the scripts that generate every table and figure are provided as Online Resources and in the code repository [link withheld for double-anonymous review].
+The simulated missingness is fully determined by the experimental code and fixed seeds. Aggregated results are provided in Online Resources 1 and 2.
 
-**Code availability.** The complete source code, including the method, baselines, experiment scripts, statistical analysis, figure and table generation, and unit tests, is available in the code repository [link withheld for double-anonymous review]. It will be deposited in a public archive with a persistent identifier upon acceptance. `python run_all.py --mode full` reproduces all reported numbers.
+**Code availability.** The code (method, baselines, experiment scripts, statistical analysis and figure generation) and the raw per-run results are available from the corresponding author on reasonable request.
 
-**Ethics approval.** Not applicable. The study uses only public, de-identified benchmark data. The PhysioNet 2012 data were de-identified by the data providers and are distributed openly.
+**Ethics approval.** Not applicable. The study uses only public, de-identified data. The PhysioNet 2012 data were de-identified by the data providers and are distributed under an open licence.
 
-**Use of large language models.** The research workflow was carried out with the assistance of an AI agent (Anthropic Claude), as required to be documented by the journal's policy. Its use covered:
+**Consent to participate / consent for publication.** Not applicable.
 
-- literature and journal searching;
+**Use of generative AI.** In line with the journal's policy, we declare that an AI assistant (Anthropic Claude) was used in the research workflow, for:
+
+- literature searching;
 - code implementation;
 - experiment orchestration;
-- statistical analysis scripting;
-- manuscript drafting.
+- analysis scripting;
+- drafting of the manuscript text.
 
-All results reported in the manuscript are produced by the released code from the raw experimental outputs; no number was entered by hand. All references were verified against Crossref, arXiv, PubMed or the publishers' pages. The authors take full responsibility for the content. [Authors: adapt this statement to the actual division of work and to the journal's current policy text.]
+All results reported in this manuscript are produced by the study's code from the raw experimental outputs, and all references were checked against bibliographic databases. The authors reviewed and edited all content and take full responsibility for the manuscript.

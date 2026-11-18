@@ -2,7 +2,7 @@
 
 Submission package for the *Journal of King Saud University – Computer and Information Sciences* (Springer Nature).
 
-**Manuscript:** "Missing values in random-convolution time series classification: observed-tap weighting for MiniRocket and a pre-specified evaluation".
+**Manuscript:** "Robust time-series classification under sensor dropouts: observed-tap-weighted MiniRocket and a pre-specified evaluation".
 
 | Folder | Contents |
 |---|---|
